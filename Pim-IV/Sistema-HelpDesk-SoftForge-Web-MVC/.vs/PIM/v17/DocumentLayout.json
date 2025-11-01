@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\anexo\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\anexo\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\relatorios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\relatorios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 240,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\Anexo\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Views DbTestes\\Anexo\\Create.cshtml",
-              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\Anexo\\Create.cshtml",
-              "RelativeToolTip": "Views\\Views DbTestes\\Anexo\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-01T19:16:43.478Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
@@ -36,6 +23,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "relatorios.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\relatorios.html",
+              "RelativeDocumentMoniker": "Views\\relatorios.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\relatorios.html",
+              "RelativeToolTip": "Views\\relatorios.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMCAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-01T19:36:21.086Z",
+              "EditorCaption": ""
             }
           ]
         }
