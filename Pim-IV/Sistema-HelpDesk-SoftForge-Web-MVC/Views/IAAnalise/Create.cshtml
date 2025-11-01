@@ -1,0 +1,42 @@
+@model PIM.Models.IAAnalise
+
+@{
+    ViewData["Title"] = "Nova Análise de IA";
+}
+
+<h2>Nova Análise de IA</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="ChamadoId"></label>
+        <input asp-for="ChamadoId" class="form-control" />
+        <span asp-validation-for="ChamadoId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoriaPrevista"></label>
+        <input asp-for="CategoriaPrevista" class="form-control" />
+        <span asp-validation-for="CategoriaPrevista" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Confianca"></label>
+        <input asp-for="Confianca" class="form-control" />
+        <span asp-validation-for="Confianca" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ResultadoValidado"></label>
+        <input asp-for="ResultadoValidado" class="form-control" />
+        <span asp-validation-for="ResultadoValidado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Comentario"></label>
+        <input asp-for="Comentario" class="form-control" />
+        <span asp-validation-for="Comentario" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DataAnalise"></label>
+        <input asp-for="DataAnalise" class="form-control" type="date" />
+        <span asp-validation-for="DataAnalise" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
