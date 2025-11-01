@@ -1,0 +1,38 @@
+@model IEnumerable<PIM.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<h2>Funcionários</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Funcionário</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().FuncionarioId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().UsuarioId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Matricula)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DataAdmissao)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DataDemissao)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.FuncionarioId</td>
+            <td>@item.UsuarioId</td>
+            <td>@item.Matricula</td>
+            <td>@item.DataAdmissao.ToShortDateString()</td>
+            <td>@item.DataDemissao?.ToShortDateString()</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.FuncionarioId">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.FuncionarioId">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.FuncionarioId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+@model IEnumerable<PIM.Models.Atendimento>
+
+@{
+    ViewData["Title"] = "Atendimentos";
+}
+
+<h2>Atendimentos</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Atendimento</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().AtendimentoId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().ChamadoId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().UsuarioTecnicoId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DataAtendimento)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.AtendimentoId</td>
+            <td>@item.ChamadoId</td>
+            <td>@item.UsuarioTecnicoId</td>
+            <td>@item.DataAtendimento.ToShortDateString()</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.AtendimentoId">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.AtendimentoId">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.AtendimentoId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

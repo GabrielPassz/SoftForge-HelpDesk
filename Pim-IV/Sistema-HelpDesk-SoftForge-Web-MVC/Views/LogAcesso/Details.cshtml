@@ -1,0 +1,21 @@
+@model PIM.Models.LogAcesso
+
+@{
+    ViewData["Title"] = "Detalhes do Log de Acesso";
+}
+
+<h2>Detalhes do Log de Acesso</h2>
+<dl class="row">
+    <dt class="col-sm-2">ID</dt>
+    <dd class="col-sm-10">@Model.LogId</dd>
+    <dt class="col-sm-2">Usuário</dt>
+    <dd class="col-sm-10">@Model.UsuarioId</dd>
+    <dt class="col-sm-2">Data</dt>
+    <dd class="col-sm-10">@Model.DataHora</dd>
+    <dt class="col-sm-2">IP</dt>
+    <dd class="col-sm-10">@Model.IPAddress</dd>
+    <dt class="col-sm-2">Descrição</dt>
+    <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.LogId" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

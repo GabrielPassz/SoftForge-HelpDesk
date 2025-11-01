@@ -1,0 +1,15 @@
+@model PIM.Models.Departamento
+
+@{
+    ViewData["Title"] = "Detalhes do Departamento";
+}
+
+<h2>Detalhes do Departamento</h2>
+<dl class="row">
+    <dt class="col-sm-2">Nome</dt>
+    <dd class="col-sm-10">@Model.NomeDepartamento</dd>
+    <dt class="col-sm-2">Descrição</dt>
+    <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.DepartamentoId" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>
