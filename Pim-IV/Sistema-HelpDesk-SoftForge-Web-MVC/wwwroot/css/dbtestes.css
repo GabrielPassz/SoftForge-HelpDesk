@@ -1,0 +1,185 @@
+/* Aliases: normalize legacy class names to current layout classes
+ This lets pages using older class names (db-top, db-body, db-inicial, etc.)
+ render with the same layout/styles as the standardized classes.
+*/
+
+/* Outer container aliases */
+.db-page, .db-inicial, .db-wrapper, .db-container { 
+ /* keep central layout behavior */
+ max-width:1200px;
+ margin:0 auto;
+ padding: var(--page-padding,1rem);
+ box-sizing: border-box;
+}
+
+/* Header aliases */
+.db-header, .db-top, .db-header-wrapper {
+ background: var(--panel-2, #0f1113);
+ padding:1rem;
+ border-radius: var(--radius,6px);
+ margin-bottom:0.75rem;
+}
+.db-header h1, .db-header p { color: var(--text); margin:0 }
+
+/* Nav aliases */
+.db-nav, .db-top nav, .db-navigation {
+ display: flex;
+ flex-wrap: wrap;
+ gap:0.5rem;
+ align-items: center;
+ margin:0.5rem0;
+}
+.db-nav a { color: var(--accent, #66aaff); text-decoration: none }
+
+/* Content/main aliases */
+.db-content, .db-body, .db-main, .db-panel {
+ background: var(--panel, #0b0b0b);
+ padding:1rem;
+ border-radius: var(--radius,6px);
+ box-shadow:03px8px rgba(0,0,0,0.6);
+}
+
+/* Footer alias */
+.db-footer, .db-footer-wrapper { text-align:center; color: var(--muted); padding:1rem0 }
+
+/* Section alias: some files may use <div class="section"> or <section class="panel"> */
+.section, .panel, .db-section { margin-bottom:1.25rem }
+
+/* Notifications list alias kept below (existing rules will apply)
+ Note: specific db-section.db-notifications rules still take precedence */
+
+/* End aliases */
+
+/* --- Existing styles below --- */
+:root{
+ --bg: #000;
+ --panel: #0b0b0b;
+ --panel-2: #0f1113;
+ --muted: #9a9a9a;
+ --text: #e6e6e6;
+ --accent: #66aaff;
+ --primary: #1b6ec2;
+ --radius:6px;
+ --page-padding:1rem;
+}
+
+/* Base */
+html, body {
+ height:100%;
+ background-color: var(--bg);
+ color: var(--text);
+ margin:0;
+ padding:0;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Constrain content and provide consistent gutters */
+.db-page {
+ max-width:1200px;
+ margin:0 auto;
+ padding: var(--page-padding);
+ box-sizing: border-box;
+}
+
+/* Header */
+.db-header header{
+ background: var(--panel-2);
+ padding:1rem;
+ border-radius: var(--radius);
+ margin-bottom:0.75rem;
+}
+.db-header h1, .db-header p{ color: var(--text); margin:0 }
+
+/* Navigation */
+.db-nav nav{
+ display: flex;
+ flex-wrap: wrap;
+ gap:0.5rem;
+ align-items: center;
+ margin:0.5rem0;
+}
+.db-nav a{
+ color: var(--accent);
+ text-decoration: none;
+}
+.db-nav a:hover{ text-decoration: underline }
+
+/* Content card */
+.db-content{
+ background: var(--panel);
+ padding:1rem;
+ border-radius: var(--radius);
+ box-shadow:03px8px rgba(0,0,0,0.6);
+}
+
+.db-section{ margin-bottom:1.25rem }
+.db-section h2, .db-section h3, .db-section h4{ margin-top:0; color: #fff }
+
+/* Footer */
+.db-footer footer{ text-align: center; padding:1rem0; color: var(--muted) }
+
+/* Buttons */
+.btn-primary{ background-color: var(--primary); border-color: #1861ac; color: #fff }
+.btn-secondary{ background-color: #2b2b2b; border-color: #3a3a3a; color: var(--text) }
+
+.db-actions{ display: flex; gap:0.5rem; flex-wrap: wrap }
+
+/* Forms and controls */
+.form-control, .form-select, input[type="text"], input[type="email"], input[type="password"], textarea, select{
+ width:100%;
+ box-sizing: border-box;
+ padding:0.5rem;
+ border-radius:4px;
+ background: #121212;
+ color: var(--text);
+ border:1px solid #222;
+}
+
+label{ display: block; margin-bottom:0.35rem; color: var(--muted) }
+
+/* Table responsiveness */
+.table-responsive{ width:100%; overflow: auto; -webkit-overflow-scrolling: touch; }
+.table{ width:100%; border-collapse: collapse; color: var(--text); }
+.table th, .table td{ padding:0.5rem; border:1px solid #2b2b2b; text-align: left }
+
+/* Small helpers */
+.w-100{ width:100% }
+.text-muted{ color: var(--muted) }
+
+/* Layout helpers */
+.db-grid{ display: grid; gap:1rem; grid-template-columns:1fr; }
+
+/* Responsive breakpoints */
+@media (min-width:600px) {
+ .db-grid{ grid-template-columns:1fr320px; }
+ .db-page{ padding: calc(var(--page-padding) *1.25); }
+}
+
+@media (min-width:900px) {
+ .db-grid{ grid-template-columns:1fr360px; }
+ .db-page{ max-width:1100px }
+}
+
+@media (min-width:1200px) {
+ .db-page{ max-width:1200px }
+}
+
+/* Mobile specific rules */
+@media (max-width:599px) {
+ .db-nav nav{ flex-direction: column; align-items: flex-start }
+ .db-actions{ flex-direction: column }
+ .db-header header{ text-align: center }
+ .db-section table{ font-size:0.9rem }
+ /* make long tables scroll horizontally */
+ .table{ min-width:600px }
+}
+
+/* Accessibility: focus styles */
+a:focus, button:focus, input:focus, select:focus, textarea:focus{
+ outline:3px solid rgba(102,170,255,0.18);
+ outline-offset:2px;
+}
+
+/* Keep dark theme permanent — no prefers-color-scheme override */

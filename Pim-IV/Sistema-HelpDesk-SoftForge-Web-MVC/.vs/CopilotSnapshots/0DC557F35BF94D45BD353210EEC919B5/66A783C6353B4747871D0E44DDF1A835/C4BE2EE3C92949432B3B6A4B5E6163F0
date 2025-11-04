@@ -1,0 +1,25 @@
+﻿@page
+@model PIM.Pages.DbTestes.EscalonamentoModel
+@{
+ ViewData["Title"] = "Escalonamento (Teste)";
+}
+
+<h2>Escalonamento</h2>
+<div class="alert alert-secondary">Guia: simula escalonamento de chamado.</div>
+
+<form method="post">
+ <div class="mb-3">
+ <label asp-for="ChamadoId" class="form-label">ChamadoId</label>
+ <input asp-for="ChamadoId" class="form-control" />
+ </div>
+ <div class="mb-3">
+ <label asp-for="Justificativa" class="form-label">Justificativa</label>
+ <textarea asp-for="Justificativa" class="form-control"></textarea>
+ </div>
+ <button class="btn btn-primary">Enviar Escalonamento</button>
+</form>
+
+@if (Model.Sent)
+{
+ <div class="alert alert-success mt-2">Escalonamento enviado (simulado).</div>
+}

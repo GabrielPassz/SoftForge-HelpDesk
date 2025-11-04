@@ -1,0 +1,40 @@
+﻿@page
+@model PIM.Pages.DbTestes.AtendimentoModel
+@{
+ ViewData["Title"] = "Atendimento (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: registre um atendimento preenchendo chamado, técnico, ação e tempo gasto. O registro é salvo no banco.</div>
+
+<h2>Registrar Atendimento</h2>
+
+<form method="post">
+ <div class="mb-3">
+ <label asp-for="ChamadoId" class="form-label">ChamadoId</label>
+ <input asp-for="ChamadoId" class="form-control" />
+ </div>
+ <div class="mb-3">
+ <label asp-for="UsuarioTecnicoId" class="form-label">Id do Técnico</label>
+ <input asp-for="UsuarioTecnicoId" class="form-control" />
+ </div>
+ <div class="mb-3">
+ <label asp-for="AcaoRealizada" class="form-label">Ação realizada</label>
+ <textarea asp-for="AcaoRealizada" class="form-control"></textarea>
+ </div>
+ <div class="mb-3">
+ <label asp-for="TempoGasto" class="form-label">Tempo gasto (min)</label>
+ <input asp-for="TempoGasto" class="form-control" type="number" />
+ </div>
+ <div class="form-check mb-3">
+ <input asp-for="SolucaoIA" class="form-check-input" />
+ <label asp-for="SolucaoIA" class="form-check-label">Solução IA</label>
+ </div>
+ <button class="btn btn-primary">Salvar Atendimento</button>
+</form>
+
+@if (Model.Saved)
+{
+ <div class="alert alert-success mt-3">Atendimento salvo (id: @Model.CreatedId)</div>
+}

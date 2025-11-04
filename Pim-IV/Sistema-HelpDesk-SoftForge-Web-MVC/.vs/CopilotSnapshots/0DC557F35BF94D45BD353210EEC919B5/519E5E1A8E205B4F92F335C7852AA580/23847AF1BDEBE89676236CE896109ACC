@@ -1,0 +1,26 @@
+﻿@page
+@model PIM.Pages.DbTestes.GerenciarUsuariosModel
+@{
+ ViewData["Title"] = "Gerenciar Usuários (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: lista usuários; clique em editar para abrir o formulário de edição.</div>
+
+<h2>Gerenciar Usuários</h2>
+
+<table class="table">
+ <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th></th></tr></thead>
+ <tbody>
+ @foreach(var u in Model.Usuarios)
+ {
+ <tr>
+ <td>@u.UsuarioId</td>
+ <td>@u.NomeCompleto</td>
+ <td>@u.Email</td>
+ <td><a asp-page="/DbTestes/EditarUsuario" asp-route-id="@u.UsuarioId" class="btn btn-sm btn-outline-primary">Editar</a></td>
+ </tr>
+ }
+ </tbody>
+</table>

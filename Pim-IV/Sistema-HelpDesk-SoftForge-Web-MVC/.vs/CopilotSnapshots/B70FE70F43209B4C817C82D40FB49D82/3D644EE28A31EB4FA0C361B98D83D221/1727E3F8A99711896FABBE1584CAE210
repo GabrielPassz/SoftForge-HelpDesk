@@ -1,0 +1,268 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Gerenciar Usuários - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ @await Html.PartialAsync("_DbTestesNav")
+ </nav>
+
+ <main>
+ <section>
+ <h2>⚙️ Gerenciar Usuários</h2>
+ <p><strong>Administrador:</strong> [Nome do Administrador]</p>
+ </section>
+
+ <section>
+ <h3>📊 Resumo Geral</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <tr>
+ <th>Indicador</th>
+ <th>Quantidade</th>
+ </tr>
+ <tr>
+ <td>Total de Usuários Ativos</td>
+ <td>45</td>
+ </tr>
+ <tr>
+ <td>Solicitações Pendentes de Aprovação</td>
+ <td><strong>3</strong></td>
+ </tr>
+ <tr>
+ <td>Usuários Inativos</td>
+ <td>8</td>
+ </tr>
+ <tr>
+ <td>Técnicos Ativos</td>
+ <td>12 (N1:5 | N2:5 | N3:2)</td>
+ </tr>
+ <tr>
+<td>Coordenadores</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Gestores</td>
+<td>3</td>
+</tr>
+</table>
+</section>
+
+<section>
+<h3>🆕 Solicitações Pendentes de Aprovação</h3>
+<p>Usuários que solicitaram cadastro e aguardam liberação</p>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+<thead>
+<tr>
+<th>Nome</th>
+<th>E-mail</th>
+<th>Data Solicitação</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ricardo Santos</td>
+<td>ricardo.santos@softforge.com</td>
+<td>14/01/202510:30</td>
+<td>
+<a href="aprovar_usuario.html?id=101">Analisar Solicitação</a>
+</td>
+</tr>
+<tr>
+<td>Juliana Alves</td>
+<td>juliana.alves@softforge.com</td>
+<td>14/01/202515:45</td>
+<td>
+<a href="aprovar_usuario.html?id=102">Analisar Solicitação</a>
+</td>
+</tr>
+<tr>
+<td>Marcos Pereira</td>
+<td>marcos.pereira@softforge.com</td>
+<td>15/01/202509:20</td>
+<td>
+<a href="aprovar_usuario.html?id=103">Analisar Solicitação</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Total:3 solicitações pendentes</em></p>
+</section>
+
+<section>
+<h3>🔍 Filtros e Pesquisa</h3>
+<form method="get" action="gerenciar.html">
+<label for="filtro_perfil">Perfil:</label>
+<select id="filtro_perfil" name="perfil">
+<option value="">Todos</option>
+<option value="administrador">Administrador</option>
+<option value="gestor">Gestor</option>
+<option value="coordenador">Coordenador</option>
+<option value="tecnico_n3">Técnico N3</option>
+<option value="tecnico_n2">Técnico N2</option>
+<option value="tecnico_n1">Técnico N1</option>
+<option value="solicitante">Solicitante</option>
+</select>
+
+<label for="filtro_departamento">Departamento:</label>
+<select id="filtro_departamento" name="departamento">
+<option value="">Todos</option>
+<option value="ti">TI</option>
+<option value="rh">RH</option>
+<option value="financeiro">Financeiro</option>
+<option value="marketing">Marketing</option>
+<option value="administrativo">Administrativo</option>
+</select>
+
+<label for="filtro_status">Status:</label>
+<select id="filtro_status" name="status">
+<option value="ativo">Ativos</option>
+<option value="inativo">Inativos</option>
+<option value="pendente">Pendentes</option>
+<option value="todos">Todos</option>
+</select>
+
+<label for="busca_usuario">Buscar:</label>
+<input
+type="text"
+id="busca_usuario"
+name="busca"
+placeholder="Nome ou e-mail"
+/>
+
+<button type="submit">Filtrar</button>
+</form>
+</section>
+
+<section>
+<h3>👥 Lista de Usuários Ativos</h3>
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+<thead>
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>E-mail</th>
+<th>Perfil</th>
+<th>Departamento</th>
+<th>Status</th>
+<th>Último Login</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Admin Sistema</td>
+<td>admin@softforge.com</td>
+<td><strong>Administrador</strong></td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202513:00</td>
+<td><a href="editar_usuario.html?id=001">Editar</a></td>
+</tr>
+<tr>
+<td>002</td>
+<td>Maria Souza</td>
+<td>maria.souza@softforge.com</td>
+<td>Técnico N1</td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202512:45</td>
+<td>
+<a href="editar_usuario.html?id=002">Editar</a>
+</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Carlos Oliveira</td>
+<td>carlos.oliveira@softforge.com</td>
+<td>Técnico N2</td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202512:30</td>
+<td>
+<a href="editar_usuario.html?id=003">Editar</a>
+</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Ana Costa</td>
+<td>ana.costa@softforge.com</td>
+<td>Solicitante</td>
+<td>Financeiro</td>
+<td>Ativo</td>
+<td>15/01/202511:20</td>
+<td>
+<a href="editar_usuario.html?id=004">Editar</a>
+</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Roberto Lima</td>
+<td>roberto.lima@softforge.com</td>
+<td>Coordenador</td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202513:10</td>
+<td>
+<a href="editar_usuario.html?id=005">Editar</a>
+</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Paula Martins</td>
+<td>paula.martins@softforge.com</td>
+<td>Técnico N3</td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202512:00</td>
+<td>
+<a href="editar_usuario.html?id=006">Editar</a>
+</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Fernando Rocha</td>
+<td>fernando.rocha@softforge.com</td>
+<td>Gestor</td>
+<td>TI</td>
+<td>Ativo</td>
+<td>15/01/202510:15</td>
+<td>
+<a href="editar_usuario.html?id=007">Editar</a>
+</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Beatriz Silva</td>
+<td>beatriz.silva@softforge.com</td>
+<td>Solicitante</td>
+<td>RH</td>
+<td>Ativo</td>
+<td>14/01/202516:30</td>
+<td>
+<a href="editar_usuario.html?id=008">Editar</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Mostrando8 de45 usuários</em> | <a href="#">Ver Todos</a></p>
+</section>
+</main>
+
+<footer>
+<p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+</footer>
+</body>
+</html>

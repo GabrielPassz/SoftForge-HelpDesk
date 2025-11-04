@@ -1,0 +1,31 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+<div class="db-page container-fluid">
+ <div class="dbtestes-nav-top">
+ @await Html.PartialAsync("_DbTestesNav")
+ </div>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/DashboardGestor">Dashboard</a> |
+ <a href="/DbTestes/Relatorios">Relatórios</a> |
+ <a href="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <main>
+ <!-- content copied from Views/Views DbTestes/dashboard_gestor.html -->
+ <div class="container-fluid">
+ <h2>Dashboard (From Views)</h2>
+ </div>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+</div>

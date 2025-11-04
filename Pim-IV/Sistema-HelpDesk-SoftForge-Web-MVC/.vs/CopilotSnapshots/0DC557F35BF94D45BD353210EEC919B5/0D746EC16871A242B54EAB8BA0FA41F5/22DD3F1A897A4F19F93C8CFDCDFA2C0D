@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Login - Migrado</title>
+</head>
+<body>
+ <h1>Página migrada</h1>
+ <p>Esta página foi migrada para uma Razor Page funcional.</p>
+ <p>Acesse a versão ativa aqui: <a href="/DbTestes/Login">/DbTestes/Login</a></p>
+</body>
+</html>

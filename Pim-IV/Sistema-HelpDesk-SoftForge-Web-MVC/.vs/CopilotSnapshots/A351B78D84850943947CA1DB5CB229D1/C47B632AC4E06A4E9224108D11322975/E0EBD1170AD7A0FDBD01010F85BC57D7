@@ -1,0 +1,38 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="auth-page">
+ <div class="auth-card">
+ <h1 class="auth-title">Recuperação</h1>
+ <p class="auth-subtitle">Código enviado ao seu e-mail.</p>
+
+ <div class="message-box" style="margin-bottom:0.75rem;">
+ <!-- Placeholder for validation message (error/info) -->
+ <div class="input-wrap" style="background:#dfeaf2;padding:0.75rem;border-radius:6px; color:#042233; text-align:center; font-weight:600;">
+ Código incorreto ou expirado. Verifique seu código ou solicite novamente.
+ </div>
+ </div>
+
+ <form class="auth-form" method="post" action="/DbTestes/ValidarCodigoRedefinir">
+ <div class="input-wrap">
+ <span class="input-icon" aria-hidden="true"></span>
+ <input class="form-control auth-input" type="text" id="codigo" name="codigo" placeholder="Ex:3mP10123" required />
+ </div>
+
+ <div class="input-wrap">
+ <span class="input-icon" aria-hidden="true"></span>
+ <input class="form-control auth-input" type="password" id="nova_senha" name="nova_senha" placeholder="Digite a nova senha" required />
+ </div>
+
+ <div class="input-wrap">
+ <span class="input-icon" aria-hidden="true"></span>
+ <input class="form-control auth-input" type="password" id="confirma_senha" name="confirma_senha" placeholder="Confirme a nova senha" required />
+ </div>
+
+ <div class="auth-actions">
+ <button type="submit" class="auth-btn">Redefinir</button>
+ <a class="auth-btn secondary" asp-page="/DbTestes/Login">Voltar</a>
+ </div>
+ </form>
+
+ </div>
+</div>

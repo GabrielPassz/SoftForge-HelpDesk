@@ -1,0 +1,33 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+<div class="dbtestes-nav-top">
+    @await Html.PartialAsync("_DbTestesNav")
+</div>
+
+<header>
+    <h1>Validar Código</h1>
+</header>
+
+<nav>
+    <a asp-page="/DbTestes/Login">Voltar ao Login</a>
+</nav>
+
+<main>
+    <form method="post" action="/DbTestes/ValidarCodigoRedefinir">
+        <label for="codigo">Código de verificação:</label><br />
+        <input type="text" id="codigo" name="codigo" placeholder="Ex:01370070310" required /><br /><br />
+
+        <label for="nova_senha">Nova senha:</label><br />
+        <input type="password" id="nova_senha" name="nova_senha" placeholder="Sua senha" required /><br /><br />
+
+        <label for="confirma_senha">Confirmar nova senha:</label><br />
+        <input type="password" id="confirma_senha" name="confirma_senha" placeholder="Confirme sua senha" required /><br /><br />
+
+        <button type="submit">Redefinir senha</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+</footer>
