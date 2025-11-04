@@ -411,3 +411,4 @@ C:\Users\Pichau\source\repos\GabrielPassz\SoftForge-HelpDesk\Pim-IV\Sistema-Help
 C:\Users\Pichau\source\repos\GabrielPassz\SoftForge-HelpDesk\Pim-IV\Sistema-HelpDesk-SoftForge-Web-MVC\obj\Debug\net8.0\PIM.genruntimeconfig.cache
 C:\Users\Pichau\source\repos\GabrielPassz\SoftForge-HelpDesk\Pim-IV\Sistema-HelpDesk-SoftForge-Web-MVC\obj\Debug\net8.0\ref\PIM.dll
 C:\Users\Pichau\source\repos\GabrielPassz\SoftForge-HelpDesk\Pim-IV\Sistema-HelpDesk-SoftForge-Web-MVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Meus Projetos GitHub\SoftForge-HelpDesk\Pim-IV\Sistema-HelpDesk-SoftForge-Web-MVC\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css

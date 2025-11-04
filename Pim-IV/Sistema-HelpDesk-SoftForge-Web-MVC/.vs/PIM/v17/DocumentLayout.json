@@ -1,268 +1,268 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\",
+  "WorkspaceRootPath": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesescalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesescalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalheschamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalheschamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\dashboardgestor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\dashboardgestor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado_fromviews.html.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\abrirchamado_fromviews.html.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\dashboardgestor_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\dashboardgestor_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\escalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\escalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\validarcodigoredefinir.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\validarcodigoredefinir.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\relatorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\relatorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\remains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\remains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\registrocadastro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\registrocadastro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\recuperarsenha.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\recuperarsenha.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\meuschamados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\meuschamados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\inicialpainel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\inicialpainel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\escalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\escalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesmeuchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesmeuchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesescalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesescalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalheschamado_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalheschamado_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\configuracao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\configuracao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\atendimento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\atendimento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\aprovarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\aprovarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\abrirchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\relatorios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesescalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesescalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalheschamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalheschamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\dashboardgestor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\dashboardgestor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado_fromviews.html.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\abrirchamado_fromviews.html.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\dashboardgestor_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\dashboardgestor_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\escalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\escalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\validarcodigoredefinir.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\validarcodigoredefinir.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\relatorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\relatorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\remains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\remains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\registrocadastro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\registrocadastro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\recuperarsenha.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\recuperarsenha.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\meuschamados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\meuschamados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\inicialpainel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\inicialpainel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\escalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\escalonamento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesmeuchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesmeuchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalhesescalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalhesescalonamento_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\detalheschamado_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\detalheschamado_fromviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\configuracao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\configuracao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\atendimento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\atendimento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\aprovarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\aprovarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\abrirchamado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\relatorios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\relatorios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\abrirchamado.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\abrirchamado.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\data\\pimcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\data\\pimcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:data\\pimcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\usuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\usuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\usuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\usuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\usuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\usuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\dashboard_gestor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\dashboard_gestor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\dashboard_gestor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\cadastro.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\cadastro.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\cadastro.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\baseconhecimento\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\baseconhecimento\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\baseconhecimento\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\baseconhecimento\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\perfilusuario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\perfilusuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\perfilusuario\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\avaliacao\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\perfilusuario\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\perfilusuario\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\perfilusuario\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\baseconhecimento\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\baseconhecimento\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\avaliacao\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\avaliacao\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\avaliacao\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\inicial_painel.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\inicial_painel.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\inicial_painel.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\meus_chamados.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\meus_chamados.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\meus_chamados.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\detalhes_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_meu_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_meu_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\detalhes_meu_chamado.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\detalhes_escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\detalhes_escalonamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\atendimento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\atendimento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\atendimento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\gerenciar_usuarios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\gerenciar_usuarios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\gerenciar_usuarios.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\editar_usuario.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\editar_usuario.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\editar_usuario.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\configuracao.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\configuracao.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\configuracao.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\validar_codigo_redefinir.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\views dbtestes\\validar_codigo_redefinir.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\views dbtestes\\validar_codigo_redefinir.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\gerenciarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\gerenciarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\gerenciarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-635951867\\qgmlqouq.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|c:\\users\\pichau\\source\\repos\\gabrielpassz\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|d:\\meus projetos github\\softforge-helpdesk\\pim-iv\\sistema-helpdesk-softforge-web-mvc\\pages\\dbtestes\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F85D803C-B877-4619-A9E8-76DAB9F78968}|PIM.csproj|solutionrelative:pages\\dbtestes\\editarusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -283,7 +283,7 @@
         },
         {
           "DockedWidth": 274,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -291,36 +291,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DetalhesEscalonamento.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DetalhesEscalonamento.cshtml",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAAAL4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAAL4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-03T23:03:25.159Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DetalhesChamado.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado.cshtml",
-              "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesChamado.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado.cshtml",
-              "RelativeToolTip": "Pages\\DbTestes\\DetalhesChamado.cshtml",
-              "ViewState": "AgIAAE4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T00:08:11.763Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DashboardGestor.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DashboardGestor.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DashboardGestor.cshtml",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAAHIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -328,11 +316,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AbrirChamado_FromViews.html.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\AbrirChamado_FromViews.html.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAHUAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -340,11 +328,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DashboardGestor_FromViews.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DashboardGestor_FromViews.cshtml",
               "ViewState": "AgIAABoAAAAAAAAAAAAAABoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -352,11 +340,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T06:22:45.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DetalhesChamado.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado.cshtml",
+              "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesChamado.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado.cshtml",
+              "RelativeToolTip": "Pages\\DbTestes\\DetalhesChamado.cshtml",
+              "ViewState": "AgIAAE4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-04T00:08:11.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Escalonamento_FromViews.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Escalonamento_FromViews.cshtml",
               "ViewState": "AgIAACIAAAAAAAAAAAAAACIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -364,11 +377,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ValidarCodigoRedefinir.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\ValidarCodigoRedefinir.cshtml",
               "ViewState": "AgIAACAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -376,11 +389,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Relatorios.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Relatorios.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Relatorios.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Relatorios.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Relatorios.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Relatorios.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Relatorios.cshtml",
               "ViewState": "AgIAAGACAAAAAAAAAAAAAGgCAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -388,11 +401,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Remains.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Remains.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Remains.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Remains.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Remains.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Remains.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Remains.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -400,11 +413,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "RegistroCadastro.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RegistroCadastro.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RegistroCadastro.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\RegistroCadastro.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RegistroCadastro.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RegistroCadastro.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\RegistroCadastro.cshtml",
               "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -412,11 +425,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "RecuperarSenha.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RecuperarSenha.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RecuperarSenha.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\RecuperarSenha.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RecuperarSenha.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\RecuperarSenha.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\RecuperarSenha.cshtml",
               "ViewState": "AgIAACcAAAAAAAAAAAAAACcAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -424,11 +437,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "MeusChamados.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\MeusChamados.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\MeusChamados.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\MeusChamados.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\MeusChamados.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\MeusChamados.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\MeusChamados.cshtml",
               "ViewState": "AgIAAOMAAAAAAAAAAAAAwBEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -436,11 +449,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Login.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Login.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Login.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Login.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Login.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Login.cshtml",
               "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -448,11 +461,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "InicialPainel.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\InicialPainel.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\InicialPainel.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\InicialPainel.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\InicialPainel.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\InicialPainel.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\InicialPainel.cshtml",
               "ViewState": "AgIAAE8AAAAAAAAAAAAtwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -460,11 +473,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Escalonamento.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Escalonamento.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Escalonamento.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Escalonamento.cshtml",
               "ViewState": "AgIAAA8BAAAAAAAAAAAAABcBAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -472,11 +485,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DetalhesMeuChamado.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DetalhesMeuChamado.cshtml",
               "ViewState": "AgIAAD8BAAAAAAAAAAAAAD8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -484,11 +497,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "DetalhesEscalonamento_FromViews.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DetalhesEscalonamento_FromViews.cshtml",
               "ViewState": "AgIAACIAAAAAAAAAAAAAACIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -496,11 +509,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "DetalhesChamado_FromViews.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\DetalhesChamado_FromViews.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -508,11 +521,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Configuracao.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Configuracao.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Configuracao.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Configuracao.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Configuracao.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Configuracao.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Configuracao.cshtml",
               "ViewState": "AgIAABABAAAAAAAAAAAAABIBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -520,11 +533,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Atendimento.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Atendimento.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Atendimento.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\Atendimento.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Atendimento.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\Atendimento.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\Atendimento.cshtml",
               "ViewState": "AgIAAK8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -532,11 +545,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AprovarUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AprovarUsuario.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AprovarUsuario.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\AprovarUsuario.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AprovarUsuario.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AprovarUsuario.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\AprovarUsuario.cshtml",
               "ViewState": "AgIAAJoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -544,11 +557,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "AbrirChamado.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\AbrirChamado.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\AbrirChamado.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -556,11 +569,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -568,11 +581,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Funcionario.cs",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Funcionario.cs",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Funcionario.cs",
               "RelativeDocumentMoniker": "Models\\Funcionario.cs",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Funcionario.cs",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Funcionario.cs",
               "RelativeToolTip": "Models\\Funcionario.cs",
               "ViewState": "AgIAABEAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -580,23 +593,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T06:22:45.62Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 25,
               "Title": "relatorios.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\relatorios.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\relatorios.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\relatorios.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\relatorios.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\relatorios.html",
               "RelativeToolTip": "Views\\Views DbTestes\\relatorios.html",
               "ViewState": "AgIAAEICAAAAAAAAAAAswGMCAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -606,9 +607,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "escalonamento.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\escalonamento.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\escalonamento.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\escalonamento.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\escalonamento.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\escalonamento.html",
               "RelativeToolTip": "Views\\Views DbTestes\\escalonamento.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -618,9 +619,9 @@
               "$type": "Document",
               "DocumentIndex": 65,
               "Title": "EditarUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\EditarUsuario.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\EditarUsuario.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\EditarUsuario.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\EditarUsuario.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\EditarUsuario.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\EditarUsuario.cshtml",
               "ViewState": "AgIAAAcAAAAAAAAAAIBJwAkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -630,9 +631,9 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "PIMContext.cs",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Data\\PIMContext.cs",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Data\\PIMContext.cs",
               "RelativeDocumentMoniker": "Data\\PIMContext.cs",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Data\\PIMContext.cs",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Data\\PIMContext.cs",
               "RelativeToolTip": "Data\\PIMContext.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAzwKsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -642,9 +643,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "AbrirChamado.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml.cs",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\AbrirChamado.cshtml.cs",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml.cs",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\AbrirChamado.cshtml.cs",
               "RelativeToolTip": "Pages\\DbTestes\\AbrirChamado.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -655,9 +656,7 @@
               "DocumentIndex": 64,
               "Title": "qgmlqouq.cshtml",
               "DocumentMoniker": "C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-635951867\\qgmlqouq.cshtml",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-635951867\\qgmlqouq.cshtml",
               "ToolTip": "C:\\Users\\Pichau\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-635951867\\qgmlqouq.cshtml",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-635951867\\qgmlqouq.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-02T20:14:16.742Z"
@@ -666,9 +665,9 @@
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Create.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Usuario\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Create.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Create.cshtml",
               "RelativeToolTip": "Views\\Usuario\\Create.cshtml",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAABoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -678,9 +677,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Edit.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Usuario\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Edit.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Usuario\\Edit.cshtml",
               "RelativeToolTip": "Views\\Usuario\\Edit.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAABsAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -690,9 +689,9 @@
               "$type": "Document",
               "DocumentIndex": 63,
               "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Usuario.cs",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Usuario.cs",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Models\\Usuario.cs",
               "RelativeToolTip": "Models\\Usuario.cs",
               "ViewState": "AgIAADEAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -702,9 +701,9 @@
               "$type": "Document",
               "DocumentIndex": 62,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAH8AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -714,9 +713,9 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "dashboard_gestor.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\dashboard_gestor.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\dashboard_gestor.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\dashboard_gestor.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\dashboard_gestor.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\dashboard_gestor.html",
               "RelativeToolTip": "Views\\Views DbTestes\\dashboard_gestor.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -726,9 +725,9 @@
               "$type": "Document",
               "DocumentIndex": 61,
               "Title": "GerenciarUsuarios.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\GerenciarUsuarios.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\GerenciarUsuarios.cshtml",
               "RelativeDocumentMoniker": "Pages\\DbTestes\\GerenciarUsuarios.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\GerenciarUsuarios.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Pages\\DbTestes\\GerenciarUsuarios.cshtml",
               "RelativeToolTip": "Pages\\DbTestes\\GerenciarUsuarios.cshtml",
               "ViewState": "AgIAABABAAAAAAAAAIBJwBIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -738,9 +737,9 @@
               "$type": "Document",
               "DocumentIndex": 54,
               "Title": "detalhes_meu_chamado.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_meu_chamado.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_meu_chamado.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\detalhes_meu_chamado.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_meu_chamado.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_meu_chamado.html",
               "RelativeToolTip": "Views\\Views DbTestes\\detalhes_meu_chamado.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwD8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -750,9 +749,9 @@
               "$type": "Document",
               "DocumentIndex": 32,
               "Title": "cadastro.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\cadastro.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\cadastro.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\cadastro.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\cadastro.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\cadastro.html",
               "RelativeToolTip": "Views\\Views DbTestes\\cadastro.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -762,9 +761,9 @@
               "$type": "Document",
               "DocumentIndex": 52,
               "Title": "meus_chamados.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\meus_chamados.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\meus_chamados.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\meus_chamados.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\meus_chamados.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\meus_chamados.html",
               "RelativeToolTip": "Views\\Views DbTestes\\meus_chamados.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwC8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -774,9 +773,9 @@
               "$type": "Document",
               "DocumentIndex": 53,
               "Title": "detalhes_chamado.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_chamado.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_chamado.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\detalhes_chamado.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_chamado.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_chamado.html",
               "RelativeToolTip": "Views\\Views DbTestes\\detalhes_chamado.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwE8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -786,9 +785,9 @@
               "$type": "Document",
               "DocumentIndex": 60,
               "Title": "validar_codigo_redefinir.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\validar_codigo_redefinir.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\validar_codigo_redefinir.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\validar_codigo_redefinir.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\validar_codigo_redefinir.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\validar_codigo_redefinir.html",
               "RelativeToolTip": "Views\\Views DbTestes\\validar_codigo_redefinir.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -798,9 +797,9 @@
               "$type": "Document",
               "DocumentIndex": 59,
               "Title": "configuracao.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\configuracao.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\configuracao.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\configuracao.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\configuracao.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\configuracao.html",
               "RelativeToolTip": "Views\\Views DbTestes\\configuracao.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwBwCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -810,9 +809,9 @@
               "$type": "Document",
               "DocumentIndex": 58,
               "Title": "editar_usuario.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\editar_usuario.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\editar_usuario.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\editar_usuario.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\editar_usuario.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\editar_usuario.html",
               "RelativeToolTip": "Views\\Views DbTestes\\editar_usuario.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwJcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -822,9 +821,9 @@
               "$type": "Document",
               "DocumentIndex": 57,
               "Title": "gerenciar_usuarios.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\gerenciar_usuarios.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\gerenciar_usuarios.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\gerenciar_usuarios.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\gerenciar_usuarios.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\gerenciar_usuarios.html",
               "RelativeToolTip": "Views\\Views DbTestes\\gerenciar_usuarios.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwA8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -834,9 +833,9 @@
               "$type": "Document",
               "DocumentIndex": 56,
               "Title": "atendimento.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\atendimento.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\atendimento.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\atendimento.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\atendimento.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\atendimento.html",
               "RelativeToolTip": "Views\\Views DbTestes\\atendimento.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwK4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -846,9 +845,9 @@
               "$type": "Document",
               "DocumentIndex": 55,
               "Title": "detalhes_escalonamento.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_escalonamento.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_escalonamento.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\detalhes_escalonamento.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_escalonamento.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\detalhes_escalonamento.html",
               "RelativeToolTip": "Views\\Views DbTestes\\detalhes_escalonamento.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwG4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -858,9 +857,9 @@
               "$type": "Document",
               "DocumentIndex": 50,
               "Title": "inicial_painel.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\inicial_painel.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\inicial_painel.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\inicial_painel.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\inicial_painel.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\inicial_painel.html",
               "RelativeToolTip": "Views\\Views DbTestes\\inicial_painel.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -870,9 +869,9 @@
               "$type": "Document",
               "DocumentIndex": 51,
               "Title": "login.html",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\login.html",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\login.html",
               "RelativeDocumentMoniker": "Views\\Views DbTestes\\login.html",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\login.html",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Views DbTestes\\login.html",
               "RelativeToolTip": "Views\\Views DbTestes\\login.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAxwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
@@ -882,9 +881,9 @@
               "$type": "Document",
               "DocumentIndex": 34,
               "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewImports.cshtml",
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -894,9 +893,9 @@
               "$type": "Document",
               "DocumentIndex": 36,
               "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Privacy.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -906,9 +905,9 @@
               "$type": "Document",
               "DocumentIndex": 35,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -918,9 +917,9 @@
               "$type": "Document",
               "DocumentIndex": 42,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Create.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilUsuario\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Create.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Create.cshtml",
               "RelativeToolTip": "Views\\PerfilUsuario\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -930,9 +929,9 @@
               "$type": "Document",
               "DocumentIndex": 33,
               "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\_ViewStart.cshtml",
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -942,9 +941,9 @@
               "$type": "Document",
               "DocumentIndex": 41,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Index.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilUsuario\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Index.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Index.cshtml",
               "RelativeToolTip": "Views\\PerfilUsuario\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -954,9 +953,9 @@
               "$type": "Document",
               "DocumentIndex": 40,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Details.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\BaseConhecimento\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Details.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Details.cshtml",
               "RelativeToolTip": "Views\\BaseConhecimento\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -966,9 +965,9 @@
               "$type": "Document",
               "DocumentIndex": 39,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Edit.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\BaseConhecimento\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Edit.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Edit.cshtml",
               "RelativeToolTip": "Views\\BaseConhecimento\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -978,9 +977,9 @@
               "$type": "Document",
               "DocumentIndex": 38,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Create.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\BaseConhecimento\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Create.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Create.cshtml",
               "RelativeToolTip": "Views\\BaseConhecimento\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -990,9 +989,9 @@
               "$type": "Document",
               "DocumentIndex": 37,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Index.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\BaseConhecimento\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Index.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Index.cshtml",
               "RelativeToolTip": "Views\\BaseConhecimento\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1002,9 +1001,9 @@
               "$type": "Document",
               "DocumentIndex": 49,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Delete.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\Avaliacao\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Delete.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Delete.cshtml",
               "RelativeToolTip": "Views\\Avaliacao\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1014,9 +1013,9 @@
               "$type": "Document",
               "DocumentIndex": 48,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Details.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Avaliacao\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Details.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Details.cshtml",
               "RelativeToolTip": "Views\\Avaliacao\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1026,9 +1025,9 @@
               "$type": "Document",
               "DocumentIndex": 47,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Delete.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\BaseConhecimento\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Delete.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\BaseConhecimento\\Delete.cshtml",
               "RelativeToolTip": "Views\\BaseConhecimento\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1038,9 +1037,9 @@
               "$type": "Document",
               "DocumentIndex": 46,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Delete.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilUsuario\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Delete.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Delete.cshtml",
               "RelativeToolTip": "Views\\PerfilUsuario\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1050,9 +1049,9 @@
               "$type": "Document",
               "DocumentIndex": 45,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Details.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilUsuario\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Details.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Details.cshtml",
               "RelativeToolTip": "Views\\PerfilUsuario\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1062,9 +1061,9 @@
               "$type": "Document",
               "DocumentIndex": 44,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Edit.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Avaliacao\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Edit.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\Avaliacao\\Edit.cshtml",
               "RelativeToolTip": "Views\\Avaliacao\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1074,9 +1073,9 @@
               "$type": "Document",
               "DocumentIndex": 43,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Edit.cshtml",
+              "DocumentMoniker": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\PerfilUsuario\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Pichau\\source\\repos\\GabrielPassz\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Edit.cshtml",
+              "ToolTip": "D:\\Meus Projetos GitHub\\SoftForge-HelpDesk\\Pim-IV\\Sistema-HelpDesk-SoftForge-Web-MVC\\Views\\PerfilUsuario\\Edit.cshtml",
               "RelativeToolTip": "Views\\PerfilUsuario\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
