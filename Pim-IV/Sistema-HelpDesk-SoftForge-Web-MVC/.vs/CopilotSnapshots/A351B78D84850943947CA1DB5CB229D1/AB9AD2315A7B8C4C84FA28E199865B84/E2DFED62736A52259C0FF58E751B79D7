@@ -1,0 +1,181 @@
+﻿@page "{id?}"
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    var chamadoId = (string)RouteData.Values["id"] ?? "051";
+}
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+<div class="container-fluid">
+    <main>
+        <section>
+            <h2>Detalhes do Chamado #CHAM-2025-@chamadoId</h2>
+            <p><a asp-page="/DbTestes/Escalonamento">← Voltar para Escalonamento</a></p>
+        </section>
+
+        <section>
+            <h4>Reclassificar Prioridade (sem escalonamento)</h4>
+            <form method="post" asp-page="/DbTestes/DetalhesEscalonamento">
+                <input type="hidden" name="chamado_id" value="@chamadoId" />
+                <label for="prioridade_nova">Nova Prioridade:</label>
+                <select id="prioridade_nova" name="prioridade_nova" class="form-select" required>
+                    <option value="critica">Crítica</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+                <label for="justificativa_prioridade">Justificativa:</label>
+                <input type="text" id="justificativa_prioridade" name="justificativa" size="50" class="form-control"
+                    required />
+                <button type="submit" class="btn btn-primary mt-2">Reclassificar</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>⚠️ Status de Risco</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td><strong>Nível de Risco</strong></td>
+                    <td><strong style="color:red">ALTO - SLA80% Consumido</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Tempo Restante SLA</strong></td>
+                    <td>48 minutos</td>
+                </tr>
+                <tr>
+                    <td><strong>Tempo em Atendimento</strong></td>
+                    <td>3h12min</td>
+                </tr>
+                <tr>
+                    <td><strong>Primeira Resposta</strong></td>
+                    <td>✅ Cumprida (15/01/202509:25)</td>
+                </tr>
+                <tr>
+                    <td><strong>Última Ação do Técnico</strong></td>
+                    <td>Há45 minutos</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>📋 Informações do Chamado</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td><strong>Protocolo</strong></td>
+                    <td>#CHAM-2025-@chamadoId</td>
+                </tr>
+                <tr>
+                    <td><strong>Status</strong></td>
+                    <td>EM ATENDIMENTO</td>
+                </tr>
+                <tr>
+                    <td><strong>Título</strong></td>
+                    <td>Erro no sistema financeiro</td>
+                </tr>
+                <tr>
+                    <td><strong>Descrição</strong></td>
+                    <td>...detalhes do chamado...</td>
+                </tr>
+                <tr>
+                    <td><strong>Categoria</strong></td>
+                    <td>Software</td>
+                </tr>
+                <tr>
+                    <td><strong>Prioridade</strong></td>
+                    <td><strong>CRÍTICA</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Solicitante</strong></td>
+                    <td>Fernanda Lima - Financeiro</td>
+                </tr>
+                <tr>
+                    <td><strong>Data/Hora Abertura</strong></td>
+                    <td>15/01/202509:15</td>
+                </tr>
+                <tr>
+                    <td><strong>Técnico Responsável Atual</strong></td>
+                    <td>Maria Souza (N1)</td>
+                </tr>
+                <tr>
+                    <td><strong>SLA - Resolução</strong></td>
+                    <td>4 horas (Prazo:15/01/202513:15)</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>🤖 Análise da IA</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td><strong>Recomendação</strong></td>
+                    <td><strong style="color:red">ESCALAR PARA Técnico N3</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Justificativa</strong></td>
+                    <td>- Problema envolve BD; - SLA em risco; - Histórico mostra solução por N3</td>
+                </tr>
+                <tr>
+                    <td><strong>Técnico Sugerido</strong></td>
+                    <td>Paula Martins (N3)</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>📝 Histórico Resumido</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Data/Hora</th>
+                        <th>Usuário</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15/01/202509:15</td>
+                        <td>Fernanda Lima</td>
+                        <td><strong>Chamado Aberto</strong></td>
+                    </tr>
+                    <tr>
+                        <td>15/01/202509:25</td>
+                        <td>Maria Souza</td>
+                        <td><strong>Iniciou Atendimento</strong></td>
+                    </tr>
+                    <tr>
+                        <td>15/01/202511:30</td>
+                        <td>Maria Souza</td>
+                        <td><strong>Ação Registrada</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="form_escalonar">
+            <h3>⬆️ Realizar Escalonamento</h3>
+            <form method="post" asp-page="/DbTestes/DetalhesEscalonamento">
+                <input type="hidden" name="chamado_id" value="@chamadoId" />
+                <label for="novo_tecnico">Escalonar para:</label>
+                <select id="novo_tecnico" name="novo_tecnico" class="form-select" required>
+                    <option value="">Selecione...</option>
+                    <option value="paula" selected>Paula Martins (N3)</option>
+                    <option value="joao">João Ferreira (N2)</option>
+                </select>
+                <label for="motivo_escalonamento">Motivo/Justificativa:</label>
+                <textarea id="motivo_escalonamento" name="motivo" rows="4" class="form-control">Chamado requer conhecimento avançado em BD...</textarea>
+                <label for="nova_prioridade">Reclassificar Prioridade:</label>
+                <select id="nova_prioridade" name="nova_prioridade" class="form-select">
+                    <option value="">Manter</option>
+                    <option value="critica" selected>Crítica</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+                <div class="mt-2">
+                    <input type="checkbox" id="notificar_solicitante" name="notificar_solicitante" checked />
+                    <label for="notificar_solicitante">Notificar Solicitante</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Confirmar Escalonamento</button>
+            </form>
+        </section>
+
+    </main>
+</div>

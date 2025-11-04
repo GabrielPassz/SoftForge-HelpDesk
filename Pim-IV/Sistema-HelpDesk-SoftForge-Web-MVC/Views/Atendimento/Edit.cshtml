@@ -1,0 +1,60 @@
+@model PIM.Models.Atendimento
+
+@{
+    ViewData["Title"] = "Editar Atendimento";
+}
+
+<h2>Editar Atendimento</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="AtendimentoId" />
+
+    <div class="form-group">
+        <label asp-for="ChamadoId"></label>
+        <input asp-for="ChamadoId" class="form-control" />
+        <span asp-validation-for="ChamadoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UsuarioTecnicoId"></label>
+        <input asp-for="UsuarioTecnicoId" class="form-control" />
+        <span asp-validation-for="UsuarioTecnicoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataAtendimento"></label>
+        <input asp-for="DataAtendimento" class="form-control" type="date" />
+        <span asp-validation-for="DataAtendimento" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AcaoRealizada"></label>
+        <textarea asp-for="AcaoRealizada" class="form-control"></textarea>
+        <span asp-validation-for="AcaoRealizada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TempoGasto"></label>
+        <input asp-for="TempoGasto" class="form-control" type="number" />
+        <span asp-validation-for="TempoGasto" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="SolucaoIA" class="form-check-input" />
+        <label asp-for="SolucaoIA" class="form-check-label"></label>
+        <span asp-validation-for="SolucaoIA" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SolucaoBaseConhecimentoId"></label>
+        <input asp-for="SolucaoBaseConhecimentoId" class="form-control" />
+        <span asp-validation-for="SolucaoBaseConhecimentoId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

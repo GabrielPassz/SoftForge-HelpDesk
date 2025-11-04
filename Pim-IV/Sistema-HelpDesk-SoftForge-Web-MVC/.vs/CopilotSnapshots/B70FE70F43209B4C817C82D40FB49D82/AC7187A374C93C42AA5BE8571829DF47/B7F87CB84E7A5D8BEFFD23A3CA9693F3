@@ -1,0 +1,50 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM.Models
+{
+    [Table("usuario")]
+    public class Usuario
+    {
+        [Key]
+        [Column("usuario_id")]
+        public int UsuarioId { get; set; }
+
+        [Required]
+        [Column("nome_completo")]
+        public string NomeCompleto { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Column("email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Column("senha")]
+        public string Senha { get; set; }
+
+        [Column("data_cadastro")]
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        [Column("ultimo_login")]
+        public DateTime? UltimoLogin { get; set; }
+
+        [ForeignKey("Departamento")]
+        [Column("departamento_id")]
+        public int? DepartamentoId { get; set; }
+        public Departamento Departamento { get; set; }
+
+        [ForeignKey("PerfilUsuario")]
+        [Column("perfil_id")]
+        public int? PerfilId { get; set; }
+        public PerfilUsuario PerfilUsuario { get; set; }
+
+        public ICollection<BaseConhecimento> BaseConhecimentosCriados { get; set; }
+        public ICollection<Atendimento> AtendimentosTecnico { get; set; }
+        public ICollection<Avaliacao> AvaliacoesSolicitante { get; set; }
+        public ICollection<HistoricoChamado> HistoricosChamado { get; set; }
+        public ICollection<LogAcesso> LogsAcesso { get; set; }
+        public ICollection<Anexo> Anexos { get; set; }
+    }
+
+}

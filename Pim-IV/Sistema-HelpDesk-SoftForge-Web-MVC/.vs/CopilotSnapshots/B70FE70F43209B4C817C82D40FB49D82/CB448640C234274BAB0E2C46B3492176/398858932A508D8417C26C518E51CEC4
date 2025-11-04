@@ -1,0 +1,89 @@
+﻿@page
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Solicitar Cadastro</title>
+ </head>
+ <body>
+ <header>
+ <h1>Solicitar Cadastro</h1>
+ </header>
+
+ <nav>
+ <div class="dropdown d-inline-block">
+ <button class="btn btn-secondary dropdown-toggle" type="button" id="menuPags" data-bs-toggle="dropdown" aria-expanded="false">
+ Páginas
+ </button>
+ <ul class="dropdown-menu" aria-labelledby="menuPags">
+ <li><a class="dropdown-item" asp-page="/DbTestes/InicialPainel">Início</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/AbrirChamado">Abrir Chamado</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/MeusChamados">Meus Chamados</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Atendimento">Atendimento</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Escalonamento">Escalonamento</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesEscalonamento">Detalhes Escalonamento</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesChamado">Detalhes do Chamado</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesMeuChamado">Detalhes (Meus Chamados)</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/DashboardGestor">Dashboard Gerencial</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Relatorios">Relatórios</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/GerenciarUsuarios">Gerenciar Usuários</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/AprovarUsuario">Aprovar Usuário</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/EditarUsuario">Editar Usuário</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Configuracao">Configuração</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Cadastro">Solicitar Cadastro</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/Login">Login</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/RecuperarSenha">Recuperar Senha</a></li>
+ <li><a class="dropdown-item" asp-page="/DbTestes/ValidarCodigoRedefinir">Validar Código</a></li>
+ </ul>
+ </div>
+ </nav>
+
+ <main>
+ <form method="post" action="/solicitar-cadastro">
+ <label for="nome">Nome completo:</label><br />
+ <input type="text" 
+ id="nome" 
+ name="nome" 
+ placeholder="Ex: Erick Almeida Santos"
+ required /><br /><br />
+
+ <label for="email">E-mail:</label><br />
+ <input type="email" 
+ id="email" 
+ name="email"
+ placeholder="seuemail@softforge.com"
+ required /><br /><br />
+
+ <label for="senha">Senha:</label><br />
+ <input type="password" 
+ id="senha" 
+ name="senha"
+ placeholder="Sua Senha" 
+ required /><br /><br />
+
+ <label for="confirma_senha">Confirmar senha:</label><br />
+ <input
+ type="password"
+ id="confirma_senha"
+ name="confirma_senha"
+ placeholder="Confirmação da senha"
+ required
+ /><br /><br />
+
+ <p>
+ Observação: o acesso será liberado somente após aprovação do
+ Administrador.
+ </p>
+
+ <button type="submit">Enviar solicitação</button>
+ </form>
+
+ <p><a href="login.html">Voltar ao login</a></p>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+</body>
+</html>

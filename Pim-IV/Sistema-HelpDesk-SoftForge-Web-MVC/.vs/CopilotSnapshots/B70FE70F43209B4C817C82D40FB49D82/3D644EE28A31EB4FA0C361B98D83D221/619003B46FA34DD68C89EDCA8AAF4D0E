@@ -1,0 +1,33 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM.Models
+{
+    [Table("funcionario")]
+    public class Funcionario
+    {
+        [Key]
+        [Column("funcionario_id")]
+        public int FuncionarioId { get; set; }
+
+        [ForeignKey("Usuario")]
+        [Column("usuario_id")]
+        public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
+
+        [Required]
+        [Column("data_admissao")]
+        public DateTime DataAdmissao { get; set; }
+
+        [Required]
+        [Column("cargo")]
+        public string Cargo { get; set; }
+
+        [Column("matricula")]
+        public string Matricula { get; set; }
+
+        [Column("data_demissao")]
+        public DateTime? DataDemissao { get; set; }
+    }
+
+}

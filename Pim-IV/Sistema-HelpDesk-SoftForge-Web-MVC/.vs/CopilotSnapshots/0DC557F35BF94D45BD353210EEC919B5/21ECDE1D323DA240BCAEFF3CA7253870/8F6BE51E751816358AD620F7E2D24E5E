@@ -1,0 +1,167 @@
+﻿@page
+@model PIM.Pages.DbTestes.AbrirChamadoModel
+@{
+ ViewData["Title"] = "Abrir Chamado - Teste";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: Preencha o formulário abaixo para abrir um chamado de teste. Ao enviar, um registro de Chamado será criado no banco. Se anexar um arquivo, ele será salvo em <code>/uploads</code> e um registro de Anexo será criado.</div>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Abrir Chamado - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a asp-page="/DbTestes/Index">Início</a> |
+ <a asp-page="/DbTestes/AbrirChamado">Abrir Chamado</a> |
+ <a asp-page="/DbTestes/MeusChamados">Meus Chamados</a> |
+ <a asp-page="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <main>
+ <section>
+ <h2>📋 Abrir Novo Chamado</h2>
+ <p><strong>Solicitante:</strong> @Model.SolicitanteNome</p>
+ <p><strong>Departamento:</strong> @Model.SolicitanteDepartamento</p>
+ </section>
+
+ <section>
+ <h3>Preencha as informações do chamado</h3>
+ <form method="post" enctype="multipart/form-data">
+ <div class="mb-3">
+ <label for="titulo">Título do Problema:</label><br />
+ <input
+ type="text"
+ id="titulo"
+ name="Titulo"
+ size="80"
+ placeholder="Ex: Impressora não está funcionando"
+ required
+ class="form-control"
+ value="@Model.Titulo"
+ /><br /><br />
+ </div>
+
+ <div class="mb-3">
+ <label for="descricao">Descrição Detalhada:</label><br />
+ <textarea
+ id="descricao"
+ name="Descricao"
+ rows="8"
+ cols="80"
+ placeholder="Descreva o problema com o máximo de detalhes possível..."
+ required
+ class="form-control"
+ >@Model.Descricao</textarea
+ ><br /><br />
+ </div>
+
+ <div class="mb-3">
+ <label for="categoria">Categoria:</label><br />
+ <select id="categoria" name="Categoria" class="form-select" required>
+ <option value="">Selecione...</option>
+ <option value="hardware" selected>Hardware (Computador, Monitor, Teclado, etc)</option>
+ <option value="software">Software (Sistemas, Programas, Aplicativos)</option>
+ <option value="rede">Rede (Internet, Wi-Fi, Conexão)</option>
+ <option value="acesso">Acesso (Senha, Login, Permissões)</option>
+ <option value="impressora">Impressora (Impressão, Scanner)</option>
+ </select>
+ <p><em>💡 A IA irá sugerir a categoria automaticamente após você enviar</em></p>
+ </div>
+
+ <div class="mb-3">
+ <label for="prioridade">Prioridade:</label><br />
+ <select id="prioridade" name="Prioridade" class="form-select">
+ <option value="media" selected>Média (Padrão)</option>
+ <option value="baixa">Baixa (Não urgente)</option>
+ <option value="alta">Alta (Urgente)</option>
+ <option value="critica">Crítica (Sistema parado)</option>
+ </select>
+ <p><em>💡 A IA poderá ajustar a prioridade automaticamente</em></p>
+ </div>
+
+ <div class="mb-3">
+ <label for="anexo">Anexar Arquivo (Opcional):</label><br />
+ <input type="file" id="anexo" name="AnexoFile" class="form-control" /><br />
+ <p><em>Formatos aceitos: imagens, PDF, documentos (máx.5MB)</em></p>
+ <br />
+ </div>
+
+ <button type="submit" class="btn btn-primary">Abrir Chamado</button>
+ <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
+ </form>
+ </section>
+
+ @if (Model.Created)
+ {
+ <section class="mt-4">
+ <h3>Chamado criado</h3>
+ <p>Protocolo: <strong>@Model.CreatedProtocol</strong></p>
+ </section>
+ }
+
+ <section>
+ <h3>ℹ️ Informações Importantes</h3>
+ <ul>
+ <li>
+ Após abrir o chamado, você receberá um
+ <strong>número de protocolo</strong>
+ </li>
+ <li>Você será notificado por e-mail sobre atualizações do chamado</li>
+ <li>
+ Você pode acompanhar o status em
+ <a asp-page="/DbTestes/MeusChamados">Meus Chamados</a>
+ </li>
+ <li>O tempo de atendimento depende da prioridade do chamado</li>
+ </ul>
+
+ <h4>⏱️ Tempo de Atendimento (SLA):</h4>
+ <table class="table table-bordered">
+ <thead>
+ <tr>
+ <th>Prioridade</th>
+ <th>Primeira Resposta</th>
+ <th>Resolução</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Crítica</strong></td>
+ <td>1 hora</td>
+ <td>4 horas</td>
+ </tr>
+ <tr>
+ <td><strong>Alta</strong></td>
+ <td>2 horas</td>
+ <td>8 horas</td>
+ </tr>
+ <tr>
+ <td>Média</td>
+ <td>4 horas</td>
+ <td>24 horas</td>
+ </tr>
+ <tr>
+ <td>Baixa</td>
+ <td>8 horas</td>
+ <td>72 horas</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>

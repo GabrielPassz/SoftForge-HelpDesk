@@ -1,0 +1,39 @@
+@model IEnumerable<PIM.Models.IAAnalise>
+
+@{
+    ViewData["Title"] = "Análises de IA";
+}
+
+<h2>Análises de IA</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nova Análise</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().ChamadoId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().CategoriaPrevista)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Confianca)</th>
+            <th>@Html.DisplayNameFor(model => model.First().ResultadoValidado)</th>
+            <th>@Html.DisplayNameFor(model => model.First().DataAnalise)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.ChamadoId</td>
+            <td>@item.CategoriaPrevista</td>
+            <td>@item.Confianca</td>
+            <td>@(item.ResultadoValidado ? "Sim" : "Não")</td>
+            <td>@item.DataAnalise.ToShortDateString()</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.IAId">Detalhes</a> |
+                <a asp-action="Edit" asp-route-id="@item.IAId">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.IAId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Dashboard - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <div class="dbtestes-nav-top">
+ @await Html.PartialAsync("_DbTestesNav")
+ </div>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/DashboardGestor">Dashboard</a> |
+ <a href="/DbTestes/Relatorios">Relatórios</a> |
+ <a href="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <main>
+ <!-- content copied from Views/Views DbTestes/dashboard_gestor.html -->
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+</body>
+</html>

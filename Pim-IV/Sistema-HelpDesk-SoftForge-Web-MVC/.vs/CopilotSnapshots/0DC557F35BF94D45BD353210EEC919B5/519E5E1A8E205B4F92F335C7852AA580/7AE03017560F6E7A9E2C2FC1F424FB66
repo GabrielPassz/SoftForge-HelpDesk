@@ -1,0 +1,37 @@
+﻿@page
+@model PIM.Pages.DbTestes.LoginModel
+@{
+ ViewData["Title"] = "Login (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: Insira email e senha para testar envio de formulário. Os dados são exibidos em tela (simulado).</div>
+
+<h2>Login - Teste</h2>
+
+@if (!string.IsNullOrEmpty(Model.ResultMessage))
+{
+ <div class="alert alert-info">@Model.ResultMessage</div>
+}
+
+<form method="post">
+ <div class="mb-3">
+ <label asp-for="Email" class="form-label">E-mail corporativo</label>
+ <input asp-for="Email" class="form-control" />
+ <span asp-validation-for="Email" class="text-danger"></span>
+ </div>
+ <div class="mb-3">
+ <label asp-for="Senha" class="form-label">Senha</label>
+ <input asp-for="Senha" type="password" class="form-control" />
+ <span asp-validation-for="Senha" class="text-danger"></span>
+ </div>
+ <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+<p><a asp-page="/DbTestes/RecuperarSenha">Esqueci minha senha</a></p>
+<p>Não tem uma conta? <a asp-page="/DbTestes/Cadastro">Solicitar cadastro</a></p>
+
+@section Scripts {
+ <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,9 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+<div class="container-fluid">
+ <main>
+ <h2>Editar Usuário</h2>
+ <p>Formulário de edição de usuário (mockup).</p>
+ </main>
+</div>

@@ -1,0 +1,16 @@
+﻿@page
+@model PIM.Pages.DbTestes.RelatoriosModel
+@{
+ ViewData["Title"] = "Relatórios (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: lista de relatórios disponíveis (simulado). Clique para gerar (simulado).</div>
+
+<h2>Relatórios</h2>
+
+<ul>
+ <li>Relatório de SLA</li>
+ <li>Relatório de Atendimentos</li>
+</ul>

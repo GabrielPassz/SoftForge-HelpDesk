@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Usuário - SoftForge HelpDesk</title>
+  </head>
+  <body>
+    <header>
+      <h1>SoftForge HelpDesk</h1>
+      <p>Sistema Inteligente de Gestão de Chamados</p>
+    </header>
+
+    <nav>
+      <a href="inicial_painel.html">Início</a> |
+      <a href="atendimento.html">Atendimento</a> |
+      <a href="escalonamento.html">Escalonamento</a> |
+      <a href="gerenciar_usuarios.html">Gerenciar</a> |
+      <a href="configuracao.html">Configuração</a> |
+      <a href="login.html">Sair</a>
+    </nav>
+
+    <main>
+      <section>
+        <h2>Editar Usuário - Maria Souza</h2>
+        <p>
+          <a href="gerenciar_usuarios.html">← Voltar para Gerenciar Usuários</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>📋 Informações Atuais</h3>
+        <table border="1" cellpadding="8" cellspacing="0" width="100%">
+          <tr>
+            <th width="30%">Campo</th>
+            <th width="70%">Valor Atual</th>
+          </tr>
+          <tr>
+            <td><strong>ID do Usuário</strong></td>
+            <td>002</td>
+          </tr>
+          <tr>
+            <td><strong>Nome Completo</strong></td>
+            <td>Maria Souza</td>
+          </tr>
+          <tr>
+            <td><strong>E-mail</strong></td>
+            <td>maria.souza@softforge.com</td>
+          </tr>
+          <tr>
+            <td><strong>Perfil</strong></td>
+            <td>Técnico N1</td>
+          </tr>
+          <tr>
+            <td><strong>Departamento</strong></td>
+            <td>TI</td>
+          </tr>
+          <tr>
+            <td><strong>Especialidade</strong></td>
+            <td>Geral</td>
+          </tr>
+          <tr>
+            <td><strong>Status</strong></td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td><strong>Data de Cadastro</strong></td>
+            <td>10/11/2024</td>
+          </tr>
+          <tr>
+            <td><strong>Último Login</strong></td>
+            <td>15/01/2025 12:45</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>✏️ Editar Dados</h3>
+        <form method="post" action="/atualizar-usuario">
+          <input type="hidden" name="usuario_id" value="002" />
+
+          <label for="nome_completo">Nome Completo:</label><br />
+          <input
+            type="text"
+            id="nome_completo"
+            name="nome_completo"
+            size="50"
+            value="Maria Souza"
+            required
+          /><br /><br />
+
+          <label for="email">E-mail:</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            size="50"
+            value="maria.souza@softforge.com"
+            required
+          /><br /><br />
+
+          <label for="perfil">Perfil:</label><br />
+          <select id="perfil" name="perfil" required>
+            <option value="solicitante">Solicitante</option>
+            <option value="tecnico_n1" selected>Técnico N1</option>
+            <option value="tecnico_n2">Técnico N2</option>
+            <option value="tecnico_n3">Técnico N3</option>
+            <option value="coordenador">Coordenador</option>
+            <option value="gestor">Gestor</option>
+            <option value="administrador">Administrador</option></select
+          ><br /><br />
+
+          <label for="departamento">Departamento:</label><br />
+          <select id="departamento" name="departamento" required>
+            <option value="ti" selected>TI</option>
+            <option value="rh">RH</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="marketing">Marketing</option>
+            <option value="administrativo">Administrativo</option></select
+          ><br /><br />
+
+          <label for="especialidade">Especialidade (para Técnicos):</label
+          ><br />
+          <select id="especialidade" name="especialidade">
+            <option value="">Nenhuma</option>
+            <option value="geral" selected>Geral</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+            <option value="rede">Rede</option>
+            <option value="acesso">Acesso</option>
+            <option value="impressora">Impressora</option></select
+          ><br /><br />
+
+          <button type="submit">Salvar Alterações</button>
+        </form>
+      </section>
+
+      <section>
+        <h3>⚠️ Desativar Conta</h3>
+        <form method="post" action="/desativar-conta">
+          <input type="hidden" name="usuario_id" value="002" />
+          <button type="submit">Desativar</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 SoftForge - Todos os direitos reservados</p>
+    </footer>
+  </body>
+</html>

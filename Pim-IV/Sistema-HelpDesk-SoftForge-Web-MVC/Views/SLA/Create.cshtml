@@ -1,0 +1,21 @@
+@model PIM.Models.SLA
+
+@{
+    ViewData["Title"] = "Novo SLA";
+}
+
+<h2>Novo SLA</h2>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="NomeSLA"></label>
+        <input asp-for="NomeSLA" class="form-control" />
+        <span asp-validation-for="NomeSLA" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PrioridadeId"></label>
+        <input asp-for="PrioridadeId" class="form-control" />
+        <span asp-validation-for="PrioridadeId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
