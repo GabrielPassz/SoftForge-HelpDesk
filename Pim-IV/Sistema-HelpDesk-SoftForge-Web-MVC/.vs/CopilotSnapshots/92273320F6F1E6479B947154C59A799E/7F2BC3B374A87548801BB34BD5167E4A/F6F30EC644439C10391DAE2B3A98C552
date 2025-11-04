@@ -1,0 +1,63 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Login - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <div class="dbtestes-nav-top">
+ @await Html.PartialAsync("_DbTestesNav")
+ </div>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/Atendimento">Atendimento</a> |
+ <a href="/DbTestes/Escalonamento">Escalonamento</a> |
+ <a href="/DbTestes/GerenciarUsuarios">Gerenciar</a> |
+ <a href="/DbTestes/Configuracao">Configuração</a> |
+ <a href="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <main>
+ <h2>Login</h2>
+ <p>Entre com suas credenciais para acessar o sistema</p>
+ <form method="post" action="/DbTestes/Login">
+ <label for="email">E-mail corporativo:</label><br />
+ <input
+ type="email"
+ id="email"
+ name="email"
+ placeholder="seuemail@softforge.com"
+ required
+ /><br /><br />
+
+ <label for="senha">Senha:</label><br />
+ <input
+ type="password"
+ id="senha"
+ name="senha"
+ placeholder="Digite sua senha"
+ required
+ /><br /><br />
+
+ <button type="submit">Entrar</button>
+ </form>
+
+ <p><a asp-page="/DbTestes/RecuperarSenha">Esqueci minha senha</a></p>
+
+ <p>Não tem uma conta? <a asp-page="/DbTestes/Cadastro">Solicitar cadastro</a></p>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>

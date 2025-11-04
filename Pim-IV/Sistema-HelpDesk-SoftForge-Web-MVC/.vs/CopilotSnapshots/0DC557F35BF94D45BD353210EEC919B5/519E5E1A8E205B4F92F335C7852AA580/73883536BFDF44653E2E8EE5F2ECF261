@@ -1,0 +1,25 @@
+﻿@page
+@model PIM.Pages.DbTestes.ConfiguracaoModel
+@{
+ ViewData["Title"] = "Configuração (Teste)";
+}
+
+<h2>Configuração</h2>
+<div class="alert alert-secondary">Guia: configurações de demonstração (não persistidas).</div>
+
+<form method="post">
+ <div class="form-check">
+ <input asp-for="ReceberEmails" class="form-check-input" />
+ <label asp-for="ReceberEmails" class="form-check-label">Receber e-mails do sistema</label>
+ </div>
+ <div class="form-check mt-2">
+ <input asp-for="NotificacoesPush" class="form-check-input" />
+ <label asp-for="NotificacoesPush" class="form-check-label">Notificações push</label>
+ </div>
+ <button class="btn btn-primary mt-3">Salvar</button>
+</form>
+
+@if (Model.Saved)
+{
+ <div class="alert alert-success mt-2">Configuração salva (simulada).</div>
+}

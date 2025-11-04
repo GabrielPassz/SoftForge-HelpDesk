@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validar Código - Redefinir Senha</title>
+  </head>
+  <body>
+    <h1>Validar Código</h1>
+    <form method="post" action="/validar-codigo">
+      <label for="codigo">Código de verificação:</label><br />
+      <input
+        type="text"
+        id="codigo"
+        name="codigo"
+        placeholder="Ex: 01370070310"
+        required
+      /><br /><br />
+
+      <label for="nova_senha">Nova senha:</label><br />
+      <input
+        type="password"
+        id="nova_senha"
+        name="nova_senha"
+        placeholder="Sua senha"
+        required
+      /><br /><br />
+
+      <label for="confirma_senha">Confirmar nova senha:</label><br />
+      <input
+        type="password"
+        id="confirma_senha"
+        name="confirma_senha"
+        placeholder="Confirme sua senha"
+        required
+      /><br /><br />
+
+      <button type="submit">Redefinir senha</button>
+    </form>
+
+    <p><a href="login.html">Voltar ao login</a></p>
+    <p>&copy; 2025 SoftForge - Todos os direitos reservados</p>
+  </body>
+</html>

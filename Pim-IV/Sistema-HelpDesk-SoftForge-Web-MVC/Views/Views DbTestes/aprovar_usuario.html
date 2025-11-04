@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprovar Solicitação - SoftForge HelpDesk</title>
+  </head>
+  <body>
+    <header>
+      <h1>SoftForge HelpDesk</h1>
+      <p>Sistema Inteligente de Gestão de Chamados</p>
+    </header>
+
+    <nav>
+      <a href="inicial_painel.html">Início</a> |
+      <a href="atendimento.html">Atendimento</a> |
+      <a href="escalonamento.html">Escalonamento</a> |
+      <a href="gerenciar_usuarios.html">Gerenciar</a> |
+      <a href="configuracao.html">Configuração</a> |
+      <a href="login.html">Sair</a>
+    </nav>
+
+    <main>
+      <section>
+        <h2>Analisar Solicitação de Cadastro</h2>
+        <p>
+          <a href="gerenciar_usuarios.html">← Voltar para Gerenciar Usuários</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>✅ Aprovar Cadastro</h3>
+        <form method="post" action="/aprovar-usuario">
+          <input type="hidden" name="solicitacao_id" value="101" />
+          <input type="hidden" name="nome" value="Ricardo Santos" />
+          <input
+            type="hidden"
+            name="email"
+            value="ricardo.santos@softforge.com"
+          />
+          <input type="hidden" name="matricula" value="SOFT-2024-189" />
+          <input type="hidden" name="cargo" value="Analista Financeiro" />
+
+          <label for="perfil">Perfil:</label><br />
+          <select id="perfil" name="perfil" required>
+            <option value="">Selecione...</option>
+            <option value="solicitante" selected>Solicitante</option>
+            <option value="tecnico_n1">Técnico N1</option>
+            <option value="tecnico_n2">Técnico N2</option>
+            <option value="tecnico_n3">Técnico N3</option>
+            <option value="coordenador">Coordenador</option>
+            <option value="gestor">Gestor</option>
+            <option value="administrador">Administrador</option></select
+          ><br /><br />
+
+          <label for="departamento">Departamento:</label><br />
+          <select id="departamento" name="departamento" required>
+            <option value="">Selecione...</option>
+            <option value="ti">TI</option>
+            <option value="rh">RH</option>
+            <option value="financeiro" selected>Financeiro</option>
+            <option value="marketing">Marketing</option>
+            <option value="administrativo">Administrativo</option>
+          </select>
+          <p><em>Sugestão: Financeiro (conforme cadastro no RH)</em></p>
+
+          <label for="especialidade">Especialidade (para Técnicos):</label
+          ><br />
+          <select id="especialidade" name="especialidade">
+            <option value="">Nenhuma</option>
+            <option value="geral">Geral</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+            <option value="rede">Rede</option>
+            <option value="acesso">Acesso</option>
+            <option value="impressora">Impressora</option></select
+          ><br /><br />
+
+          <button type="submit">Aprovar</button>
+        </form>
+      </section>
+
+      <section>
+        <h3>❌ Reprovar Cadastro</h3>
+        <form method="post" action="/reprovar-usuario">
+          <input type="hidden" name="solicitacao_id" value="101" />
+          <input type="hidden" name="nome" value="Ricardo Santos" />
+          <input
+            type="hidden"
+            name="email"
+            value="ricardo.santos@softforge.com"
+          />
+
+          <button type="submit">Reprovar</button>
+        </form>
+      </section>
+
+      <section>
+        <h3>📋 Dados do Funcionário (Solicitante)</h3>
+        <table border="1" cellpadding="8" cellspacing="0" width="100%">
+          <tr>
+            <th width="30%">Campo</th>
+            <th width="70%">Informação</th>
+          </tr>
+          <tr>
+            <td><strong>Nome Completo</strong></td>
+            <td>Ricardo Santos</td>
+          </tr>
+          <tr>
+            <td><strong>E-mail Corporativo</strong></td>
+            <td>ricardo.santos@softforge.com</td>
+          </tr>
+          <tr>
+            <td><strong>Matrícula</strong></td>
+            <td>SOFT-2024-189</td>
+          </tr>
+          <tr>
+            <td><strong>Cargo</strong></td>
+            <td>Analista Financeiro</td>
+          </tr>
+          <tr>
+            <td><strong>Departamento (RH)</strong></td>
+            <td>Financeiro</td>
+          </tr>
+          <tr>
+            <td><strong>Data de Contratação</strong></td>
+            <td>15/08/2024</td>
+          </tr>
+          <tr>
+            <td><strong>Telefone</strong></td>
+            <td>(11) 98765-1234</td>
+          </tr>
+          <tr>
+            <td><strong>Data da Solicitação</strong></td>
+            <td>14/01/2025 10:30</td>
+          </tr>
+        </table>
+        <p>
+          <em
+            >Informações obtidas do sistema de RH baseadas no e-mail
+            corporativo.</em
+          >
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 SoftForge - Todos os direitos reservados</p>
+    </footer>
+  </body>
+</html>

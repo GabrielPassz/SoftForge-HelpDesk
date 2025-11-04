@@ -1,0 +1,25 @@
+﻿@page
+@model PIM.Pages.DbTestes.MeusChamadosModel
+@{
+ ViewData["Title"] = "Meus Chamados (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: lista de chamados. Clicar em um título abre a página de detalhes (simulado).</div>
+
+<h2>Meus Chamados</h2>
+
+<table class="table">
+ <thead><tr><th>ID</th><th>Título</th><th>Protocolo</th></tr></thead>
+ <tbody>
+ @foreach(var c in Model.Chamados)
+ {
+ <tr>
+ <td>@c.ChamadoId</td>
+ <td><a asp-page="/DbTestes/DetalhesChamado" asp-route-id="@c.ChamadoId">@c.Titulo</a></td>
+ <td>@c.Protocolo</td>
+ </tr>
+ }
+ </tbody>
+</table>

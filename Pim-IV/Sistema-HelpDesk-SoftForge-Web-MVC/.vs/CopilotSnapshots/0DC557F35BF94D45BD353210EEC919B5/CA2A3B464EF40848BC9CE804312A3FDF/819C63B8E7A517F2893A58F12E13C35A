@@ -1,0 +1,18 @@
+﻿<!-- moved to MVC view at Views/DbTestes/Login.cshtml -->
+<!-- original file kept for reference -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Login - SoftForge HelpDesk (migrated)</title>
+ </head>
+ <body>
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+ <h2>Login (migrated)</h2>
+ <p>Use <a href="/DbTestes/Login">/DbTestes/Login</a> para acessar a versão funcional.</p>
+ </body>
+</html>

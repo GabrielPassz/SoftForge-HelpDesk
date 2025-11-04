@@ -1,0 +1,21 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="auth-page">
+ <div class="auth-card">
+ <h1 class="auth-title">Recuperação</h1>
+ <p class="auth-subtitle">Esqueceu a Senha? Solicitar redefinição de senha</p>
+
+ <form class="auth-form" method="post" action="/DbTestes/RecuperarSenha">
+ <div class="input-wrap">
+ <span class="input-icon" aria-hidden="true"></span>
+ <input class="form-control auth-input" type="email" id="email" name="email" placeholder="exemplo@softforge.com" required />
+ </div>
+
+ <div class="auth-actions">
+ <button type="submit" class="auth-btn">Enviar</button>
+ <a class="auth-btn secondary" asp-page="/DbTestes/Login">Voltar</a>
+ </div>
+ </form>
+
+ </div>
+</div>

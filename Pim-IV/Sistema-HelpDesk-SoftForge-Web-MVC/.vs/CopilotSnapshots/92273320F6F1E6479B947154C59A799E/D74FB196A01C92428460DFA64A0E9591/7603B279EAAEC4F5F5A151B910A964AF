@@ -1,0 +1,51 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Login - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <div class="dbtestes-nav-top">
+ @await Html.PartialAsync("_DbTestesNav")
+ </div>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/Atendimento">Atendimento</a> |
+ <a href="/DbTestes/Escalonamento">Escalonamento</a> |
+ <a href="/DbTestes/GerenciarUsuarios">Gerenciar</a> |
+ <a href="/DbTestes/Configuracao">Configuração</a> |
+ <a href="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <div class="container-fluid db-login">
+ <main>
+ <h2>Login</h2>
+ <form method="post" action="/DbTestes/Login">
+ <div class="form-group">
+ <label for="usuario">Usuário</label>
+ <input id="usuario" name="usuario" class="form-control" required/>
+ </div>
+ <div class="form-group">
+ <label for="senha">Senha</label>
+ <input id="senha" name="senha" type="password" class="form-control" required/>
+ </div>
+ <button class="btn btn-primary" type="submit">Entrar</button>
+ </form>
+ </main>
+ </div>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>

@@ -1,0 +1,30 @@
+@model PIM.Models.StatusChamado
+
+@{
+    ViewData["Title"] = "Editar Status do Chamado";
+}
+
+<h2>Editar Status</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="StatusId" />
+
+    <div class="form-group">
+        <label asp-for="NomeStatus"></label>
+        <input asp-for="NomeStatus" class="form-control" />
+        <span asp-validation-for="NomeStatus" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

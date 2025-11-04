@@ -1,0 +1,24 @@
+@model PIM.Models.Departamento
+
+@{
+    ViewData["Title"] = "Editar Departamento";
+}
+
+<h2>Editar Departamento</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="DepartamentoId" />
+
+    <div class="form-group">
+        <label asp-for="NomeDepartamento"></label>
+        <input asp-for="NomeDepartamento" class="form-control" />
+        <span asp-validation-for="NomeDepartamento" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

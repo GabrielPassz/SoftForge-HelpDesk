@@ -1,0 +1,114 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Painel Inicial - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <div class="dbtestes-nav-top">
+ @await Html.PartialAsync("_DbTestesNav")
+ </div>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/AbrirChamado">Abrir Chamado</a> |
+ <a href="/DbTestes/MeusChamados">Meus Chamados</a> |
+ <a href="/DbTestes/Atendimento">Atendimento</a>
+ </nav>
+
+ <main>
+ <section>
+ <h2>Bem-vindo(a), [Nome do Usuário]</h2>
+ <p>
+ <strong>Perfil:</strong> [Técnico N1 / Técnico N2 / Coordenador /
+ Administrador]
+ </p>
+ </section>
+
+ <section>
+ <h3>Menu Principal</h3>
+ <ul>
+ <!-- Visível para: Solicitante e Administrador -->
+ <li><a href="abrir_chamado.html">📋 Abrir Chamado</a></li>
+
+ <!-- Visível para: Solicitante e Administrador -->
+ <li><a href="meus_chamados.html">📋 Meus Chamados</a></li>
+
+ <!-- Visível para: Técnico N1, Técnico N2, Coordenador e Administrador -->
+ <li><a href="atendimento.html">📋 Atendimento</a></li>
+
+ <!-- Visível para: Coordenador e Administrador-->
+ <li><a href="escalonamento.html">⬆️ Escalonamento</a></li>
+
+ <!-- Visível para: Gestor e Administrador -->
+ <li><a href="dashboard_gestor.html">👥 Dashboard</a></li>
+
+ <!-- Visível para: Gestor e Administrador -->
+ <li><a href="relatorios.html">👥 Relatórios</a></li>
+
+ <!-- Visível para: Administrador -->
+ <li><a href="gerenciar_usuarios.html">👥 Gerenciar</a></li>
+
+ <!-- Visível para: Administrador -->
+ <li><a href="configuracao.html">⚙️ Configuração</a></li>
+ </ul>
+ </section>
+
+ <section>
+ <h3>🔔 Notificações Recentes</h3>
+ <ul>
+ <li>
+ <strong>[Crítico]</strong> Chamado #CHAM-2025-001 - Servidor fora do
+ ar
+ <em>(SLA:2h restantes)</em>
+ </li>
+ <li>
+ <strong>[Alta]</strong> Chamado #CHAM-2025-045 foi atribuído a você
+ </li>
+ <li>
+ <strong>[Média]</strong>3 chamados aguardando atendimento na sua
+ fila
+ </li>
+ </ul>
+ </section>
+
+ <section>
+ <h3>📈 Resumo Rápido (Hoje)</h3>
+ <table border="1" cellpadding="5" cellspacing="0">
+ <tr>
+ <th>Indicador</th>
+ <th>Valor</th>
+ </tr>
+ <tr>
+ <td>Chamados em Espera</td>
+ <td>8</td>
+ </tr>
+ <tr>
+ <td>Chamados em Atendimento</td>
+ <td>5</td>
+ </tr>
+ <tr>
+ <td>Chamados Resolvidos (Hoje)</td>
+ <td>12</td>
+ </tr>
+ <tr>
+ <td>SLA Cumprido</td>
+ <td>92%</td>
+ </tr>
+ </table>
+ </section>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>

@@ -1,0 +1,304 @@
+﻿@page
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Meus Chamados - SoftForge HelpDesk</title>
+ </head>
+ <body>
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="inicial_painel.html">Início</a> |
+ <a href="abrir_chamado.html">Abrir Chamado</a> |
+ <a href="meus_chamados.html">Meus Chamados</a> |
+ <a href="login.html">Sair</a>
+ </nav>
+
+ <main>
+ <section>
+ <h2>?? Meus Chamados</h2>
+ <p><strong>Solicitante:</strong> [Nome do Usuário]</p>
+ <p><strong>Departamento:</strong> [Financeiro / RH / TI / etc]</p>
+ </section>
+
+ <section>
+ <h3>?? Resumo</h3>
+ <table border="1" cellpadding="5" cellspacing="0">
+ <tr>
+ <th>Status</th>
+ <th>Quantidade</th>
+ </tr>
+ <tr>
+ <td>Abertos</td>
+ <td>3</td>
+ </tr>
+ <tr>
+ <td>Em Atendimento</td>
+ <td>2</td>
+ </tr>
+ <tr>
+ <td>Aguardando Validação</td>
+ <td>1</td>
+ </tr>
+ <tr>
+ <td>Fechados (Últimos30 dias)</td>
+ <td>8</td>
+ </tr>
+ </table>
+ </section>
+
+ <section>
+ <h3>?? Filtros</h3>
+ <form method="get" action="meus_chamados.html">
+ <label for="filtro_status">Status:</label>
+ <select id="filtro_status" name="status">
+ <option value="">Todos</option>
+ <option value="aberto">Aberto</option>
+ <option value="em_atendimento">Em Atendimento</option>
+ <option value="aguardando_validacao">Aguardando Validação</option>
+ <option value="fechado">Fechado</option>
+ </select>
+
+ <label for="filtro_prioridade">Prioridade:</label>
+ <select id="filtro_prioridade" name="prioridade">
+ <option value="">Todas</option>
+ <option value="critica">Crítica</option>
+ <option value="alta">Alta</option>
+ <option value="media">Média</option>
+ <option value="baixa">Baixa</option>
+ </select>
+
+ <label for="busca">Buscar:</label>
+ <input
+ type="text"
+ id="busca"
+ name="busca"
+ placeholder="Protocolo ou palavra-chave"
+ />
+
+ <button type="submit">Filtrar</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>?? Chamados Abertos</h3>
+ <p>Chamados aguardando atendimento</p>
+ <p><em>Total:3 chamados</em></p>
+
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Protocolo</th>
+ <th>Título</th>
+ <th>Categoria</th>
+ <th>Prioridade</th>
+ <th>Data Abertura</th>
+ <th>Status</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>#CHAM-2025-089</strong></td>
+ <td>Computador não liga</td>
+ <td>Hardware</td>
+ <td><strong>ALTA</strong></td>
+ <td>15/01/202514:30</td>
+ <td>Aberto</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=089">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-092</strong></td>
+ <td>Reset de senha</td>
+ <td>Acesso</td>
+ <td>MÉDIA</td>
+ <td>15/01/202510:15</td>
+ <td>Aberto</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=092">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-095</strong></td>
+ <td>Instalação de software</td>
+ <td>Software</td>
+ <td>BAIXA</td>
+ <td>14/01/202516:45</td>
+ <td>Aberto</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=095">Ver Detalhes</a>
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>?? Chamados em Atendimento</h3>
+ <p>Chamados que estão sendo atendidos pelo técnico</p>
+ <p><em>Total:2 chamados</em></p>
+
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Protocolo</th>
+ <th>Título</th>
+ <th>Categoria</th>
+ <th>Prioridade</th>
+ <th>Técnico</th>
+ <th>Última Atualização</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>#CHAM-2025-085</strong></td>
+ <td>Impressora não imprime</td>
+ <td>Impressora</td>
+ <td><strong>ALTA</strong></td>
+ <td>Carlos Oliveira</td>
+ <td>15/01/202513:20</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=085">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-087</strong></td>
+ <td>Erro no sistema</td>
+ <td>Software</td>
+ <td>MÉDIA</td>
+ <td>Maria Souza</td>
+ <td>15/01/202511:45</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=087">Ver Detalhes</a>
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>? Chamados Aguardando Validação</h3>
+ <p>Chamados resolvidos pelo técnico, aguardando sua confirmação</p>
+ <p><em>Total:1 chamado</em></p>
+
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Protocolo</th>
+ <th>Título</th>
+ <th>Categoria</th>
+ <th>Técnico</th>
+ <th>Data Resolução</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr style="background-color: #ffffcc">
+ <td><strong>#CHAM-2025-080</strong></td>
+ <td>Problema na rede</td>
+ <td>Rede</td>
+ <td>João Ferreira</td>
+ <td>15/01/202509:30</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=080"
+ ><strong>Ver e Avaliar</strong></a
+ >
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ <p>
+ <strong>?? Atenção:</strong> Chamados não validados em3 dias serão
+ fechados automaticamente.
+ </p>
+ </section>
+
+ <section>
+ <h3>?? Chamados Fechados (Últimos30 dias)</h3>
+ <p><em>Total:8 chamados</em></p>
+
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Protocolo</th>
+ <th>Título</th>
+ <th>Categoria</th>
+ <th>Data Fechamento</th>
+ <th>Avaliação</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>#CHAM-2025-075</strong></td>
+ <td>Atualização de sistema</td>
+ <td>Software</td>
+ <td>14/01/2025</td>
+ <td>????? (5/5)</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=075">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-072</strong></td>
+ <td>Troca de mouse</td>
+ <td>Hardware</td>
+ <td>13/01/2025</td>
+ <td>???? (4/5)</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=072">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-068</strong></td>
+ <td>Configuração de e-mail</td>
+ <td>Acesso</td>
+ <td>12/01/2025</td>
+ <td>????? (5/5)</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=068">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td><strong>#CHAM-2025-065</strong></td>
+ <td>Problema de impressão</td>
+ <td>Impressora</td>
+ <td>11/01/2025</td>
+ <td>??? (3/5)</td>
+ <td>
+ <a href="detalhes_meu_chamado.html?id=065">Ver Detalhes</a>
+ </td>
+ </tr>
+ <tr>
+ <td colspan="6" align="center">
+ <a href="#">Ver todos os chamados fechados</a>
+ </td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>? Abrir Novo Chamado</h3>
+ <p>
+ Precisa de ajuda?
+ <a href="abrir_chamado.html"
+ ><strong>Clique aqui para abrir um novo chamado</strong></a
+ >
+ </p>
+ </section>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>

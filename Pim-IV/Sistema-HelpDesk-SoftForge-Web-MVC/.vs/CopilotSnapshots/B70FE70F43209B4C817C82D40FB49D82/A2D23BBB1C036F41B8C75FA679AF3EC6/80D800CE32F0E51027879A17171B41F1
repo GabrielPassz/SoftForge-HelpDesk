@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PIM</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PIM.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PIM</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <!-- Chamados -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="menuChamados" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Chamados
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="menuChamados">
+                                <li><a class="dropdown-item" asp-controller="Chamado" asp-action="Index">Chamados</a></li>
+                                <li><a class="dropdown-item" asp-controller="HistoricoChamado" asp-action="Index">Histórico</a></li>
+                                <li><a class="dropdown-item" asp-controller="StatusChamado" asp-action="Index">Status</a></li>
+                                <li><a class="dropdown-item" asp-controller="Prioridade" asp-action="Index">Prioridades</a></li>
+                                <li><a class="dropdown-item" asp-controller="SLA" asp-action="Index">SLA</a></li>
+                                <li><a class="dropdown-item" asp-controller="Anexo" asp-action="Index">Anexos</a></li>
+                                <li><a class="dropdown-item" asp-controller="Atendimento" asp-action="Index">Atendimentos</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Conhecimento -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="menuConhecimento" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Conhecimento
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="menuConhecimento">
+                                <li><a class="dropdown-item" asp-controller="BaseConhecimento" asp-action="Index">Base de Conhecimento</a></li>
+                                <li><a class="dropdown-item" asp-controller="Categoria" asp-action="Index">Categorias</a></li>
+                                <li><a class="dropdown-item" asp-controller="Avaliacao" asp-action="Index">Avaliações</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Administração -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="menuAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administração
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="menuAdmin">
+                                <li><a class="dropdown-item" asp-controller="Departamento" asp-action="Index">Departamentos</a></li>
+                                <li><a class="dropdown-item" asp-controller="Funcionario" asp-action="Index">Funcionários</a></li>
+                                <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Index">Usuários</a></li>
+                                <li><a class="dropdown-item" asp-controller="PerfilUsuario" asp-action="Index">Perfis de Usuário</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Sistema -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="menuSistema" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Sistema
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="menuSistema">
+                                <li><a class="dropdown-item" asp-controller="IAAnalise" asp-action="Index">IA Análise</a></li>
+                                <li><a class="dropdown-item" asp-controller="LogAcesso" asp-action="Index">Log de Acesso</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DbTestes razor pages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="menuDbTestes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Páginas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="menuDbTestes">
+                                <li><a class="dropdown-item" asp-page="/DbTestes/AbrirChamado">Abrir Chamado</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/MeusChamados">Meus Chamados</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Atendimento">Atendimento</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Escalonamento">Escalonamento</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesEscalonamento">Detalhes Escalonamento</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesChamado">Detalhes do Chamado</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/DetalhesMeuChamado">Detalhes (Meus Chamados)</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/InicialPainel">Painel Inicial</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/DashboardGestor">Dashboard Gerencial</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Relatorios">Relatórios</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/AprovarUsuario">Aprovar Usuário</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/GerenciarUsuarios">Gerenciar Usuários</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/EditarUsuario">Editar Usuário</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Configuracao">Configuração</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Cadastro">Solicitar Cadastro</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/Login">Login</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/RecuperarSenha">Recuperar Senha</a></li>
+                                <li><a class="dropdown-item" asp-page="/DbTestes/ValidarCodigoRedefinir">Validar Código</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - PIM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

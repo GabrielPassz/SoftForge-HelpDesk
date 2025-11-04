@@ -1,0 +1,28 @@
+﻿@page
+@model PIM.Pages.DbTestes.ConfiguracaoModel
+@{
+ ViewData["Title"] = "Configuração (Teste)";
+}
+
+<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
+
+<div class="alert alert-info">Guia: ajuste preferências do usuário (simulado). Essas alterações não são persistidas no banco.</div>
+
+<h2>Configuração</h2>
+
+<form method="post">
+ <div class="form-check">
+ <input asp-for="ReceberEmails" class="form-check-input" />
+ <label asp-for="ReceberEmails" class="form-check-label">Receber e-mails do sistema</label>
+ </div>
+ <div class="form-check mt-2">
+ <input asp-for="NotificacoesPush" class="form-check-input" />
+ <label asp-for="NotificacoesPush" class="form-check-label">Notificações push</label>
+ </div>
+ <button class="btn btn-primary mt-3">Salvar</button>
+</form>
+
+@if (Model.Saved)
+{
+ <div class="alert alert-success mt-2">Configuração salva (simulada).</div>
+}

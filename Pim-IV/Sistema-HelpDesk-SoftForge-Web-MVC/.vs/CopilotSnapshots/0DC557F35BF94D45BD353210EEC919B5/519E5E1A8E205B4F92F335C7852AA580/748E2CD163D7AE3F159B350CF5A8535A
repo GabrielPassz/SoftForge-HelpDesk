@@ -1,0 +1,13 @@
+﻿@page
+@model PIM.Pages.DbTestes.DashboardGestorModel
+@{
+ ViewData["Title"] = "Dashboard Gestor (Teste)";
+}
+
+<h2>Dashboard do Gestor</h2>
+<div class="alert alert-secondary">Guia: mostra métricas resumidas.</div>
+
+<ul>
+ <li>Usuários: @Model.UsuariosCount</li>
+ <li>Chamados abertos: @Model.ChamadosCount</li>
+</ul>

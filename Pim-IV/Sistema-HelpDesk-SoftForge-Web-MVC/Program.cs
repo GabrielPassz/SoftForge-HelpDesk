@@ -5,19 +5,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona o contexto do banco de dados (ajuste a connection string conforme necessário)
 builder.Services.AddDbContext<PIMContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+ options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// Adiciona suporte a controllers e views
+// Adiciona suporte a controllers, views e Razor Pages
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
 // Configuração do pipeline HTTP
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+ app.UseExceptionHandler("/Home/Error");
+ app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -29,7 +30,10 @@ app.UseAuthorization();
 
 // Rota padrão do MVC
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Categoria}/{action=Index}/{id?}");
+ name: "default",
+ pattern: "{controller=Categoria}/{action=Index}/{id?}");
+
+// Map Razor Pages
+app.MapRazorPages();
 
 app.Run();

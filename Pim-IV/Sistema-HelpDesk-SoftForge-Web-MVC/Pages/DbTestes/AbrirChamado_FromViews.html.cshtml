@@ -1,0 +1,118 @@
+@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+<div class="db-page container-fluid">
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Abrir Chamado - SoftForge HelpDesk</title>
+ </head>
+ <body>
+
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+
+ <nav>
+ <a href="/DbTestes/InicialPainel">Início</a> |
+ <a href="/DbTestes/AbrirChamado">Abrir Chamado</a> |
+ <a href="/DbTestes/MeusChamados">Meus Chamados</a> |
+ <a href="/DbTestes/Login">Sair</a>
+ </nav>
+
+ <main>
+ <!-- content copied from Views/Views DbTestes/abrir_chamado.html -->
+ <section>
+ <h2> Abrir Novo Chamado</h2>
+ <p><strong>Solicitante:</strong> [Nome do Usuário]</p>
+ <p><strong>Departamento:</strong> [Financeiro / RH / TI / etc]</p>
+ </section>
+
+ <section>
+ <h3>Preencha as informações do chamado</h3>
+ <form method="post" action="/DbTestes/AbrirChamado">
+ <label for="titulo">Título do Problema:</label><br />
+ <input type="text" id="titulo" name="titulo" size="80" placeholder="Ex: Impressora não está funcionando" required /><br /><br />
+
+ <label for="descricao">Descrição Detalhada:</label><br />
+ <textarea id="descricao" name="descricao" rows="8" cols="80" placeholder="Descreva o problema com o máximo de detalhes possível..." required></textarea><br /><br />
+
+ <label for="categoria">Categoria:</label><br />
+ <select id="categoria" name="categoria" required>
+ <option value="">Selecione...</option>
+ <option value="hardware">Hardware (Computador, Monitor, Teclado, etc)</option>
+ <option value="software">Software (Sistemas, Programas, Aplicativos)</option>
+ <option value="rede">Rede (Internet, Wi-Fi, Conexão)</option>
+ <option value="acesso">Acesso (Senha, Login, Permissões)</option>
+ <option value="impressora">Impressora (Impressão, Scanner)</option>
+ </select>
+ <p><em> A IA irá sugerir a categoria automaticamente após você enviar</em></p>
+
+ <label for="prioridade">Prioridade:</label><br />
+ <select id="prioridade" name="prioridade">
+ <option value="media" selected>Média (Padrão)</option>
+ <option value="baixa">Baixa (Não urgente)</option>
+ <option value="alta">Alta (Urgente)</option>
+ <option value="critica">Crítica (Sistema parado)</option>
+ </select>
+ <p><em> A IA poderá ajustar a prioridade automaticamente</em></p>
+
+ <label for="anexo">Anexar Arquivo (Opcional):</label><br />
+ <input type="file" id="anexo" name="anexo" /><br />
+ <p><em>Formatos aceitos: imagens, PDF, documentos (máx.5MB)</em></p>
+ <br />
+
+ <button type="submit">Abrir Chamado</button>
+ <button type="reset">Limpar Formulário</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>Informações Importantes</h3>
+ <ul>
+ <li>Após abrir o chamado, você receberá um <strong>número de protocolo</strong></li>
+ <li>Você será notificado por e-mail sobre atualizações do chamado</li>
+ <li>Você pode acompanhar o status em <a href="/DbTestes/MeusChamados">Meus Chamados</a></li>
+ <li>O tempo de atendimento depende da prioridade do chamado</li>
+ </ul>
+
+ <h4>Tempo de Atendimento (SLA):</h4>
+ <table border="1" cellpadding="5" cellspacing="0">
+ <tr>
+ <th>Prioridade</th>
+ <th>Primeira Resposta</th>
+ <th>Resolução</th>
+ </tr>
+ <tr>
+ <td><strong>Crítica</strong></td>
+ <td>1 hora</td>
+ <td>4 horas</td>
+ </tr>
+ <tr>
+ <td><strong>Alta</strong></td>
+ <td>2 horas</td>
+ <td>8 horas</td>
+ </tr>
+ <tr>
+ <td>Média</td>
+ <td>4 horas</td>
+ <td>24 horas</td>
+ </tr>
+ <tr>
+ <td>Baixa</td>
+ <td>8 horas</td>
+ <td>72 horas</td>
+ </tr>
+ </table>
+ </section>
+ </main>
+
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </body>
+</html>
+</div>
