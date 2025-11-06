@@ -1,9 +1,0 @@
-﻿@page
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<partial name="~/Pages/Shared/_DbTestesNav.cshtml" />
-<div class="container-fluid">
- <main>
- <h2>Detalhes Escalonamento</h2>
- <p>Detalhes do escalonamento — mockup convertido.</p>
- </main>
-</div>
