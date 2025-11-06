@@ -1,0 +1,18 @@
+@model PIM_FINAL.Models.Prioridade
+
+@{
+ ViewData["Title"] = "Editar Prioridade";
+}
+<h1>Editar</h1>
+<form asp-action="Edit" method="post">
+ <input type="hidden" asp-for="PrioridadeId" />
+ <div class="form-group">
+ <label asp-for="NomePrioridade"></label>
+ <input asp-for="NomePrioridade" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="Descricao"></label>
+ <input asp-for="Descricao" class="form-control" />
+ </div>
+ <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

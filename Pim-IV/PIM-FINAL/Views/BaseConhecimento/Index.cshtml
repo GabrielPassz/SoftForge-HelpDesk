@@ -1,0 +1,35 @@
+@model IEnumerable<PIM_FINAL.Models.BaseConhecimento>
+
+@{
+ ViewData["Title"] = "Base de Conhecimento";
+}
+
+<h1>Base de Conhecimento</h1>
+<p>
+ <a asp-action="Create">Novo Artigo</a>
+</p>
+<table class="table">
+ <thead>
+ <tr>
+ <th>Título</th>
+ <th>Categoria</th>
+ <th>Aprovado</th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+@foreach(var item in Model)
+{
+ <tr>
+ <td>@item.Titulo</td>
+ <td>@item.CategoriaId</td>
+ <td>@item.Aprovado</td>
+ <td>
+ <a asp-action="Details" asp-route-id="@item.BaseId">Details</a> |
+ <a asp-action="Edit" asp-route-id="@item.BaseId">Edit</a> |
+ <a asp-action="Delete" asp-route-id="@item.BaseId">Delete</a>
+ </td>
+ </tr>
+}
+ </tbody>
+</table>

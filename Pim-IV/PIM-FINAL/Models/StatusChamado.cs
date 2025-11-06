@@ -1,0 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM_FINAL.Models
+{
+ public class StatusChamado
+ {
+ [Key]
+ [Column("status_id")]
+ public int StatusId { get; set; }
+
+ [Required]
+ [Column("nome_status")]
+ public string? NomeStatus { get; set; }
+
+ [Column("descricao")]
+ public string? Descricao { get; set; }
+ }
+}

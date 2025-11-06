@@ -1,0 +1,37 @@
+@model IEnumerable<PIM_FINAL.Models.Atendimento>
+
+@{
+ ViewData["Title"] = "Atendimentos";
+}
+
+<h1>Atendimentos</h1>
+<p>
+ <a asp-action="Create">Novo Atendimento</a>
+</p>
+<table class="table">
+ <thead>
+ <tr>
+ <th>Chamado</th>
+ <th>Técnico</th>
+ <th>Ação</th>
+ <th>Tempo (min)</th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+@foreach(var item in Model)
+{
+ <tr>
+ <td>@item.ChamadoId</td>
+ <td>@item.UsuarioTecnicoId</td>
+ <td>@item.AcaoRealizada</td>
+ <td>@item.TempoGasto</td>
+ <td>
+ <a asp-action="Details" asp-route-id="@item.AtendimentoId">Details</a> |
+ <a asp-action="Edit" asp-route-id="@item.AtendimentoId">Edit</a> |
+ <a asp-action="Delete" asp-route-id="@item.AtendimentoId">Delete</a>
+ </td>
+ </tr>
+}
+ </tbody>
+</table>

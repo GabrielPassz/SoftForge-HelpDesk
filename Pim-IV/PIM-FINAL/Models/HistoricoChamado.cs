@@ -1,0 +1,43 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM_FINAL.Models
+{
+    public class HistoricoChamado
+    {
+        [Key]
+        [Column("historico_id")]
+        public int HistoricoId { get; set; }
+
+        [ForeignKey("Chamado")]
+        [Column("chamado_id")]
+        public int ChamadoId { get; set; }
+        public Chamado? Chamado { get; set; }
+
+        [ForeignKey("Usuario")]
+        [Column("usuario_id")]
+        public int? UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
+
+        [Required]
+        [Column("acao")]
+        public string? Acao { get; set; }
+
+        [Column("descricao")]
+        public string? Descricao { get; set; }
+
+        [Column("data_acao")]
+        public DateTime? DataAcao { get; set; }
+
+        [ForeignKey("StatusAnterior")]
+        [Column("status_anterior_id")]
+        public int? StatusAnteriorId { get; set; }
+        public StatusChamado? StatusAnterior { get; set; }
+
+        [ForeignKey("StatusNovo")]
+        [Column("status_novo_id")]
+        public int? StatusNovoId { get; set; }
+        public StatusChamado? StatusNovo { get; set; }
+    }
+}

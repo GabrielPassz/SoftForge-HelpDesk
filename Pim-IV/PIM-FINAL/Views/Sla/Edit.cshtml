@@ -1,0 +1,30 @@
+@model PIM_FINAL.Models.Sla
+
+@{
+ ViewData["Title"] = "Editar SLA";
+}
+<h1>Editar</h1>
+<form asp-action="Edit" method="post">
+ <input type="hidden" asp-for="SlaId" />
+ <div class="form-group">
+ <label asp-for="NomeSla"></label>
+ <input asp-for="NomeSla" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="PrioridadeId"></label>
+ <input asp-for="PrioridadeId" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="TempoPrimeiraResposta"></label>
+ <input asp-for="TempoPrimeiraResposta" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="TempoMaximoResolucao"></label>
+ <input asp-for="TempoMaximoResolucao" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="Descricao"></label>
+ <input asp-for="Descricao" class="form-control" />
+ </div>
+ <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

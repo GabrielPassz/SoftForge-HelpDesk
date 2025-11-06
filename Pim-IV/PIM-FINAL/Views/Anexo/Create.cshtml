@@ -1,0 +1,26 @@
+@model PIM_FINAL.Models.Anexo
+
+@{
+ ViewData["Title"] = "Criar Anexo";
+}
+
+<h1>Criar Anexo</h1>
+<form asp-action="Create" method="post">
+ <div class="form-group">
+ <label asp-for="NomeArquivo"></label>
+ <input asp-for="NomeArquivo" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="TipoArquivo"></label>
+ <input asp-for="TipoArquivo" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="CaminhoArquivo"></label>
+ <input asp-for="CaminhoArquivo" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="ChamadoId"></label>
+ <input asp-for="ChamadoId" class="form-control" />
+ </div>
+ <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

@@ -1,0 +1,32 @@
+@model IEnumerable<PIM_FINAL.Models.Usuario>
+
+@{
+ ViewData["Title"] = "Usuários";
+}
+<h1>Usuários</h1>
+<p>
+ <a asp-action="Create">Novo Usuário</a>
+</p>
+<table class="table">
+ <thead>
+ <tr>
+ <th>Nome</th>
+ <th>Email</th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach(var u in Model)
+ {
+ <tr>
+ <td>@u.NomeCompleto</td>
+ <td>@u.Email</td>
+ <td>
+ <a asp-action="Details" asp-route-id="@u.UsuarioId">Details</a> |
+ <a asp-action="Edit" asp-route-id="@u.UsuarioId">Edit</a> |
+ <a asp-action="Delete" asp-route-id="@u.UsuarioId">Delete</a>
+ </td>
+ </tr>
+ }
+ </tbody>
+</table>

@@ -1,0 +1,16 @@
+@model PIM_FINAL.Models.PerfilUsuario
+
+@{
+ ViewData["Title"] = "Detalhes do Perfil";
+}
+<h1>Detalhes</h1>
+<dl class="row">
+ <dt class="col-sm-2">Nome</dt>
+ <dd class="col-sm-10">@Model.NomePerfil</dd>
+ <dt class="col-sm-2">Descrição</dt>
+ <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+<p>
+ <a asp-action="Edit" asp-route-id="@Model.PerfilId">Edit</a> |
+ <a asp-action="Index">Back to List</a>
+</p>

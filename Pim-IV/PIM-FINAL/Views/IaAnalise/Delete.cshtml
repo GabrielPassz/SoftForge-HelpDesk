@@ -1,0 +1,21 @@
+@model PIM_FINAL.Models.IaAnalise
+
+@{
+    ViewData["Title"] = "Excluir Análise";
+}
+
+<h1>Excluir</h1>
+<div>
+    <h4>Tem certeza que deseja excluir?</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Categoria Prevista</dt>
+   <dd class="col-sm-10">@Model.CategoriaPrevista</dd>
+   <dt class="col-sm-2">Comentário</dt>
+  <dd class="col-sm-10">@Model.Comentario</dd>
+    </dl>
+    <form asp-action="Delete" method="post">
+   <input type="hidden" asp-for="IaId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

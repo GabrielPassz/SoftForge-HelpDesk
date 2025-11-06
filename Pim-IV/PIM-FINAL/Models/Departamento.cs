@@ -1,0 +1,23 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
+namespace PIM_FINAL.Models
+{
+ public class Departamento
+ {
+ [Key]
+ [Column("departamento_id")]
+ public int DepartamentoId { get; set; }
+
+ [Required]
+ [Column("nome_departamento")]
+ public string? NomeDepartamento { get; set; }
+
+ [Column("descricao")]
+ public string? Descricao { get; set; }
+
+ // Navigation
+ public ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+ }
+}

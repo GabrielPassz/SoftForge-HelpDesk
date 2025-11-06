@@ -1,0 +1,22 @@
+@model PIM_FINAL.Models.IaAnalise
+
+@{
+    ViewData["Title"] = "Detalhes da Análise";
+}
+
+<h1>Detalhes</h1>
+<dl class="row">
+    <dt class="col-sm-2">Id</dt>
+    <dd class="col-sm-10">@Model.IaId</dd>
+    <dt class="col-sm-2">Chamado</dt>
+    <dd class="col-sm-10">@Model.ChamadoId</dd>
+    <dt class="col-sm-2">Categoria Prevista</dt>
+<dd class="col-sm-10">@Model.CategoriaPrevista</dd>
+    <dt class="col-sm-2">Confiança</dt>
+    <dd class="col-sm-10">@Model.Confianca</dd>
+    <dt class="col-sm-2">Comentário</dt>
+    <dd class="col-sm-10">@Model.Comentario</dd>
+</dl>
+<p>
+    <a asp-action="Index">Back to List</a>
+</p>

@@ -1,0 +1,28 @@
+@model PIM_FINAL.Models.IaAnalise
+
+@{
+    ViewData["Title"] = "Editar Análise";
+}
+
+<h1>Editar Análise</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="IaId" />
+    <div class="form-group">
+    <label asp-for="ChamadoId" class="control-label"></label>
+  <input asp-for="ChamadoId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoriaPrevista" class="control-label"></label>
+    <input asp-for="CategoriaPrevista" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Confianca" class="control-label"></label>
+        <input asp-for="Confianca" class="form-control" />
+    </div>
+    <div class="form-group">
+  <label asp-for="Comentario" class="control-label"></label>
+        <textarea asp-for="Comentario" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

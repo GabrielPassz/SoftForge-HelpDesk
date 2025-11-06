@@ -1,0 +1,383 @@
+@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Dashboard - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+ </head>
+ <body>
+ <div class="db-page container-fluid db-atendimento">
+ <div class="db-header">
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+ </div>
+
+<div class="db-nav">
+ <nav>
+    <a asp-page="/site/InicialPainel">Início</a> |
+   <a asp-page="/site/AbrirChamado">Abrir Chamado</a> |
+   <a asp-page="/site/MeusChamados">Meus Chamados</a> |
+   <a asp-page="/site/Atendimento">Atendimento</a> |
+   <a asp-page="/site/Escalonamento">Escalonamento</a> |
+   <a asp-page="/site/DashboardGestor">Dashboard</a> |
+   <a asp-page="/site/Relatorios">Relatórios</a> |
+   <a asp-page="/site/GerenciarUsuarios">Gerenciar</a> |
+   <a asp-page="/site/Configuracao">Configuração</a>
+ </nav>
+ </div>
+
+ <main class="db-content">
+ <div class="container-fluid">
+ <h2>Dashboard Gerencial</h2>
+ <p><strong>Gestor:</strong> [Nome do Gestor]</p>
+ <p><strong>Período:</strong> Hoje -26/10/2025</p>
+ </div>
+
+<section class="db-section db-overview">
+ <h3>Filtros</h3>
+ <form method="get" action="dashboard_gestor.html">
+ <label for="periodo">Período:</label>
+ <select id="periodo" name="periodo">
+ <option value="hoje" selected>Hoje</option>
+ <option value="semana">Esta Semana</option>
+ <option value="mes">Este Mês</option>
+ <option value="trimestre">Último Trimestre</option>
+ <option value="ano">Este Ano</option>
+ <option value="personalizado">Personalizado</option>
+ </select>
+
+ <label for="departamento">Departamento:</label>
+ <select id="departamento" name="departamento">
+ <option value="">Todos</option>
+ <option value="ti">TI</option>
+ <option value="rh">RH</option>
+ <option value="financeiro">Financeiro</option>
+ <option value="marketing">Marketing</option>
+ <option value="administrativo">Administrativo</option>
+ </select>
+
+ <button type="submit">Atualizar</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>Indicadores Principais (KPIs)</h3>
+ <table border="1" cellpadding="10" cellspacing="0" width="100%">
+ <tr>
+ <th width="25%">KPI</th>
+ <th width="25%">Valor Atual</th>
+ </tr>
+ <tr>
+ <td><strong>Total de Chamados</strong></td>
+ <td>45</td>
+ </tr>
+ <tr>
+ <td><strong>Chamados Resolvidos</strong></td>
+ <td>38</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>Taxa de Resolução</strong></td>
+ <td>84%</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>SLA Cumprido</strong></td>
+ <td>92%</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>Tempo Médio de Resolução</strong></td>
+ <td>4h30min</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>Satisfação do Usuário</strong></td>
+ <td>4.6/5.0</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>Chamados em Espera</strong></td>
+ <td>7</td>
+ 
+ </td>
+ </tr>
+ <tr>
+ <td><strong>Chamados Críticos Abertos</strong></td>
+ <td>2</td>
+ 
+ </tr>
+ </table>
+ </section>
+
+ <section>
+ <h3>Gráfico: Chamados por Status</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Status</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ <th>Representação Visual</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Aberto</td>
+ <td>7</td>
+ <td>15.6%</td>
+ <td style="background: linear-gradient(to right, #2196f315.6%, #fff15.6%);"> </td>
+ </tr>
+ <tr>
+ <td>Em Atendimento</td>
+ <td>12</td>
+ <td>26.7%</td>
+ <td style="background: linear-gradient(to right, #ff980026.7%, #fff26.7%);"> </td>
+ </tr>
+ <tr>
+ <td>Aguardando Validação</td>
+ <td>5</td>
+ <td>11.1%</td>
+ <td style="background: linear-gradient(to right, #ffeb3b11.1%, #fff11.1%);"> </td>
+ </tr>
+ <tr>
+ <td>Resolvido</td>
+ <td>18</td>
+ <td>40.0%</td>
+ <td style="background: linear-gradient(to right, #4caf5040%, #fff40%);"> </td>
+ </tr>
+ <tr>
+ <td>Fechado</td>
+ <td>3</td>
+ <td>6.7%</td>
+ <td style="background: linear-gradient(to right, #9e9e9e6.7%, #fff6.7%);"> </td>
+ </tr>
+ </tbody>
+ </table>
+ <p><strong>Total:</strong>45 chamados</p>
+ </section>
+
+ <section>
+ <h3>Gráfico: Tempo Médio de Resolução por Categoria</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Categoria</th>
+ <th>Tempo Médio</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Hardware</td>
+ <td>3h20min</td>
+ </tr>
+ <tr>
+ <td>Software</td>
+ <td>5h45min</td>
+ </tr>
+ <tr>
+ <td>Rede</td>
+ <td>4h10min</td>
+ </tr>
+ <tr>
+ <td>Acesso</td>
+ <td>1h30min</td>
+ </tr>
+ <tr>
+ <td>Impressora</td>
+ <td>2h50min</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>Gráfico: Chamados por Categoria</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Categoria</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ <th>Representação Visual</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Software</td>
+ <td>15</td>
+ <td>33.3%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>Hardware</td>
+ <td>12</td>
+ <td>26.7%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>Rede</td>
+ <td>8</td>
+ <td>17.8%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>Acesso</td>
+ <td>7</td>
+ <td>15.6%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>Impressora</td>
+ <td>3</td>
+ <td>6.7%</td>
+ <td></td>
+ </tr>
+ </tbody>
+ </table>
+ <p><strong>Total:</strong>45 chamados</p>
+ </section>
+
+ <section>
+ <h3>Gráfico: Satisfação do Usuário</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Avaliação</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ <th>Representação Visual</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>5 estrelas</td>
+ <td>20</td>
+ <td>52.6%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>4 estrelas</td>
+ <td>12</td>
+ <td>31.6%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>3 estrelas</td>
+ <td>4</td>
+ <td>10.5%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>2 estrelas</td>
+ <td>2</td>
+ <td>5.3%</td>
+ <td></td>
+ </tr>
+ <tr>
+ <td>1 estrela</td>
+ <td>0</td>
+ <td>0%</td>
+ <td></td>
+ </tr>
+ </tbody>
+ </table>
+ <p><strong>Média Geral:</strong>4.6/5.0</p>
+ <p><strong>Total de Avaliações:</strong>38</p>
+ </section>
+
+ <section>
+ <h3>Desempenho da Equipe</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <thead>
+ <tr>
+ <th>Técnico</th>
+ <th>Nível</th>
+ <th>Atendidos</th>
+ <th>Resolvidos</th>
+ <th>Taxa Resolução</th>
+ <th>Tempo Médio</th>
+ <th>Avaliação</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Maria Souza</td>
+ <td>N1</td>
+ <td>12</td>
+ <td>10</td>
+ <td>83%</td>
+ <td>3h45min</td>
+ <td>4.5</td>
+ </tr>
+ <tr>
+ <td>Carlos Oliveira</td>
+ <td>N2</td>
+ <td>15</td>
+ <td>14</td>
+ <td>93%</td>
+ <td>4h20min</td>
+ <td>4.8</td>
+ </tr>
+ <tr>
+ <td>Ana Lima</td>
+ <td>N1</td>
+ <td>8</td>
+ <td>7</td>
+ <td>87%</td>
+ <td>3h10min</td>
+ <td>4.6</td>
+ </tr>
+ <tr>
+ <td>João Ferreira</td>
+ <td>N2</td>
+ <td>10</td>
+ <td>9</td>
+ <td>90%</td>
+ <td>5h00min</td>
+ <td>4.4</td>
+ </tr>
+ <tr>
+ <td>Paula Martins</td>
+ <td>N3</td>
+ <td>5</td>
+ <td>5</td>
+ <td>100%</td>
+ <td>6h30min</td>
+ <td>4.9</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>Exportar Dashboard</h3>
+ <form method="post" action="/exportar-dashboard">
+ <label for="formato_export">Formato:</label>
+ <select id="formato_export" name="formato">
+ <option value="pdf">PDF</option>
+ <option value="excel">Excel</option>
+ <option value="imagem">Imagem (PNG)</option>
+ </select>
+ <button type="submit">Exportar</button>
+ </form>
+ </section>
+ </main>
+ <div class="db-footer">
+ <footer>
+ <p>&copy;2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+ </div>
+ </body>
+</html>

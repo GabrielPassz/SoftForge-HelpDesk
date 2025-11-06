@@ -1,0 +1,20 @@
+@model PIM_FINAL.Models.Chamado
+
+@{
+ ViewData["Title"] = "Excluir Chamado";
+}
+<h1>Excluir</h1>
+<div>
+ <h4>Tem certeza que deseja excluir?</h4>
+ <dl class="row">
+ <dt class="col-sm-2">Protocolo</dt>
+ <dd class="col-sm-10">@Model.Protocolo</dd>
+ <dt class="col-sm-2">Titulo</dt>
+ <dd class="col-sm-10">@Model.Titulo</dd>
+ </dl>
+ <form asp-action="Delete" method="post">
+ <input type="hidden" asp-for="ChamadoId" />
+ <button type="submit" class="btn btn-danger">Delete</button>
+ <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+ </form>
+</div>

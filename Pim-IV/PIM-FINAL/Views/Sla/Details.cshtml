@@ -1,0 +1,22 @@
+@model PIM_FINAL.Models.Sla
+
+@{
+ ViewData["Title"] = "Detalhes do SLA";
+}
+<h1>Detalhes</h1>
+<dl class="row">
+ <dt class="col-sm-2">Nome</dt>
+ <dd class="col-sm-10">@Model.NomeSla</dd>
+ <dt class="col-sm-2">Prioridade</dt>
+ <dd class="col-sm-10">@Model.PrioridadeId</dd>
+ <dt class="col-sm-2">Primeira Resposta</dt>
+ <dd class="col-sm-10">@Model.TempoPrimeiraResposta</dd>
+ <dt class="col-sm-2">Resolução</dt>
+ <dd class="col-sm-10">@Model.TempoMaximoResolucao</dd>
+ <dt class="col-sm-2">Descrição</dt>
+ <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+<p>
+ <a asp-action="Edit" asp-route-id="@Model.SlaId">Edit</a> |
+ <a asp-action="Index">Back to List</a>
+</p>

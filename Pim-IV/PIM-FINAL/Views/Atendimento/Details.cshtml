@@ -1,0 +1,18 @@
+@model PIM_FINAL.Models.Atendimento
+
+@{
+ ViewData["Title"] = "Detalhes do Atendimento";
+}
+<h1>Detalhes</h1>
+<dl class="row">
+ <dt class="col-sm-2">Chamado</dt>
+ <dd class="col-sm-10">@Model.ChamadoId</dd>
+ <dt class="col-sm-2">Técnico</dt>
+ <dd class="col-sm-10">@Model.UsuarioTecnicoId</dd>
+ <dt class="col-sm-2">Ação</dt>
+ <dd class="col-sm-10">@Model.AcaoRealizada</dd>
+</dl>
+<p>
+ <a asp-action="Edit" asp-route-id="@Model.AtendimentoId">Edit</a> |
+ <a asp-action="Index">Back to List</a>
+</p>

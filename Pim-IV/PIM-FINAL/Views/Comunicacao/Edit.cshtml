@@ -1,0 +1,28 @@
+@model PIM_FINAL.Models.Comunicacao
+
+@{
+    ViewData["Title"] = "Editar Comunicação";
+}
+
+<h1>Editar Comunicação</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ComunicacaoId" />
+<div class="form-group">
+   <label asp-for="ChamadoId" class="control-label"></label>
+    <input asp-for="ChamadoId" class="form-control" />
+    </div>
+    <div class="form-group">
+   <label asp-for="UsuarioId" class="control-label"></label>
+    <input asp-for="UsuarioId" class="form-control" />
+    </div>
+    <div class="form-group">
+    <label asp-for="Mensagem" class="control-label"></label>
+        <textarea asp-for="Mensagem" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+  <label asp-for="DataEnvio" class="control-label"></label>
+        <input asp-for="DataEnvio" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
