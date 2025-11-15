@@ -1,0 +1,30 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM_FINAL.Models
+{
+    public class Comunicacao
+    {
+        [Key]
+        [Column("comunicacao_id")]
+        public int ComunicacaoId { get; set; }
+
+        [ForeignKey("Chamado")]
+        [Column("chamado_id")]
+        public int ChamadoId { get; set; }
+        public Chamado? Chamado { get; set; }
+
+        [ForeignKey("Usuario")]
+        [Column("usuario_id")]
+        public int UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
+
+        [Required]
+        [Column("mensagem")]
+        public string? Mensagem { get; set; }
+
+        [Column("data_envio")]
+        public DateTime? DataEnvio { get; set; }
+    }
+}

@@ -1,0 +1,56 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Configuração";
+    var deps = ViewBag.Departamentos as List<PIM_FINAL.Models.Departamento> ?? new List<PIM_FINAL.Models.Departamento>();
+    var perfis = ViewBag.Perfis as List<PIM_FINAL.Models.PerfilUsuario> ?? new List<PIM_FINAL.Models.PerfilUsuario>();
+}
+
+<div class="db-page container-fluid db-configuracao">
+    @await Html.PartialAsync("_HeaderNav")
+
+    <main class="db-content">
+        <section class="db-section db-overview">
+            <h2>⚙️ Configuração do Sistema</h2>
+            <p><strong>Administrador:</strong> @User?.Identity?.Name</p>
+        </section>
+
+        <section class="db-section">
+            <h3>Departamentos</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr><th>ID</th><th>Departamento</th><th>Descrição</th><th>Ações</th></tr>
+                </thead>
+                <tbody>
+                    @foreach(var d in deps)
+                    {
+                    <tr>
+                        <td>@d.DepartamentoId</td>
+                        <td>@d.NomeDepartamento</td>
+                        <td>@d.Descricao</td>
+                        <td><a asp-controller="Departamento" asp-action="Edit" asp-route-id="@d.DepartamentoId">Editar</a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+
+        <section class="db-section">
+            <h3>Perfis de Usuário</h3>
+            <table class="table table-bordered">
+                <thead><tr><th>ID</th><th>Perfil</th><th>Descrição</th><th>Ações</th></tr></thead>
+                <tbody>
+                    @foreach(var p in perfis)
+                    {
+                    <tr>
+                        <td>@p.PerfilId</td>
+                        <td>@p.NomePerfil</td>
+                        <td>@p.Descricao</td>
+                        <td><a asp-controller="PerfilUsuario" asp-action="Edit" asp-route-id="@p.PerfilId">Editar</a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>

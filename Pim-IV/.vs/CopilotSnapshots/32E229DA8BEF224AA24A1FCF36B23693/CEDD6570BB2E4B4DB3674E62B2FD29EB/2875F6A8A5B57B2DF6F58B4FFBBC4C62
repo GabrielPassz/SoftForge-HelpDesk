@@ -1,0 +1,79 @@
+﻿@model PIM_FINAL.Models.DashboardGestorViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Página DashboardGestor: filtros de período, KPIs, desempenho equipe e exportação. *@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Dashboard - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+ </head>
+ <body>
+ <div class="db-page container-fluid db-atendimento">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <div class="container-fluid"> @* Identificação/período *@
+ <h2>Dashboard Gerencial</h2>
+ <p><strong>Gestor:</strong> @User?.Identity?.Name</p>
+ <p><strong>Período:</strong> Hoje (@DateTime.UtcNow.ToLocalTime().ToString("dd/MM/yyyy"))</p>
+ </div>
+
+<section class="db-section db-overview"> @* Filtro período *@
+ <h3>Filtros</h3>
+ <form method="get" asp-action="DashboardGestor" asp-controller="Site">
+ <label for="periodo">Período:</label>
+ <select id="periodo" name="periodo">
+ <option value="hoje" selected>Hoje</option>
+ <option value="semana">Esta Semana</option>
+ <option value="mes">Este Mês</option>
+ </select>
+ <button type="submit">Atualizar</button>
+ </form>
+ </section>
+
+ <section> @* KPIs principais *@
+ <h3>Indicadores Principais (KPIs)</h3>
+ <table class="table table-bordered w-100 stack-mobile kv-table">
+ <thead><tr><th>KPI</th><th>Valor Atual</th></tr></thead>
+ <tbody>
+ <tr><td>Total de Chamados</td><td><span class="cell-val">@Model?.TotalChamados</span></td></tr>
+ <tr><td>Chamados Resolvidos</td><td><span class="cell-val">@Model?.ChamadosResolvidos</span></td></tr>
+ <tr><td>Taxa de Resolução</td><td><span class="cell-val">@Model?.TaxaResolucaoPercent@("%")</span></td></tr>
+ <tr><td>SLA Cumprido</td><td><span class="cell-val">@Model?.SLACumpridoPercent@("%")</span></td></tr>
+ <tr><td>Tempo Médio de Resolução</td><td><span class="cell-val">@Model?.TempoMedioResolucao</span></td></tr>
+ <tr><td>Satisfação do Usuário</td><td><span class="cell-val">@Model?.SatisfacaoMedia/5 (@Model?.TotalAvaliacoes avaliações)</span></td></tr>
+ <tr><td>Chamados em Espera</td><td><span class="cell-val">@(Model?.TotalChamados - Model?.ChamadosResolvidos)</span></td></tr>
+ <tr><td>Chamados Críticos Abertos</td><td><span class="cell-val">-</span></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section> @* Desempenho equipe *@
+ <h3>Desempenho da Equipe</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Técnico</th><th>Atendidos</th><th>Resolvidos</th><th>Taxa Resolução</th><th>Tempo Médio</th><th>Avaliação</th></tr></thead>
+ <tbody>
+ @foreach (var t in Model?.DesempenhoEquipe ?? new List<(string Tecnico, int Atendidos, int Resolvidos, double Taxa, string TempoMedio, double Avaliacao)>())
+ { <tr><td>@t.Tecnico</td><td>@t.Atendidos</td><td>@t.Resolvidos</td><td>@t.Taxa@("%")</td><td>@t.TempoMedio</td><td>@t.Avaliacao</td></tr> }
+ </tbody>
+ </table>
+ </section>
+
+ <section> @* Exportação simples *@
+ <h3>Exportar Dashboard</h3>
+ <form method="post" action="/exportar-dashboard">
+ <label for="formato_export">Formato:</label>
+ <select id="formato_export" name="formato"><option value="csv" selected>CSV</option></select>
+ <button type="submit">Exportar</button>
+ </form>
+ </section>
+ </main>
+ <div class="db-footer">
+ <footer><p>&copy;2025 SoftForge - Todos os direitos reservados</p></footer>
+ </div>
+ </div>
+ </body>
+</html>

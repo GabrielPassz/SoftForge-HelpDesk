@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace PIM_FINAL.Models
 {
+ [Table("prioridade", Schema = "public")]
  public class Prioridade
  {
  [Key]

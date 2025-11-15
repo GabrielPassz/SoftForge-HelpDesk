@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PIM_FINAL.Models.Usuario>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{ var perfis = ViewBag.Perfis as List<PIM_FINAL.Models.PerfilUsuario> ?? new List<PIM_FINAL.Models.PerfilUsuario>(); var departamentos = ViewBag.Departamentos as List<PIM_FINAL.Models.Departamento> ?? new List<PIM_FINAL.Models.Departamento>(); }
+
+@* Página AprovarUsuario: lista solicitações pendentes e permite aprovar (definindo perfil/departamento) ou reprovar. *@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Aprovar Solicitações - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+ </head>
+ <body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-intro"> @* Cabeçalho *@
+ <h2>Solicitações Pendentes de Cadastro</h2>
+ <p><a asp-controller="Site" asp-action="Page" asp-route-viewName="GerenciarUsuarios">Voltar para Gerenciar Usuários</a></p>
+ </section>
+
+ <section class="db-section"> @* Tabela de pendentes *@
+ <h3>Lista de Pendentes</h3>
+ @if(Model == null || !Model.Any()) { <p><em>Nenhuma solicitação pendente.</em></p> }
+ else {
+ <table class="table table-bordered stack-mobile">
+ <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Data Cadastro</th><th>Ações</th></tr></thead>
+ <tbody>
+ @foreach(var u in Model)
+ {
+ <tr>
+ <td data-label="ID">@u.UsuarioId</td>
+ <td data-label="Nome">@u.NomeCompleto</td>
+ <td data-label="E-mail">@u.Email</td>
+ <td data-label="Data Cadastro">@u.DataCadastro?.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
+ <td data-label="Ações">
+ <form method="post" asp-action="AprovarUsuario" asp-controller="Site" style="display:inline;max-width:280px">
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <label class="text-muted" style="font-size:.75rem">Perfil:</label>
+ <select name="perfil" class="form-select" required><option value="">Selecione...</option>@foreach(var p in perfis){<option value="@p.NomePerfil">@p.NomePerfil</option>}</select>
+ <label class="text-muted" style="font-size:.75rem">Departamento:</label>
+ <select name="departamento" class="form-select" required><option value="">Selecione...</option>@foreach(var d in departamentos){<option value="@d.NomeDepartamento">@d.NomeDepartamento</option>}</select>
+ <button type="submit" class="btn btn-primary btn-sm mt-1 w-100">Aprovar</button>
+ </form>
+ <form method="post" asp-action="ReprovarUsuario" asp-controller="Site" style="display:inline">
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <button type="submit" class="btn btn-secondary btn-sm mt-1">Reprovar</button>
+ </form>
+ </td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ }
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer><p>©2025 SoftForge - Todos os direitos reservados</p></footer>
+ </div>
+</div>
+ </body>
+</html>

@@ -1,167 +1,97 @@
-@page
+ï»¿@model PIM_FINAL.Models.AdminUsersViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{ var perfis = ViewBag.Perfis as List<PIM_FINAL.Models.PerfilUsuario> ?? new List<PIM_FINAL.Models.PerfilUsuario>(); var departamentos = ViewBag.Departamentos as List<PIM_FINAL.Models.Departamento> ?? new List<PIM_FINAL.Models.Departamento>(); }
+
+@* PÃ¡gina GerenciarUsuarios: visÃ£o administrativa com resumo, aprovaÃ§Ã£o de pendentes, filtros e lista de usuÃ¡rios ativos. ComentÃ¡rios por bloco. *@
 <!DOCTYPE html>
 <html lang="pt-BR">
  <head>
  <meta charset="utf-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Gerenciar Usuários - SoftForge HelpDesk</title>
+ <title>Gerenciar UsuÃ¡rios - SoftForge HelpDesk</title>
  <link rel="stylesheet" href="/css/dbtestes.css" />
  </head>
  <body>
  <div class="db-page container-fluid">
- <div class="db-header">
- <header>
- <h1>SoftForge HelpDesk</h1>
- <p>Sistema Inteligente de Gestão de Chamados</p>
- </header>
- </div>
-
- <div class="db-nav">
- <nav>
- <a asp-page="/site/InicialPainel">Início</a> |
- <a asp-page="/site/AbrirChamado">Abrir Chamado</a> |
- <a asp-page="/site/MeusChamados">Meus Chamados</a> |
- <a asp-page="/site/Atendimento">Atendimento</a> |
- <a asp-page="/site/Escalonamento">Escalonamento</a> |
- <a asp-page="/site/DashboardGestor">Dashboard</a> |
- <a asp-page="/site/Relatorios">Relatórios</a> |
- <a asp-page="/site/GerenciarUsuarios">Gerenciar</a> |
- <a asp-page="/site/Configuracao">Configuração</a>
- </nav>
- </div>
-
+ @await Html.PartialAsync("_HeaderNav")
  <main class="db-content">
- <section class="db-section db-intro">
- <h2>Gerenciar Usuários</h2>
- <p><strong>Administrador:</strong> [Nome do Administrador]</p>
+ <section class="db-section db-intro"> @* CabeÃ§alho *@
+ <h2>Gerenciar UsuÃ¡rios</h2>
+ <p><strong>Administrador:</strong> @(User.Identity?.Name ?? "Admin")</p>
  </section>
 
- <section>
+ <section> @* Resumo geral *@
  <h3>Resumo Geral</h3>
- <table border="1" cellpadding="8" cellspacing="0" width="100%">
- <tr>
- <th>Indicador</th>
- <th>Quantidade</th>
- </tr>
- <tr>
- <td>Total de Usuários Ativos</td>
- <td>45</td>
- </tr>
- <tr>
- <td>Solicitações Pendentes de Aprovação</td>
- <td><strong>3</strong></td>
- </tr>
- <tr>
- <td>Usuários Inativos</td>
- <td>8</td>
- </tr>
- <tr>
- <td>Técnicos Ativos</td>
- <td>12 (N1:5 | N2:5 | N3:2)</td>
- </tr>
- <tr>
- <td>Coordenadores</td>
- <td>2</td>
- </tr>
- <tr>
- <td>Gestores</td>
- <td>3</td>
- </tr>
- </table>
- </section>
-
- <section>
- <h3>Solicitações Pendentes de Aprovação</h3>
- <p>Usuários que solicitaram cadastro e aguardam liberação</p>
-
- <table border="1" cellpadding="8" cellspacing="0" width="100%">
- <thead>
- <tr>
- <th>Nome</th>
- <th>E-mail</th>
- <th>Data Solicitação</th>
- <th>Ações</th>
- </tr>
- </thead>
+ <table class="table table-bordered w-100 db-summary-table limit-rows no-stack" data-limit="3">
+ <thead><tr><th>Indicador</th><th>Quantidade</th></tr></thead>
  <tbody>
  <tr>
- <td>Ricardo Santos</td>
- <td>ricardo.santos@softforge.com</td>
- <td>14/01/202510:30</td>
- <td>
- <a asp-page="/site/AprovarUsuario" asp-route-id="101">Analisar Solicitação</a>
- </td>
+ <td data-label="Indicador">Total de UsuÃ¡rios Ativos</td>
+ <td data-label="Quantidade"><span class="cell-val">@Model.TotalActiveCount</span></td>
  </tr>
  <tr>
- <td>Juliana Alves</td>
- <td>juliana.alves@softforge.com</td>
- <td>14/01/202515:45</td>
- <td>
- <a asp-page="/site/AprovarUsuario" asp-route-id="102">Analisar Solicitação</a>
- </td>
+ <td data-label="Indicador">SolicitaÃ§Ãµes Pendentes de AprovaÃ§Ã£o</td>
+ <td data-label="Quantidade"><span class="cell-val"><strong>@Model.PendingCount</strong></span></td>
  </tr>
  <tr>
- <td>Marcos Pereira</td>
- <td>marcos.pereira@softforge.com</td>
- <td>15/01/202509:20</td>
- <td>
- <a asp-page="/site/AprovarUsuario" asp-route-id="103">Analisar Solicitação</a>
- </td>
+ <td data-label="Indicador">Total de UsuÃ¡rios</td>
+ <td data-label="Quantidade"><span class="cell-val">@Model.TotalUsers</span></td>
  </tr>
  </tbody>
  </table>
- <p><em>Total:3 solicitações pendentes</em></p>
  </section>
 
- <section>
- <h3>?? Filtros e Pesquisa</h3>
- <form method="get" asp-page="/site/GerenciarUsuarios">
- <label for="filtro_perfil">Perfil:</label>
- <select id="filtro_perfil" name="perfil">
- <option value="">Todos</option>
- <option value="administrador">Administrador</option>
- <option value="gestor">Gestor</option>
- <option value="coordenador">Coordenador</option>
- <option value="tecnico_n3">Técnico N3</option>
- <option value="tecnico_n2">Técnico N2</option>
- <option value="tecnico_n1">Técnico N1</option>
- <option value="solicitante">Solicitante</option>
+ <section> @* Pendentes com aÃ§Ãµes *@
+ <h3>SolicitaÃ§Ãµes Pendentes de AprovaÃ§Ã£o</h3>
+ <p>UsuÃ¡rios que solicitaram cadastro e aguardam liberaÃ§Ã£o</p>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Nome</th><th>E-mail</th><th>Data SolicitaÃ§Ã£o</th><th>AÃ§Ãµes</th></tr></thead>
+ <tbody>
+ @foreach(var u in Model.PendingUsers)
+ {
+ <tr>
+ <td data-label="Nome"><span class="cell-val">@u.NomeCompleto</span></td>
+ <td data-label="E-mail"><span class="cell-val">@u.Email</span></td>
+ <td data-label="Data SolicitaÃ§Ã£o"><span class="cell-val">@(u.DataCadastro?.ToLocalTime().ToString("g") ?? "-")</span></td>
+ <td data-label="AÃ§Ãµes"><span class="cell-val">
+ <form method="post" asp-controller="Site" asp-action="AprovarUsuario" style="display:inline">
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <label class="text-muted" style="font-size:.75rem">Perfil:</label>
+ <select name="perfil" class="form-select" required>
+ <option value="">Selecione...</option>
+ @foreach(var p in perfis){<option value="@p.NomePerfil">@p.NomePerfil</option>}
  </select>
-
- <label for="filtro_departamento">Departamento:</label>
- <select id="filtro_departamento" name="departamento">
- <option value="">Todos</option>
- <option value="ti">TI</option>
- <option value="rh">RH</option>
- <option value="financeiro">Financeiro</option>
- <option value="marketing">Marketing</option>
- <option value="administrativo">Administrativo</option>
+ <label class="text-muted" style="font-size:.75rem">Departamento:</label>
+ <select name="departamento" class="form-select" required>
+ <option value="">Selecione...</option>
+ @foreach(var d in departamentos){<option value="@d.NomeDepartamento">@d.NomeDepartamento</option>}
  </select>
+ <button type="submit" class="btn btn-primary btn-sm mt-1 w-100">Aprovar</button>
+ </form>
+ <form method="post" asp-controller="Site" asp-action="ReprovarUsuario" style="display:inline">
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <button type="submit" class="btn btn-secondary btn-sm mt-1">Reprovar</button>
+ </form>
+ </span></td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ <p><em>Total: @Model.PendingCount solicitaÃ§Ãµes pendentes</em></p>
+ </section>
 
- <label for="filtro_status">Status:</label>
- <select id="filtro_status" name="status">
- <option value="ativo">Ativos</option>
- <option value="inativo">Inativos</option>
- <option value="pendente">Pendentes</option>
- <option value="todos">Todos</option>
- </select>
-
+ <section> @* Filtros *@
+ <h3>Filtros e Pesquisa</h3>
+ <form method="get" asp-controller="Site" asp-action="GerenciarUsuarios">
  <label for="busca_usuario">Buscar:</label>
- <input
- type="text"
- id="busca_usuario"
- name="busca"
- placeholder="Nome ou e-mail"
- />
-
+ <input type="text" id="busca_usuario" name="busca" placeholder="Nome ou e-mail" value="@ViewBag.Busca" />
  <button type="submit">Filtrar</button>
  </form>
  </section>
 
- <section>
- <h3>?? Lista de Usuários Ativos</h3>
- <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <section> @* Lista de ativos *@
+ <h3>Lista de UsuÃ¡rios Ativos</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
  <thead>
  <tr>
  <th>ID</th>
@@ -169,115 +99,32 @@
  <th>E-mail</th>
  <th>Perfil</th>
  <th>Departamento</th>
- <th>Status</th>
- <th>Último Login</th>
- <th>Ações</th>
+ <th>Ãšltimo Login</th>
+ <th>AÃ§Ãµes</th>
  </tr>
  </thead>
  <tbody>
+ @foreach(var u in Model.ActiveUsers)
+ {
  <tr>
- <td>001</td>
- <td>Admin Sistema</td>
- <td>admin@softforge.com</td>
- <td><strong>Administrador</strong></td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202513:00</td>
- <td><a asp-page="/site/EditarUsuario" asp-route-id="001">Editar</a></td>
+ <td data-label="ID"><span class="cell-val">@u.UsuarioId</span></td>
+ <td data-label="Nome"><span class="cell-val">@u.NomeCompleto</span></td>
+ <td data-label="E-mail"><span class="cell-val">@u.Email</span></td>
+ <td data-label="Perfil"><span class="cell-val">@(u.PerfilUsuario?.NomePerfil ?? "-")</span></td>
+ <td data-label="Departamento"><span class="cell-val">@(u.Departamento?.NomeDepartamento ?? "-")</span></td>
+ <td data-label="Ãšltimo Login"><span class="cell-val">@(u.UltimoLogin?.ToLocalTime().ToString("g") ?? "-")</span></td>
+ <td data-label="AÃ§Ãµes"><span class="cell-val"><a asp-controller="Site" asp-action="EditarUsuario" asp-route-id="@u.UsuarioId">Editar</a></span></td>
  </tr>
- <tr>
- <td>002</td>
- <td>Maria Souza</td>
- <td>maria.souza@softforge.com</td>
- <td>Técnico N1</td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202512:45</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="002">Editar</a>
- </td>
- </tr>
- <tr>
- <td>003</td>
- <td>Carlos Oliveira</td>
- <td>carlos.oliveira@softforge.com</td>
- <td>Técnico N2</td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202512:30</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="003">Editar</a>
- </td>
- </tr>
- <tr>
- <td>004</td>
- <td>Ana Costa</td>
- <td>ana.costa@softforge.com</td>
- <td>Solicitante</td>
- <td>Financeiro</td>
- <td>Ativo</td>
- <td>15/01/202511:20</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="004">Editar</a>
- </td>
- </tr>
- <tr>
- <td>005</td>
- <td>Roberto Lima</td>
- <td>roberto.lima@softforge.com</td>
- <td>Coordenador</td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202513:10</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="005">Editar</a>
- </td>
- </tr>
- <tr>
- <td>006</td>
- <td>Paula Martins</td>
- <td>paula.martins@softforge.com</td>
- <td>Técnico N3</td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202512:00</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="006">Editar</a>
- </td>
- </tr>
- <tr>
- <td>007</td>
- <td>Fernando Rocha</td>
- <td>fernando.rocha@softforge.com</td>
- <td>Gestor</td>
- <td>TI</td>
- <td>Ativo</td>
- <td>15/01/202510:15</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="007">Editar</a>
- </td>
- </tr>
- <tr>
- <td>008</td>
- <td>Beatriz Silva</td>
- <td>beatriz.silva@softforge.com</td>
- <td>Solicitante</td>
- <td>RH</td>
- <td>Ativo</td>
- <td>14/01/202516:30</td>
- <td>
- <a asp-page="/site/EditarUsuario" asp-route-id="008">Editar</a>
- </td>
- </tr>
+ }
  </tbody>
  </table>
- <p><em>Mostrando8 de45 usuários</em> | <a href="#">Ver Todos</a></p>
+ <p><em>Mostrando @Model.ActiveUsers.Count usuÃ¡rios</em></p>
  </section>
  </main>
 
  <div class="db-footer">
  <footer>
- <p>©2025 SoftForge - Todos os direitos reservados</p>
+ <p>Â©2025 SoftForge - Todos os direitos reservados</p>
  </footer>
  </div>
  </div>

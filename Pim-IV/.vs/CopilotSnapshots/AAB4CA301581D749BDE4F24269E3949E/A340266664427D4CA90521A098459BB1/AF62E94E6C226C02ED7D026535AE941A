@@ -1,0 +1,133 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Aprovar Solicitação - SoftForge HelpDesk</title>
+<link rel="stylesheet" href="/css/dbtestes.css" />
+ </head>
+ <body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-intro">
+ <h2>Analisar Solicitação de Cadastro</h2>
+ <p>
+ <a href="gerenciar_usuarios.html">? Voltar para Gerenciar Usuários</a>
+ </p>
+ </section>
+
+ <section>
+ <h3>? Aprovar Cadastro</h3>
+ <form method="post" action="/aprovar-usuario">
+ <input type="hidden" name="solicitacao_id" value="@Model?.UsuarioId" />
+ <input type="hidden" name="nome" value="@Model?.NomeCompleto" />
+ <input type="hidden" name="email" value="@Model?.Email" />
+ <input type="hidden" name="matricula" value="@Model?.Funcionario?.Matricula" />
+ <input type="hidden" name="cargo" value="@Model?.Funcionario?.Cargo" />
+
+ <label for="perfil">Perfil:</label><br />
+ <select id="perfil" name="perfil" required>
+ <option value="">Selecione...</option>
+ <option value="solicitante" selected>Solicitante</option>
+ <option value="tecnico_n1">Técnico N1</option>
+ <option value="tecnico_n2">Técnico N2</option>
+ <option value="tecnico_n3">Técnico N3</option>
+ <option value="coordenador">Coordenador</option>
+ <option value="gestor">Gestor</option>
+ <option value="administrador">Administrador</option>
+ </select>
+ <br /><br />
+
+ <label for="departamento">Departamento:</label><br />
+ <select id="departamento" name="departamento" required>
+ <option value="">Selecione...</option>
+ <option value="ti">TI</option>
+ <option value="rh">RH</option>
+ <option value="financeiro" selected>Financeiro</option>
+ <option value="marketing">Marketing</option>
+ <option value="administrativo">Administrativo</option>
+ </select>
+ <p><em>Sugestão: Financeiro (conforme cadastro no RH)</em></p>
+
+ <label for="especialidade">Especialidade (para Técnicos):</label><br />
+ <select id="especialidade" name="especialidade">
+ <option value="">Nenhuma</option>
+ <option value="geral">Geral</option>
+ <option value="hardware">Hardware</option>
+ <option value="software">Software</option>
+ <option value="rede">Rede</option>
+ <option value="acesso">Acesso</option>
+ <option value="impressora">Impressora</option>
+ </select>
+ <br /><br />
+
+ <button type="submit" class="btn btn-primary">Aprovar</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>? Reprovar Cadastro</h3>
+ <form method="post" action="/reprovar-usuario">
+ <input type="hidden" name="solicitacao_id" value="@Model?.UsuarioId" />
+ <input type="hidden" name="nome" value="@Model?.NomeCompleto" />
+ <input type="hidden" name="email" value="@Model?.Email" />
+
+ <button type="submit" class="btn btn-secondary">Reprovar</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>?? Dados do Funcionário (Solicitante)</h3>
+ <table class="table table-bordered">
+ <tr>
+ <th width="30%">Campo</th>
+ <th width="70%">Informação</th>
+ </tr>
+ <tr>
+ <td><strong>Nome Completo</strong></td>
+ <td>@Model?.NomeCompleto</td>
+ </tr>
+ <tr>
+ <td><strong>E-mail Corporativo</strong></td>
+ <td>@Model?.Email</td>
+ </tr>
+ <tr>
+ <td><strong>Matrícula</strong></td>
+ <td>@Model?.Funcionario?.Matricula</td>
+ </tr>
+ <tr>
+ <td><strong>Cargo</strong></td>
+ <td>@Model?.Funcionario?.Cargo</td>
+ </tr>
+ <tr>
+ <td><strong>Departamento (RH)</strong></td>
+ <td>@Model?.Funcionario?.Departamento?.NomeDepartamento</td>
+ </tr>
+ <tr>
+ <td><strong>Data de Contratação</strong></td>
+ <td>@(Model?.Funcionario?.DataContratacao?.ToLocalTime().ToString("dd/MM/yyyy") ?? "-")</td>
+ </tr>
+ <tr>
+ <td><strong>Telefone</strong></td>
+ <td>@Model?.Funcionario?.Telefone</td>
+ </tr>
+ <tr>
+ <td><strong>Data da Solicitação</strong></td>
+ <td>@(Model?.DataCadastro.ToLocalTime().ToString("dd/MM/yyyy HH:mm"))</td>
+ </tr>
+ </table>
+ <p><em>Informações obtidas do sistema de RH baseadas no e-mail corporativo.</em></p>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+ </body>
+</html>

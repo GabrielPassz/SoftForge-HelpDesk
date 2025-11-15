@@ -1,0 +1,65 @@
+﻿// Opt-in list/table limiter + global stacked labels (refined for card rows)
+(function(){
+ const DEFAULT_LIMIT =3;
+
+ function readLimit(el){
+ const attr = el.getAttribute && el.getAttribute('data-limit');
+ const n = parseInt(attr,10);
+ return Number.isFinite(n) && n >0 ? n : DEFAULT_LIMIT;
+ }
+
+ function makeButton(){
+ const btn = document.createElement('button');
+ btn.type = 'button';
+ btn.className = 'btn btn-sm btn-secondary limit-toggle';
+ btn.textContent = 'Mostrar mais';
+ return btn;
+ }
+
+ function applyToList(list){
+ const limit = readLimit(list);
+ const items = Array.from(list.children).filter(n => n.nodeType ===1);
+ if(items.length <= limit) return;
+ const hidden = items.slice(limit);
+ hidden.forEach(li => li.style.display = 'none');
+ const btn = makeButton();
+ btn.addEventListener('click', () => {
+ const expanded = hidden[0].style.display !== 'none';
+ hidden.forEach(li => li.style.display = expanded ? 'none' : 'list-item');
+ btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.appendChild(btn);
+ list.parentNode.insertBefore(wrap, list.nextSibling);
+ }
+
+ function applyToTable(table){
+ const limit = readLimit(table);
+ const tbodies = table.tBodies && table.tBodies.length ? Array.from(table.tBodies) : [table];
+ const rows = tbodies.flatMap(tb => Array.from(tb.querySelectorAll('tr')));
+ if(rows.length <= limit) return;
+ const hidden = rows.slice(limit);
+ hidden.forEach(r => r.style.display = 'none');
+ const btn = makeButton();
+ btn.addEventListener('click', () => {
+ const expanded = hidden[0].style.display !== 'none';
+ // Let CSS control layout: block in stacked-mobile, table-row in desktop
+ hidden.forEach(r => r.style.display = expanded ? 'none' : '');
+ btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.className = 'limit-wrap';
+ wrap.style.marginTop = '4px';
+ wrap.appendChild(btn);
+ // place after the table for consistent layout
+ table.parentNode.insertBefore(wrap, table.nextSibling);
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ // Apply only to elements that opt-in with .limit-rows
+ document.querySelectorAll('ul.limit-rows:not(.no-limit), ol.limit-rows:not(.no-limit)')
+ .forEach(applyToList);
+ document.querySelectorAll('table.limit-rows:not(.no-limit)')
+ .forEach(applyToTable);
+ });
+})();

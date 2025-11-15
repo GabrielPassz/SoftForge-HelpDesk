@@ -1,0 +1,72 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
+namespace PIM_FINAL.Models
+{
+    public class Chamado
+    {
+        [Key]
+        [Column("chamado_id")]
+        public int ChamadoId { get; set; }
+
+        [Column("protocolo")]
+        public string? Protocolo { get; set; }
+
+        [Required]
+        [Column("titulo")]
+        public string? Titulo { get; set; }
+
+        [Required]
+        [Column("descricao")]
+        public string? Descricao { get; set; }
+
+        [Column("data_abertura")]
+        public DateTime? DataAbertura { get; set; }
+
+        [Column("data_fechamento")]
+        public DateTime? DataFechamento { get; set; }
+
+        [ForeignKey("UsuarioSolicitante")]
+        [Column("usuario_solicitante_id")]
+        public int? UsuarioSolicitanteId { get; set; }
+        public Usuario? UsuarioSolicitante { get; set; }
+
+        [ForeignKey("TecnicoResponsavel")]
+        [Column("tecnico_responsavel_id")]
+        public int? TecnicoResponsavelId { get; set; }
+        public Usuario? TecnicoResponsavel { get; set; }
+
+        [ForeignKey("Categoria")]
+        [Column("categoria_id")]
+        public int? CategoriaId { get; set; }
+        public Categoria? Categoria { get; set; }
+
+        [ForeignKey("Prioridade")]
+        [Column("prioridade_id")]
+        public int? PrioridadeId { get; set; }
+        public Prioridade? Prioridade { get; set; }
+
+        [ForeignKey("StatusChamado")]
+        [Column("status_id")]
+        public int? StatusId { get; set; }
+        public StatusChamado? StatusChamado { get; set; }
+
+        [ForeignKey("Sla")]
+        [Column("sla_id")]
+        public int? SlaId { get; set; }
+        public Sla? Sla { get; set; }
+
+        [Column("sla_atingido")]
+        public bool SlaAtingido { get; set; }
+
+        // Navigation collections
+        public ICollection<Atendimento> Atendimentos { get; set; } = new List<Atendimento>();
+        public ICollection<Anexo> Anexos { get; set; } = new List<Anexo>();
+        public Avaliacao? Avaliacao { get; set; }
+        public ICollection<HistoricoChamado> HistoricosChamado { get; set; } = new List<HistoricoChamado>();
+        public ICollection<IaAnalise> IAAnalises { get; set; } = new List<IaAnalise>();
+        public ICollection<Comunicacao> Comunicacoes { get; set; } = new List<Comunicacao>();
+    }
+}

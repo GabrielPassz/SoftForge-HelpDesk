@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace PIM_FINAL.Models
 {
     public class AbrirChamado
@@ -10,5 +13,9 @@ namespace PIM_FINAL.Models
         public string Prioridade { get; set; }
         public bool Created { get; set; }
         public string CreatedProtocol { get; set; }
+
+        // select lists for the view
+        public List<SelectListItem> CategoriasSelect { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> PrioridadesSelect { get; set; } = new List<SelectListItem>();
     }
 }

@@ -1,0 +1,51 @@
+﻿using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+
+namespace PIM_FINAL.Controllers
+{
+ public class SiteController : Controller
+ {
+ private readonly IWebHostEnvironment _env;
+
+ public SiteController(IWebHostEnvironment env)
+ {
+ _env = env;
+ }
+
+ // Allow URLs like /Site or /Site/{viewName} or /Site/{viewName}/{id}
+ [HttpGet]
+ [Route("Site")]
+ [Route("Site/{viewName}")]
+ [Route("Site/{viewName}/{id}")]
+ public IActionResult Page(string viewName = "InicialPainel", string id = null)
+ {
+ // sanitize viewName to avoid path traversal
+ viewName = Path.GetFileName(viewName ?? string.Empty);
+ if (string.IsNullOrEmpty(viewName))
+ viewName = "InicialPainel";
+
+ var viewPath = Path.Combine(_env.ContentRootPath, "Views", "site", viewName + ".cshtml");
+ if (!System.IO.File.Exists(viewPath))
+ {
+ return NotFound();
+ }
+
+ // if an id was provided, add it to RouteData so views that read RouteData.Values["id"] work
+ if (!string.IsNullOrEmpty(id))
+ {
+ RouteData.Values["id"] = id;
+ }
+
+ // expose id to ViewData/ViewBag to avoid nulls in views
+ var idValue = id ?? (RouteData.Values.ContainsKey("id") ? RouteData.Values["id"]?.ToString() : null);
+ if (!string.IsNullOrEmpty(idValue))
+ {
+ ViewData["id"] = idValue;
+ ViewBag.Id = idValue;
+ }
+
+ return View($"~/Views/site/{viewName}.cshtml");
+ }
+ }
+}

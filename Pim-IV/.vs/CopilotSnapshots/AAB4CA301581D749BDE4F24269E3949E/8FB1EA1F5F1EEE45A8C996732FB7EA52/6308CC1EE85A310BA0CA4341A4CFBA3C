@@ -1,0 +1,60 @@
+﻿@model PIM_FINAL.Models.InicialPainelViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+ ViewData["Title"] = "Painel Inicial";
+}
+
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-welcome">
+ <h2>Bem-vindo(a), @Model?.NomeUsuario ?? "[Nome do Usuário]"</h2>
+ <p>
+ <strong>Perfil:</strong> @Model?.Perfil ?? "(não informado)"
+ </p>
+ </section>
+
+ <section class="db-section db-notifications">
+ <h3>🔔 Notificações Recentes</h3>
+ <ul>
+ @foreach (var n in Model?.RecentNotifications ?? new List<string> { "Nenhuma notificação." })
+ {
+ <li>@n</li>
+ }
+ </ul>
+ </section>
+
+ <section class="db-section db-summary">
+ <h3>📈 Resumo Rápido (Hoje)</h3>
+ <table class="table table-bordered">
+ <tr>
+ <th>Indicador</th>
+ <th>Valor</th>
+ </tr>
+ <tr>
+ <td>Chamados em Espera</td>
+ <td>@(Model?.ChamadosEmEspera ??0)</td>
+ </tr>
+ <tr>
+ <td>Chamados em Atendimento</td>
+ <td>@(Model?.ChamadosEmAtendimento ??0)</td>
+ </tr>
+ <tr>
+ <td>Chamados Resolvidos (Hoje)</td>
+ <td>@(Model?.ResolvidosHoje ??0)</td>
+ </tr>
+ <tr>
+ <td>SLA Cumprido</td>
+ <td>@(Model?.SLACumpridoPercent ??0)%</td>
+ </tr>
+ </table>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>

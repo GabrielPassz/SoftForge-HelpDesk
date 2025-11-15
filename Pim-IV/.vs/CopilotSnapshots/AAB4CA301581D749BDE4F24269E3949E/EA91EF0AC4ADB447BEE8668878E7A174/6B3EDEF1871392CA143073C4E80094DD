@@ -1,0 +1,31 @@
+﻿@model PIM_FINAL.Models.Usuario
+@{
+ ViewData["Title"] = "Editar Usuário";
+ var deps = ViewBag.Departamentos as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var perfis = ViewBag.Perfis as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+}
+<h1>Editar</h1>
+<form asp-action="Edit" method="post">
+ <input type="hidden" asp-for="UsuarioId" />
+ <div class="form-group">
+ <label asp-for="NomeCompleto"></label>
+ <input asp-for="NomeCompleto" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="Email"></label>
+ <input asp-for="Email" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="DepartamentoId">Departamento</label>
+ <select asp-for="DepartamentoId" class="form-select" asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(deps, "Value", "Text"))">
+ <option value="">(selecione)</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label asp-for="PerfilId">Perfil</label>
+ <select asp-for="PerfilId" class="form-select" asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(perfis, "Value", "Text"))">
+ <option value="">(selecione)</option>
+ </select>
+ </div>
+ <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

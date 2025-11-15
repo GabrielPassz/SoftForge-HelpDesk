@@ -1,0 +1,156 @@
+﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+// for details on configuring this project to bundle and minify static web assets.
+
+// Global site script: list/table limiting + modal popup for long text
+(function(){
+ // ---- Utilities ----
+ function onReady(fn){
+ if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn); else fn();
+ }
+ function makeButton(text, cls){
+ const btn = document.createElement('button');
+ btn.type = 'button';
+ btn.className = cls || 'btn btn-sm btn-secondary';
+ btn.textContent = text || 'Mostrar mais';
+ return btn;
+ }
+
+ // ---- Limit rows in lists/tables (merged from limitLists.js) ----
+ const DEFAULT_LIMIT =3;
+ const DEFAULT_TABLE_COUNT_LIMIT =3;
+ function readLimit(el){ const n = parseInt(el.getAttribute('data-limit'),10); return Number.isFinite(n)&&n>0?n:DEFAULT_LIMIT; }
+ function readTableCountLimit(){ const n = parseInt(document.body.getAttribute('data-max-tables'),10); return Number.isFinite(n)&&n>0?n:DEFAULT_TABLE_COUNT_LIMIT; }
+
+ function applyToList(list){
+ const limit = readLimit(list);
+ const items = Array.from(list.children).filter(n=>n.nodeType===1);
+ if(items.length <= limit) return;
+ const hidden = items.slice(limit);
+ hidden.forEach(li=>li.classList.add('is-hidden'));
+ const btn = makeButton('Mostrar mais','btn btn-sm btn-secondary limit-toggle');
+ btn.addEventListener('click',()=>{
+ const expanded = hidden[0].classList.contains('is-hidden')===false;
+ hidden.forEach(li=>li.classList.toggle('is-hidden', expanded));
+ btn.textContent = expanded? 'Mostrar mais':'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.appendChild(btn);
+ list.parentNode.insertBefore(wrap, list.nextSibling);
+ }
+
+ function applyToTable(table){
+ const limit = readLimit(table);
+ const tbodies = table.tBodies && table.tBodies.length ? Array.from(table.tBodies) : [table];
+ const rows = tbodies.flatMap(tb=>Array.from(tb.querySelectorAll('tr')));
+ if(rows.length <= limit) return;
+ const hidden = rows.slice(limit);
+ hidden.forEach(r=>r.classList.add('is-hidden'));
+ const btn = makeButton('Mostrar mais','btn btn-sm btn-secondary limit-toggle');
+ btn.addEventListener('click',()=>{
+ const expanded = hidden[0].classList.contains('is-hidden')===false;
+ hidden.forEach(r=>r.classList.toggle('is-hidden', expanded));
+ btn.textContent = expanded? 'Mostrar mais':'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.className = 'limit-wrap';
+ wrap.style.marginTop = '4px';
+ wrap.appendChild(btn);
+ table.parentNode.insertBefore(wrap, table.nextSibling);
+ }
+
+ function applyTableCountLimit(){
+ const limit = readTableCountLimit();
+ const tables = Array.from(document.querySelectorAll('table.limit-table'));
+ if(tables.length <= limit) return;
+ const hiddenSections = tables.slice(limit).map(t=>t.closest('.db-section')||t).filter(Boolean);
+ hiddenSections.forEach(sec=>sec.classList.add('is-hidden'));
+ const btn = makeButton('Mostrar mais tabelas','btn btn-sm btn-secondary limit-toggle');
+ btn.addEventListener('click',()=>{
+ const collapsed = hiddenSections[0].classList.contains('is-hidden')===false;
+ hiddenSections.forEach(sec=>sec.classList.toggle('is-hidden', collapsed));
+ btn.textContent = collapsed? 'Mostrar mais tabelas':'Mostrar menos tabelas';
+ });
+ const anchorSec = (tables[limit-1].closest('.db-section') || tables[limit-1]);
+ const wrap = document.createElement('div');
+ wrap.className = 'limit-table-wrap';
+ wrap.style.margin = '8px0';
+ wrap.appendChild(btn);
+ anchorSec.parentNode.insertBefore(wrap, anchorSec.nextSibling);
+ }
+
+ // ---- Modal popup for long text (merged textPopup + auto-wiring) ----
+ function ensureModal(){
+ let overlay = document.getElementById('sf-modal');
+ if(overlay) return overlay;
+ overlay = document.createElement('div');
+ overlay.id = 'sf-modal';
+ overlay.className = 'sf-modal-overlay';
+ overlay.hidden = true;
+ overlay.innerHTML = '<div class="sf-modal" role="dialog" aria-modal="true" aria-labelledby="sf-modal-title">\
+<header><h3 id="sf-modal-title">Detalhe</h3><button type="button" class="close-btn" data-dismiss>Fechar</button></header>\
+<div id="sf-modal-body"></div></div>';
+ document.body.appendChild(overlay);
+ return overlay;
+ }
+ function wireModal(){
+ const overlay = ensureModal();
+ const bodyEl = overlay.querySelector('#sf-modal-body');
+ const titleEl = overlay.querySelector('#sf-modal-title');
+ function close(){ overlay.hidden = true; bodyEl.textContent = ''; }
+ overlay.addEventListener('click', (e)=>{ if(e.target === overlay || e.target.hasAttribute('data-dismiss')) close(); });
+ document.addEventListener('click', (e)=>{
+ const btn = e.target.closest('.js-show-full');
+ if(!btn) return;
+ titleEl.textContent = btn.getAttribute('data-title') || 'Detalhe';
+ const content = btn.getAttribute('data-content');
+ bodyEl.textContent = content || '';
+ overlay.hidden = false;
+ });
+ }
+
+ // Auto add show-full buttons for long descriptions
+ function isOverflowing(el){ return el && el.scrollWidth > el.clientWidth; }
+ function addShowFullButtons(){
+ const rows = Array.from(document.querySelectorAll('table tr'));
+ rows.forEach(tr=>{
+ const tds = tr.querySelectorAll('td');
+ if(tds.length <2) return;
+ const firstText = (tds[0].innerText || '').trim().toLowerCase();
+ const isDescRow = firstText.startsWith('descri') || tds[1].getAttribute('data-label') === 'Descrição';
+ if(!isDescRow) return;
+ const val = tds[1].querySelector('.cell-val') || tds[1];
+ const text = (val.textContent || '').trim();
+ if(!text) return;
+ const longEnough = text.length >100 || isOverflowing(val);
+ const hasBtn = tds[1].querySelector('.js-show-full');
+ if(longEnough && !hasBtn){
+ const btn = makeButton('Ver completo','cell-more js-show-full');
+ btn.setAttribute('data-title','Descrição');
+ btn.setAttribute('data-content', text);
+ val.insertAdjacentElement('afterend', btn);
+ }
+ });
+ }
+
+ onReady(()=>{
+ // hidden css for toggle
+ if(!document.getElementById('limitlists-hidden-style')){
+ const style = document.createElement('style');
+ style.id = 'limitlists-hidden-style';
+ style.textContent = '.is-hidden{display:none !important}';
+ document.head.appendChild(style);
+ }
+ // apply limiters
+ document.querySelectorAll('ul.limit-rows:not(.no-limit), ol.limit-rows:not(.no-limit)')
+ .forEach(applyToList);
+ document.querySelectorAll('table.limit-rows:not(.no-limit)')
+ .forEach(applyToTable);
+ applyTableCountLimit();
+
+ // modal + auto-wiring
+ wireModal();
+ addShowFullButtons();
+ // Re-check on resize
+ let resizeTimer; window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer = setTimeout(addShowFullButtons,150); });
+ });
+})();

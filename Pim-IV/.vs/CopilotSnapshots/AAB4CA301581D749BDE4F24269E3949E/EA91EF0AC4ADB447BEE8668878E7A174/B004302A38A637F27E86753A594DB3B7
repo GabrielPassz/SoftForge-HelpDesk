@@ -1,0 +1,40 @@
+﻿@model PIM_FINAL.Models.Chamado
+@{
+ ViewData["Title"] = "Detalhes do Chamado";
+ var mapCat = ViewBag.MapCategorias as System.Collections.Generic.Dictionary<int,string> ?? new();
+ var mapPri = ViewBag.MapPrioridades as System.Collections.Generic.Dictionary<int,string> ?? new();
+ var mapSta = ViewBag.MapStatus as System.Collections.Generic.Dictionary<int,string> ?? new();
+ var mapUsr = ViewBag.MapUsuarios as System.Collections.Generic.Dictionary<int,string> ?? new();
+ var mapSla = ViewBag.MapSlas as System.Collections.Generic.Dictionary<int,string> ?? new();
+}
+<h1>Detalhes</h1>
+<dl class="row">
+ <dt class="col-sm-3">Protocolo</dt>
+ <dd class="col-sm-9">@Model.Protocolo</dd>
+ <dt class="col-sm-3">Título</dt>
+ <dd class="col-sm-9">@Model.Titulo</dd>
+ <dt class="col-sm-3">Descrição</dt>
+ <dd class="col-sm-9">@Model.Descricao</dd>
+ <dt class="col-sm-3">Solicitante</dt>
+ <dd class="col-sm-9">@(Model.UsuarioSolicitanteId!=null && mapUsr.ContainsKey(Model.UsuarioSolicitanteId.Value)? mapUsr[Model.UsuarioSolicitanteId.Value]: Model.UsuarioSolicitanteId?.ToString())</dd>
+ <dt class="col-sm-3">Técnico Responsável</dt>
+ <dd class="col-sm-9">@(Model.TecnicoResponsavelId!=null && mapUsr.ContainsKey(Model.TecnicoResponsavelId.Value)? mapUsr[Model.TecnicoResponsavelId.Value]: Model.TecnicoResponsavelId?.ToString())</dd>
+ <dt class="col-sm-3">Categoria</dt>
+ <dd class="col-sm-9">@(Model.CategoriaId!=null && mapCat.ContainsKey(Model.CategoriaId.Value)? mapCat[Model.CategoriaId.Value]: Model.CategoriaId?.ToString())</dd>
+ <dt class="col-sm-3">Prioridade</dt>
+ <dd class="col-sm-9">@(Model.PrioridadeId!=null && mapPri.ContainsKey(Model.PrioridadeId.Value)? mapPri[Model.PrioridadeId.Value]: Model.PrioridadeId?.ToString())</dd>
+ <dt class="col-sm-3">Status</dt>
+ <dd class="col-sm-9">@(Model.StatusId!=null && mapSta.ContainsKey(Model.StatusId.Value)? mapSta[Model.StatusId.Value]: Model.StatusId?.ToString())</dd>
+ <dt class="col-sm-3">SLA</dt>
+ <dd class="col-sm-9">@(Model.SlaId!=null && mapSla.ContainsKey(Model.SlaId.Value)? mapSla[Model.SlaId.Value]: Model.SlaId?.ToString())</dd>
+ <dt class="col-sm-3">Data Abertura</dt>
+ <dd class="col-sm-9">@Model.DataAbertura</dd>
+ <dt class="col-sm-3">Data Fechamento</dt>
+ <dd class="col-sm-9">@Model.DataFechamento</dd>
+ <dt class="col-sm-3">SLA Atingido</dt>
+ <dd class="col-sm-9">@(Model.SlaAtingido?"Sim":"Não")</dd>
+</dl>
+<p>
+ <a asp-action="Edit" asp-route-id="@Model.ChamadoId">Edit</a> |
+ <a asp-action="Index">Back to List</a>
+</p>

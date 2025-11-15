@@ -1,0 +1,9 @@
+﻿namespace PIM_FINAL.Models
+{
+ public class PerfilUsuario
+ {
+ public int PerfilId { get; set; }
+ public string? NomePerfil { get; set; }
+ public string? Descricao { get; set; }
+ }
+}

@@ -1,0 +1,106 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims
+<link rel="stylesheet" href="/css/dbtestes.css" />
+
+@{
+ var roleClaim = User?.FindFirst(ClaimTypes.Role)?.Value;
+ int.TryParse(roleClaim, out var perfilId);
+ var isAuthenticated = User?.Identity?.IsAuthenticated ?? false;
+ var isAdmin = perfilId ==1;
+ var isGestor = perfilId ==2;
+ var isTecnico = perfilId ==3;
+ var isSolicitante = perfilId ==4;
+}
+
+<div class="db-header">
+ <header>
+ <div class="site-header">
+ <div class="site-brand">
+ <img src="/Images/Made%20with%20insMind-LogoBlack.png" alt="SoftForge" class="site-icon" />
+ </div>
+ <div class="site-title">
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </div>
+
+ <div class="site-menu">
+ <details class="menu-details">
+ <summary class="menu-summary">Menu ?</summary>
+ <nav class="menu-list">
+ @* Public / anonymous pages *@
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="InicialPainel">
+ <img src="/Images/IconeMenuPaginaInicial.png" class="site-icon" alt="Início"/> Início
+ </a>
+
+ @* Links available to all authenticated profiles and sometimes anonymous *@
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="AbrirChamado">
+ <img src="/Images/IconeMenuAbrirChamado.png" class="site-icon" alt="Abrir Chamado"/> Abrir Chamado
+ </a>
+
+ @if (isAuthenticated)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="MeusChamados">
+ <img src="/Images/IconeMenuMeusChamados.png" class="site-icon" alt="Meus Chamados"/> Meus Chamados
+ </a>
+ }
+
+ @* Técnico and above get Atendimento *@
+ @if (isTecnico || isGestor || isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Atendimento">
+ <img src="/Images/IconeMenuAtendimento.png" class="site-icon" alt="Atendimento"/> Atendimento
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Escalonamento">
+ <img src="/Images/IconeMenuEscalonamento.png" class="site-icon" alt="Escalonamento"/> Escalonamento
+ </a>
+ }
+
+ @* Dashboard and Relatórios for Gestor+ and Admin *@
+ @if (isGestor || isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="DashboardGestor">
+ <img src="/Images/IconeMenuDashboard.png" class="site-icon" alt="Dashboard"/> Dashboard
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Relatorios">
+ <img src="/Images/IconeMenuRelatorios.png" class="site-icon" alt="Relatórios"/> Relatórios
+ </a>
+ }
+
+ @* Administration only for Admin *@
+ @if (isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="GerenciarUsuarios">
+ <img src="/Images/IconeMenuGerenciar.png" class="site-icon" alt="Gerenciar"/> Gerenciar
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Configuracao">
+ <img src="/Images/IconeMenuGerenciar.png" class="site-icon" alt="Configuração"/> Configuração
+ </a>
+ }
+
+ @* Authentication actions *@
+ @if (!isAuthenticated)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Login">
+ <img src="/Images/IconeMenuSair.png" class="site-icon" alt="Login"/> Entrar
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Cadastro">
+ <img src="/Images/IconeMenuAbrirChamado.png" class="site-icon" alt="Cadastro"/> Solicitar Cadastro
+ </a>
+ }
+ else
+ {
+ <span class="menu-sep">Olá, @User.Identity.Name</span>
+ <form method="post" asp-controller="Site" asp-action="Logout" style="display:inline">
+ <button type="submit" class="btn btn-link">Sair</button>
+ </form>
+ }
+ </nav>
+ </details>
+ </div>
+ </div>
+ </header>
+</div>

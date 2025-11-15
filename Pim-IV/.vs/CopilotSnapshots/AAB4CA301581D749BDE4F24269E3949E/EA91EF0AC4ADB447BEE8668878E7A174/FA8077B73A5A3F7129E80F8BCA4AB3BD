@@ -1,0 +1,34 @@
+﻿@model PIM_FINAL.Models.Sla
+
+@{
+ ViewData["Title"] = "Editar SLA";
+ var prioridades = ViewBag.Prioridades as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var sel = ViewBag.SelectedPrioridade as string;
+}
+<h1>Editar</h1>
+<form asp-action="Edit" method="post">
+ <input type="hidden" asp-for="SlaId" />
+ <div class="form-group">
+ <label asp-for="NomeSla"></label>
+ <input asp-for="NomeSla" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="PrioridadeId">Prioridade</label>
+ <select asp-for="PrioridadeId" class="form-select">
+ @foreach (var p in prioridades){<option value="@p.Value" @(p.Value==sel?"selected":null)>@p.Text</option>}
+ </select>
+ </div>
+ <div class="form-group">
+ <label asp-for="TempoPrimeiraResposta"></label>
+ <input asp-for="TempoPrimeiraResposta" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="TempoMaximoResolucao"></label>
+ <input asp-for="TempoMaximoResolucao" class="form-control" />
+ </div>
+ <div class="form-group">
+ <label asp-for="Descricao"></label>
+ <input asp-for="Descricao" class="form-control" />
+ </div>
+ <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

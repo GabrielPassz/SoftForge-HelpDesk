@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PIM_FINAL.Models.Chamado>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atendimento - SoftForge HelpDesk</title>
+<link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid db-atendimento">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-overview">
+ <h2>Atendimento de Chamados</h2>
+ <p><strong>Técnico:</strong> @User.Identity.Name</p>
+ </section>
+
+ <section class="db-section db-andamento">
+ <h3>Chamados disponíveis/atribuídos</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Protocolo</th>
+ <th>Título</th>
+ <th>Prioridade</th>
+ <th>Categoria</th>
+ <th>Setor</th>
+ <th>Tempo Decorrido</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach(var c in Model)
+ {
+ <tr>
+ <td><strong>@(c.Protocolo ?? "#")</strong></td>
+ <td>@c.Titulo</td>
+ <td>@(c.Prioridade?.NomePrioridade ?? "-")</td>
+ <td>@(c.Categoria?.NomeCategoria ?? "-")</td>
+ <td>@(c.UsuarioSolicitante?.Departamento?.NomeDepartamento ?? "-")</td>
+ <td>@(c.DataAbertura?.ToLocalTime().ToString("g") ?? "-")</td>
+ <td>
+ <form method="post" asp-controller="Site" asp-action="IniciarAtendimento" style="display:inline">
+ <input type="hidden" name="chamado_id" value="@c.ChamadoId" />
+ <button type="submit" class="btn btn-primary btn-sm">Iniciar Atendimento</button>
+ </form>
+ <a asp-controller="Site" asp-action="DetalhesMeuChamado" asp-route-id="@c.ChamadoId">Ver Detalhes</a>
+ </td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ </section>
+
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+</body>
+</html>

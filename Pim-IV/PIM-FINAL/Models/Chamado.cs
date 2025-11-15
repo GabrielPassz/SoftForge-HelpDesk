@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace PIM_FINAL.Models
 {
+    [Table("chamado", Schema = "public")]
     public class Chamado
     {
         [Key]

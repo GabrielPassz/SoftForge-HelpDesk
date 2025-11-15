@@ -1,0 +1,207 @@
+﻿using Microsoft.EntityFrameworkCore;
+using PIM_FINAL.Models;
+
+namespace PIM_FINAL.Data
+{
+    public class PIMContext : DbContext
+    {
+        public PIMContext(DbContextOptions<PIMContext> options) : base(options) { }
+
+        public DbSet<Departamento> Departamentos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<PerfilUsuario> PerfisUsuario { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Prioridade> Prioridades { get; set; }
+        public DbSet<Sla> SLAs { get; set; }
+        public DbSet<StatusChamado> StatusChamados { get; set; }
+        public DbSet<BaseConhecimento> BasesConhecimento { get; set; }
+        public DbSet<Chamado> Chamados { get; set; }
+        public DbSet<Atendimento> Atendimentos { get; set; }
+        public DbSet<Anexo> Anexos { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<HistoricoChamado> HistoricosChamado { get; set; }
+        public DbSet<LogAcesso> LogsAcesso { get; set; }
+        public DbSet<IaAnalise> IAAnalises { get; set; }
+        public DbSet<Comunicacao> Comunicacoes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure relationships using dependent-side configuration to avoid requiring navigation properties
+
+            // Usuario -> Departamento (many-to-one)
+            modelBuilder.Entity<Usuario>()
+                .HasOne<Departamento>()
+                .WithMany()
+                .HasForeignKey(u => u.DepartamentoId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Usuario -> PerfilUsuario (many-to-one)
+            modelBuilder.Entity<Usuario>()
+                .HasOne<PerfilUsuario>()
+                .WithMany()
+                .HasForeignKey(u => u.PerfilId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // BaseConhecimento -> Categoria (many-to-one)
+            modelBuilder.Entity<BaseConhecimento>()
+                .HasOne<Categoria>()
+                .WithMany()
+                .HasForeignKey(b => b.CategoriaId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // BaseConhecimento -> Usuario (criador)
+            modelBuilder.Entity<BaseConhecimento>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(b => b.UsuarioCriadorId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> Usuario (solicitante)
+            modelBuilder.Entity<Chamado>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(c => c.UsuarioSolicitanteId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> Usuario (técnico)
+            modelBuilder.Entity<Chamado>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(c => c.TecnicoResponsavelId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> Categoria
+            modelBuilder.Entity<Chamado>()
+                .HasOne<Categoria>()
+                .WithMany()
+                .HasForeignKey(c => c.CategoriaId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> Prioridade
+            modelBuilder.Entity<Chamado>()
+                .HasOne<Prioridade>()
+                .WithMany()
+                .HasForeignKey(c => c.PrioridadeId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> StatusChamado
+            modelBuilder.Entity<Chamado>()
+                .HasOne<StatusChamado>()
+                .WithMany()
+                .HasForeignKey(c => c.StatusId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Chamado -> Sla
+            modelBuilder.Entity<Chamado>()
+                .HasOne<Sla>()
+                .WithMany()
+                .HasForeignKey(c => c.SlaId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Atendimento -> Chamado
+            modelBuilder.Entity<Atendimento>()
+                .HasOne<Chamado>()
+                .WithMany()
+                .HasForeignKey(a => a.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Atendimento -> Usuario (técnico)
+            modelBuilder.Entity<Atendimento>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(a => a.UsuarioTecnicoId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Anexo -> Chamado
+            modelBuilder.Entity<Anexo>()
+                .HasOne<Chamado>()
+                .WithMany()
+                .HasForeignKey(a => a.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Anexo -> Usuario
+            modelBuilder.Entity<Anexo>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(a => a.UsuarioId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Avaliacao -> Chamado (one-to-one)
+            modelBuilder.Entity<Avaliacao>()
+                .HasOne<Chamado>()
+                .WithOne()
+                .HasForeignKey<Avaliacao>(a => a.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Avaliacao -> Usuario (solicitante)
+            modelBuilder.Entity<Avaliacao>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(a => a.UsuarioSolicitanteId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // HistoricoChamado -> Chamado
+            modelBuilder.Entity<HistoricoChamado>()
+                .HasOne<Chamado>()
+                .WithMany()
+                .HasForeignKey(h => h.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // HistoricoChamado -> Usuario
+            modelBuilder.Entity<HistoricoChamado>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(h => h.UsuarioId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // HistoricoChamado -> StatusChamado (anterior)
+            modelBuilder.Entity<HistoricoChamado>()
+                .HasOne<StatusChamado>()
+                .WithMany()
+                .HasForeignKey(h => h.StatusAnteriorId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // HistoricoChamado -> StatusChamado (novo)
+            modelBuilder.Entity<HistoricoChamado>()
+                .HasOne<StatusChamado>()
+                .WithMany()
+                .HasForeignKey(h => h.StatusNovoId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // LogAcesso -> Usuario
+            modelBuilder.Entity<LogAcesso>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(l => l.UsuarioId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // IaAnalise -> Chamado
+            modelBuilder.Entity<IaAnalise>()
+                .HasOne<Chamado>()
+                .WithMany()
+                .HasForeignKey(ia => ia.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Comunicacao -> Chamado
+            modelBuilder.Entity<Comunicacao>()
+                .HasOne<Chamado>()
+                .WithMany()
+                .HasForeignKey(c => c.ChamadoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Comunicacao -> Usuario
+            modelBuilder.Entity<Comunicacao>()
+                .HasOne<Usuario>()
+                .WithMany()
+                .HasForeignKey(c => c.UsuarioId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Optional: enforce unique Avaliacao.ChamadoId
+            modelBuilder.Entity<Avaliacao>()
+                .HasIndex(a => a.ChamadoId)
+                .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}

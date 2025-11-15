@@ -1,0 +1,9 @@
+﻿namespace PIM_FINAL.Models
+{
+ public class Departamento
+ {
+ public int DepartamentoId { get; set; }
+ public string? NomeDepartamento { get; set; }
+ public string? Descricao { get; set; }
+ }
+}

@@ -1,0 +1,69 @@
+﻿@model PIM_FINAL.Models.EditUsuarioViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Editar Usuário - SoftForge HelpDesk</title>
+<link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-overview">
+ <h2>Editar Usuário</h2>
+ </section>
+
+ <section class="db-section db-form">
+ <form method="post" asp-controller="Site" asp-action="EditarUsuario" asp-route-id="@Model.UsuarioId">
+ <div class="mb-3">
+ <label for="NomeCompleto">Nome completo</label>
+ <input type="text" id="NomeCompleto" name="NomeCompleto" value="@Model.NomeCompleto" required class="form-control" />
+ </div>
+ <div class="mb-3">
+ <label for="Email">E-mail</label>
+ <input type="email" id="Email" name="Email" value="@Model.Email" required class="form-control" />
+ </div>
+ <div class="mb-3">
+ <label for="PerfilId">Perfil</label>
+ <select id="PerfilId" name="PerfilId" class="form-select">
+ <option value="">(não definido)</option>
+ @foreach(var p in Model.Perfis)
+ {
+ <option value="@p.Value" @(p.Value == (Model.PerfilId?.ToString() ?? "") ? "selected" : "")>@p.Text</option>
+ }
+ </select>
+ </div>
+ <div class="mb-3">
+ <label for="DepartamentoId">Departamento</label>
+ <select id="DepartamentoId" name="DepartamentoId" class="form-select">
+ <option value="">(não definido)</option>
+ @foreach(var d in Model.Departamentos)
+ {
+ <option value="@d.Value" @(d.Value == (Model.DepartamentoId?.ToString() ?? "") ? "selected" : "")>@d.Text</option>
+ }
+ </select>
+ </div>
+ <div class="mb-3">
+ <label for="NewPassword">Nova senha (opcional)</label>
+ <input type="password" id="NewPassword" name="NewPassword" class="form-control" />
+ </div>
+ <div class="db-actions">
+ <button type="submit" class="btn btn-primary">Salvar</button>
+ <a class="btn btn-secondary" href="/Site/GerenciarUsuarios">Cancelar</a>
+ </div>
+ </form>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+</body>
+</html>

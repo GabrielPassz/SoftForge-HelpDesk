@@ -1,307 +1,91 @@
-@page
+ï»¿@model IEnumerable<PIM_FINAL.Models.Chamado>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* PÃ¡gina MeusChamados: resumo, filtros (status, prioridade, busca), listagem dos chamados do usuÃ¡rio. *@
 <!DOCTYPE html>
 <html lang="pt-BR">
- <head>
+<head>
  <meta charset="utf-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>Meus Chamados - SoftForge HelpDesk</title>
  <link rel="stylesheet" href="/css/dbtestes.css" />
- </head>
- <body>
- <div class="db-page container-fluid db-meus-chamados">
- <div class="db-header">
- <header>
- <h1>SoftForge HelpDesk</h1>
- <p>Sistema Inteligente de Gestão de Chamados</p>
- </header>
- </div>
-
-<div class="db-nav">
- <nav>
- <a asp-page="/site/InicialPainel">Início</a> |
- <a asp-page="/site/AbrirChamado">Abrir Chamado</a> |
- <a asp-page="/site/MeusChamados">Meus Chamados</a> |
- <a asp-page="/site/Atendimento">Atendimento</a> |
- <a asp-page="/site/Escalonamento">Escalonamento</a> |
- <a asp-page="/site/DashboardGestor">Dashboard</a> |
- <a asp-page="/site/Relatorios">Relatórios</a> |
- <a asp-page="/site/GerenciarUsuarios">Gerenciar</a> |
- <a asp-page="/site/Configuracao">Configuração</a>
- </nav>
- </div>
+</head>
+<body>
+<div class="db-page container-fluid db-meuschamados">
+ @await Html.PartialAsync("_HeaderNav")
 
  <main class="db-content">
- <section class="db-section db-intro">
+ <section class="db-section db-overview"> @* CabeÃ§alho *@
  <h2>Meus Chamados</h2>
- <p><strong>Solicitante:</strong> [Nome do Usuário]</p>
- <p><strong>Departamento:</strong> [Financeiro / RH / TI / etc]</p>
+ <p><strong>OlÃ¡,</strong> @User.Identity.Name</p>
+ <p><a asp-controller="Site" asp-action="AbrirChamado" class="btn btn-primary">Abrir Novo Chamado</a></p>
  </section>
 
- <section class="db-section db-resumo">
+ <section class="db-section db-abertos"> @* Resumo numÃ©rico *@
  <h3>Resumo</h3>
- <table class="table table-bordered">
- <tr>
- <th>Status</th>
- <th>Quantidade</th>
- </tr>
- <tr>
- <td>Abertos</td>
- <td>3</td>
- </tr>
- <tr>
- <td>Em Atendimento</td>
- <td>2</td>
- </tr>
- <tr>
- <td>Aguardando Validação</td>
- <td>1</td>
- </tr>
- <tr>
- <td>Fechados (últimos30 dias)</td>
- <td>8</td>
- </tr>
+ <table class="table table-bordered w-100 db-summary-table limit-rows" data-limit="3">
+ <thead><tr><th>Campo</th><th>Quantidade</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Campo">Abertos:</td><td data-label="Abertos:"><span class="cell-val">@Model.Count(x => x.StatusId == null || x.StatusChamado?.NomeStatus == "Aberto")</span></td></tr>
+ <tr><td data-label="Campo">Em atendimento:</td><td data-label="Em atendimento:"><span class="cell-val">@Model.Count(x => x.StatusChamado?.NomeStatus != null && x.StatusChamado.NomeStatus.ToLower().Contains("atendimento"))</span></td></tr>
+ <tr><td data-label="Campo">Aguardando validaÃ§Ã£o:</td><td data-label="Aguardando validaÃ§Ã£o:"><span class="cell-val">@Model.Count(x => x.StatusChamado?.NomeStatus != null && x.StatusChamado.NomeStatus.ToLower().Contains("validaÃ§Ã£o"))</span></td></tr>
+ <tr><td data-label="Campo">Fechados:</td><td data-label="Fechados:"><span class="cell-val">@Model.Count(x => x.DataFechamento != null && x.DataFechamento.Value > DateTime.UtcNow.AddDays(-30))</span></td></tr>
+ </tbody>
  </table>
  </section>
 
- <section class="db-section db-filtros">
+ <section class="db-section db-filtros"> @* FormulÃ¡rio de filtros *@
  <h3>Filtros</h3>
- <form method="get" asp-page="/site/MeusChamados">
- <!-- filters -->
+ <form method="get" asp-controller="Site" asp-action="MeusChamados">
  <label for="filtro_status">Status:</label>
  <select id="filtro_status" name="status">
  <option value="">Todos</option>
  <option value="aberto">Aberto</option>
  <option value="em_atendimento">Em Atendimento</option>
- <option value="aguardando_validacao">Aguardando Validação</option>
+ <option value="aguardando_validacao">Aguardando ValidaÃ§Ã£o</option>
  <option value="fechado">Fechado</option>
  </select>
-
+ <script>(function(){/* restaura seleÃ§Ã£o status */var v='@ViewBag.StatusFilter';if(v){var sel=document.getElementById('filtro_status');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
  <label for="filtro_prioridade">Prioridade:</label>
  <select id="filtro_prioridade" name="prioridade">
  <option value="">Todas</option>
- <option value="critica">Crítica</option>
+ <option value="critica">CrÃ­tica</option>
  <option value="alta">Alta</option>
- <option value="media">Média</option>
+ <option value="media">MÃ©dia</option>
  <option value="baixa">Baixa</option>
  </select>
-
+ <script>(function(){/* restaura seleÃ§Ã£o prioridade */var v='@ViewBag.PrioridadeFilter';if(v){var sel=document.getElementById('filtro_prioridade');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
  <label for="busca">Buscar:</label>
- <input type="text" id="busca" name="busca" placeholder="Protocolo ou palavra-chave" />
-
+ <input type="text" id="busca" name="busca" placeholder="Protocolo ou palavra-chave" value="@ViewBag.BuscaFilter" />
  <button type="submit" class="btn btn-primary">Filtrar</button>
  </form>
  </section>
 
- <section class="db-section db-abertos">
- <h3>Chamados Abertos</h3>
- <p>Chamados aguardando atendimento</p>
- <p><em>Total:3 chamados</em></p>
- <table class="table table-bordered w-100">
- <!-- table rows -->
- <thead>
- <tr>
- <th>Protocolo</th>
- <th>Título</th>
- <th>Categoria</th>
- <th>Prioridade</th>
- <th>Data Abertura</th>
- <th>Status</th>
- <th>Ações</th>
- </tr>
- </thead>
+ <section class="db-section db-abertos"> @* Listagem *@
+ <h3>Chamados</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Protocolo</th><th>TÃ­tulo</th><th>Categoria</th><th>Prioridade</th><th>Data Abertura</th><th>Status</th><th>AÃ§Ãµes</th></tr></thead>
  <tbody>
+ @foreach (var c in Model)
+ {
  <tr>
- <td><strong>#CHAM-2025-089</strong></td>
- <td>Computador não liga</td>
- <td>Hardware</td>
- <td><strong>ALTA</strong></td>
- <td>15/01/202514:30</td>
- <td>Aberto</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="089">Ver Detalhes</a>
- </td>
+ <td data-label="Protocolo" class="cell-val"><strong>@(c.Protocolo ?? "#")</strong></td>
+ <td data-label="TÃ­tulo" class="cell-val">@c.Titulo</td>
+ <td data-label="Categoria" class="cell-val">@(c.Categoria?.NomeCategoria ?? "-")</td>
+ <td data-label="Prioridade" class="cell-val">@(c.Prioridade?.NomePrioridade ?? "-")</td>
+ <td data-label="Data Abertura" class="cell-val">@(c.DataAbertura?.ToLocalTime().ToString("g") ?? "-")</td>
+ <td data-label="Status" class="cell-val">@(c.StatusChamado?.NomeStatus ?? "-")</td>
+ <td data-label="AÃ§Ãµes" class="cell-val"><a asp-controller="Site" asp-action="DetalhesMeuChamado" asp-route-id="@c.ChamadoId" class="btn btn-primary btn-sm">Ver detalhes</a></td>
  </tr>
- <tr>
- <td><strong>#CHAM-2025-092</strong></td>
- <td>Reset de senha</td>
- <td>Acesso</td>
- <td>MÉDIA</td>
- <td>15/01/202510:15</td>
- <td>Aberto</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="092">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td><strong>#CHAM-2025-095</strong></td>
- <td>Instalação de software</td>
- <td>Software</td>
- <td>BAIXA</td>
- <td>14/01/202516:45</td>
- <td>Aberto</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="095">Ver Detalhes</a>
- </td>
- </tr>
+ }
  </tbody>
  </table>
- </section>
-
- <section class="db-section db-andamento">
- <h3>Chamados em Atendimento</h3>
- <p>Chamados que estão sendo atendidos pelo técnico</p>
- <p><em>Total:2 chamados</em></p>
- <table class="table table-bordered w-100">
- <!-- table rows -->
- <thead>
- <tr>
- <th>Protocolo</th>
- <th>Título</th>
- <th>Categoria</th>
- <th>Prioridade</th>
- <th>Técnico</th>
- <th>Última Atualização</th>
- <th>Ações</th>
- </tr>
- </thead>
- <tbody>
- <tr>
- <td><strong>#CHAM-2025-085</strong></td>
- <td>Impressora não imprime</td>
- <td>Impressora</td>
- <td><strong>ALTA</strong></td>
- <td>Carlos Oliveira</td>
- <td>15/01/202513:20</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="085">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td><strong>#CHAM-2025-087</strong></td>
- <td>Erro no sistema</td>
- <td>Software</td>
- <td>MÉDIA</td>
- <td>Maria Souza</td>
- <td>15/01/202511:45</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="087">Ver Detalhes</a>
- </td>
- </tr>
- </tbody>
- </table>
- </section>
-
- <section class="db-section db-validacao">
- <h3>Chamados Aguardando Validação</h3>
- <p>Chamados resolvidos pelo técnico, aguardando sua confirmação</p>
- <p><em>Total:1 chamado</em></p>
- <table class="table table-bordered w-100">
- <!-- table rows -->
- <thead>
- <tr>
- <th>Protocolo</th>
- <th>Título</th>
- <th>Categoria</th>
- <th>Técnico</th>
- <th>Data Resolução</th>
- <th>Ações</th>
- </tr>
- </thead>
- <tbody>
- <tr style="background-color: #ffffcc">
- <td><strong>#CHAM-2025-080</strong></td>
- <td>Problema na rede</td>
- <td>Rede</td>
- <td>João Ferreira</td>
- <td>15/01/202509:30</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="080"><strong>Ver e Avaliar</strong></a>
- </td>
- </tr>
- </tbody>
- </table>
- </section>
-
- <section class="db-section db-fechados">
- <h3>Chamados Fechados (últimos30 dias)</h3>
- <p><em>Total:8 chamados</em></p>
- <table class="table table-bordered w-100">
- <!-- table rows -->
- <thead>
- <tr>
- <th>Protocolo</th>
- <th>Título</th>
- <th>Categoria</th>
- <th>Data Fechamento</th>
- <th>Avaliação</th>
- <th>Ações</th>
- </tr>
- </thead>
- <tbody>
- <tr>
- <td><strong>#CHAM-2025-075</strong></td>
- <td>Atualização de sistema</td>
- <td>Software</td>
- <td>14/01/2025</td>
- <td>????? (5/5)</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="075">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td><strong>#CHAM-2025-072</strong></td>
- <td>Troca de mouse</td>
- <td>Hardware</td>
- <td>13/01/2025</td>
- <td>???? (4/5)</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="072">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td><strong>#CHAM-2025-068</strong></td>
- <td>Configuração de e-mail</td>
- <td>Acesso</td>
- <td>12/01/2025</td>
- <td>????? (5/5)</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="068">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td><strong>#CHAM-2025-065</strong></td>
- <td>Problema de impressão</td>
- <td>Impressora</td>
- <td>11/01/2025</td>
- <td>??? (3/5)</td>
- <td>
- <a asp-page="/site/DetalhesMeuChamado" asp-route-id="065">Ver Detalhes</a>
- </td>
- </tr>
- <tr>
- <td colspan="6" align="center">
- <a href="#">Ver todos os chamados fechados</a>
- </td>
- </tr>
- </tbody>
- </table>
- </section>
-
- <section class="db-section db-abrir">
- <h3>Abrir Novo Chamado</h3>
- <p>
- Precisa de ajuda?
- <a asp-page="/site/AbrirChamado"><strong>Clique aqui para abrir um novo chamado</strong></a>
- </p>
  </section>
  </main>
 
  <div class="db-footer">
- <footer>
- <p>©2025 SoftForge - Todos os direitos reservados</p>
- </footer>
+ <footer><p>Â©2025 SoftForge - Todos os direitos reservados</p></footer>
  </div>
- </div>
- </body>
+</div>
+</body>
 </html>

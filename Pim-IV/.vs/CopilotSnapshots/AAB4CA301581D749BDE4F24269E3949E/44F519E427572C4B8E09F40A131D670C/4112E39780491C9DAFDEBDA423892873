@@ -1,0 +1,596 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<div class="db-page container-fluid">
+   @await Html.PartialAsync("_HeaderNav")
+
+    <main class="db-content">
+        <section class="db-section db-intro">
+ <h2>Relatórios e KPIs</h2>
+ <p><strong>Gestor/Administrador:</strong> @User?.Identity?.Name</p>
+ </section>
+
+ <section class="db-section">
+ <h3>Tipos de Relatórios Disponíveis</h3>
+ <ul>
+ <li><a href="#rel_geral">Relatório Geral de Chamados</a></li>
+ <li><a href="#rel_tecnico">Relatório por Técnico</a></li>
+ <li><a href="#rel_departamento">Relatório por Departamento</a></li>
+ <li><a href="#rel_categoria">Relatório por Categoria</a></li>
+ <li><a href="#rel_sla">Relatório de SLA</a></li>
+ <li><a href="#rel_satisfacao">Relatório de Satisfação</a></li>
+ </ul>
+ </section>
+
+ <!-- FILTROS AVANÇADOS -->
+ <section class="db-section">
+ <h3>Filtros Avançados</h3>
+ <form method="post" asp-page-handler="GerarRelatorio">
+ <fieldset>
+ <legend>Período</legend>
+
+ <input type="radio" id="periodo_hoje" name="tipo_periodo" value="hoje" checked />
+ <label for="periodo_hoje">Hoje</label>
+
+ <input type="radio" id="periodo_semana" name="tipo_periodo" value="semana" />
+ <label for="periodo_semana">Esta Semana</label>
+
+ <input type="radio" id="periodo_mes" name="tipo_periodo" value="mes" />
+ <label for="periodo_mes">Este Mês</label>
+
+ <input type="radio" id="periodo_personalizado" name="tipo_periodo" value="personalizado" />
+ <label for="periodo_personalizado">Personalizado</label><br /><br />
+
+ <label for="data_inicio">Data Início:</label>
+ <input type="date" id="data_inicio" name="data_inicio" />
+
+ <label for="data_fim">Data Fim:</label>
+ <input type="date" id="data_fim" name="data_fim" /><br /><br />
+ </fieldset>
+
+ <fieldset>
+ <legend>Filtros de Chamados</legend>
+
+ <label>Status:</label><br />
+ <input type="checkbox" id="status_aberto" name="status" value="aberto" />
+ <label for="status_aberto">Aberto</label><br />
+
+ <input type="checkbox" id="status_em_atendimento" name="status" value="em_atendimento" />
+ <label for="status_em_atendimento">Em Atendimento</label><br />
+
+ <input type="checkbox" id="status_aguardando" name="status" value="aguardando_validacao" />
+ <label for="status_aguardando">Aguardando Validação</label><br />
+
+ <input type="checkbox" id="status_resolvido" name="status" value="resolvido" />
+ <label for="status_resolvido">Resolvido</label><br />
+
+ <input type="checkbox" id="status_fechado" name="status" value="fechado" />
+ <label for="status_fechado">Fechado</label><br />
+
+ <input type="checkbox" id="status_cancelado" name="status" value="cancelado" />
+ <label for="status_cancelado">Cancelado</label><br /><br />
+
+ <label>Prioridade:</label><br />
+ <input type="checkbox" id="prioridade_critica" name="prioridade" value="critica" />
+ <label for="prioridade_critica">Crítica</label><br />
+
+ <input type="checkbox" id="prioridade_alta" name="prioridade" value="alta" />
+ <label for="prioridade_alta">Alta</label><br />
+
+ <input type="checkbox" id="prioridade_media" name="prioridade" value="media" />
+ <label for="prioridade_media">Média</label><br />
+
+ <input type="checkbox" id="prioridade_baixa" name="prioridade" value="baixa" />
+ <label for="prioridade_baixa">Baixa</label><br /><br />
+
+ <label>Categoria:</label><br />
+ <input type="checkbox" id="categoria_hardware" name="categoria" value="hardware" />
+ <label for="categoria_hardware">Hardware</label><br />
+
+ <input type="checkbox" id="categoria_software" name="categoria" value="software" />
+ <label for="categoria_software">Software</label><br />
+
+ <input type="checkbox" id="categoria_rede" name="categoria" value="rede" />
+ <label for="categoria_rede">Rede</label><br />
+
+ <input type="checkbox" id="categoria_acesso" name="categoria" value="acesso" />
+ <label for="categoria_acesso">Acesso</label><br />
+
+ <input type="checkbox" id="categoria_impressora" name="categoria" value="impressora" />
+ <label for="categoria_impressora">Impressora</label><br /><br />
+
+ <label for="filtro_departamento">Departamento:</label>
+ <select id="filtro_departamento" name="departamento">
+ <option value="">Todos</option>
+ <option value="ti">TI</option>
+ <option value="rh">RH</option>
+ <option value="financeiro">Financeiro</option>
+ <option value="marketing">Marketing</option>
+ <option value="administrativo">Administrativo</option>
+ </select><br /><br />
+
+ <label for="filtro_tecnico">Técnico:</label>
+ <select id="filtro_tecnico" name="tecnico">
+ <option value="">Todos</option>
+ <option value="maria">Maria Souza (N1)</option>
+ <option value="carlos">Carlos Oliveira (N2)</option>
+ <option value="ana">Ana Lima (N1)</option>
+ <option value="joao">João Ferreira (N2)</option>
+ <option value="paula">Paula Martins (N3)</option>
+ </select><br /><br />
+ </fieldset>
+
+ <fieldset>
+ <legend>Opções de Relatório</legend>
+
+ <label for="tipo_relatorio">Tipo de Relatório:</label>
+ <select id="tipo_relatorio" name="tipo_relatorio" required>
+ <option value="">Selecione...</option>
+ <option value="geral">Relatório Geral</option>
+ <option value="detalhado">Relatório Detalhado</option>
+ <option value="sintetico">Relatório Sintético</option>
+ <option value="analitico">Relatório Analítico</option>
+ </select><br /><br />
+
+ <input type="checkbox" id="incluir_graficos" name="incluir_graficos" checked />
+ <label for="incluir_graficos">Incluir Gráficos</label><br />
+
+ <input type="checkbox" id="incluir_kpis" name="incluir_kpis" checked />
+ <label for="incluir_kpis">Incluir KPIs</label><br />
+
+ <input type="checkbox" id="incluir_detalhes" name="incluir_detalhes" />
+ <label for="incluir_detalhes">Incluir Detalhes dos Chamados</label><br />
+
+ <input type="checkbox" id="incluir_avaliacoes" name="incluir_avaliacoes" />
+ <label for="incluir_avaliacoes">Incluir Avaliações</label><br /><br />
+
+ <label for="formato_exportacao">Formato de Exportação:</label>
+ <select id="formato_exportacao" name="formato_exportacao" required>
+ <option value="">Selecione...</option>
+ <option value="pdf">PDF</option>
+ <option value="excel">Excel (XLSX)</option>
+ <option value="csv">CSV</option>
+ <option value="html">HTML</option>
+ </select><br /><br />
+ </fieldset>
+
+ <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+ <button type="reset" class="btn btn-secondary">Limpar Filtros</button>
+ </form>
+ </section>
+
+ <!-- RELATÓRIO GERAL -->
+ <section id="rel_geral" class="db-section">
+ <h3>Relatório Geral de Chamados</h3>
+ <p><strong>Período:</strong>01/10/2025 a26/10/2025</p>
+
+ <h4>Resumo Executivo</h4>
+ <table class="table table-bordered w-100">
+ <tr>
+ <th>Indicador</th>
+ <th>Valor</th>
+ </tr>
+ <tr>
+ <td>Total de Chamados Abertos</td>
+ <td>287</td>
+ </tr>
+ <tr>
+ <td>Chamados Resolvidos</td>
+ <td>265</td>
+ </tr>
+ <tr>
+ <td>Chamados em Aberto</td>
+ <td>22</td>
+ </tr>
+ <tr>
+ <td>Taxa de Resolução</td>
+ <td>92.3%</td>
+ </tr>
+ <tr>
+ <td>Tempo Médio de Resolução</td>
+ <td>4h35min</td>
+ </tr>
+ <tr>
+ <td>SLA Cumprido</td>
+ <td>94%</td>
+ </tr>
+ <tr>
+ <td>Satisfação Média</td>
+ <td>4.6/5.0 ?</td>
+ </tr>
+ </table>
+
+ <h4>Chamados por Status</h4>
+ <table class="table table-bordered w-100">
+ <tr>
+ <th>Status</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ </tr>
+ <tr>
+ <td>Aberto</td>
+ <td>7</td>
+ <td>2.4%</td>
+ </tr>
+ <tr>
+ <td>Em Atendimento</td>
+ <td>15</td>
+ <td>5.2%</td>
+ </tr>
+ <tr>
+ <td>Resolvido</td>
+ <td>265</td>
+ <td>92.3%</td>
+ </tr>
+ </table>
+
+ <h4>Chamados por Prioridade</h4>
+ <table class="table table-bordered w-100">
+ <tr>
+ <th>Prioridade</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ <th>Tempo Médio</th>
+ </tr>
+ <tr>
+ <td>Crítica</td>
+ <td>23</td>
+ <td>8.0%</td>
+ <td>3h15min</td>
+ </tr>
+ <tr>
+ <td>Alta</td>
+ <td>78</td>
+ <td>27.2%</td>
+ <td>5h20min</td>
+ </tr>
+ <tr>
+ <td>Média</td>
+ <td>156</td>
+ <td>54.4%</td>
+ <td>8h45min</td>
+ </tr>
+ <tr>
+ <td>Baixa</td>
+ <td>30</td>
+ <td>10.5%</td>
+ <td>24h10min</td>
+ </tr>
+ </table>
+ </section>
+
+ <!-- RELATÓRIO POR TÉCNICO -->
+ <section id="rel_tecnico" class="db-section">
+ <h3>Relatório por Técnico</h3>
+ <table class="table table-striped w-100">
+ <thead>
+ <tr>
+ <th>Técnico</th>
+ <th>Nível</th>
+ <th>Total Atendidos</th>
+ <th>Resolvidos</th>
+ <th>Em Andamento</th>
+ <th>Taxa Resolução</th>
+ <th>Tempo Médio</th>
+ <th>SLA Cumprido</th>
+ <th>Avaliação</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Maria Souza</td>
+ <td>N1</td>
+ <td>58</td>
+ <td>53</td>
+ <td>5</td>
+ <td>91%</td>
+ <td>3h45min</td>
+ <td>95%</td>
+ <td>4.5 ?</td>
+ </tr>
+ <tr>
+ <td>Carlos Oliveira</td>
+ <td>N2</td>
+ <td>72</td>
+ <td>68</td>
+ <td>4</td>
+ <td>94%</td>
+ <td>5h10min</td>
+ <td>93%</td>
+ <td>4.8 ?</td>
+ </tr>
+ <tr>
+ <td>Ana Lima</td>
+ <td>N1</td>
+ <td>45</td>
+ <td>42</td>
+ <td>3</td>
+ <td>93%</td>
+ <td>3h20min</td>
+ <td>96%</td>
+ <td>4.6 ?</td>
+ </tr>
+ <tr>
+ <td>João Ferreira</td>
+ <td>N2</td>
+ <td>65</td>
+ <td>60</td>
+ <td>5</td>
+ <td>92%</td>
+ <td>6h00min</td>
+ <td>91%</td>
+ <td>4.4 ?</td>
+ </tr>
+ <tr>
+ <td>Paula Martins</td>
+ <td>N3</td>
+ <td>47</td>
+ <td>42</td>
+ <td>5</td>
+ <td>89%</td>
+ <td>8h30min</td>
+ <td>94%</td>
+ <td>4.9 ?</td>
+ </tr>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td colspan="2"><strong>TOTAL</strong></td>
+ <td><strong>287</strong></td>
+ <td><strong>265</strong></td>
+ <td><strong>22</strong></td>
+ <td><strong>92.3%</strong></td>
+ <td><strong>4h35min</strong></td>
+ <td><strong>94%</strong></td>
+ <td><strong>4.6 ?</strong></td>
+ </tr>
+ </tfoot>
+ </table>
+ </section>
+
+ <!-- RELATÓRIO POR DEPARTAMENTO -->
+ <section id="rel_departamento" class="db-section">
+ <h3>Relatório por Departamento</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Departamento</th>
+ <th>Total Chamados</th>
+ <th>Resolvidos</th>
+ <th>Taxa Resolução</th>
+ <th>Tempo Médio</th>
+ <th>Satisfação</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>TI</td>
+ <td>98</td>
+ <td>92</td>
+ <td>94%</td>
+ <td>3h50min</td>
+ <td>4.7 ?</td>
+ </tr>
+ <tr>
+ <td>RH</td>
+ <td>52</td>
+ <td>48</td>
+ <td>92%</td>
+ <td>4h20min</td>
+ <td>4.5 ?</td>
+ </tr>
+ <tr>
+ <td>Financeiro</td>
+ <td>67</td>
+ <td>61</td>
+ <td>91%</td>
+ <td>5h10min</td>
+ <td>4.6 ?</td>
+ </tr>
+ <tr>
+ <td>Marketing</td>
+ <td>45</td>
+ <td>42</td>
+ <td>93%</td>
+ <td>4h45min</td>
+ <td>4.8 ?</td>
+ </tr>
+ <tr>
+ <td>Administrativo</td>
+ <td>25</td>
+ <td>22</td>
+ <td>88%</td>
+ <td>6h00min</td>
+ <td>4.3 ?</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <!-- RELATÓRIO POR CATEGORIA -->
+ <section id="rel_categoria" class="db-section">
+ <h3>Relatório por Categoria</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Categoria</th>
+ <th>Total</th>
+ <th>Percentual</th>
+ <th>Resolvidos</th>
+ <th>Tempo Médio</th>
+ <th>SLA Cumprido</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Software</td>
+ <td>102</td>
+ <td>35.5%</td>
+ <td>95</td>
+ <td>5h45min</td>
+ <td>92%</td>
+ </tr>
+ <tr>
+ <td>Hardware</td>
+ <td>78</td>
+ <td>27.2%</td>
+ <td>72</td>
+ <td>3h20min</td>
+ <td>96%</td>
+ </tr>
+ <tr>
+ <td>Rede</td>
+ <td>56</td>
+ <td>19.5%</td>
+ <td>52</td>
+ <td>4h10min</td>
+ <td>93%</td>
+ </tr>
+ <tr>
+ <td>Acesso</td>
+ <td>34</td>
+ <td>11.8%</td>
+ <td>32</td>
+ <td>1h30min</td>
+ <td>97%</td>
+ </tr>
+ <tr>
+ <td>Impressora</td>
+ <td>17</td>
+ <td>5.9%</td>
+ <td>14</td>
+ <td>2h50min</td>
+ <td>95%</td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <!-- RELATÓRIO DE SLA -->
+ <section id="rel_sla" class="db-section">
+ <h3>Relatório de Cumprimento de SLA</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Prioridade</th>
+ <th>Total</th>
+ <th>SLA Cumprido</th>
+ <th>SLA Violado</th>
+ <th>Taxa Cumprimento</th>
+ <th>Média Violação</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Crítica</td>
+ <td>23</td>
+ <td>22</td>
+ <td>1</td>
+ <td>96%</td>
+ <td>45min</td>
+ </tr>
+ <tr>
+ <td>Alta</td>
+ <td>78</td>
+ <td>73</td>
+ <td>5</td>
+ <td>94%</td>
+ <td>1h20min</td>
+ </tr>
+ <tr>
+ <td>Média</td>
+ <td>156</td>
+ <td>145</td>
+ <td>11</td>
+ <td>93%</td>
+ <td>3h10min</td>
+ </tr>
+ <tr>
+ <td>Baixa</td>
+ <td>30</td>
+ <td>27</td>
+ <td>3</td>
+ <td>90%</td>
+ <td>8h30min</td>
+ </tr>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td><strong>TOTAL GERAL</strong></td>
+ <td><strong>287</strong></td>
+ <td><strong>267</strong></td>
+ <td><strong>20</strong></td>
+ <td><strong>93%</strong></td>
+ <td>-</td>
+ </tr>
+ </tfoot>
+ </table>
+ </section>
+
+ <!-- RELATÓRIO DE SATISFAÇÃO -->
+ <section id="rel_satisfacao" class="db-section">
+ <h3>Relatório de Satisfação do Usuário</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Avaliação</th>
+ <th>Quantidade</th>
+ <th>Percentual</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>????? (5 estrelas)</td>
+ <td>145</td>
+ <td>54.7%</td>
+ </tr>
+ <tr>
+ <td>???? (4 estrelas)</td>
+ <td>82</td>
+ <td>30.9%</td>
+ </tr>
+ <tr>
+ <td>??? (3 estrelas)</td>
+ <td>28</td>
+ <td>10.6%</td>
+ </tr>
+ <tr>
+ <td>?? (2 estrelas)</td>
+ <td>8</td>
+ <td>3.0%</td>
+ </tr>
+ <tr>
+ <td>? (1 estrela)</td>
+ <td>2</td>
+ <td>0.8%</td>
+ </tr>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td><strong>TOTAL</strong></td>
+ <td><strong>265</strong></td>
+ <td><strong>100%</strong></td>
+ </tr>
+ </tfoot>
+ </table>
+ <p><strong>Média Geral:</strong>4.6/5.0 ?</p>
+ </section>
+
+ <section class="db-section">
+ <h3>Exportar Relatórios</h3>
+ <form method="post" asp-page-handler="ExportarCompleto">
+ <p>Exportar todos os relatórios acima em um único arquivo:</p>
+ <label for="formato_completo">Formato:</label>
+ <select id="formato_completo" name="formato">
+ <option value="pdf">PDF (Recomendado)</option>
+ <option value="excel">Excel</option>
+ <option value="zip">ZIP (Múltiplos Arquivos)</option>
+ </select>
+ <button type="submit" class="btn btn-primary">Exportar Tudo</button>
+ </form>
+ </section>
+
+    </main>
+</div>

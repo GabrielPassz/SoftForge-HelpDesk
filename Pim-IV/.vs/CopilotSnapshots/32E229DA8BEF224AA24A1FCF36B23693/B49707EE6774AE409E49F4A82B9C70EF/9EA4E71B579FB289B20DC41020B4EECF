@@ -1,0 +1,112 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims @* Acesso a tipos de claims *@
+<link rel="stylesheet" href="/css/dbtestes.css" /> @* Estilos para header/menu *@
+
+@{
+ var roleClaim = User?.FindFirst(ClaimTypes.Role)?.Value; // Obtém claim do perfil numérico
+ int.TryParse(roleClaim, out var perfilId); // Converte claim para inteiro
+ var isAuthenticated = User?.Identity?.IsAuthenticated ?? false; // Verifica se usuário está autenticado
+ // Flags por perfil (1=Admin,2=Gestor,3=Técnico,4=Solicitante)
+ var isAdmin = perfilId ==1;
+ var isGestor = perfilId ==2;
+ var isTecnico = perfilId ==3;
+ var isSolicitante = perfilId ==4;
+}
+
+<div class="db-header"> @* Wrapper de cabeçalho *@
+ <header>
+ <div class="site-header"> @* Container principal do header *@
+ <div class="site-brand"> @* Área da marca/logo *@
+ <img src="/Images/Made%20with%20insMind-LogoBlack.png" alt="SoftForge" class="site-icon" /> @* Logo do sistema *@
+ </div>
+ <div class="site-title"> @* Título e subtítulo *@
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </div>
+
+ <div class="site-menu"> @* Container do menu de navegação *@
+ <details class="menu-details"> @* Elemento expansível para menu (acessibilidade/mobile) *@
+ <summary class="menu-summary">Menu</summary> @* Rotulo do menu *@
+ <nav class="menu-list"> @* Lista de links do menu *@
+ @* Página inicial acessível para todos (autenticados ou não) *@
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="InicialPainel">
+ <img src="/Images/IconeMenuPaginaInicial.png" class="site-icon" alt="Início"/> Início
+ </a>
+
+ @* Link de abrir chamado (qualquer usuário, inclusive público) *@
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="AbrirChamado">
+ <img src="/Images/IconeMenuAbrirChamado.png" class="site-icon" alt="Abrir Chamado"/> Abrir Chamado
+ </a>
+
+ @* Meus Chamados visível apenas se autenticado *@
+ @if (isAuthenticated)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="MeusChamados">
+ <img src="/Images/IconeMenuMeusChamados.png" class="site-icon" alt="Meus Chamados"/> Meus Chamados
+ </a>
+ }
+
+ @* Área de Atendimento e Escalonamento para Técnico, Gestor ou Admin *@
+ @if (isTecnico || isGestor || isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Atendimento">
+ <img src="/Images/IconeMenuAtendimento.png" class="site-icon" alt="Atendimento"/> Atendimento
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Escalonamento">
+ <img src="/Images/IconeMenuEscalonamento.png" class="site-icon" alt="Escalonamento"/> Escalonamento
+ </a>
+ }
+
+ @* Dashboard e Relatórios apenas para Gestor ou Admin *@
+ @if (isGestor || isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="DashboardGestor">
+ <img src="/Images/IconeMenuDashboard.png" class="site-icon" alt="Dashboard"/> Dashboard
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Relatorios">
+ <img src="/Images/IconeMenuRelatorios.png" class="site-icon" alt="Relatórios"/> Relatórios
+ </a>
+ }
+
+ @* Administração: somente Admin (perfilId=1) *@
+ @if (isAdmin)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="GerenciarUsuarios">
+ <img src="/Images/IconeMenuGerenciar.png" class="site-icon" alt="Gerenciar"/> Gerenciar
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Configuracao">
+ <img src="/Images/IconeMenuGerenciar.png" class="site-icon" alt="Configuração"/> Configuração
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="AprovarUsuario">
+ <img src="/Images/IconeMenuGerenciar.png" class="site-icon" alt="Aprovar Usuários"/> Aprovar Usuários
+ </a>
+ }
+
+ @* Bloco de autenticação: se não autenticado mostra login/cadastro, senão saudação e logout *@
+ @if (!isAuthenticated)
+ {
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Login">
+ <img src="/Images/IconeMenuSair.png" class="site-icon" alt="Login"/> Entrar
+ </a>
+
+ <a asp-controller="Site" asp-action="Page" asp-route-viewName="Cadastro">
+ <img src="/Images/IconeMenuAbrirChamado.png" class="site-icon" alt="Cadastro"/> Solicitar Cadastro
+ </a>
+ }
+ else
+ {
+ <span class="menu-sep">Olá, @User.Identity.Name</span> @* Exibe nome do usuário logado *@
+ <form method="post" asp-controller="Site" asp-action="Logout" style="display:inline"> @* Form de logout via POST *@
+ <button type="submit" class="btn btn-link">Sair</button>
+ </form>
+ }
+ </nav>
+ </details>
+ </div>
+ </div>
+ </header>
+</div>

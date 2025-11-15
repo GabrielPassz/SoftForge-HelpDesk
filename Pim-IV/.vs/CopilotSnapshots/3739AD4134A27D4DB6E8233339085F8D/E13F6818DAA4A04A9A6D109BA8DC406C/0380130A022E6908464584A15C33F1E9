@@ -1,0 +1,634 @@
+﻿using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
+using PIM_FINAL.Data;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System;
+using PIM_FINAL.Models;
+using Microsoft.AspNetCore.Identity;
+
+namespace PIM_FINAL.Controllers
+{
+ public class SiteController : Controller
+ {
+ private readonly IWebHostEnvironment _env;
+ private readonly PIMContext _db;
+
+ public SiteController(IWebHostEnvironment env, PIMContext db)
+ {
+ _env = env;
+ _db = db;
+
+ // ensure uploads folder exists
+ var uploadsDir = Path.Combine(_env.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"), "uploads");
+ if (!Directory.Exists(uploadsDir)) Directory.CreateDirectory(uploadsDir);
+ }
+
+ // Allow URLs like /Site or /Site/{viewName} or /Site/{viewName}/{id}
+ [HttpGet]
+ [AllowAnonymous]
+ [Route("Site")]
+ [Route("Site/{viewName}")]
+ [Route("Site/{viewName}/{id}")]
+ public IActionResult Page(string viewName = "InicialPainel", string id = null)
+ {
+ // sanitize viewName to avoid path traversal
+ viewName = Path.GetFileName(viewName ?? string.Empty);
+ if (string.IsNullOrEmpty(viewName))
+ viewName = "InicialPainel";
+
+ // pages that can be accessed without authentication
+ var anonymousPages = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase)
+ {
+ "Login",
+ "Cadastro",
+ "RegistroCadastro",
+ "RecuperarSenha",
+ "ValidarCodigoRedefinir"
+ };
+
+ // if user is not authenticated and the requested page is NOT in the anonymous list, redirect to login
+ var isAuthenticated = User?.Identity?.IsAuthenticated ?? false;
+ if (!isAuthenticated)
+ {
+ // User is not authenticated
+ if (!anonymousPages.Contains(viewName))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+ }
+
+ var viewPath = Path.Combine(_env.ContentRootPath, "Views", "site", viewName + ".cshtml");
+ if (!System.IO.File.Exists(viewPath))
+ {
+ return NotFound();
+ }
+
+ // if an id was provided, add it to RouteData so views that read RouteData.Values["id"] work
+ if (!string.IsNullOrEmpty(id))
+ {
+ RouteData.Values["id"] = id;
+ }
+
+ // expose id to ViewData/ViewBag to avoid nulls in views
+ var idValue = id ?? (RouteData.Values.ContainsKey("id") ? RouteData.Values["id"]?.ToString() : null);
+ if (!string.IsNullOrEmpty(idValue))
+ {
+ ViewData["id"] = idValue;
+ ViewBag.Id = idValue;
+ }
+
+ return View($"~/Views/site/{viewName}.cshtml");
+ }
+
+ [HttpPost]
+ [AllowAnonymous]
+ [Route("Site/Login")]
+ public async Task<IActionResult> Login(string usuario, string senha, string returnUrl = null)
+ {
+ if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(senha))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ var user = await _db.Usuarios.FirstOrDefaultAsync(u => u.Email == usuario || u.NomeCompleto == usuario);
+ if (user == null)
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ var hasher = new PasswordHasher<Usuario>();
+ var verify = hasher.VerifyHashedPassword(user, user.Senha ?? string.Empty, senha);
+ if (verify == PasswordVerificationResult.Failed)
+ {
+ // Migration path: if stored password equals provided plaintext, hash it now and continue
+ if (!string.IsNullOrEmpty(user.Senha) && user.Senha == senha)
+ {
+ user.Senha = hasher.HashPassword(user, senha);
+ user.UltimoLogin = DateTime.UtcNow;
+ await _db.SaveChangesAsync();
+ // treat as successful
+ }
+ else
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+ }
+
+ // Create claims
+ var claims = new List<Claim>
+ {
+ new Claim(ClaimTypes.NameIdentifier, user.UsuarioId.ToString()),
+ new Claim(ClaimTypes.Name, user.NomeCompleto ?? string.Empty),
+ new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+ };
+
+ if (user.PerfilId.HasValue)
+ {
+ claims.Add(new Claim(ClaimTypes.Role, user.PerfilId.Value.ToString()));
+ }
+
+ var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+ var principal = new ClaimsPrincipal(claimsIdentity);
+
+ await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+ // update last login
+ user.UltimoLogin = DateTime.UtcNow;
+ await _db.SaveChangesAsync();
+
+ // redirect to returnUrl if local
+ if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+ {
+ return Redirect(returnUrl);
+ }
+
+ return RedirectToAction("Page", new { viewName = "InicialPainel" });
+ }
+
+ [HttpPost]
+ [Route("Site/Logout")]
+ public async Task<IActionResult> Logout()
+ {
+ await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ // Registration: create a new Usuario as Solicitante (perfil_id =4)
+ [HttpPost]
+ [AllowAnonymous]
+ [Route("Site/RegistroCadastro")]
+ public async Task<IActionResult> RegistroCadastro(string nome, string email, string senha)
+ {
+ if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
+ {
+ return RedirectToAction("Page", new { viewName = "Cadastro" });
+ }
+
+ var existing = await _db.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+ if (existing != null)
+ {
+ // user already exists
+ return RedirectToAction("Page", new { viewName = "Cadastro" });
+ }
+
+ var user = new Models.Usuario
+ {
+ NomeCompleto = nome,
+ Email = email,
+ DataCadastro = DateTime.UtcNow,
+ PerfilId =4 // Solicitante
+ };
+
+ // hash senha and store in 'senha' column
+ var hasher = new PasswordHasher<Usuario>();
+ user.Senha = hasher.HashPassword(user, senha);
+
+ _db.Usuarios.Add(user);
+ await _db.SaveChangesAsync();
+
+ // auto-login user
+ var claims = new List<Claim>
+ {
+ new Claim(ClaimTypes.NameIdentifier, user.UsuarioId.ToString()),
+ new Claim(ClaimTypes.Name, user.NomeCompleto ?? string.Empty),
+ new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+ new Claim(ClaimTypes.Role, user.PerfilId.Value.ToString())
+ };
+ var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+ await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+ return RedirectToAction("Page", new { viewName = "InicialPainel" });
+ }
+
+ // Abrir Chamado (POST) - requires authenticated user
+ [HttpGet]
+ [Authorize]
+ [Route("Site/AbrirChamado")]
+ public async Task<IActionResult> AbrirChamado()
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+
+ var user = await _db.Usuarios.FirstOrDefaultAsync(u => u.UsuarioId == userId);
+ var model = new Models.AbrirChamado
+ {
+ SolicitanteNome = user?.NomeCompleto ?? string.Empty,
+ SolicitanteDepartamento = user?.Departamento?.NomeDepartamento ?? string.Empty
+ };
+
+ var categorias = await _db.Categorias.OrderBy(c => c.NomeCategoria).ToListAsync();
+ model.CategoriasSelect = categorias.Select(c => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(c.NomeCategoria, c.CategoriaId.ToString())).ToList();
+ var prioridades = await _db.Prioridades.OrderBy(p => p.NomePrioridade).ToListAsync();
+ model.PrioridadesSelect = prioridades.Select(p => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(p.NomePrioridade, p.PrioridadeId.ToString())).ToList();
+
+ return View("~/Views/site/AbrirChamado.cshtml", model);
+ }
+
+ [HttpPost]
+ [Authorize]
+ [Route("Site/AbrirChamado")]
+ public async Task<IActionResult> AbrirChamado([FromForm] Models.Chamado chamado, Microsoft.AspNetCore.Http.IFormFile? AnexoFile)
+ {
+ // set metadata
+ chamado.DataAbertura = DateTime.UtcNow;
+
+ // set solicitante from current user
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+ chamado.UsuarioSolicitanteId = userId;
+
+ // generate protocolo
+ chamado.Protocolo = $"CHAM-{DateTime.UtcNow:yyyy}-{new Random().Next(100,999)}";
+
+ // add chamado
+ _db.Chamados.Add(chamado);
+ await _db.SaveChangesAsync();
+
+ // handle attachment if provided
+ if (AnexoFile != null && AnexoFile.Length >0)
+ {
+ try
+ {
+ var uploadsDir = Path.Combine(_env.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"), "uploads");
+ if (!Directory.Exists(uploadsDir)) Directory.CreateDirectory(uploadsDir);
+
+ var uniqueFileName = $"{Guid.NewGuid():N}_{Path.GetFileName(AnexoFile.FileName)}";
+ var filePath = Path.Combine(uploadsDir, uniqueFileName);
+
+ using (var stream = System.IO.File.Create(filePath))
+ {
+ await AnexoFile.CopyToAsync(stream);
+ }
+
+ var anexo = new Anexo
+ {
+ ChamadoId = chamado.ChamadoId,
+ NomeArquivo = AnexoFile.FileName,
+ TipoArquivo = AnexoFile.ContentType,
+ CaminhoArquivo = "/uploads/" + uniqueFileName,
+ DataUpload = DateTime.UtcNow,
+ UsuarioId = userId
+ };
+ _db.Anexos.Add(anexo);
+ await _db.SaveChangesAsync();
+ }
+ catch
+ {
+ // ignore attachment errors for now
+ }
+ }
+
+ return RedirectToAction("MeusChamados");
+ }
+
+ // MeusChamados - list authenticated user's chamados
+ [HttpGet]
+ [Authorize]
+ [Route("Site/MeusChamados")]
+ public async Task<IActionResult> MeusChamados()
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ var chamados = await _db.Chamados
+ .Include(c => c.Prioridade)
+ .Include(c => c.StatusChamado)
+ .Include(c => c.Categoria)
+ .Where(c => c.UsuarioSolicitanteId == userId)
+ .OrderByDescending(c => c.DataAbertura)
+ .ToListAsync();
+
+ return View("~/Views/site/MeusChamados.cshtml", chamados);
+ }
+
+ // Detalhes do chamado do usuário
+ [HttpGet]
+ [Authorize]
+ [Route("Site/DetalhesMeuChamado/{id}")]
+ public async Task<IActionResult> DetalhesMeuChamado(int id)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ var chamado = await _db.Chamados
+ .Include(c => c.Prioridade)
+ .Include(c => c.StatusChamado)
+ .Include(c => c.Categoria)
+ .Include(c => c.Anexos)
+ .Include(c => c.Comunicacoes)
+ .FirstOrDefaultAsync(c => c.ChamadoId == id);
+
+ if (chamado == null) return NotFound();
+ if (chamado.UsuarioSolicitanteId != userId) return Forbid();
+
+ return View("~/Views/site/DetalhesMeuChamado.cshtml", chamado);
+ }
+
+ // Technician/manager/admin view of a chamado
+ [HttpGet]
+ [Authorize]
+ [Route("Site/DetalhesChamado/{id}")]
+ public async Task<IActionResult> DetalhesChamado(int id)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId))
+ {
+ return RedirectToAction("Page", new { viewName = "Login" });
+ }
+
+ var chamado = await _db.Chamados
+ .Include(c => c.Prioridade)
+ .Include(c => c.StatusChamado)
+ .Include(c => c.Categoria)
+ .Include(c => c.Anexos)
+ .Include(c => c.Comunicacoes).ThenInclude(cm => cm.Usuario)
+ .Include(c => c.Atendimentos).ThenInclude(a => a.UsuarioTecnico)
+ .Include(c => c.UsuarioSolicitante)
+ .Include(c => c.TecnicoResponsavel)
+ .FirstOrDefaultAsync(c => c.ChamadoId == id);
+
+ if (chamado == null) return NotFound();
+
+ // permit: assigned technician, manager/admin (roles1,2), any technician (3) or the owner
+ var role = User.FindFirst(ClaimTypes.Role)?.Value;
+ bool isTecnico = role == "3" || role == "2" || role == "1";
+ if (chamado.TecnicoResponsavelId != userId && !isTecnico && chamado.UsuarioSolicitanteId != userId)
+ {
+ return Forbid();
+ }
+
+ return View("~/Views/site/DetalhesChamado.cshtml", chamado);
+ }
+
+ // Atendimento: list for technician (or manager/admin see more)
+ [HttpGet]
+ [Authorize]
+ [Route("Site/Atendimento")]
+ [Route("Atendimento")]
+ public async Task<IActionResult> Atendimento()
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var role = User.FindFirst(ClaimTypes.Role)?.Value;
+ bool isTecnico = role == "3" || role == "2" || role == "1"; // tecnico, gestor, admin
+
+ if (!isTecnico) return Forbid();
+
+ var chamados = await _db.Chamados
+ .Include(c => c.Prioridade)
+ .Include(c => c.StatusChamado)
+ .Include(c => c.Categoria)
+ .Where(c => c.TecnicoResponsavelId == userId || c.TecnicoResponsavelId == null)
+ .OrderByDescending(c => c.DataAbertura)
+ .ToListAsync();
+
+ return View("~/Views/site/Atendimento.cshtml", chamados);
+ }
+
+ // Start atendimento: assign tecnico and create Atendimento record
+ [HttpPost]
+ [Authorize]
+ [Route("Site/IniciarAtendimento")]
+ [Route("iniciar-atendimento")]
+ public async Task<IActionResult> IniciarAtendimento(int chamado_id)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+
+ chamado.TecnicoResponsavelId = userId;
+ // try to set status to "Em Atendimento" if exists
+ var status = await _db.StatusChamados.FirstOrDefaultAsync(s => EF.Functions.ILike(s.NomeStatus, "%atendimento%"));
+ if (status != null) chamado.StatusId = status.StatusId;
+
+ var atendimento = new Atendimento
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioTecnicoId = userId,
+ DataAtendimento = DateTime.UtcNow,
+ AcaoRealizada = "Iniciou atendimento",
+ TempoGasto =0
+ };
+
+ _db.Atendimentos.Add(atendimento);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("Atendimento");
+ }
+
+ // Registrar ação (form action='/registrar-acao')
+ [HttpPost]
+ [Authorize]
+ [Route("registrar-acao")]
+ [Route("Site/RegistrarAcao")]
+ public async Task<IActionResult> RegistrarAcao(int chamado_id, string acao_realizada, int tempo_gasto)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+ // Only assigned technician or manager/admin can register
+ var role = User.FindFirst(ClaimTypes.Role)?.Value;
+ if (chamado.TecnicoResponsavelId != userId && role != "2" && role != "1") return Forbid();
+
+ var atendimento = new Atendimento
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioTecnicoId = userId,
+ DataAtendimento = DateTime.UtcNow,
+ AcaoRealizada = acao_realizada,
+ TempoGasto = tempo_gasto
+ };
+ _db.Atendimentos.Add(atendimento);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("DetalhesMeuChamado", new { id = chamado.ChamadoId });
+ }
+
+ // Enviar mensagem (comunicacao)
+ [HttpPost]
+ [Authorize]
+ [Route("enviar-mensagem")]
+ [Route("Site/EnviarMensagem")]
+ public async Task<IActionResult> EnviarMensagem(int chamado_id, string mensagem)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+
+ var comunicacao = new Comunicacao
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioId = userId,
+ Mensagem = mensagem,
+ DataEnvio = DateTime.UtcNow
+ };
+ _db.Comunicacoes.Add(comunicacao);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("DetalhesMeuChamado", new { id = chamado.ChamadoId });
+ }
+
+ // Resolver chamado
+ [HttpPost]
+ [Authorize]
+ [Route("resolver-chamado")]
+ [Route("Site/ResolverChamado")]
+ public async Task<IActionResult> ResolverChamado(int chamado_id, string solucao_final)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+ // only assigned technician or manager/admin
+ var role = User.FindFirst(ClaimTypes.Role)?.Value;
+ if (chamado.TecnicoResponsavelId != userId && role != "2" && role != "1") return Forbid();
+
+ chamado.DataFechamento = DateTime.UtcNow;
+ // set status to closed if exists
+ var status = await _db.StatusChamados.FirstOrDefaultAsync(s => EF.Functions.ILike(s.NomeStatus, "%fechado%"));
+ if (status != null) chamado.StatusId = status.StatusId;
+
+ // create atendimento record with final solution
+ var atendimento = new Atendimento
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioTecnicoId = userId,
+ DataAtendimento = DateTime.UtcNow,
+ AcaoRealizada = solucao_final ?? "Resolvido",
+ TempoGasto =0
+ };
+ _db.Atendimentos.Add(atendimento);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("DetalhesMeuChamado", new { id = chamado.ChamadoId });
+ }
+
+ // Escalonar chamado (route used by form '/escalonar-chamado')
+ [HttpPost]
+ [Authorize]
+ [Route("escalonar-chamado")]
+ [Route("Site/Escalonamento")]
+ public async Task<IActionResult> EscalonarChamado(int chamado_id, string novo_tecnico, string motivo, string nova_prioridade)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+
+ // resolve novo_tecnico either as id or name
+ int novoTecnicoId =0;
+ if (int.TryParse(novo_tecnico, out var parsed)) novoTecnicoId = parsed;
+ else
+ {
+ var u = await _db.Usuarios.FirstOrDefaultAsync(x => x.NomeCompleto != null && x.NomeCompleto.ToLower().Contains(novo_tecnico.ToLower()));
+ if (u != null) novoTecnicoId = u.UsuarioId;
+ }
+ if (novoTecnicoId >0) chamado.TecnicoResponsavelId = novoTecnicoId;
+
+ if (!string.IsNullOrWhiteSpace(nova_prioridade))
+ {
+ var p = await _db.Prioridades.FirstOrDefaultAsync(x => x.NomePrioridade != null && EF.Functions.ILike(x.NomePrioridade, $"%{nova_prioridade}%"));
+ if (p != null) chamado.PrioridadeId = p.PrioridadeId;
+ }
+
+ // add history communication
+ var comunicacao = new Comunicacao
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioId = userId,
+ Mensagem = $"Escalonado: {motivo}",
+ DataEnvio = DateTime.UtcNow
+ };
+ _db.Comunicacoes.Add(comunicacao);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("DetalhesMeuChamado", new { id = chamado.ChamadoId });
+ }
+
+ // Devolutiva chamado (form action='/devolver-chamado')
+ [HttpPost]
+ [Authorize]
+ [Route("devolver-chamado")]
+ [Route("Site/DevolverChamado")]
+ public async Task<IActionResult> DevolverChamado(int chamado_id, string motivo_devolucao)
+ {
+ var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+ if (!int.TryParse(userIdClaim, out var userId)) return RedirectToAction("Page", new { viewName = "Login" });
+ var chamado = await _db.Chamados.FirstOrDefaultAsync(c => c.ChamadoId == chamado_id);
+ if (chamado == null) return NotFound();
+ // only assigned technician or manager/admin
+ var role = User.FindFirst(ClaimTypes.Role)?.Value;
+ if (chamado.TecnicoResponsavelId != userId && role != "2" && role != "1") return Forbid();
+
+ chamado.TecnicoResponsavelId = null;
+
+ var comunicacao = new Comunicacao
+ {
+ ChamadoId = chamado.ChamadoId,
+ UsuarioId = userId,
+ Mensagem = $"Devolvido para fila: {motivo_devolucao}",
+ DataEnvio = DateTime.UtcNow
+ };
+ _db.Comunicacoes.Add(comunicacao);
+ await _db.SaveChangesAsync();
+
+ return RedirectToAction("Atendimento");
+ }
+
+ // Aprovar/Reprovar usuário
+ [HttpPost]
+ [Authorize(Roles = "1")] // only admin
+ [Route("Site/AprovarUsuario")]
+ public async Task<IActionResult> AprovarUsuario(int solicitacao_id, string perfil, string departamento)
+ {
+ // try find user by id or by solicitacao id mapping -- we'll assume solicitacao_id is usuario_id
+ var user = await _db.Usuarios.FirstOrDefaultAsync(u => u.UsuarioId == solicitacao_id);
+ if (user == null) return NotFound();
+ // resolve perfil name to id
+ var p = await _db.PerfisUsuario.FirstOrDefaultAsync(x => x.NomePerfil != null && EF.Functions.ILike(x.NomePerfil, $"%{perfil}%"));
+ if (p != null) user.PerfilId = p.PerfilId;
+ // optionally set departamento
+ if (!string.IsNullOrWhiteSpace(departamento))
+ {
+ var d = await _db.Departamentos.FirstOrDefaultAsync(x => x.NomeDepartamento != null && EF.Functions.ILike(x.NomeDepartamento, $"%{departamento}%"));
+ if (d != null) user.DepartamentoId = d.DepartamentoId;
+ }
+ await _db.SaveChangesAsync();
+ return RedirectToAction("Page", new { viewName = "GerenciarUsuarios" });
+ }
+
+ [HttpPost]
+ [Authorize(Roles = "1")]
+ [Route("Site/ReprovarUsuario")]
+ public async Task<IActionResult> ReprovarUsuario(int solicitacao_id)
+ {
+ var user = await _db.Usuarios.FirstOrDefaultAsync(u => u.UsuarioId == solicitacao_id);
+ if (user == null) return NotFound();
+ // here we delete the user (or mark as rejected) - we'll delete
+ _db.Usuarios.Remove(user);
+ await _db.SaveChangesAsync();
+ return RedirectToAction("Page", new { viewName = "GerenciarUsuarios" });
+ }
+
+ // ...end of class
+ }
+}

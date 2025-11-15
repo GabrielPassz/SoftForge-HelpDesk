@@ -1,0 +1,30 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM_FINAL.Models
+{
+    public class Sla
+    {
+        [Key]
+        [Column("sla_id")]
+        public int SlaId { get; set; }
+
+        [Required]
+        [Column("nome_sla")]
+        public string? NomeSla { get; set; }
+
+        [ForeignKey("Prioridade")]
+        [Column("prioridade_id")]
+        public int? PrioridadeId { get; set; }
+        public Prioridade? Prioridade { get; set; }
+
+        [Column("tempo_primeira_resposta")]
+        public int TempoPrimeiraResposta { get; set; }
+
+        [Column("tempo_maximo_resolucao")]
+        public int TempoMaximoResolucao { get; set; }
+
+        [Column("descricao")]
+        public string? Descricao { get; set; }
+    }
+}

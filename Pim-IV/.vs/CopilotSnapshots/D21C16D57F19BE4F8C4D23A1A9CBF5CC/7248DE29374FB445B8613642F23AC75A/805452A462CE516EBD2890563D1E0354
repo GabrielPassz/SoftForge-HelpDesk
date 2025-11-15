@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PIM_FINAL.Models.Chamado>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Página MeusChamados: resumo, filtros (status, prioridade, busca), listagem dos chamados do usuário. *@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Meus Chamados - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid db-meuschamados">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-overview"> @* Cabeçalho *@
+ <h2>Meus Chamados</h2>
+ <p><strong>Olá,</strong> @User.Identity.Name</p>
+ <p><a asp-controller="Site" asp-action="AbrirChamado" class="btn btn-primary">Abrir Novo Chamado</a></p>
+ </section>
+
+ <section class="db-section db-abertos"> @* Resumo numérico *@
+ <h3>Resumo</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Campo</th><th>Quantidade</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Campo">Abertos</td><td data-label="Abertos"><span class="cell-val">@Model.Count(x => x.StatusId == null || x.StatusChamado?.NomeStatus == "Aberto")</span></td></tr>
+ <tr><td data-label="Campo">Em atendimento</td><td data-label="Em atendimento"><span class="cell-val">@Model.Count(x => x.StatusChamado?.NomeStatus != null && x.StatusChamado.NomeStatus.ToLower().Contains("atendimento"))</span></td></tr>
+ <tr><td data-label="Campo">Aguardando validação</td><td data-label="Aguardando validação"><span class="cell-val">@Model.Count(x => x.StatusChamado?.NomeStatus != null && x.StatusChamado.NomeStatus.ToLower().Contains("validação"))</span></td></tr>
+ <tr><td data-label="Campo">Fechados</td><td data-label="Fechados"><span class="cell-val">@Model.Count(x => x.DataFechamento != null && x.DataFechamento.Value > DateTime.UtcNow.AddDays(-30))</span></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section db-filtros"> @* Formulário de filtros *@
+ <h3>Filtros</h3>
+ <form method="get" asp-controller="Site" asp-action="MeusChamados">
+ <label for="filtro_status">Status:</label>
+ <select id="filtro_status" name="status">
+ <option value="">Todos</option>
+ <option value="aberto">Aberto</option>
+ <option value="em_atendimento">Em Atendimento</option>
+ <option value="aguardando_validacao">Aguardando Validação</option>
+ <option value="fechado">Fechado</option>
+ </select>
+ <script>(function(){/* restaura seleção status */var v='@ViewBag.StatusFilter';if(v){var sel=document.getElementById('filtro_status');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
+ <label for="filtro_prioridade">Prioridade:</label>
+ <select id="filtro_prioridade" name="prioridade">
+ <option value="">Todas</option>
+ <option value="critica">Crítica</option>
+ <option value="alta">Alta</option>
+ <option value="media">Média</option>
+ <option value="baixa">Baixa</option>
+ </select>
+ <script>(function(){/* restaura seleção prioridade */var v='@ViewBag.PrioridadeFilter';if(v){var sel=document.getElementById('filtro_prioridade');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
+ <label for="busca">Buscar:</label>
+ <input type="text" id="busca" name="busca" placeholder="Protocolo ou palavra-chave" value="@ViewBag.BuscaFilter" />
+ <button type="submit" class="btn btn-primary">Filtrar</button>
+ </form>
+ </section>
+
+ <section class="db-section db-abertos"> @* Listagem *@
+ <h3>Chamados</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Protocolo</th><th>Título</th><th>Categoria</th><th>Prioridade</th><th>Data Abertura</th><th>Status</th><th>Ações</th></tr></thead>
+ <tbody>
+ @foreach (var c in Model)
+ {
+ <tr>
+ <td data-label="Protocolo" class="cell-val"><strong>@(c.Protocolo ?? "#")</strong></td>
+ <td data-label="Título" class="cell-val">@c.Titulo</td>
+ <td data-label="Categoria" class="cell-val">@(c.Categoria?.NomeCategoria ?? "-")</td>
+ <td data-label="Prioridade" class="cell-val">@(c.Prioridade?.NomePrioridade ?? "-")</td>
+ <td data-label="Data Abertura" class="cell-val">@(c.DataAbertura?.ToLocalTime().ToString("g") ?? "-")</td>
+ <td data-label="Status" class="cell-val">@(c.StatusChamado?.NomeStatus ?? "-")</td>
+ <td data-label="Ações" class="cell-val"><a asp-controller="Site" asp-action="DetalhesMeuChamado" asp-route-id="@c.ChamadoId" class="btn btn-primary btn-sm">Ver detalhes</a></td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer><p>©2025 SoftForge - Todos os direitos reservados</p></footer>
+ </div>
+</div>
+</body>
+</html>

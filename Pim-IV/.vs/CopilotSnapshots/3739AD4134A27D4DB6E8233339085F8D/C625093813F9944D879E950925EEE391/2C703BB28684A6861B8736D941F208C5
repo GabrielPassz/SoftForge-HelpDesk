@@ -1,0 +1,160 @@
+﻿@model PIM_FINAL.Models.Chamado
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detalhes (Meus Chamados) - SoftForge HelpDesk</title>
+<link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-welcome">
+ <h2>Detalhes do Chamado @(Model.Protocolo ?? "#")</h2>
+ <p><a asp-controller="Site" asp-action="MeusChamados">? Voltar para Meus Chamados</a></p>
+ </section>
+
+ <section>
+ <h3>Informações do Chamado</h3>
+ <table border="1" cellpadding="8" cellspacing="0" width="100%">
+ <tr>
+ <th width="30%">Campo</th>
+ <th width="70%">Informação</th>
+ </tr>
+ <tr>
+ <td><strong>Protocolo</strong></td>
+ <td>@(Model.Protocolo ?? "#")</td>
+ </tr>
+ <tr>
+ <td><strong>Status</strong></td>
+ <td>@(Model.StatusChamado?.NomeStatus ?? "-")</td>
+ </tr>
+ <tr>
+ <td><strong>Título</strong></td>
+ <td>@Model.Titulo</td>
+ </tr>
+ <tr>
+ <td><strong>Descrição</strong></td>
+ <td>@Model.Descricao</td>
+ </tr>
+ <tr>
+ <td><strong>Categoria</strong></td>
+ <td>@(Model.Categoria?.NomeCategoria ?? "-")</td>
+ </tr>
+ <tr>
+ <td><strong>Prioridade</strong></td>
+ <td>@(Model.Prioridade?.NomePrioridade ?? "-")</td>
+ </tr>
+ <tr>
+ <td><strong>Data/Hora Abertura</strong></td>
+ <td>@(Model.DataAbertura?.ToLocalTime().ToString("g") ?? "-")</td>
+ </tr>
+ <tr>
+ <td><strong>Técnico Responsável</strong></td>
+ <td>@(Model.TecnicoResponsavel?.NomeCompleto ?? "Não atribuído")</td>
+ </tr>
+ <tr>
+ <td><strong>Previsão de Resolução (SLA)</strong></td>
+ <td>-</td>
+ </tr>
+ </table>
+ </section>
+
+ <section>
+ <h3>Histórico de Atendimentos</h3>
+ <table class="table table-bordered w-100">
+ <thead>
+ <tr>
+ <th>Data/Hora</th>
+ <th>Técnico</th>
+ <th>Ação</th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach(var a in Model.Atendimentos)
+ {
+ <tr>
+ <td>@(a.DataAtendimento?.ToLocalTime().ToString("g") ?? "-")</td>
+ <td>@(a.UsuarioTecnico?.NomeCompleto ?? "-")</td>
+ <td>@a.AcaoRealizada</td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>Comunicações</h3>
+ <div>
+ @foreach(var m in Model.Comunicacoes.OrderBy(c => c.DataEnvio))
+ {
+ <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px">
+ <p><strong>@(m.Usuario?.NomeCompleto ?? "")</strong> - @(m.DataEnvio?.ToLocalTime().ToString("g") ?? "")</p>
+ <p>@m.Mensagem</p>
+ </div>
+ }
+ </div>
+
+ <h4>Enviar Mensagem</h4>
+ <form method="post" asp-controller="Site" asp-action="EnviarMensagem">
+ <input type="hidden" name="chamado_id" value="@Model.ChamadoId" />
+ <label for="mensagem">Mensagem:</label><br />
+ <textarea id="mensagem" name="mensagem" rows="4" cols="80" placeholder="Digite sua mensagem..."></textarea><br /><br />
+ <button type="submit">Enviar Mensagem</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>Registrar Ação</h3>
+ <form method="post" asp-controller="Site" asp-action="RegistrarAcao">
+ <input type="hidden" name="chamado_id" value="@Model.ChamadoId" />
+ <label for="acao_realizada">Ação Realizada:</label><br />
+ <textarea id="acao_realizada" name="acao_realizada" rows="4" cols="80" required></textarea><br /><br />
+ <label for="tempo_gasto">Tempo Gasto (minutos):</label><br />
+ <input id="tempo_gasto" name="tempo_gasto" type="number" min="0" /><br /><br />
+ <button type="submit">Registrar Ação</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>Ações do Chamado</h3>
+ <form method="post" asp-controller="Site" asp-action="ResolverChamado">
+ <input type="hidden" name="chamado_id" value="@Model.ChamadoId" />
+ <label for="solucao_final">Solução Final:</label><br />
+ <textarea id="solucao_final" name="solucao_final" rows="4" cols="80" required></textarea><br /><br />
+ <button type="submit">Marcar como Resolvido</button>
+ </form>
+
+ <form method="post" asp-controller="Site" asp-action="EscalonarChamado">
+ <input type="hidden" name="chamado_id" value="@Model.ChamadoId" />
+ <label for="novo_tecnico">Escalonar para (nome ou id):</label><br />
+ <input id="novo_tecnico" name="novo_tecnico" /><br /><br />
+ <label for="motivo">Motivo:</label><br />
+ <textarea id="motivo" name="motivo" rows="3" cols="80"></textarea><br /><br />
+ <label for="nova_prioridade">Reclassificar Prioridade:</label><br />
+ <input id="nova_prioridade" name="nova_prioridade" /><br /><br />
+ <button type="submit">Escalonar</button>
+ </form>
+
+ <form method="post" asp-controller="Site" asp-action="DevolverChamado">
+ <input type="hidden" name="chamado_id" value="@Model.ChamadoId" />
+ <label for="motivo_devolucao">Motivo da Devolução:</label><br />
+ <textarea id="motivo_devolucao" name="motivo_devolucao" rows="3" cols="80" required></textarea><br /><br />
+ <button type="submit">Devolver para Fila</button>
+ </form>
+ </section>
+
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+</body>
+</html>

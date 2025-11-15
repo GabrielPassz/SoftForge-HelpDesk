@@ -17,461 +17,461 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PIM_FINAL
 build_property.RootNamespace = PIM_FINAL
-build_property.ProjectDir = C:\Users\Pichau\source\repos\PIM-FINAL\PIM-FINAL\
+build_property.ProjectDir = D:\Meus Projetos GitHub\SoftForge-HelpDesk\Pim-IV\PIM-FINAL\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Pichau\source\repos\PIM-FINAL\PIM-FINAL
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = D:\Meus Projetos GitHub\SoftForge-HelpDesk\Pim-IV\PIM-FINAL
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Anexo/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Anexo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5leG9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Anexo/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Anexo/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5leG9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Anexo/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Anexo/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5leG9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Anexo/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Anexo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5leG9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Anexo/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Anexo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5leG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Atendimento/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Atendimento/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlbmRpbWVudG9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Atendimento/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Atendimento/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlbmRpbWVudG9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Atendimento/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Atendimento/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlbmRpbWVudG9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Atendimento/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Atendimento/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlbmRpbWVudG9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Atendimento/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Atendimento/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRlbmRpbWVudG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Avaliacao/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Avaliacao/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZhbGlhY2FvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Avaliacao/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Avaliacao/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZhbGlhY2FvXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Avaliacao/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Avaliacao/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZhbGlhY2FvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Avaliacao/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Avaliacao/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZhbGlhY2FvXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Avaliacao/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Avaliacao/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZhbGlhY2FvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/BaseConhecimento/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/BaseConhecimento/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFzZUNvbmhlY2ltZW50b1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/BaseConhecimento/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/BaseConhecimento/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFzZUNvbmhlY2ltZW50b1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/BaseConhecimento/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/BaseConhecimento/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFzZUNvbmhlY2ltZW50b1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/BaseConhecimento/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/BaseConhecimento/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFzZUNvbmhlY2ltZW50b1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/BaseConhecimento/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/BaseConhecimento/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFzZUNvbmhlY2ltZW50b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Categoria/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Categoria/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Categoria/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Categoria/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Categoria/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Categoria/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Categoria/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Categoria/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Categoria/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Categoria/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Chamado/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Chamado/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbWFkb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Chamado/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Chamado/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbWFkb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Chamado/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Chamado/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbWFkb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Chamado/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Chamado/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbWFkb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Chamado/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Chamado/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbWFkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Comunicacao/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Comunicacao/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tdW5pY2FjYW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Comunicacao/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Comunicacao/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tdW5pY2FjYW9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Comunicacao/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Comunicacao/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tdW5pY2FjYW9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Comunicacao/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Comunicacao/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tdW5pY2FjYW9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Comunicacao/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Comunicacao/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tdW5pY2FjYW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Departamento/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Departamento/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Departamento/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Departamento/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Departamento/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Departamento/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Departamento/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Departamento/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Departamento/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Departamento/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Funcionario/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Funcionario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Funcionario/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Funcionario/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Funcionario/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Funcionario/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Funcionario/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Funcionario/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Funcionario/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Funcionario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/HistoricoChamado/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/HistoricoChamado/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWNvQ2hhbWFkb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/HistoricoChamado/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/HistoricoChamado/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWNvQ2hhbWFkb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/HistoricoChamado/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/HistoricoChamado/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWNvQ2hhbWFkb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/HistoricoChamado/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/HistoricoChamado/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWNvQ2hhbWFkb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/HistoricoChamado/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/HistoricoChamado/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGlzdG9yaWNvQ2hhbWFkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Home/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Home/Privacy.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/IaAnalise/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/IaAnalise/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWFBbmFsaXNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/IaAnalise/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/IaAnalise/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWFBbmFsaXNlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/IaAnalise/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/IaAnalise/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWFBbmFsaXNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/IaAnalise/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/IaAnalise/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWFBbmFsaXNlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/IaAnalise/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/IaAnalise/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWFBbmFsaXNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/LogAcesso/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/LogAcesso/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nQWNlc3NvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/LogAcesso/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/LogAcesso/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nQWNlc3NvXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/LogAcesso/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/LogAcesso/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nQWNlc3NvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/LogAcesso/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/LogAcesso/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nQWNlc3NvXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/LogAcesso/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/LogAcesso/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nQWNlc3NvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/PerfilUsuario/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/PerfilUsuario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXN1YXJpb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/PerfilUsuario/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/PerfilUsuario/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXN1YXJpb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/PerfilUsuario/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/PerfilUsuario/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXN1YXJpb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/PerfilUsuario/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/PerfilUsuario/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXN1YXJpb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/PerfilUsuario/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/PerfilUsuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Prioridade/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Prioridade/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Prioridade/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Prioridade/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Prioridade/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Prioridade/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Prioridade/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Prioridade/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Prioridade/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Prioridade/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Shared/Error.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Shared/_HeaderNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJOYXYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/AbrirChamado.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/AbrirChamado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxBYnJpckNoYW1hZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/AprovarUsuario.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/AprovarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxBcHJvdmFyVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Atendimento.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Atendimento.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxBdGVuZGltZW50by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Cadastro.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Cadastro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxDYWRhc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Configuracao.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Configuracao.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxDb25maWd1cmFjYW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/DashboardGestor.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/DashboardGestor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxEYXNoYm9hcmRHZXN0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/DetalhesChamado.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/DetalhesChamado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxEZXRhbGhlc0NoYW1hZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/DetalhesEscalonamento.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/DetalhesEscalonamento.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxEZXRhbGhlc0VzY2Fsb25hbWVudG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/DetalhesMeuChamado.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/DetalhesMeuChamado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxEZXRhbGhlc01ldUNoYW1hZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/EditarUsuario.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/EditarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxFZGl0YXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Escalonamento.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Escalonamento.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxFc2NhbG9uYW1lbnRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/GerenciarUsuarios.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/GerenciarUsuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxHZXJlbmNpYXJVc3Vhcmlvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/InicialPainel.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/InicialPainel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxJbmljaWFsUGFpbmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Login.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/MeusChamados.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/MeusChamados.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxNZXVzQ2hhbWFkb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/RecuperarSenha.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/RecuperarSenha.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxSZWN1cGVyYXJTZW5oYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/RegistroCadastro.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/RegistroCadastro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxSZWdpc3Ryb0NhZGFzdHJvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Relatorios.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/Relatorios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxSZWxhdG9yaW9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/Remains.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxSZW1haW5zLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/site/ValidarCodigoRedefinir.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/site/ValidarCodigoRedefinir.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3Ncc2l0ZVxWYWxpZGFyQ29kaWdvUmVkZWZpbmlyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Sla/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Sla/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Sla/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Sla/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Sla/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Sla/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Sla/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Sla/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Sla/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Sla/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/StatusChamado/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/StatusChamado/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHVzQ2hhbWFkb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/StatusChamado/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/StatusChamado/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHVzQ2hhbWFkb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/StatusChamado/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/StatusChamado/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHVzQ2hhbWFkb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/StatusChamado/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/StatusChamado/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHVzQ2hhbWFkb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/StatusChamado/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/StatusChamado/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdHVzQ2hhbWFkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Usuario/Create.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Usuario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Usuario/Delete.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Usuario/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Usuario/Details.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Usuario/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Usuario/Edit.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Usuario/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Usuario/Index.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Usuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/_ViewImports.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/_ViewStart.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Pichau/source/repos/PIM-FINAL/PIM-FINAL/Views/Shared/_Layout.cshtml]
+[D:/Meus Projetos GitHub/SoftForge-HelpDesk/Pim-IV/PIM-FINAL/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cthlaxqnrp

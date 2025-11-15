@@ -1,0 +1,9 @@
+﻿namespace PIM_FINAL.Models
+{
+ public class Prioridade
+ {
+ public int PrioridadeId { get; set; }
+ public string? NomePrioridade { get; set; }
+ public string? Descricao { get; set; }
+ }
+}

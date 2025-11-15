@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using PIM_FINAL.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace PIM_FINAL.Controllers
 {
@@ -15,11 +17,114 @@ namespace PIM_FINAL.Controllers
  _connectionString = config["SUPABASE_DB_CONNECTION"] ?? System.Environment.GetEnvironmentVariable("SUPABASE_DB_CONNECTION") ?? string.Empty;
  }
 
+ private NpgsqlConnection OpenConn()
+ {
+ var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ return conn;
+ }
+
+ private void LoadDropdowns(int? selectedSolic = null, int? selectedTec = null, int? selectedCat = null, int? selectedPri = null, int? selectedSta = null, int? selectedSla = null)
+ {
+ using var conn = OpenConn();
+ // Usuarios
+ var usuarios = new List<SelectListItem>();
+ using (var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo FROM public.usuario ORDER BY nome_completo", conn))
+ using (var reader = cmd.ExecuteReader())
+ {
+ while (reader.Read())
+ {
+ var id = reader.GetInt32(0);
+ var nome = reader.IsDBNull(1) ? ("Usuário #"+id) : reader.GetString(1);
+ usuarios.Add(new SelectListItem(nome, id.ToString()));
+ }
+ }
+ ViewBag.Usuarios = usuarios;
+ ViewBag.SelectedSolicitante = selectedSolic?.ToString();
+ ViewBag.SelectedTecnico = selectedTec?.ToString();
+
+ // Categorias
+ var categorias = new List<SelectListItem>();
+ using (var cmd = new NpgsqlCommand("SELECT categoria_id, nome_categoria FROM public.categoria ORDER BY nome_categoria", conn))
+ using (var reader = cmd.ExecuteReader())
+ {
+ while (reader.Read())
+ {
+ var id = reader.GetInt32(0);
+ var nome = reader.IsDBNull(1) ? ("Categoria #"+id) : reader.GetString(1);
+ categorias.Add(new SelectListItem(nome, id.ToString()));
+ }
+ }
+ ViewBag.Categorias = categorias; ViewBag.SelectedCategoria = selectedCat?.ToString();
+
+ // Prioridades
+ var prioridades = new List<SelectListItem>();
+ using (var cmd = new NpgsqlCommand("SELECT prioridade_id, nome_prioridade FROM public.prioridade ORDER BY prioridade_id", conn))
+ using (var reader = cmd.ExecuteReader())
+ {
+ while (reader.Read())
+ {
+ var id = reader.GetInt32(0);
+ var nome = reader.IsDBNull(1) ? ("Prioridade #"+id) : reader.GetString(1);
+ prioridades.Add(new SelectListItem(nome, id.ToString()));
+ }
+ }
+ ViewBag.Prioridades = prioridades; ViewBag.SelectedPrioridade = selectedPri?.ToString();
+
+ // Status
+ var status = new List<SelectListItem>();
+ using (var cmd = new NpgsqlCommand("SELECT status_id, nome_status FROM public.status_chamado ORDER BY status_id", conn))
+ using (var reader = cmd.ExecuteReader())
+ {
+ while (reader.Read())
+ {
+ var id = reader.GetInt32(0);
+ var nome = reader.IsDBNull(1) ? ("Status #"+id) : reader.GetString(1);
+ status.Add(new SelectListItem(nome, id.ToString()));
+ }
+ }
+ ViewBag.Statuses = status; ViewBag.SelectedStatus = selectedSta?.ToString();
+
+ // SLAs
+ var slas = new List<SelectListItem>();
+ using (var cmd = new NpgsqlCommand("SELECT sla_id, nome_sla FROM public.sla ORDER BY sla_id", conn))
+ using (var reader = cmd.ExecuteReader())
+ {
+ while (reader.Read())
+ {
+ var id = reader.GetInt32(0);
+ var nome = reader.IsDBNull(1) ? ("SLA #"+id) : reader.GetString(1);
+ slas.Add(new SelectListItem(nome, id.ToString()));
+ }
+ }
+ ViewBag.Slas = slas; ViewBag.SelectedSla = selectedSla?.ToString();
+ }
+
+ private void LoadNameMaps()
+ {
+ using var conn = OpenConn();
+ var cat = new Dictionary<int,string>();
+ using (var cmd = new NpgsqlCommand("SELECT categoria_id, nome_categoria FROM public.categoria", conn))
+ using (var r = cmd.ExecuteReader()) { while (r.Read()) cat[r.GetInt32(0)] = r.IsDBNull(1)?("Categoria #"+r.GetInt32(0)): r.GetString(1); }
+ var pri = new Dictionary<int,string>();
+ using (var cmd = new NpgsqlCommand("SELECT prioridade_id, nome_prioridade FROM public.prioridade", conn))
+ using (var r = cmd.ExecuteReader()) { while (r.Read()) pri[r.GetInt32(0)] = r.IsDBNull(1)?("Prioridade #"+r.GetInt32(0)): r.GetString(1); }
+ var sta = new Dictionary<int,string>();
+ using (var cmd = new NpgsqlCommand("SELECT status_id, nome_status FROM public.status_chamado", conn))
+ using (var r = cmd.ExecuteReader()) { while (r.Read()) sta[r.GetInt32(0)] = r.IsDBNull(1)?("Status #"+r.GetInt32(0)): r.GetString(1); }
+ var usr = new Dictionary<int,string>();
+ using (var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo FROM public.usuario", conn))
+ using (var r = cmd.ExecuteReader()) { while (r.Read()) usr[r.GetInt32(0)] = r.IsDBNull(1)?("Usuário #"+r.GetInt32(0)): r.GetString(1); }
+ var sla = new Dictionary<int,string>();
+ using (var cmd = new NpgsqlCommand("SELECT sla_id, nome_sla FROM public.sla", conn))
+ using (var r = cmd.ExecuteReader()) { while (r.Read()) sla[r.GetInt32(0)] = r.IsDBNull(1)?("SLA #"+r.GetInt32(0)): r.GetString(1); }
+ ViewBag.MapCategorias = cat; ViewBag.MapPrioridades = pri; ViewBag.MapStatus = sta; ViewBag.MapUsuarios = usr; ViewBag.MapSlas = sla;
+ }
+
  public IActionResult Index()
  {
  var list = new List<Chamado>();
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand("SELECT chamado_id, protocolo, titulo, descricao, data_abertura, data_fechamento, usuario_solicitante_id, tecnico_responsavel_id, categoria_id, prioridade_id, status_id, sla_id, sla_atingido FROM public.chamado ORDER BY chamado_id", conn);
  using var reader = cmd.ExecuteReader();
  while (reader.Read())
@@ -41,13 +146,13 @@ namespace PIM_FINAL.Controllers
  SlaAtingido = !reader.IsDBNull(12) && reader.GetBoolean(12)
  });
  }
+ LoadNameMaps();
  return View(list);
  }
 
  public IActionResult Details(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand("SELECT chamado_id, protocolo, titulo, descricao, data_abertura, data_fechamento, usuario_solicitante_id, tecnico_responsavel_id, categoria_id, prioridade_id, status_id, sla_id, sla_atingido FROM public.chamado WHERE chamado_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -68,33 +173,34 @@ namespace PIM_FINAL.Controllers
  SlaId = reader.IsDBNull(11) ? null : reader.GetInt32(11),
  SlaAtingido = !reader.IsDBNull(12) && reader.GetBoolean(12)
  };
+ LoadNameMaps();
  return View(model);
  }
 
  public IActionResult Create()
  {
+ LoadDropdowns();
  return View(new Chamado());
  }
 
  [HttpPost]
  public IActionResult Create(Chamado model)
  {
- if (!ModelState.IsValid) return View(model);
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ if (!ModelState.IsValid) { LoadDropdowns(model.UsuarioSolicitanteId, model.TecnicoResponsavelId, model.CategoriaId, model.PrioridadeId, model.StatusId, model.SlaId); return View(model); }
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand(@"INSERT INTO public.chamado (protocolo, titulo, descricao, data_abertura, data_fechamento, usuario_solicitante_id, tecnico_responsavel_id, categoria_id, prioridade_id, status_id, sla_id, sla_atingido)
 VALUES (@protocolo, @titulo, @descricao, @data_abertura, @data_fechamento, @usuario_solicitante_id, @tecnico_responsavel_id, @categoria_id, @prioridade_id, @status_id, @sla_id, @sla_atingido)", conn);
- cmd.Parameters.AddWithValue("@protocolo", (object?)model.Protocolo ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@data_abertura", (object?)model.DataAbertura ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@data_fechamento", (object?)model.DataFechamento ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@usuario_solicitante_id", (object?)model.UsuarioSolicitanteId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@tecnico_responsavel_id", (object?)model.TecnicoResponsavelId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@categoria_id", (object?)model.CategoriaId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@prioridade_id", (object?)model.PrioridadeId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@status_id", (object?)model.StatusId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@sla_id", (object?)model.SlaId ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@protocolo", (object?)model.Protocolo ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_abertura", (object?)model.DataAbertura ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_fechamento", (object?)model.DataFechamento ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@usuario_solicitante_id", (object?)model.UsuarioSolicitanteId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@tecnico_responsavel_id", (object?)model.TecnicoResponsavelId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@categoria_id", (object?)model.CategoriaId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@prioridade_id", (object?)model.PrioridadeId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@status_id", (object?)model.StatusId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@sla_id", (object?)model.SlaId ?? DBNull.Value);
  cmd.Parameters.AddWithValue("@sla_atingido", model.SlaAtingido);
  cmd.ExecuteNonQuery();
  return RedirectToAction(nameof(Index));
@@ -102,8 +208,7 @@ VALUES (@protocolo, @titulo, @descricao, @data_abertura, @data_fechamento, @usua
 
  public IActionResult Edit(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand("SELECT chamado_id, protocolo, titulo, descricao, data_abertura, data_fechamento, usuario_solicitante_id, tecnico_responsavel_id, categoria_id, prioridade_id, status_id, sla_id, sla_atingido FROM public.chamado WHERE chamado_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -124,27 +229,27 @@ VALUES (@protocolo, @titulo, @descricao, @data_abertura, @data_fechamento, @usua
  SlaId = reader.IsDBNull(11) ? null : reader.GetInt32(11),
  SlaAtingido = !reader.IsDBNull(12) && reader.GetBoolean(12)
  };
+ LoadDropdowns(model.UsuarioSolicitanteId, model.TecnicoResponsavelId, model.CategoriaId, model.PrioridadeId, model.StatusId, model.SlaId);
  return View(model);
  }
 
  [HttpPost]
  public IActionResult Edit(Chamado model)
  {
- if (!ModelState.IsValid) return View(model);
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ if (!ModelState.IsValid) { LoadDropdowns(model.UsuarioSolicitanteId, model.TecnicoResponsavelId, model.CategoriaId, model.PrioridadeId, model.StatusId, model.SlaId); return View(model); }
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand(@"UPDATE public.chamado SET protocolo = @protocolo, titulo = @titulo, descricao = @descricao, data_abertura = @data_abertura, data_fechamento = @data_fechamento, usuario_solicitante_id = @usuario_solicitante_id, tecnico_responsavel_id = @tecnico_responsavel_id, categoria_id = @categoria_id, prioridade_id = @prioridade_id, status_id = @status_id, sla_id = @sla_id, sla_atingido = @sla_atingido WHERE chamado_id = @id", conn);
- cmd.Parameters.AddWithValue("@protocolo", (object?)model.Protocolo ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@data_abertura", (object?)model.DataAbertura ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@data_fechamento", (object?)model.DataFechamento ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@usuario_solicitante_id", (object?)model.UsuarioSolicitanteId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@tecnico_responsavel_id", (object?)model.TecnicoResponsavelId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@categoria_id", (object?)model.CategoriaId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@prioridade_id", (object?)model.PrioridadeId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@status_id", (object?)model.StatusId ?? System.DBNull.Value);
- cmd.Parameters.AddWithValue("@sla_id", (object?)model.SlaId ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@protocolo", (object?)model.Protocolo ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_abertura", (object?)model.DataAbertura ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_fechamento", (object?)model.DataFechamento ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@usuario_solicitante_id", (object?)model.UsuarioSolicitanteId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@tecnico_responsavel_id", (object?)model.TecnicoResponsavelId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@categoria_id", (object?)model.CategoriaId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@prioridade_id", (object?)model.PrioridadeId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@status_id", (object?)model.StatusId ?? DBNull.Value);
+ cmd.Parameters.AddWithValue("@sla_id", (object?)model.SlaId ?? DBNull.Value);
  cmd.Parameters.AddWithValue("@sla_atingido", model.SlaAtingido);
  cmd.Parameters.AddWithValue("@id", model.ChamadoId);
  cmd.ExecuteNonQuery();
@@ -153,8 +258,7 @@ VALUES (@protocolo, @titulo, @descricao, @data_abertura, @data_fechamento, @usua
 
  public IActionResult Delete(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand("SELECT chamado_id, protocolo, titulo, descricao FROM public.chamado WHERE chamado_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -172,8 +276,7 @@ VALUES (@protocolo, @titulo, @descricao, @data_abertura, @data_fechamento, @usua
  [HttpPost, ActionName("Delete")]
  public IActionResult DeleteConfirmed(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = OpenConn();
  using var cmd = new NpgsqlCommand("DELETE FROM public.chamado WHERE chamado_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  cmd.ExecuteNonQuery();

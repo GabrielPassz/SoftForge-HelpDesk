@@ -1,0 +1,36 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+
+<div class="db-header">
+ <header>
+ <div style="display:flex;align-items:center;gap:12px;">
+ <img src="/Images/logo.png" alt="SoftForge" class="site-icon" />
+ <div>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </div>
+ </div>
+ </header>
+</div>
+
+<div class="db-nav">
+ <nav>
+ <a asp-page="/site/InicialPainel"><img src="/Images/inicio.png" alt="Início" class="site-icon"/> Início</a> |
+ <a asp-page="/site/AbrirChamado"><img src="/Images/abrir-chamado.png" alt="Abrir Chamado" class="site-icon"/> Abrir Chamado</a> |
+ <a asp-page="/site/MeusChamados"><img src="/Images/meus-chamados.png" alt="Meus Chamados" class="site-icon"/> Meus Chamados</a> |
+ <a asp-page="/site/Atendimento"><img src="/Images/atendimento.png" alt="Atendimento" class="site-icon"/> Atendimento</a> |
+ <a asp-page="/site/Escalonamento"><img src="/Images/escalonamento.png" alt="Escalonamento" class="site-icon"/> Escalonamento</a> |
+ <a asp-page="/site/DashboardGestor"><img src="/Images/dashboard.png" alt="Dashboard" class="site-icon"/> Dashboard</a> |
+ <a asp-page="/site/Relatorios"><img src="/Images/relatorios.png" alt="Relatórios" class="site-icon"/> Relatórios</a> |
+ <a asp-page="/site/GerenciarUsuarios"><img src="/Images/gerenciar.png" alt="Gerenciar" class="site-icon"/> Gerenciar</a> |
+ <a asp-page="/site/Configuracao"><img src="/Images/configuracao.png" alt="Configuração" class="site-icon"/> Configuração</a>
+ </nav>
+</div>
+
+<!-- main content will be rendered in the individual views -->
+
+<div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+</div>

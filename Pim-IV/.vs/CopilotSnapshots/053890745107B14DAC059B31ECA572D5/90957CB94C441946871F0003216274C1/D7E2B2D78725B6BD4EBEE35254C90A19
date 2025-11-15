@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+
+<div class="db-header">
+ <header>
+ <div class="site-header">
+ <div class="site-brand">
+ <img src="/Images/logo.png" alt="SoftForge" class="site-icon" />
+ </div>
+ <div class="site-title">
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </div>
+
+ <div class="site-menu">
+ <details class="menu-details">
+ <summary class="menu-summary">Menu ▾</summary>
+ <nav class="menu-list">
+ <a asp-page="/site/InicialPainel"><img src="/Images/inicio.png" class="site-icon" alt="Início"/> Início</a>
+ <a asp-page="/site/AbrirChamado"><img src="/Images/abrir-chamado.png" class="site-icon" alt="Abrir Chamado"/> Abrir Chamado</a>
+ <a asp-page="/site/MeusChamados"><img src="/Images/meus-chamados.png" class="site-icon" alt="Meus Chamados"/> Meus Chamados</a>
+ <a asp-page="/site/Atendimento"><img src="/Images/atendimento.png" class="site-icon" alt="Atendimento"/> Atendimento</a>
+ <a asp-page="/site/Escalonamento"><img src="/Images/escalonamento.png" class="site-icon" alt="Escalonamento"/> Escalonamento</a>
+ <a asp-page="/site/DashboardGestor"><img src="/Images/dashboard.png" class="site-icon" alt="Dashboard"/> Dashboard</a>
+ <a asp-page="/site/Relatorios"><img src="/Images/relatorios.png" class="site-icon" alt="Relatórios"/> Relatórios</a>
+ <a asp-page="/site/GerenciarUsuarios"><img src="/Images/gerenciar.png" class="site-icon" alt="Gerenciar"/> Gerenciar</a>
+ <a asp-page="/site/Configuracao"><img src="/Images/configuracao.png" class="site-icon" alt="Configuração"/> Configuração</a>
+ </nav>
+ </details>
+ </div>
+ </div>
+ </header>
+</div>

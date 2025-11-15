@@ -1,0 +1,152 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Npgsql;
+using PIM_FINAL.Models;
+using System.Collections.Generic;
+
+namespace PIM_FINAL.Controllers
+{
+ public class UsuarioController : Controller
+ {
+ private readonly string _connectionString;
+
+ public UsuarioController(IConfiguration config)
+ {
+ _connectionString = config["SUPABASE_DB_CONNECTION"] ?? System.Environment.GetEnvironmentVariable("SUPABASE_DB_CONNECTION") ?? string.Empty;
+ }
+
+ public IActionResult Index()
+ {
+ var list = new List<Usuario>();
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo, email, data_cadastro, ultimo_login, departamento_id, perfil_id FROM public.usuario ORDER BY usuario_id", conn);
+ using var reader = cmd.ExecuteReader();
+ while (reader.Read())
+ {
+ list.Add(new Usuario
+ {
+ UsuarioId = reader.GetInt32(0),
+ NomeCompleto = reader.IsDBNull(1) ? null : reader.GetString(1),
+ Email = reader.IsDBNull(2) ? null : reader.GetString(2),
+ DataCadastro = reader.IsDBNull(3) ? null : reader.GetDateTime(3),
+ UltimoLogin = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
+ DepartamentoId = reader.IsDBNull(5) ? null : reader.GetInt32(5),
+ PerfilId = reader.IsDBNull(6) ? null : reader.GetInt32(6)
+ });
+ }
+ return View(list);
+ }
+
+ public IActionResult Details(int id)
+ {
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo, email, data_cadastro, ultimo_login, departamento_id, perfil_id FROM public.usuario WHERE usuario_id = @id", conn);
+ cmd.Parameters.AddWithValue("@id", id);
+ using var reader = cmd.ExecuteReader();
+ if (!reader.Read()) return NotFound();
+ var model = new Usuario
+ {
+ UsuarioId = reader.GetInt32(0),
+ NomeCompleto = reader.IsDBNull(1) ? null : reader.GetString(1),
+ Email = reader.IsDBNull(2) ? null : reader.GetString(2),
+ DataCadastro = reader.IsDBNull(3) ? null : reader.GetDateTime(3),
+ UltimoLogin = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
+ DepartamentoId = reader.IsDBNull(5) ? null : reader.GetInt32(5),
+ PerfilId = reader.IsDBNull(6) ? null : reader.GetInt32(6)
+ };
+ return View(model);
+ }
+
+ public IActionResult Create()
+ {
+ return View(new Usuario());
+ }
+
+ [HttpPost]
+ public IActionResult Create(Usuario model)
+ {
+ if (!ModelState.IsValid) return View(model);
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand(@"INSERT INTO public.usuario (nome_completo, email, data_cadastro, ultimo_login, departamento_id, perfil_id)
+VALUES (@nome_completo, @email, @data_cadastro, @ultimo_login, @departamento_id, @perfil_id)", conn);
+ cmd.Parameters.AddWithValue("@nome_completo", (object?)model.NomeCompleto ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@email", (object?)model.Email ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_cadastro", (object?)model.DataCadastro ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@ultimo_login", (object?)model.UltimoLogin ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@departamento_id", (object?)model.DepartamentoId ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@perfil_id", (object?)model.PerfilId ?? System.DBNull.Value);
+ cmd.ExecuteNonQuery();
+ return RedirectToAction(nameof(Index));
+ }
+
+ public IActionResult Edit(int id)
+ {
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo, email, data_cadastro, ultimo_login, departamento_id, perfil_id FROM public.usuario WHERE usuario_id = @id", conn);
+ cmd.Parameters.AddWithValue("@id", id);
+ using var reader = cmd.ExecuteReader();
+ if (!reader.Read()) return NotFound();
+ var model = new Usuario
+ {
+ UsuarioId = reader.GetInt32(0),
+ NomeCompleto = reader.IsDBNull(1) ? null : reader.GetString(1),
+ Email = reader.IsDBNull(2) ? null : reader.GetString(2),
+ DataCadastro = reader.IsDBNull(3) ? null : reader.GetDateTime(3),
+ UltimoLogin = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
+ DepartamentoId = reader.IsDBNull(5) ? null : reader.GetInt32(5),
+ PerfilId = reader.IsDBNull(6) ? null : reader.GetInt32(6)
+ };
+ return View(model);
+ }
+
+ [HttpPost]
+ public IActionResult Edit(Usuario model)
+ {
+ if (!ModelState.IsValid) return View(model);
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand(@"UPDATE public.usuario SET nome_completo = @nome_completo, email = @email, data_cadastro = @data_cadastro, ultimo_login = @ultimo_login, departamento_id = @departamento_id, perfil_id = @perfil_id WHERE usuario_id = @id", conn);
+ cmd.Parameters.AddWithValue("@nome_completo", (object?)model.NomeCompleto ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@email", (object?)model.Email ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@data_cadastro", (object?)model.DataCadastro ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@ultimo_login", (object?)model.UltimoLogin ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@departamento_id", (object?)model.DepartamentoId ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@perfil_id", (object?)model.PerfilId ?? System.DBNull.Value);
+ cmd.Parameters.AddWithValue("@id", model.UsuarioId);
+ cmd.ExecuteNonQuery();
+ return RedirectToAction(nameof(Index));
+ }
+
+ public IActionResult Delete(int id)
+ {
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand("SELECT usuario_id, nome_completo, email FROM public.usuario WHERE usuario_id = @id", conn);
+ cmd.Parameters.AddWithValue("@id", id);
+ using var reader = cmd.ExecuteReader();
+ if (!reader.Read()) return NotFound();
+ var model = new Usuario
+ {
+ UsuarioId = reader.GetInt32(0),
+ NomeCompleto = reader.IsDBNull(1) ? null : reader.GetString(1),
+ Email = reader.IsDBNull(2) ? null : reader.GetString(2)
+ };
+ return View(model);
+ }
+
+ [HttpPost, ActionName("Delete")]
+ public IActionResult DeleteConfirmed(int id)
+ {
+ using var conn = new NpgsqlConnection(_connectionString);
+ conn.Open();
+ using var cmd = new NpgsqlCommand("DELETE FROM public.usuario WHERE usuario_id = @id", conn);
+ cmd.Parameters.AddWithValue("@id", id);
+ cmd.ExecuteNonQuery();
+ return RedirectToAction(nameof(Index));
+ }
+ }
+}

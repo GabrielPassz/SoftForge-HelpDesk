@@ -1,207 +1,280 @@
-/* Aliases: normalize legacy class names to current layout classes
- This lets pages using older class names (db-top, db-body, db-inicial, etc.)
- render with the same layout/styles as the standardized classes.
+﻿/* SoftForge HelpDesk UI - normalized, deduplicated and mobile-friendly styles
+ - One source of truth per component (containers, header, nav, content, tables, forms)
+ - Old class aliases map to the same visual style
+ - Mobile table stacking is opt-in via `.stack-mobile` (use `.no-stack` to force normal)
 */
 
-/* Outer container aliases */
-.db-page, .db-inicial, .db-wrapper, .db-container { 
- /* keep central layout behavior */
- max-width:1200px;
- margin:0 auto;
- padding: var(--page-padding,1rem);
- box-sizing: border-box;
-}
-
-/* Header aliases */
-.db-header, .db-top, .db-header-wrapper {
- background: var(--panel-2, #0f1113);
- padding:1rem;
- border-radius: var(--radius,6px);
- margin-bottom:0.75rem;
-}
-.db-header h1, .db-header p { color: var(--text); margin:0 }
-
-/* Nav aliases */
-.db-nav, .db-top nav, .db-navigation {
- display: flex;
- flex-wrap: wrap;
- gap:0.5rem;
- align-items: center;
- margin:0.5rem0;
-}
-.db-nav a { color: var(--accent, #66aaff); text-decoration: none }
-
-/* Content/main aliases */
-.db-content, .db-body, .db-main, .db-panel {
- background: var(--panel, #0b0b0b);
- padding:1rem;
- border-radius: var(--radius,6px);
- box-shadow:03px8px rgba(0,0,0,0.6);
-}
-
-/* Footer alias */
-.db-footer, .db-footer-wrapper { text-align:center; color: var(--muted); padding:1rem0 }
-
-/* Section alias: some files may use <div class="section"> or <section class="panel"> */
-.section, .panel, .db-section { margin-bottom:1.25rem }
-
-/* Notifications list alias kept below (existing rules will apply)
- Note: specific db-section.db-notifications rules still take precedence */
-
-/* End aliases */
-
-/* --- Existing styles below --- */
 :root{
- --bg: #000;
- --panel: #0b0b0b;
- --panel-2: #0f1113;
- --muted: #9a9a9a;
- --text: #e6e6e6;
- --accent: #66aaff;
- --primary: #1b6ec2;
+ --bg:#000;
+ --panel:#0b0b0b;
+ --panel-2:#0f1113;
+ --muted:#9a9a9a;
+ --text:#e6e6e6;
+ --accent:#66aaff;
+ --primary:#1b6ec2; /* cor solicitada */
  --radius:6px;
  --page-padding:1rem;
 }
 
 /* Base */
-html, body {
+html, body{
  height:100%;
- background-color: var(--bg);
- color: var(--text);
+ background:var(--bg);
+ color:var(--text);
  margin:0;
  padding:0;
- -webkit-font-smoothing: antialiased;
- -moz-osx-font-smoothing: grayscale;
- font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
 }
 
-/* Constrain content and provide consistent gutters */
-.db-page {
+/* Containers (aliases included) */
+.db-page, .db-inicial, .db-wrapper, .db-container{
  max-width:1200px;
  margin:0 auto;
- padding: var(--page-padding);
- box-sizing: border-box;
+ padding:var(--page-padding);
+ box-sizing:border-box;
 }
 
 /* Header */
-.db-header header{
- background: var(--panel-2);
+.db-header, .db-top, .db-header-wrapper{
+ background:var(--panel-2);
  padding:1rem;
- border-radius: var(--radius);
- margin-bottom:0.75rem;
+ border-radius:var(--radius);
+ margin-bottom:.75rem;
 }
-.db-header h1, .db-header p{ color: var(--text); margin:0 }
+.db-header header{ /* inner header block when used */
+ background:var(--panel-2);
+ padding:1rem;
+ border-radius:var(--radius);
+}
+.db-header h1, .db-header p{ color:var(--text); margin:0 }
 
-/* Navigation */
-.db-nav nav{
- display: flex;
- flex-wrap: wrap;
- gap:0.5rem;
- align-items: center;
- margin:0.5rem0;
+/* Navigation (alias) */
+.db-nav, .db-top nav, .db-navigation{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.5rem;
+ align-items:center;
+ margin:.5rem;
 }
-.db-nav a{
- color: var(--accent);
- text-decoration: none;
-}
-.db-nav a:hover{ text-decoration: underline }
+.db-nav a{ color:var(--accent); text-decoration:none }
+.db-nav a:hover{ text-decoration:underline }
 
 /* Content card */
-.db-content{
- background: var(--panel);
+.db-content, .db-body, .db-main, .db-panel{
+ background:var(--panel);
  padding:1rem;
- border-radius: var(--radius);
- box-shadow:03px8px rgba(0,0,0,0.6);
+ border-radius:var(--radius);
+ box-shadow:03px8px rgba(0,0,0,.6);
 }
 
-.db-section{ margin-bottom:1.25rem }
-.db-section h2, .db-section h3, .db-section h4{ margin-top:0; color: #fff }
+/* Sections */
+.section, .panel, .db-section{ margin-bottom:1.25rem }
+.db-section h2, .db-section h3, .db-section h4{ margin-top:0; color:#fff }
 
 /* Footer */
-.db-footer footer{ text-align: center; padding:1rem0; color: var(--muted) }
+.db-footer, .db-footer-wrapper{ text-align:center; color:var(--muted); padding:1rem }
+.db-footer footer{ text-align:center; padding:1rem; color:var(--muted) }
 
 /* Buttons */
-.btn-primary{ background-color: var(--primary); border-color: #1861ac; color: #fff }
-.btn-secondary{ background-color: #2b2b2b; border-color: #3a3a3a; color: var(--text) }
-
-.db-actions{ display: flex; gap:0.5rem; flex-wrap: wrap }
-
-/* Forms and controls */
-.form-control, .form-select, input[type="text"], input[type="email"], input[type="password"], textarea, select{
- width:100%;
- box-sizing: border-box;
- padding:0.5rem;
+.btn-primary{ background-color:var(--primary); border-color:#1861ac; color:#fff }
+.btn-secondary{ background-color:#2b2b2b; border-color:#3a3a3a; color:var(--text) }
+/* Base para todos os botões simples sem classe específica */
+button, input[type="button"], input[type="submit"], .btn{
+ background:var(--primary);
+ border:1px solid #1861ac;
+ color:#fff;
+ padding:.45rem .9rem;
  border-radius:4px;
- background: #121212;
- color: var(--text);
+ cursor:pointer;
+ font:inherit;
+ transition:background .15s, box-shadow .15s;
+}
+/* Exceções mantêm seu estilo (já definidos acima) */
+.btn-secondary{ background:#2b2b2b; border-color:#3a3a3a; }
+button:hover:not(.btn-secondary),
+.btn:hover:not(.btn-secondary),
+input[type="submit"]:hover, input[type="button"]:hover{
+ background:#165fa8;
+}
+button:active:not(.btn-secondary),
+.btn:active:not(.btn-secondary),
+input[type="submit"]:active, input[type="button"]:active{
+ background:#135292;
+}
+button:disabled, input[type="submit"]:disabled, input[type="button"]:disabled{
+ opacity:.55; cursor:not-allowed; filter:grayscale(.4);
+}
+.db-actions{ display:flex; gap:.5rem; flex-wrap:wrap }
+
+/* Forms */
+.form-control, .form-select,
+input[type="text"], input[type="email"], input[type="password"], textarea, select{
+ width:100%;
+ box-sizing:border-box;
+ padding:.5rem;
+ border-radius:4px;
+ background:#121212;
+ color:var(--text);
  border:1px solid #222;
 }
+/* Ensure file input never causes horizontal overflow */
+input[type="file"],
+input[type="file"].form-control{
+ width:100%;
+ max-width:100%;
+ box-sizing:border-box;
+ display:block;
+}
+label{ display:block; margin-bottom:.35rem; color:var(--muted) }
 
-label{ display: block; margin-bottom:0.35rem; color: var(--muted) }
+/* Tables - base */
+.table{ width:100%; border-collapse:collapse; color:var(--text); table-layout:auto }
+.table th, .table td{ padding:.5rem; border:1px solid #2b2b2b; text-align:left; word-break:break-word }
+.table-scroll{ width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch }
 
-/* Table responsiveness */
-.table-responsive{ width:100%; overflow: auto; -webkit-overflow-scrolling: touch; }
-.table{ width:100%; border-collapse: collapse; color: var(--text); }
-.table th, .table td{ padding:0.5rem; border:1px solid #2b2b2b; text-align: left }
+/* Summary tables (2 col) */
+.db-summary-table th:first-child, .db-summary-table td:first-child{ text-align:left }
+.db-summary-table th:last-child, .db-summary-table td:last-child{ text-align:right }
 
-/* Small helpers */
+/* Add menu item separators */
+.menu-list a{ border-bottom:1px solid #1d1d1d; }
+.menu-list a:last-child{ border-bottom:none; }
+.menu-list .menu-sep{ padding:6px8px; border-bottom:1px solid #1d1d1d; font-size:.85rem; color:var(--muted); }
+.menu-list .menu-sep:last-child{ border-bottom:none; }
+
+/* Utilities */
 .w-100{ width:100% }
-.text-muted{ color: var(--muted) }
+.text-muted{ color:var(--muted) }
+.mb-3{ margin-bottom:10px }
+.site-icon{ width:20px; height:20px; vertical-align:middle; margin-right:6px }
 
-/* Layout helpers */
-.db-grid{ display: grid; gap:1rem; grid-template-columns:1fr; }
+/* KPI badges */
+.priority-critical{ background:#f44336; color:#fff; padding:.25rem .5rem; border-radius:3px; display:inline-block }
+.priority-high{ background:#ff9800; color:#fff; padding:.25rem .5rem; border-radius:3px; display:inline-block }
+.priority-medium{ background:#ffeb3b; color:#000; padding:.25rem .5rem; border-radius:3px; display:inline-block }
+.priority-low{ background:#4caf50; color:#fff; padding:.25rem .5rem; border-radius:3px; display:inline-block }
 
-/* Responsive breakpoints */
-@media (min-width:600px) {
- .db-grid{ grid-template-columns:1fr320px; }
- .db-page{ padding: calc(var(--page-padding) *1.25); }
+/* KPI bar */
+.kpi-bar{ height:18px; background:#222; border-radius:3px; overflow:hidden }
+.kpi-bar>.fill{ height:100%; background:linear-gradient(90deg,#66aaff0%,#1b6ec2100%); width:0% }
+
+/* Header layout for SiteShell */
+.site-header{ display:flex; align-items:center; gap:12px }
+.site-brand img{ width:250px; height:250px; object-fit:contain }
+.site-title h1{ margin:0; font-size:1.25rem }
+.site-title p{ margin:0; font-size:.85rem; color:var(--muted) }
+.site-menu{ margin-left:auto }
+.menu-details{ position:relative }
+.menu-summary{ background:transparent; border:none; color:var(--accent); cursor:pointer; font-weight:600 }
+.menu-list{ display:flex; flex-direction:column; position:absolute; right:0; margin-top:8px; background:var(--panel-2); padding:8px; border-radius:6px; box-shadow:06px18px rgba(0,0,0,.6) }
+.menu-list a{ color:var(--text); text-decoration:none; padding:6px8px; display:flex; align-items:center; gap:8px }
+.menu-list a:hover{ background:#121212 }
+.menu-summary::-webkit-details-marker{ display:none }
+.menu-summary::marker{ content:"" }
+
+/* RESPONSIVE */
+@media (min-width:600px){ .db-grid{ display:grid; gap:1rem; grid-template-columns:1fr320px } .db-page{ padding:calc(var(--page-padding) *1.25) } }
+@media (min-width:900px){ .db-grid{ grid-template-columns:1fr360px } .db-page{ max-width:1100px } }
+@media (min-width:1200px){ .db-page{ max-width:1200px } }
+
+/* Mobile general tweaks */
+@media (max-width:599px){
+ .db-nav nav{ flex-direction:column; align-items:flex-start }
+ .db-actions{ flex-direction:column }
+ .db-header header{ text-align:center }
+ .db-section table{ font-size:.9rem }
+ .table{ min-width:0 !important; table-layout:fixed }
+ /* Avoid page side-scroll; rely on wrapping */
+ .db-section, .db-content{ overflow-x:visible }
 }
 
-@media (min-width:900px) {
- .db-grid{ grid-template-columns:1fr360px; }
- .db-page{ max-width:1100px }
+/* Mobile header/menu centering */
+@media (max-width:600px){
+ .menu-details{ width:100% }
+ .menu-summary{ width:100%; display:flex; justify-content:center; align-items:center; text-align:center }
+ .site-header{ flex-direction:column; align-items:center; text-align:center }
+ .site-brand img{ width:200px; height:200px; margin:0 auto }
+ .site-title{ display:flex; flex-direction:column; align-items:center }
+ .site-menu{ margin-left:0; width:100%; display:flex; flex-direction:column; align-items:center }
+ .menu-details{ position:static; display:flex; flex-direction:column; align-items:center }
+ .menu-summary{ margin-top:8px; padding:4px10px; font-size:.95rem }
+ .menu-list{ position:static; right:auto; left:auto; box-shadow:none; width:100%; max-width:280px; margin-top:10px }
+ .menu-list a{ justify-content:center }
 }
 
-@media (min-width:1200px) {
- .db-page{ max-width:1200px }
+/* Card layout for tables (opt-in with .stack-mobile) */
+@media (max-width:900px){
+ table.stack-mobile:not(.no-stack){ width:100%; border-collapse:separate; border-spacing:0 }
+ table.stack-mobile:not(.no-stack) thead{ display:none !important }
+ table.stack-mobile:not(.no-stack) tbody{ display:block }
+ table.stack-mobile:not(.no-stack) tbody tr{ display:block; background:var(--panel-2); border:1px solid #2b2b2b; border-radius:6px; margin-bottom:12px; overflow:hidden }
+ table.stack-mobile:not(.no-stack) tbody tr td{
+ display:flex; align-items:center; padding:6px12px; border:none; border-bottom:1px solid #1d1d1d; gap:12px;
+ }
+ table.stack-mobile:not(.no-stack) tbody tr td:last-child{ border-bottom:none }
+ table.stack-mobile:not(.no-stack) tbody tr td::before{
+ content:attr(data-label); font-weight:600; color:var(--muted); flex:00110px; white-space:nowrap;
+ }
+ table.stack-mobile:not(.no-stack) tbody tr td .cell-val{
+ flex:11 auto; margin-left:auto; text-align:right; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; word-break:break-word; overflow-wrap:anywhere; hyphens:auto;
+ }
+ /* Allow specific fields to wrap */
+ table.stack-mobile:not(.no-stack) tbody tr td[data-label="Título"] .cell-val,
+ table.stack-mobile:not(.no-stack) tbody tr td[data-label="Descrição"] .cell-val{ white-space:normal; text-align:left }
+ table.stack-mobile:not(.no-stack) tbody tr td[data-label="Protocolo"] .cell-val{ font-weight:700; letter-spacing:.25px }
 }
 
-/* Mobile specific rules */
-@media (max-width:599px) {
- .db-nav nav{ flex-direction: column; align-items: flex-start }
- .db-actions{ flex-direction: column }
- .db-header header{ text-align: center }
- .db-section table{ font-size:0.9rem }
- /* make long tables scroll horizontally */
- .table{ min-width:600px }
+/* Two-column summary tables: keep one line per row on mobile */
+@media (max-width:900px){
+ .db-summary-table{ width:100% }
+ .db-summary-table thead{ display:none !important }
+ .db-summary-table tbody{ display:block }
+ .db-summary-table tbody tr{
+ display:flex; justify-content:space-between; align-items:center; background:var(--panel-2); border:1px solid #2b2b2b; border-radius:6px; margin-bottom:12px;
+ }
+ .db-summary-table tbody tr td{ display:block; border:none; padding:8px 12px }
+ .db-summary-table tbody tr td::before{ content:none !important }
+ .db-summary-table tbody tr td:first-child{ font-weight:600; color:var(--text) }
+ db-summary-table tbody tr td:last-child{ text-align:right }
+ .db-summary-table tbody tr td .cell-val{ margin-left:0; text-align:right; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
+}
+
+/* KPI pair table:2 col desktop, label left value right */
+.kpi-pairs tbody tr{ grid-template-columns:1fr1fr; }
+.kpi-pairs td:first-child{ font-weight:600; color:var(--text); width:50%; }
+.kpi-pairs td:last-child{ text-align:right; }
+
+@media (max-width:900px){
+ /* já usamos stack-mobile: esconder thead e mostrar label com ::before */
+ .kpi-pairs.stack-mobile tbody tr td{ display:flex; justify-content:space-between; }
+ .kpi-pairs.stack-mobile tbody tr td:first-child{ display:none; }
+ .kpi-pairs.stack-mobile tbody tr td:last-child{ width:100%; text-align:right; }
+}
+
+/* Only on mobile: hide KPI label column for Dashboard Gestor KPI table */
+@media (max-width:900px){
+    table.kv-table.stack-mobile tbody tr td[data-label="KPI"] {
+        display: none !important;
+    }
+    table.kv-table.stack-mobile tbody tr td[data-label="Campo"] {
+        display: none !important;
+    }
 }
 
 /* Accessibility: focus styles */
 a:focus, button:focus, input:focus, select:focus, textarea:focus{
- outline:3px solid rgba(102,170,255,0.18);
+ outline:3px solid rgba(102,170,255,.18);
  outline-offset:2px;
 }
 
-/* Keep dark theme permanent � no prefers-color-scheme override */
-
-/* New utility classes moved from inline styles in DbTestes pages */
-.db-msg-box {
- border:1px solid #ccc;
- padding:10px;
- margin-bottom:10px;
- background: transparent;
- border-radius:4px;
+/* Wrap for any cell with display value */
+.cell-val{
+ white-space:normal !important;
+ overflow:visible !important;
+ text-overflow:clip !important;
+ word-break:break-word;
+ overflow-wrap:anywhere;
+ hyphens:auto;
 }
-
-/* Priority/color badges used in configuration/priority tables */
-.priority-critical { background-color: #f44336; color: white; padding:0.25rem0.5rem; border-radius:3px; display: inline-block }
-.priority-high { background-color: #ff9800; color: white; padding:0.25rem0.5rem; border-radius:3px; display: inline-block }
-.priority-medium { background-color: #ffeb3b; color: #000; padding:0.25rem0.5rem; border-radius:3px; display: inline-block }
-.priority-low { background-color: #4caf50; color: white; padding:0.25rem0.5rem; border-radius:3px; display: inline-block }
-
-/* KPI bar helper: a default neutral background; percentages can be controlled with width on an inner element */
-.kpi-bar { height:18px; background: #222; border-radius:3px; overflow: hidden }
-.kpi-bar > .fill { height:100%; background: linear-gradient(90deg, #66aaff0%, #1b6ec2100%); width:0% }
-
-/* small margin helper used in pages */
-.mb-3 { margin-bottom:10px }

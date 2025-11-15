@@ -1,0 +1,157 @@
+﻿using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.Extensions.Configuration;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PIM_FINAL.Services
+{
+ public interface IAiService
+ {
+ Task<(string Categoria, string Prioridade, string Justificativa)> ClassifyAsync(
+ string titulo,
+ string descricao,
+ IEnumerable<string> categorias,
+ IEnumerable<string> normas,
+ CancellationToken ct = default);
+
+ Task<string> SuggestInitialReplyAsync(string titulo, string descricao, CancellationToken ct = default);
+ Task<string> SummarizeAsync(string text, CancellationToken ct = default);
+ Task<string[]> ExtractKeywordsAsync(string text, CancellationToken ct = default);
+ }
+
+ public class RapidAiService : IAiService
+ {
+ private readonly IHttpClientFactory _httpClientFactory;
+ private readonly IConfiguration _config;
+ private readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web)
+ {
+ DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+ PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+ };
+
+ public RapidAiService(IHttpClientFactory httpClientFactory, IConfiguration config)
+ {
+ _httpClientFactory = httpClientFactory;
+ _config = config;
+ }
+
+ private record ChatMessage([property: JsonPropertyName("role")] string Role,
+ [property: JsonPropertyName("content")] string Content);
+ private record ChatRequest([property: JsonPropertyName("messages")] List<ChatMessage> Messages,
+ [property: JsonPropertyName("web_access")] bool WebAccess = false);
+
+ private async Task<string> ChatAsync(string userPrompt, CancellationToken ct)
+ {
+ var baseUrl = _config["RapidAI:BaseUrl"] ?? "https://open-ai21.p.rapidapi.com/conversationllama";
+ var host = _config["RapidAI:Host"] ?? "open-ai21.p.rapidapi.com";
+ var apiKey = _config["RapidAI:ApiKey"];
+ if (string.IsNullOrWhiteSpace(apiKey))
+ throw new InvalidOperationException("RapidAI:ApiKey não configurado.");
+
+ var client = _httpClientFactory.CreateClient("RapidAI");
+ using var request = new HttpRequestMessage(HttpMethod.Post, baseUrl);
+ request.Headers.Add("X-RapidAPI-Key", apiKey);
+ request.Headers.Add("X-RapidAPI-Host", host);
+ var payload = new ChatRequest(new List<ChatMessage> { new("user", userPrompt) }, WebAccess: false);
+ var json = JsonSerializer.Serialize(payload, _jsonOptions);
+ request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+ using var response = await client.SendAsync(request, ct);
+ var text = await response.Content.ReadAsStringAsync(ct);
+
+ // If HTTP error -> return empty to avoid postar erro bruto ao usuário
+ if (!response.IsSuccessStatusCode)
+ return string.Empty;
+
+ // Try parse and detect provider-side error envelope
+ try
+ {
+ using var doc = JsonDocument.Parse(text);
+ var root = doc.RootElement;
+
+ // Common error shapes
+ if ((root.TryGetProperty("status", out var st) && st.ValueKind == JsonValueKind.False) ||
+ root.TryGetProperty("error", out var err) ||
+ root.TryGetProperty("Error", out var err2))
+ {
+ return string.Empty; // treat as failure
+ }
+
+ if (root.TryGetProperty("result", out var result)) return result.ToString();
+ if (root.TryGetProperty("answer", out var answer)) return answer.ToString();
+ if (root.TryGetProperty("output", out var output)) return output.ToString();
+ if (root.TryGetProperty("response", out var resp)) return resp.ToString();
+ }
+ catch
+ {
+ // fall through, we'll return raw text
+ }
+
+ // As fallback return text (only if not obviously an error string)
+ if (text.Contains("\"status\":false", StringComparison.OrdinalIgnoreCase) ||
+ text.Contains("\"error\"", StringComparison.OrdinalIgnoreCase) ||
+ text.Contains("\"Error\"", StringComparison.OrdinalIgnoreCase))
+ {
+ return string.Empty;
+ }
+ return text;
+ }
+
+ public async Task<(string Categoria, string Prioridade, string Justificativa)> ClassifyAsync(string titulo, string descricao, IEnumerable<string> categorias, IEnumerable<string> prioridades, CancellationToken ct = default)
+ {
+ var cats = string.Join(", ", categorias);
+ var pris = string.Join(", ", prioridades);
+ var prompt = $@"Você é um assistente de Help Desk. Com base no título e descrição abaixo, escolha UMA categoria e UMA prioridade dentre as listas fornecidas e responda APENAS em JSON compacto no formato:
+{{""categoria"":""<uma das categorias>"",""prioridade"":""<uma das prioridades>"",""justificativa"":""<motivo curto>""}}
+
+Categorias: [{cats}]
+Prioridades: [{pris}]
+Título: {titulo}
+Descrição: {descricao}";
+ var result = await ChatAsync(prompt, ct);
+ string categoria = string.Empty, prioridade = string.Empty, justificativa = string.Empty;
+ try
+ {
+ var jsonMatch = Regex.Match(result, @"\{[\s\S]*\}", RegexOptions.Singleline);
+ var json = jsonMatch.Success ? jsonMatch.Value : result;
+ var doc = JsonDocument.Parse(json);
+ var root = doc.RootElement;
+ categoria = root.TryGetProperty("categoria", out var c) ? c.GetString() ?? string.Empty : string.Empty;
+ prioridade = root.TryGetProperty("prioridade", out var p) ? p.GetString() ?? string.Empty : string.Empty;
+ justificativa = root.TryGetProperty("justificativa", out var j) ? j.GetString() ?? string.Empty : string.Empty;
+ }
+ catch
+ {
+ foreach (var c in categorias) if (result.Contains(c, StringComparison.OrdinalIgnoreCase)) { categoria = c; break; }
+ foreach (var p in prioridades) if (result.Contains(p, StringComparison.OrdinalIgnoreCase)) { prioridade = p; break; }
+ justificativa = string.IsNullOrWhiteSpace(result) ? "" : result.Trim();
+ }
+ return (categoria, prioridade, justificativa);
+ }
+
+ public Task<string> SuggestInitialReplyAsync(string titulo, string descricao, CancellationToken ct = default)
+ {
+ var prompt = $@"Você é técnico de suporte. Escreva uma resposta inicial curta, empática e objetiva para o solicitante, confirmando o recebimento e pedindo dados essenciais (logs, prints, passos para reproduzir). Use no máx.120 palavras.
+
+Título: {titulo}
+Descrição: {descricao}";
+ return ChatAsync(prompt, ct);
+ }
+ public Task<string> SummarizeAsync(string text, CancellationToken ct = default)
+ {
+ var prompt = $"Resuma em3 a5 bullets a conversa e ações abaixo, destacando status atual e próximos passos:\n\n{text}";
+ return ChatAsync(prompt, ct);
+ }
+ public async Task<string[]> ExtractKeywordsAsync(string text, CancellationToken ct = default)
+ {
+ var prompt = $"Extraia de3 a8 palavras-chave em português, separadas por vírgula, do texto a seguir:\n{text}";
+ var resp = await ChatAsync(prompt, ct);
+ var parts = resp.Split(new[] { ',', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+ return parts.Take(8).ToArray();
+ }
+ }
+}

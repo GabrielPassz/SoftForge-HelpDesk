@@ -1,0 +1,33 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar Senha - SoftForge HelpDesk</title>
+    <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+    <div class="db-page container-fluid">
+        @await Html.PartialAsync("_HeaderNav")
+
+        <main class="db-content">
+            <h2>Recuperação de Senha</h2>
+            <p>Insira seu e-mail cadastrado para receber o código de redefinição.</p>
+            <form method="post" action="/site/RecuperarSenha">
+                <label for="email">E-mail cadastrado:</label><br />
+                <input type="email" id="email" name="email" placeholder="seuemail@softforge.com" required /><br /><br />
+                <button type="submit" class="btn btn-primary">Enviar código</button>
+            </form>
+        </main>
+
+        <div class="db-footer">
+            <footer>
+                <p>©2025 SoftForge - Todos os direitos reservados</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html></html>

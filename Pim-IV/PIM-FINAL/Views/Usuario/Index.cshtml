@@ -2,6 +2,8 @@
 
 @{
  ViewData["Title"] = "Usuários";
+ var mapDep = ViewBag.MapDepartamentos as System.Collections.Generic.Dictionary<int,string> ?? new();
+ var mapPerf = ViewBag.MapPerfis as System.Collections.Generic.Dictionary<int,string> ?? new();
 }
 <h1>Usuários</h1>
 <p>
@@ -12,6 +14,10 @@
  <tr>
  <th>Nome</th>
  <th>Email</th>
+ <th>Perfil</th>
+ <th>Departamento</th>
+ <th>Cadastro</th>
+ <th>Último Login</th>
  <th></th>
  </tr>
  </thead>
@@ -21,6 +27,10 @@
  <tr>
  <td>@u.NomeCompleto</td>
  <td>@u.Email</td>
+ <td>@(u.PerfilId!=null && mapPerf.ContainsKey(u.PerfilId.Value)? mapPerf[u.PerfilId.Value]: u.PerfilId?.ToString())</td>
+ <td>@(u.DepartamentoId!=null && mapDep.ContainsKey(u.DepartamentoId.Value)? mapDep[u.DepartamentoId.Value]: u.DepartamentoId?.ToString())</td>
+ <td>@u.DataCadastro</td>
+ <td>@u.UltimoLogin</td>
  <td>
  <a asp-action="Details" asp-route-id="@u.UsuarioId">Details</a> |
  <a asp-action="Edit" asp-route-id="@u.UsuarioId">Edit</a> |

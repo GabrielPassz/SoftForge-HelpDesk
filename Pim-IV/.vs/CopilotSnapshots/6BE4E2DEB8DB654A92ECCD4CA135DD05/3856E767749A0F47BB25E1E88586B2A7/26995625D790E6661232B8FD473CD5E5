@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace PIM_FINAL.Models
+{
+ public class Usuario
+ {
+ public int UsuarioId { get; set; }
+ public string? NomeCompleto { get; set; }
+ public string? Email { get; set; }
+ public DateTime? DataCadastro { get; set; }
+ public DateTime? UltimoLogin { get; set; }
+ public int? DepartamentoId { get; set; }
+ public int? PerfilId { get; set; }
+ }
+}

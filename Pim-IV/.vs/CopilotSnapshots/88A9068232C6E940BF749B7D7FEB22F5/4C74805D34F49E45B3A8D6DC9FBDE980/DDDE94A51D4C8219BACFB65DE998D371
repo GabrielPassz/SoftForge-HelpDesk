@@ -1,0 +1,134 @@
+﻿@model PIM_FINAL.Models.AdminUsersViewModel @* ViewModel com listas de usuários *@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers @* TagHelpers *@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" /> @* Codificação *@
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" /> @* Responsivo *@
+ <title>Gerenciar Usuários - SoftForge HelpDesk</title> @* Título *@
+ <link rel="stylesheet" href="/css/dbtestes.css" /> @* Estilos *@
+ </head>
+ <body>
+ <div class="db-page container-fluid"> @* Container principal *@
+ @await Html.PartialAsync("_HeaderNav") @* Navegação *@
+ <main class="db-content"> @* Conteúdo *@
+ <section class="db-section db-intro"> @* Cabeçalho da tela *@
+ <h2>Gerenciar Usuários</h2>
+ <p><strong>Administrador:</strong> @(User.Identity?.Name ?? "Admin")</p>
+ </section>
+
+ <section> @* Resumo geral de quantidades *@
+ <h3>Resumo Geral</h3>
+ <table class="table table-bordered w-100 stack-mobile">
+ <thead>
+ <tr>
+ <th>Indicador</th>
+ <th>Quantidade</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td data-label="Indicador">Total de Usuários Ativos</td>
+ <td data-label="Quantidade"><span class="cell-val">@Model.TotalActiveCount</span></td>
+ </tr>
+ <tr>
+ <td data-label="Indicador">Solicitações Pendentes de Aprovação</td>
+ <td data-label="Quantidade"><span class="cell-val"><strong>@Model.PendingCount</strong></span></td>
+ </tr>
+ <tr>
+ <td data-label="Indicador">Total de Usuários</td>
+ <td data-label="Quantidade"><span class="cell-val">@Model.TotalUsers</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section> @* Lista de pendentes com ações *@
+ <h3>Solicitações Pendentes de Aprovação</h3>
+ <p>Usuários que solicitaram cadastro e aguardam liberação</p>
+
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead>
+ <tr>
+ <th>Nome</th>
+ <th>E-mail</th>
+ <th>Data Solicitação</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach(var u in Model.PendingUsers)
+ {
+ <tr>
+ <td data-label="Nome"><span class="cell-val">@u.NomeCompleto</span></td>
+ <td data-label="E-mail"><span class="cell-val">@u.Email</span></td>
+ <td data-label="Data Solicitação"><span class="cell-val">@(u.DataCadastro?.ToLocalTime().ToString("g") ?? "-")</span></td>
+ <td data-label="Ações"><span class="cell-val">
+ <form method="post" asp-controller="Site" asp-action="AprovarUsuario" style="display:inline"> @* Aprova com perfil/depto *@
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <input type="text" name="perfil" placeholder="perfil" />
+ <input type="text" name="departamento" placeholder="departamento" />
+ <button type="submit">Aprovar</button>
+ </form>
+ <form method="post" asp-controller="Site" asp-action="ReprovarUsuario" style="display:inline"> @* Reprova/remover *@
+ <input type="hidden" name="solicitacao_id" value="@u.UsuarioId" />
+ <button type="submit">Reprovar</button>
+ </form>
+ </span></td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ <p><em>Total:@Model.PendingCount solicitações pendentes</em></p>
+ </section>
+
+ <section> @* Filtros de busca de usuários *@
+ <h3>Filtros e Pesquisa</h3>
+ <form method="get" asp-controller="Site" asp-action="GerenciarUsuarios">
+ <label for="busca_usuario">Buscar:</label>
+ <input type="text" id="busca_usuario" name="busca" placeholder="Nome ou e-mail" value="@ViewBag.Busca" />
+ <button type="submit">Filtrar</button>
+ </form>
+ </section>
+
+ <section> @* Lista de usuários ativos *@
+ <h3>Lista de Usuários Ativos</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Nome</th>
+ <th>E-mail</th>
+ <th>Perfil</th>
+ <th>Departamento</th>
+ <th>Último Login</th>
+ <th>Ações</th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach(var u in Model.ActiveUsers)
+ {
+ <tr>
+ <td data-label="ID"><span class="cell-val">@u.UsuarioId</span></td>
+ <td data-label="Nome"><span class="cell-val">@u.NomeCompleto</span></td>
+ <td data-label="E-mail"><span class="cell-val">@u.Email</span></td>
+ <td data-label="Perfil"><span class="cell-val">@(u.PerfilUsuario?.NomePerfil ?? "-")</span></td>
+ <td data-label="Departamento"><span class="cell-val">@(u.Departamento?.NomeDepartamento ?? "-")</span></td>
+ <td data-label="Último Login"><span class="cell-val">@(u.UltimoLogin?.ToLocalTime().ToString("g") ?? "-")</span></td>
+ <td data-label="Ações"><span class="cell-val"><a asp-controller="Usuario" asp-action="Edit" asp-route-id="@u.UsuarioId">Editar</a></span></td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ <p><em>Mostrando @Model.ActiveUsers.Count usuários</em></p>
+ </section>
+ </main>
+
+ <div class="db-footer"> @* Rodapé *@
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+ </div>
+ </body>
+</html>

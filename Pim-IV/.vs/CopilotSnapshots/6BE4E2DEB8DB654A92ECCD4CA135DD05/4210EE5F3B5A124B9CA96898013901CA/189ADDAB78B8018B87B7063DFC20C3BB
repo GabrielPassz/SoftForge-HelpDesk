@@ -1,0 +1,69 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+@{
+ ViewData["Title"] = "Registro Cadastro";
+}
+
+<div class="db-page container-fluid">
+ <div class="db-header">
+ <header>
+ <h1>SoftForge HelpDesk</h1>
+ <p>Sistema Inteligente de Gestão de Chamados</p>
+ </header>
+ </div>
+
+<div class="db-nav">
+ <nav>
+ <a asp-page="/DbTestes/InicialPainel">Início</a> |
+ <a asp-page="/DbTestes/AbrirChamado">Abrir Chamado</a> |
+ <a asp-page="/DbTestes/MeusChamados">Meus Chamados</a> |
+ <a asp-page="/DbTestes/Atendimento">Atendimento</a> |
+ <a asp-page="/DbTestes/Escalonamento">Escalonamento</a> |
+ <a asp-page="/DbTestes/DashboardGestor">Dashboard</a> |
+ <a asp-page="/DbTestes/Relatorios">Relatórios</a> |
+ <a asp-page="/DbTestes/GerenciarUsuarios">Gerenciar</a> |
+ <a asp-page="/DbTestes/Configuracao">Configuração</a>
+ </nav>
+ </div>
+
+ <main class="db-content">
+ <section class="db-section db-intro">
+ <h2>Solicitar Cadastro</h2>
+ <p>Preencha os dados abaixo para solicitar acesso. O cadastro será avaliado pelo Administrador.</p>
+ </section>
+
+ @if (TempData["CadastroSolicitado"] != null)
+ {
+ <section class="db-section db-success">
+ <div class="alert alert-success">@TempData["CadastroSolicitado"]</div>
+ </section>
+ }
+
+ <section class="db-section db-form">
+ <form asp-controller="DbTestes" asp-action="RegistroCadastroPost" method="post" class="w-100" autocomplete="off">
+ @Html.AntiForgeryToken()
+ <div class="mb-3">
+ <label for="nome" class="form-label">Nome completo</label>
+ <input id="nome" name="nome" class="form-control" required />
+ </div>
+
+ <div class="mb-3">
+ <label for="email" class="form-label">Email</label>
+ <input id="email" name="email" type="email" class="form-control" required />
+ </div>
+
+ <div class="db-actions mb-3">
+ <button class="btn btn-primary" type="submit">Enviar solicitação</button>
+ <a asp-page="/DbTestes/Login" class="btn btn-secondary ms-2">Cancelar</a>
+ </div>
+ </form>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>

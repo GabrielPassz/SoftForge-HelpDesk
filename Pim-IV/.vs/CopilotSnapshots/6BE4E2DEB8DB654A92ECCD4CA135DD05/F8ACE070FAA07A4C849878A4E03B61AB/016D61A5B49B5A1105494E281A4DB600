@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace PIM_FINAL.Models
+{
+ public class BaseConhecimento
+ {
+ public int BaseId { get; set; }
+ public string? Titulo { get; set; }
+ public string? Descricao { get; set; }
+ public string? Solucao { get; set; }
+ public int? CategoriaId { get; set; }
+ public int? UsuarioCriadorId { get; set; }
+ public DateTime? DataCriacao { get; set; }
+ public bool Aprovado { get; set; }
+ }
+}

@@ -1,0 +1,19 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PIM_FINAL.Models
+{
+ public class Prioridade
+ {
+ [Key]
+ [Column("prioridade_id")]
+ public int PrioridadeId { get; set; }
+
+ [Required]
+ [Column("nome_prioridade")]
+ public string? NomePrioridade { get; set; }
+
+ [Column("descricao")]
+ public string? Descricao { get; set; }
+ }
+}

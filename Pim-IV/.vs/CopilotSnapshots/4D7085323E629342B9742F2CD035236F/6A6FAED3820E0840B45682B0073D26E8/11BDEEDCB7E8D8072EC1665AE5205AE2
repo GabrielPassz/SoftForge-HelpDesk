@@ -1,0 +1,159 @@
+﻿@model PIM_FINAL.Models.Chamado
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="/css/dbtestes.css" />
+@{
+ var chamadoId = (Model?.ChamadoId.ToString())
+ ?? (ViewData["id"] as string)
+ ?? (ViewContext.RouteData.Values["id"]?.ToString())
+ ?? "0";
+ var protocolo = ViewBag.protocolo as string ?? Model?.Protocolo ?? ("#CHAM-" + chamadoId);
+ var slaConsumed = ViewBag.SlaConsumed as int?;
+ var slaRemaining = ViewBag.SlaRemaining as string ?? "-";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detalhes Escalonamento - SoftForge HelpDesk</title>
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <div class="db-content">
+ <main>
+ <section class="db-section db-reclassificar">
+ <h4>Reclassificar Prioridade (sem escalonamento)</h4>
+ <form method="post" asp-controller="Site" asp-action="EscalonarChamado">
+ <input type="hidden" name="chamado_id" value="@chamadoId" />
+ <label for="prioridade_nova">Nova Prioridade:</label>
+ <select id="prioridade_nova" name="nova_prioridade" class="form-select" required>
+ <option value="critica">Crítica</option>
+ <option value="alta">Alta</option>
+ <option value="media">Média</option>
+ <option value="baixa">Baixa</option>
+ </select>
+ <label for="justificativa_prioridade">Justificativa:</label>
+ <input type="text" id="justificativa_prioridade" name="motivo" size="50" class="form-control" required />
+ <button type="submit" class="btn btn-primary mt-2">Reclassificar</button>
+ </form>
+ </section>
+
+ <section class="db-section db-status">
+ <h3>Status de Risco</h3>
+ <table class="table table-bordered w-100 stack-mobile">
+ <tbody>
+ <tr>
+ <td data-label="Campo"><strong>Nível de Risco</strong></td>
+ <td data-label="Valor"><span class="cell-val">
+ @if (slaConsumed.HasValue)
+ {
+ var nivel = slaConsumed.Value >=75 ? "ALTO" : (slaConsumed.Value >=50 ? "MÉDIO" : "BAIXO");
+ <text><strong style="color:@(slaConsumed.Value>=75?"red":(slaConsumed.Value>=50?"orange":"green"))">@nivel - SLA @slaConsumed% Consumido</strong></text>
+ }
+ else
+ {
+ <text><strong>Indisponível</strong></text>
+ }
+ </span></td>
+ </tr>
+ <tr>
+ <td data-label="Campo"><strong>Tempo Restante SLA</strong></td>
+ <td data-label="Valor"><span class="cell-val">@slaRemaining</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section db-infos">
+ <h3>Informações do Chamado</h3>
+ <table class="table table-bordered w-100 stack-mobile">
+ <tbody>
+ <tr><td data-label="Campo"><strong>Protocolo</strong></td><td data-label="Valor"><span class="cell-val">@protocolo</span></td></tr>
+ <tr><td data-label="Campo"><strong>Status</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.StatusChamado?.NomeStatus ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Título</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.Titulo ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Descrição</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.Descricao ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Categoria</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.Categoria?.NomeCategoria ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Prioridade</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.Prioridade?.NomePrioridade ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Solicitante</strong></td><td data-label="Valor"><span class="cell-val">@((Model?.UsuarioSolicitante?.NomeCompleto ?? "-") + (Model?.UsuarioSolicitante?.Departamento?.NomeDepartamento != null ? (" - " + Model.UsuarioSolicitante.Departamento.NomeDepartamento) : string.Empty))</span></td></tr>
+ <tr><td data-label="Campo"><strong>Data/Hora Abertura</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.DataAbertura?.ToLocalTime().ToString("dd/MM/yyyy HH:mm") ?? "-")</span></td></tr>
+ <tr><td data-label="Campo"><strong>Técnico Responsável Atual</strong></td><td data-label="Valor"><span class="cell-val">@(Model?.TecnicoResponsavel?.NomeCompleto ?? "(sem técnico)")</span></td></tr>
+ <tr><td data-label="Campo"><strong>SLA - Resolução</strong></td><td data-label="Valor"><span class="cell-val">
+ @if (Model?.Sla != null && Model.DataAbertura != null)
+ {
+ var prazo = Model.DataAbertura.Value.AddHours(Model.Sla.TempoMaximoResolucao).ToLocalTime();
+ <text>@Model.Sla.TempoMaximoResolucao horas (Prazo: @prazo:dd/MM/yyyy HH:mm)</text>
+ }
+ else {<text>-</text>}
+ </span></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section db-ia">
+ <h3>Análise da IA</h3>
+ <table class="table table-bordered w-100 stack-mobile">
+ <tbody>
+ <tr><td data-label="Campo"><strong>Recomendação</strong></td><td data-label="Valor"><span class="cell-val"><strong style="color:red">ESCALAR (se necessário)</strong></span></td></tr>
+ <tr><td data-label="Campo"><strong>Justificativa</strong></td><td data-label="Valor"><span class="cell-val">-</span></td></tr>
+ <tr><td data-label="Campo"><strong>Técnico Sugerido</strong></td><td data-label="Valor"><span class="cell-val">-</span></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section db-historico">
+ <h3>Histórico Resumido</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Data/Hora</th><th>Usuário</th><th>Ação</th></tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td data-label="Data/Hora"><span class="cell-val">@(Model?.DataAbertura?.ToLocalTime().ToString("dd/MM/yyyy HH:mm") ?? "-")</span></td>
+ <td data-label="Usuário"><span class="cell-val">@(Model?.UsuarioSolicitante?.NomeCompleto ?? "-")</span></td>
+ <td data-label="Ação"><span class="cell-val"><strong>Chamado Aberto</strong></span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section id="form_escalonar" class="db-section db-escalonar">
+ <h3>Realizar Escalonamento</h3>
+ <form method="post" asp-controller="Site" asp-action="EscalonarChamado">
+ <input type="hidden" name="chamado_id" value="@chamadoId" />
+ <label for="novo_tecnico">Escalonar para:</label>
+ <select id="novo_tecnico" name="novo_tecnico" class="form-select" required>
+ <option value="">Selecione...</option>
+ <option value="paula">Paula Martins (N3)</option>
+ <option value="joao">João Ferreira (N2)</option>
+ </select>
+ <label for="motivo_escalonamento">Motivo/Justificativa:</label>
+ <textarea id="motivo_escalonamento" name="motivo" rows="4" class="form-control">Chamado requer conhecimento avançado...</textarea>
+ <label for="nova_prioridade">Reclassificar Prioridade:</label>
+ <select id="nova_prioridade" name="nova_prioridade" class="form-select">
+ <option value="">Manter</option>
+ <option value="critica">Crítica</option>
+ <option value="alta">Alta</option>
+ <option value="media">Média</option>
+ <option value="baixa">Baixa</option>
+ </select>
+ <div class="mt-2">
+ <input type="checkbox" id="notificar_solicitante" name="notificar_solicitante" checked />
+ <label for="notificar_solicitante">Notificar Solicitante</label>
+ </div>
+ <button type="submit" class="btn btn-primary mt-2">Confirmar Escalonamento</button>
+ </form>
+ </section>
+
+ </main>
+ </div>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿@model PIM_FINAL.Models.DashboardGestorViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+ ViewData["Title"] = "Dashboard Gerencial";
+}
+
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+ <main class="db-content">
+ <h2>Dashboard Gerencial</h2>
+ <p><strong>Total de Chamados:</strong> @Model?.TotalChamados</p>
+ <p><strong>Chamados Resolvidos:</strong> @Model?.ChamadosResolvidos</p>
+ <p><strong>Taxa de Resolução:</strong> @Model?.TaxaResolucaoPercent %</p>
+ <p><strong>SLA Cumprido:</strong> @Model?.SLACumpridoPercent %</p>
+ <p><strong>Tempo Médio de Resolução:</strong> @Model?.TempoMedioResolucao</p>
+ <p><strong>Satisfação média:</strong> @Model?.SatisfacaoMedia</p>
+ </main>
+</div>

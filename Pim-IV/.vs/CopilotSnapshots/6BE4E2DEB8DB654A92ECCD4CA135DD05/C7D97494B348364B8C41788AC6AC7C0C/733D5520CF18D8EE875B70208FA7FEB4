@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace PIM_FINAL.Models
+{
+ public class HistoricoChamado
+ {
+ public int HistoricoId { get; set; }
+ public int ChamadoId { get; set; }
+ public int? UsuarioId { get; set; }
+ public string? Acao { get; set; }
+ public string? Descricao { get; set; }
+ public DateTime? DataAcao { get; set; }
+ public int? StatusAnteriorId { get; set; }
+ public int? StatusNovoId { get; set; }
+ }
+}

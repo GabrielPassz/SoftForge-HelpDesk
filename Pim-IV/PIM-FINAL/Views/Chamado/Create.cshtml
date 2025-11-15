@@ -1,9 +1,12 @@
 @model PIM_FINAL.Models.Chamado
-
 @{
  ViewData["Title"] = "Criar Chamado";
+ var usuarios = ViewBag.Usuarios as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var categorias = ViewBag.Categorias as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var prioridades = ViewBag.Prioridades as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var statuses = ViewBag.Statuses as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
+ var slas = ViewBag.Slas as List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ?? new();
 }
-
 <h1>Criar Chamado</h1>
 <form asp-action="Create" method="post">
  <div class="form-group">
@@ -15,8 +18,36 @@
  <textarea asp-for="Descricao" class="form-control"></textarea>
  </div>
  <div class="form-group">
+ <label asp-for="UsuarioSolicitanteId">Solicitante</label>
+ @Html.DropDownListFor(m => m.UsuarioSolicitanteId, usuarios, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
+ <label asp-for="TecnicoResponsavelId">Técnico Responsável</label>
+ @Html.DropDownListFor(m => m.TecnicoResponsavelId, usuarios, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
+ <label asp-for="CategoriaId">Categoria</label>
+ @Html.DropDownListFor(m => m.CategoriaId, categorias, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
+ <label asp-for="PrioridadeId">Prioridade</label>
+ @Html.DropDownListFor(m => m.PrioridadeId, prioridades, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
+ <label asp-for="StatusId">Status</label>
+ @Html.DropDownListFor(m => m.StatusId, statuses, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
+ <label asp-for="SlaId">SLA</label>
+ @Html.DropDownListFor(m => m.SlaId, slas, "(selecione)", new { @class = "form-select" })
+ </div>
+ <div class="form-group">
  <label asp-for="Protocolo"></label>
  <input asp-for="Protocolo" class="form-control" />
  </div>
- <button type="submit" class="btn btn-primary">Salvar</button>
+ <div class="form-check">
+ <input asp-for="SlaAtingido" class="form-check-input" />
+ <label asp-for="SlaAtingido" class="form-check-label"></label>
+ </div>
+ <button type="submit" class="btn btn-primary mt-3">Salvar</button>
 </form>

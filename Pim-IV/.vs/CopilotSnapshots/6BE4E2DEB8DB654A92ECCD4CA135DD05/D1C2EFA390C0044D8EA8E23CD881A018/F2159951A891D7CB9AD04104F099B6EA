@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace PIM_FINAL.Models
+{
+ public class LogAcesso
+ {
+ public int LogId { get; set; }
+ public int? UsuarioId { get; set; }
+ public string? Acao { get; set; }
+ public string? Descricao { get; set; }
+ public DateTime? DataHora { get; set; }
+ public string? IpAddress { get; set; }
+ public string? Dispositivo { get; set; }
+ }
+}

@@ -1,6 +1,50 @@
 wwwroot\css\dbtestes.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\Images\anexar (1).png
+wwwroot\Images\anexar.png
+wwwroot\Images\IconeApagarGerenciar.png
+wwwroot\Images\IconeCampoCodigoVerificação.png
+wwwroot\Images\IconeCampoCodigoVerificação2.png
+wwwroot\Images\IconeCampoEmail.svg
+wwwroot\Images\IconeCampoNomeCompleto.png
+wwwroot\Images\IconeCampoSenha.svg
+wwwroot\Images\IconeDeAnexarArquivos.png
+wwwroot\Images\IconeDeAnexarImagens.png
+wwwroot\Images\IconeDeErro.png
+wwwroot\Images\IconeEditarGerenciar.png
+wwwroot\Images\IconeEditarGerenciar2.png
+wwwroot\Images\IconeMenuAbrirChamado.png
+wwwroot\Images\IconeMenuAtendimento.png
+wwwroot\Images\IconeMenuDashboard.png
+wwwroot\Images\IconeMenuEscalonamento.png
+wwwroot\Images\IconeMenuGerenciar.png
+wwwroot\Images\IconeMenuMeusChamados.png
+wwwroot\Images\IconeMenuPaginaInicial.png
+wwwroot\Images\IconeMenuRelatorios.png
+wwwroot\Images\IconeMenuSair.png
+wwwroot\Images\IconeParaBuscar.png
+wwwroot\Images\IconeVisualizarArquivoMeusChamados.png
+wwwroot\Images\icons8-abrir-arquivo-sob-o-cursor-48.png
+wwwroot\Images\icons8-adicionar-50 (1).png
+wwwroot\Images\icons8-adicionar-50.png
+wwwroot\Images\icons8-anexo-24.png
+wwwroot\Images\icons8-anexo-50.png
+wwwroot\Images\icons8-chamada-em-conferência-50.png
+wwwroot\Images\icons8-passando-por-64.png
+wwwroot\Images\icons8-people-50.png
+wwwroot\Images\imagem (1).png
+wwwroot\Images\Imagem do WhatsApp de 2025-04-12 à(s) 14.31.22_3f47ea74.jpg
+wwwroot\Images\Imagem do WhatsApp de 2025-04-12 à(s) 16.34.46_307e3d9a.jpg
+wwwroot\Images\Imagem do WhatsApp de 2025-04-12 à(s) 16.49.28_c98f0f64.jpg
+wwwroot\Images\Imagem do WhatsApp de 2025-04-12 à(s) 16.49.29_f9654f38.jpg
+wwwroot\Images\imagem.png
+wwwroot\Images\Made with insMind-LogoBlack.png
+wwwroot\Images\maximize.svg
+wwwroot\Images\minimize.svg
+wwwroot\Images\minus.svg
+wwwroot\Images\user.svg
+wwwroot\Images\x.svg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -59,3 +103,5 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\manifest.webmanifest
+wwwroot\sw.js

@@ -1,0 +1,164 @@
+﻿@model PIM_FINAL.Models.RelatoriosViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Relatórios - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-intro">
+ <h2>Relatórios e KPIs</h2>
+ <p><strong>Gestor/Administrador:</strong> @User?.Identity?.Name</p>
+ <p><strong>Período:</strong> @Model?.PeriodoInicio.ToLocalTime().ToString("dd/MM/yyyy") a @Model?.PeriodoFim.ToLocalTime().ToString("dd/MM/yyyy")</p>
+ </section>
+
+ <section class="db-section">
+ <h3>Filtros Rápidos</h3>
+ <form method="get" asp-action="Relatorios" asp-controller="Site" class="form-inline">
+ <select name="periodo" class="form-select">
+ <option value="hoje">Hoje</option>
+ <option value="semana">Esta Semana</option>
+ <option value="mes">Este Mês</option>
+ </select>
+ <button type="submit" class="btn btn-primary">Atualizar</button>
+ </form>
+ </section>
+
+ <section id="rel_geral" class="db-section">
+ <h3>Resumo Executivo</h3>
+ <table class="table table-bordered w-100 stack-mobile">
+ <thead>
+ <tr><th>Indicador</th><th>Valor</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>Total no Período</td><td>@Model?.TotalChamadosPeriodo</td></tr>
+ <tr><td>Resolvidos</td><td>@Model?.TotalResolvidosPeriodo</td></tr>
+ <tr><td>Taxa de Resolução</td><td>@Model?.TaxaResolucaoPercent%</td></tr>
+ <tr><td>Tempo Médio de Resolução</td><td>@Model?.TempoMedioResolucao</td></tr>
+ <tr><td>Satisfação Média</td><td>@Model?.SatisfacaoMedia (@Model?.TotalAvaliacoes avaliações)</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Chamados por Status</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Status</th><th>Qtd</th><th>%</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var it in Model?.Status ?? new List<PIM_FINAL.Models.ItemResumo())
+ {<tr><td data-label="Status">@it.Nome</td><td data-label="Qtd">@it.Quantidade</td><td data-label="%">@it.Percentual%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Chamados por Prioridade</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Prioridade</th><th>Qtd</th><th>%</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var it in Model?.Prioridades ?? new List<PIM_FINAL.Models.ItemResumo())
+ {<tr><td data-label="Prioridade">@it.Nome</td><td data-label="Qtd">@it.Quantidade</td><td data-label="%">@it.Percentual%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Chamados por Categoria</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Categoria</th><th>Qtd</th><th>%</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var it in Model?.Categorias ?? new List<PIM_FINAL.Models.ItemResumo())
+ {<tr><td data-label="Categoria">@it.Nome</td><td data-label="Qtd">@it.Quantidade</td><td data-label="%">@it.Percentual%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Chamados por Departamento</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Departamento</th><th>Qtd</th><th>%</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var it in Model?.Departamentos ?? new List<PIM_FINAL.Models.ItemResumo())
+ {<tr><td data-label="Departamento">@it.Nome</td><td data-label="Qtd">@it.Quantidade</td><td data-label="%">@it.Percentual%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Desempenho por Técnico</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Técnico</th><th>Atendidos</th><th>Resolvidos</th><th>Taxa</th><th>Tempo Médio</th><th>Avaliação</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var t in Model?.Tecnicos ?? new List<PIM_FINAL.Models.TecnicoResumo())
+ {<tr><td data-label="Técnico">@t.Nome</td><td data-label="Atendidos">@t.Atendidos</td><td data-label="Resolvidos">@t.Resolvidos</td><td data-label="Taxa">@t.TaxaResolucao%</td><td data-label="Tempo Médio">@t.TempoMedio</td><td data-label="Avaliação">@t.AvaliacaoMedia</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>SLA por Prioridade</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Prioridade</th><th>Total</th><th>Cumpridos</th><th>Violados</th><th>Taxa</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var s in Model?.SlaPorPrioridade ?? new List<PIM_FINAL.Models.SlaResumo())
+ {<tr><td data-label="Prioridade">@s.Prioridade</td><td data-label="Total">@s.Total</td><td data-label="Cumpridos">@s.Cumpridos</td><td data-label="Violados">@s.Violados</td><td data-label="Taxa">@s.TaxaCumprimento%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Distribuição de Satisfação</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="8">
+ <thead>
+ <tr><th>Avaliação</th><th>Qtd</th><th>%</th></tr>
+ </thead>
+ <tbody>
+ @foreach (var it in Model?.DistribuicaoNotas ?? new List<PIM_FINAL.Models.ItemResumo())
+ {<tr><td data-label="Avaliação">@it.Nome</td><td data-label="Qtd">@it.Quantidade</td><td data-label="%">@it.Percentual%</td></tr>}
+ </tbody>
+ </table>
+ </section>
+
+ <section class="db-section">
+ <h3>Exportar Relatórios</h3>
+ <form method="post" asp-action="Relatorios" asp-controller="Site" asp-route-handler="ExportarCompleto">
+ <p>Exportar todos os relatórios acima em um único arquivo:</p>
+ <label for="formato_completo">Formato:</label>
+ <select id="formato_completo" name="formato">
+ <option value="csv" selected>CSV</option>
+ <option value="excel">Excel</option>
+ <option value="zip">ZIP (Múltiplos Arquivos)</option>
+ </select>
+ <button type="submit" class="btn btn-primary">Exportar Tudo</button>
+ </form>
+ </section>
+
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+ </div>
+</body>
+</html>

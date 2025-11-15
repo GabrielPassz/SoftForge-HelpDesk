@@ -1,0 +1,60 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+ ViewData["Title"] = "Registro Cadastro";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>@ViewData["Title"] - SoftForge HelpDesk</title>
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-intro">
+ <h2>Solicitar Cadastro</h2>
+ <p>Preencha os dados abaixo para solicitar acesso. O cadastro será avaliado pelo Administrador.</p>
+ </section>
+
+ <section class="db-section db-form">
+ <form method="post" asp-controller="Site" asp-action="RegistroCadastro" class="w-100" autocomplete="off" id="registroForm">
+ <div class="mb-3">
+ <label for="nome" class="form-label">Nome completo</label>
+ <input id="nome" name="nome" class="form-control" required />
+ </div>
+
+ <div class="mb-3">
+ <label for="email" class="form-label">Email</label>
+ <input id="email" name="email" type="email" class="form-control" required />
+ </div>
+
+ <div class="mb-3">
+ <label for="senha" class="form-label">Senha</label>
+ <input id="senha" name="senha" type="password" class="form-control" minlength="6" required />
+ </div>
+
+ <div class="mb-3">
+ <label for="confirma_senha" class="form-label">Confirmar senha</label>
+ <input id="confirma_senha" name="confirma_senha" type="password" class="form-control" minlength="6" required />
+ </div>
+
+ <div class="db-actions mb-3">
+ <button class="btn btn-primary" type="submit">Enviar solicitação</button>
+ <a asp-page="/site/Login" class="btn btn-secondary ms-2">Cancelar</a>
+ </div>
+ </form>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>
+</body>
+</html>

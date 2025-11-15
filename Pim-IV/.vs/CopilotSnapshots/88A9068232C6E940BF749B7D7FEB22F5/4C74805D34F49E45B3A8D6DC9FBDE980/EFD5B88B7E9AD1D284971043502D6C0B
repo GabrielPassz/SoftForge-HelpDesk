@@ -1,0 +1,83 @@
+﻿@model PIM_FINAL.Models.InicialPainelViewModel @* ViewModel com nome, perfil e métricas *@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers @* TagHelpers *@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" /> @* Codificação *@
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" /> @* Responsivo *@
+ <title>Painel Inicial - SoftForge HelpDesk</title> @* Título *@
+ <link rel="stylesheet" href="/css/dbtestes.css" /> @* Estilos *@
+ </head>
+ <body>
+<div class="db-page container-fluid"> @* Container principal *@
+ @await Html.PartialAsync("_HeaderNav") @* Navegação *@
+
+ <main class="db-content"> @* Conteúdo *@
+ <section class="db-section db-welcome"> @* Boas-vindas *@
+ <h2>Bem-vindo(a), @Model?.NomeUsuario</h2>
+ <p>
+ <strong>Perfil:</strong> @Model?.Perfil
+ </p>
+ </section>
+
+ <section class="db-section db-notifications"> @* Notificações recentes *@
+ <h3>🔔 Notificações Recentes</h3>
+ @{ var all = Model?.RecentNotifications ?? new List<string>(); var top = all.Take(3).ToList(); var rest = all.Skip(3).ToList(); }
+ <ul id="notifTop">
+ @foreach (var n in top) { <li>@n</li> }
+ </ul>
+ @if (rest.Any())
+ {
+ <div id="notifRest" style="display:none;"> @* Lista adicional oculta *@
+ <ul>
+ @foreach (var n in rest) { <li>@n</li> }
+ </ul>
+ </div>
+ <button type="button" id="toggleNotif" class="btn btn-sm btn-secondary">Mostrar mais</button> @* Botão para expandir/ocultar *@
+ }
+ </section>
+
+ <section class="db-section db-summary"> @* KPIs rápidos do dia *@
+ <h3>📈 Resumo Rápido (Hoje)</h3>
+ <table class="table table-bordered w-100 db-summary-table no-stack">
+ <thead>
+ <tr>
+ <th>Campo</th>
+
+ <th>Valor</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td data-label="Campo">Chamados em Espera</td>
+
+ <td data-label="Chamados em Espera"><span class="cell-val">@(Model?.ChamadosEmEspera)</span></td>
+ </tr>
+ <tr>
+ <td data-label="Campo">Chamados em Atendimento</td>
+
+ <td data-label="Chamados em Atendimento"><span class="cell-val">@(Model?.ChamadosEmAtendimento)</span></td>
+ </tr>
+ <tr>
+ <td data-label="Campo">Chamados Resolvidos (Hoje)</td>
+
+ <td data-label="Chamados Resolvidos (Hoje)"><span class="cell-val">@(Model?.ResolvidosHoje)</span></td>
+ </tr>
+ <tr>
+ <td data-label="Campo">SLA Cumprido</td>
+
+ <td data-label="SLA Cumprido"><span class="cell-val">@(Model?.SLACumpridoPercent)%</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+ </main>
+
+ <div class="db-footer"> @* Rodapé *@
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+ </div>
+ </body>
+</html>

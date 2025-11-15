@@ -1,0 +1,180 @@
+﻿@model PIM_FINAL.Models.Chamado
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Detalhes do Chamado - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="~/css/dbtestes.css" asp-append-version="true" />
+ </head>
+ <body>
+ <div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+
+ <main class="db-content">
+ <section class="db-section db-overview">
+ <h2>Detalhes do Chamado @Model?.Protocolo</h2>
+ <p><a asp-controller="Site" asp-action="Atendimento">⬅ Voltar para lista de chamados</a></p>
+ </section>
+
+ <section>
+ <h3>📋 Informações do Chamado</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <tbody>
+ <tr>
+
+ <td data-label="Protocolo"><span class="cell-val">@Model?.Protocolo</span></td>
+ </tr>
+ <tr>
+
+ <td data-label="Status"><span class="cell-val">@Model?.StatusChamado?.NomeStatus</span></td>
+ </tr>
+ <tr>
+ <td data-label="Título"><span class="cell-val wrap">@Model?.Titulo</span></td>
+ </tr>
+ <tr>
+
+ <td data-label="Descrição">
+ <span class="cell-val wrap">@Model?.Descricao</span>
+ </td>
+ </tr>
+ <tr>
+
+ <td data-label="Categoria"><span class="cell-val">@Model?.Categoria?.NomeCategoria</span></td>
+ </tr>
+ <tr>
+
+ <td data-label="Prioridade"><span class="cell-val"><strong>@Model?.Prioridade?.NomePrioridade</strong></span></td>
+ </tr>
+ <tr>
+
+ <td data-label="Solicitante"><span class="cell-val wrap">@Model?.UsuarioSolicitante?.NomeCompleto (@Model?.UsuarioSolicitante?.Email)</span></td>
+ </tr>
+ <tr>
+
+ <td data-label="Data/Hora Abertura"><span class="cell-val">@Model?.DataAbertura?.ToLocalTime().ToString("g")</span></td>
+ </tr>
+ <tr>
+ 
+ <td data-label="Técnico Responsável"><span class="cell-val">@(Model?.TecnicoResponsavel?.NomeCompleto ?? "Não Atribuído")</span></td>
+ </tr>
+ <tr>
+
+ <td data-label="SLA - Resolução"><span class="cell-val">@(Model?.Sla?.TempoMaximoResolucao != null ? (Model.Sla.TempoMaximoResolucao + " horas") : "-")</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>📎 Anexos</h3>
+ <ul class="limit-rows" data-limit="3">
+ @foreach (var a in Model?.Anexos ?? new List<PIM_FINAL.Models.Anexo>())
+ {
+ <li>
+ <a asp-controller="Site" asp-action="DownloadAnexo" asp-route-id="@a.AnexoId">@a.NomeArquivo</a> (<span class="cell-val">@(a.DataUpload?.ToLocalTime().ToString("g") ?? "-")</span>)
+ </li>
+ }
+ </ul>
+ </section>
+
+ <section>
+ <h3>🕓 Histórico de Ações</h3>
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead>
+ <tr>
+ <th>Data/Hora</th>
+ <th>Usuário</th>
+ <th>Ação</th>
+ </tr>
+ </thead>
+ <tbody>
+ @{
+ var atendimentosOrdenados = (Model?.Atendimentos ?? new List<PIM_FINAL.Models.Atendimento>()).OrderByDescending(x=>x.DataAtendimento).ToList();
+ }
+ @foreach (var a in atendimentosOrdenados)
+ {
+ <tr>
+ <td data-label="Data/Hora"><span class="cell-val">@(a.DataAtendimento.HasValue ? a.DataAtendimento.Value.ToLocalTime().ToString("g") : "-")</span></td>
+ <td data-label="Usuário"><span class="cell-val">@a.UsuarioTecnico?.NomeCompleto</span></td>
+ <td data-label="Ação"><span class="cell-val wrap">@a.AcaoRealizada</span></td>
+ </tr>
+ }
+ </tbody>
+ </table>
+ </section>
+
+ <section>
+ <h3>💬 Comunicação com Solicitante</h3>
+ @{
+ var comunicacoesOrdenadas = (Model?.Comunicacoes ?? new List<PIM_FINAL.Models.Comunicacao>()).OrderByDescending(x=>x.DataEnvio).ToList();
+ }
+ @foreach (var m in comunicacoesOrdenadas)
+ {
+ <div class="db-msg-box">
+ <p><strong>@m.Usuario?.NomeCompleto</strong> - <span class="cell-val">@(m.DataEnvio.HasValue ? m.DataEnvio.Value.ToLocalTime().ToString("g") : "-")</span></p>
+ <p>@m.Mensagem</p>
+ </div>
+ }
+ <h4>Enviar Mensagem</h4>
+ <form method="post" asp-controller="Site" asp-action="EnviarMensagem">
+ <input type="hidden" name="chamado_id" value="@Model?.ChamadoId" />
+ <label for="mensagem">Mensagem para o solicitante:</label><br />
+ <textarea id="mensagem" name="mensagem" rows="4" cols="80" placeholder="Digite sua mensagem..."></textarea><br /><br />
+ <button type="submit">Enviar Mensagem</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>🛠 Registrar Ação de Atendimento</h3>
+ <form method="post" asp-controller="Site" asp-action="RegistrarAcao">
+ <input type="hidden" name="chamado_id" value="@Model?.ChamadoId" />
+ <label for="acao_realizada">Ação Realizada:</label><br />
+ <textarea id="acao_realizada" name="acao_realizada" rows="6" cols="80" placeholder="Descreva detalhadamente as ações que você realizou..." required></textarea><br /><br />
+ <label for="tempo_gasto">Tempo Gasto (em minutos):</label><br />
+ <input type="number" id="tempo_gasto" name="tempo_gasto" min="1" placeholder="Ex:30" required /><br /><br />
+ <label for="anexo_evidencia">Anexar Evidência (screenshot, documento):</label><br />
+ <input type="file" id="anexo_evidencia" name="anexo_evidencia" /><br /><br />
+ <button type="submit">Registrar Ação</button>
+ </form>
+ </section>
+
+ <section>
+ <h3>✔ Ações do Chamado</h3>
+ <form method="post" asp-controller="Site" asp-action="ResolverChamado">
+ <input type="hidden" name="chamado_id" value="@Model?.ChamadoId" />
+ <h4>Marcar como Resolvido</h4>
+ <label for="solucao_final">Solução Final:</label><br />
+ <textarea id="solucao_final" name="solucao_final" rows="4" cols="80" placeholder="Descreva a solução aplicada para resolver o problema..." required></textarea><br /><br />
+ <button type="submit">Marcar como Resolvido</button>
+ </form>
+
+ <form method="post" asp-controller="Site" asp-action="EscalonarChamado">
+ <input type="hidden" name="chamado_id" value="@Model?.ChamadoId" />
+ <h4>Escalonar Chamado</h4>
+ <label for="motivo_escalonamento">Motivo do Escalonamento:</label><br />
+ <textarea id="motivo_escalonamento" name="motivo" rows="3" cols="80" placeholder="Justifique o motivo do escalonamento..." required></textarea><br /><br />
+ <label for="nivel_escalonamento">Escalonar para (id ou nome do técnico):</label><br />
+ <input type="text" id="nivel_escalonamento" name="novo_tecnico" placeholder="Ex.:15 ou Maria" required /><br /><br />
+ <label for="nova_prioridade">Reclassificar Prioridade (opcional):</label><br />
+ <select id="nova_prioridade" name="nova_prioridade">
+ <option value="">Manter</option>
+ <option value="critica">Crítica</option>
+ <option value="alta">Alta</option>
+ <option value="media">Média</option>
+ <option value="baixa">Baixa</option>
+ </select><br /><br />
+ <button type="submit">Escalonar</button>
+ </form>
+ </section>
+ </main>
+
+ <div class="db-footer">
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+ </div>
+ </body>
+</html>

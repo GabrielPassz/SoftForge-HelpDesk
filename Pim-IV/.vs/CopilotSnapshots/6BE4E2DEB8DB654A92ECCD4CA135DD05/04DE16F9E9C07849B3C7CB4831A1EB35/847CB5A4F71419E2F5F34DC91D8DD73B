@@ -1,0 +1,21 @@
+﻿using System;
+
+namespace PIM_FINAL.Models
+{
+ public class Chamado
+ {
+ public int ChamadoId { get; set; }
+ public string? Protocolo { get; set; }
+ public string? Titulo { get; set; }
+ public string? Descricao { get; set; }
+ public DateTime? DataAbertura { get; set; }
+ public DateTime? DataFechamento { get; set; }
+ public int? UsuarioSolicitanteId { get; set; }
+ public int? TecnicoResponsavelId { get; set; }
+ public int? CategoriaId { get; set; }
+ public int? PrioridadeId { get; set; }
+ public int? StatusId { get; set; }
+ public int? SlaId { get; set; }
+ public bool SlaAtingido { get; set; }
+ }
+}

@@ -1,0 +1,143 @@
+﻿@model PIM_FINAL.Models.AbrirChamado
+@{
+ ViewData["Title"] = "Abrir Chamado"; // Define título
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="db-page container-fluid"> @* Container principal da página *@
+ @await Html.PartialAsync("_HeaderNav") @* Cabeçalho/menu *@
+
+ <main class="db-content"> @* Conteúdo principal *@
+ <section class="db-section db-overview"> @* Resumo do solicitante *@
+ <h2> Abrir Novo Chamado</h2>
+ <p><strong>Solicitante:</strong> @(Model?.SolicitanteNome ?? "(não informado)")</p>
+ <p><strong>Departamento:</strong> @(Model?.SolicitanteDepartamento ?? "(não informado)")</p>
+ </section>
+
+ <section class="db-section db-form"> @* Formulário de abertura do chamado *@
+ <h3>Preencha as informações do chamado</h3>
+ <form method="post" asp-controller="Site" asp-action="AbrirChamado" enctype="multipart/form-data"> @* Post para criar chamado e aceitar anexo *@
+ <div class="mb-3">
+ <label for="titulo">Título do Problema:</label><br />
+ <input
+ type="text"
+ id="titulo"
+ name="Titulo"
+ size="80"
+ placeholder="Ex: Impressora não está funcionando"
+ required
+ class="form-control"
+ value="@(Model?.Titulo ?? String.Empty)"
+ /> @* Título livre *@
+ </div>
+
+ <div class="mb-3">
+ <label for="descricao">Descrição Detalhada:</label><br />
+ <textarea
+ id="descricao"
+ name="Descricao"
+ rows="8"
+ cols="80"
+ placeholder="Descreva o problema com o máximo de detalhes possível..."
+ required
+ class="form-control"
+ >@(Model?.Descricao ?? String.Empty)</textarea> @* Detalhamento *@
+ </div>
+
+ <div class="mb-3">
+ <label for="categoria">Categoria:</label><br />
+ <select id="categoria" name="CategoriaId" class="form-select" required>
+ <option value="0">Automático</option> @*0 indica que a IA pode sugerir *@
+ @foreach(var it in Model?.CategoriasSelect ?? new List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>())
+ {
+ <option value="@it.Value">@it.Text</option>
+ }
+ </select>
+ <p><em> Se "Automático" for selecionado, a IA sugerirá a categoria ao enviar.</em></p>
+ </div>
+
+ <div class="mb-3">
+ <label for="prioridade">Prioridade:</label><br />
+ <select id="prioridade" name="PrioridadeId" class="form-select">
+ <option value="0">Automático</option> @*0 indica sugestão pela IA *@
+ @foreach(var it in Model?.PrioridadesSelect ?? new List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>())
+ {
+ <option value="@it.Value">@it.Text</option>
+ }
+ </select>
+ <p><em> Se "Automático" for selecionado, a IA sugerirá a prioridade ao enviar.</em></p>
+ </div>
+
+ <div class="mb-3">
+ <label for="anexo">Anexar Arquivo (Opcional):</label><br />
+ <input type="file" id="anexo" name="AnexoFile" class="form-control" /> @* Anexo opcional (até5MB) *@
+ <p><em>Formatos aceitos: imagens, PDF, documentos (máx.5MB)</em></p>
+ </div>
+
+ <div class="db-actions mb-3"> @* Ações do formulário *@
+ <button type="submit" class="btn btn-primary btn-sm">Abrir Chamado</button>
+ <button type="reset" class="btn btn-primary btn-sm">Limpar Formulário</button>
+ </div>
+ </form>
+ </section>
+
+ @if (Model?.Created == true)
+ {
+ <section class="db-section db-created mt-4"> @* Feedback de criação *@
+ <h3>Chamado criado</h3>
+ <p>Protocolo: <strong>@(Model?.CreatedProtocol ?? "(não disponível)")</strong></p>
+ </section>
+ }
+
+ <section class="db-section db-info"> @* Dicas de uso *@
+ <h3>Informações Importantes</h3>
+ <ul>
+ <li>Após abrir o chamado, você receberá um <strong>número de protocolo</strong></li>
+ <li>Você será notificado por e-mail sobre atualizações do chamado</li>
+ <li>Você pode acompanhar o status em <a asp-controller="Site" asp-action="MeusChamados">Meus Chamados</a></li>
+ <li>O tempo de atendimento depende da prioridade do chamado</li>
+ </ul>
+ </section>
+
+ <section class="db-section db-sla"> @* Tabela de SLA ilustrativa *@
+ <h4>Tempo de Atendimento (SLA):</h4>
+ <table class="table table-bordered w-100 stack-mobile">
+ <thead>
+ <tr>
+ <th>Prioridade</th>
+ <th>Primeira Resposta</th>
+ <th>Resolução</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td data-label="Prioridade"><span class="cell-val"><strong>Crítica</strong></span></td>
+ <td data-label="Primeira Resposta"><span class="cell-val">1 hora</span></td>
+ <td data-label="Resolução"><span class="cell-val">4 horas</span></td>
+ </tr>
+ <tr>
+ <td data-label="Prioridade"><span class="cell-val"><strong>Alta</strong></span></td>
+ <td data-label="Primeira Resposta"><span class="cell-val">2 horas</span></td>
+ <td data-label="Resolução"><span class="cell-val">8 horas</span></td>
+ </tr>
+ <tr>
+ <td data-label="Prioridade"><span class="cell-val">Média</span></td>
+ <td data-label="Primeira Resposta"><span class="cell-val">4 horas</span></td>
+ <td data-label="Resolução"><span class="cell-val">24 horas</span></td>
+ </tr>
+ <tr>
+ <td data-label="Prioridade"><span class="cell-val">Baixa</span></td>
+ <td data-label="Primeira Resposta"><span class="cell-val">8 horas</span></td>
+ <td data-label="Resolução"><span class="cell-val">72 horas</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </section>
+ </main>
+
+ <div class="db-footer"> @* Rodapé *@
+ <footer>
+ <p>©2025 SoftForge - Todos os direitos reservados</p>
+ </footer>
+ </div>
+</div>

@@ -1,0 +1,21 @@
+﻿// Popup simples para expandir textos longos em Detalhes do Chamado
+(function(){
+ const overlay = document.getElementById('sf-modal');
+ if(!overlay) return;
+ const bodyEl = document.getElementById('sf-modal-body');
+ const titleEl = document.getElementById('sf-modal-title');
+
+ function close(){ overlay.hidden = true; bodyEl.textContent = ''; }
+
+ overlay.addEventListener('click', (e)=>{
+ if(e.target === overlay || e.target.hasAttribute('data-dismiss')) close();
+ });
+
+ document.addEventListener('click', (e)=>{
+ const btn = e.target.closest('.js-show-full');
+ if(!btn) return;
+ titleEl.textContent = btn.getAttribute('data-title') || 'Detalhe';
+ bodyEl.textContent = btn.getAttribute('data-content') || '';
+ overlay.hidden = false;
+ });
+})();

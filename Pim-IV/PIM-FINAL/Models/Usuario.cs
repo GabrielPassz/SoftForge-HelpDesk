@@ -19,6 +19,10 @@ namespace PIM_FINAL.Models
  [Column("email")]
  public string? Email { get; set; }
 
+ // Map hashed password into 'senha' column created in the database
+ [Column("senha")]
+ public string? Senha { get; set; }
+
  [Column("data_cadastro")]
  public DateTime? DataCadastro { get; set; }
 

@@ -1,0 +1,71 @@
+﻿// Opt-in list/table limiter + global stacked labels
+(function(){
+ const DEFAULT_LIMIT =3;
+ function getLimit(el){
+ const v = parseInt(el.getAttribute('data-limit') || '',10);
+ return Number.isFinite(v) && v >0 ? v : DEFAULT_LIMIT;
+ }
+ function makeButton(){
+ const btn = document.createElement('button');
+ btn.type = 'button';
+ btn.className = 'btn btn-sm btn-secondary limit-toggle';
+ btn.textContent = 'Mostrar mais';
+ return btn;
+ }
+ function applyToList(list){
+ const LIMIT = getLimit(list);
+ const items = Array.from(list.children);
+ if(items.length <= LIMIT) return;
+ const hidden = items.slice(LIMIT);
+ hidden.forEach(li => li.style.display = 'none');
+ const btn = makeButton();
+ btn.addEventListener('click', () => {
+ const expanded = hidden[0].style.display !== 'none';
+ hidden.forEach(li => li.style.display = expanded ? 'none' : 'list-item');
+ btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.className = 'limit-wrap';
+ wrap.appendChild(btn);
+ list.insertAdjacentElement('afterend', wrap);
+ }
+ function applyToTable(table){
+ const LIMIT = getLimit(table);
+ const tb = table.querySelector('tbody') || table;
+ const rows = Array.from(tb.querySelectorAll('tr'));
+ if(rows.length <= LIMIT) return;
+ const hidden = rows.slice(LIMIT);
+ hidden.forEach(r => r.style.display = 'none');
+ const btn = makeButton();
+ btn.addEventListener('click', () => {
+ const expanded = hidden[0].style.display !== 'none';
+ hidden.forEach(r => r.style.display = expanded ? 'none' : 'table-row');
+ btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
+ });
+ const wrap = document.createElement('div');
+ wrap.className = 'limit-wrap';
+ wrap.style.marginTop = '4px';
+ wrap.appendChild(btn);
+ table.insertAdjacentElement('afterend', wrap);
+ }
+
+ // Auto-assign data-labels to all tables for stacked mobile view
+ function enhanceTableLabels(root){
+ (root || document).querySelectorAll('table:not(.no-stack)').forEach(table => {
+ const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+ if (!headers.length) { table.classList.add('no-stack'); return; }
+ table.querySelectorAll('tbody tr').forEach(tr => {
+ Array.from(tr.cells).forEach((td, i) => {
+ td.setAttribute('data-label', td.getAttribute('data-label') || headers[i] || '');
+ });
+ });
+ });
+ }
+
+ document.addEventListener('DOMContentLoaded', () => {
+ document.querySelectorAll('ul.limit-rows, ol.limit-rows, ul[data-limit], ol[data-limit]').forEach(applyToList);
+ document.querySelectorAll('table.limit-rows, table[data-limit]').forEach(applyToTable);
+ enhanceTableLabels(document);
+ document.querySelectorAll('ul:not(.no-stack), ol:not(.no-stack)').forEach(l => l.classList.add('auto-stack'));
+ });
+})();

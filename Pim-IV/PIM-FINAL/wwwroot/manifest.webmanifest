@@ -1,0 +1,32 @@
+{
+ "name": "SoftForge HelpDesk",
+ "short_name": "HelpDesk",
+ "description": "Atendimento e gestão de chamados da SoftForge.",
+ "lang": "pt-BR",
+ "dir": "ltr",
+ "start_url": "/?source=pwa",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0d6efd",
+ "icons": [
+ { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+ { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+ { "src": "/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable any" },
+ { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable any" }
+ ],
+ "shortcuts": [
+ {
+ "name": "Abrir Chamado",
+ "short_name": "Novo Chamado",
+ "url": "/site/Page?viewName=AbrirChamado",
+ "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+ },
+ {
+ "name": "Meus Chamados",
+ "short_name": "Meus",
+ "url": "/site/Page?viewName=MeusChamados",
+ "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+ }
+ ]
+}
