@@ -70,13 +70,30 @@ Este projeto foi desenvolvido por um grupo de estudantes do curso de Análise e 
 
 - **Andrey Vanolli**
   
-## 📄 Licença
+## 📄 Licença / License
 
-Este projeto está licenciado sob uma **Licença Proprietária Temporária (All Rights Reserved — Academic Use Only)**.
+### 🇧🇷 Português (PT-BR)
 
-O código-fonte é disponibilizado apenas para fins acadêmicos, avaliação do PIM/UNIP e portfólio pessoal. **Não é permitida a cópia, redistribuição, modificação ou uso comercial** sem autorização expressa dos autores.
+Este projeto está licenciado sob uma **Licença Proprietitária Temporária (All Rights Reserved — Academic Use Only)**.
+
+O código-fonte é disponibilizado apenas para fins acadêmicos, avaliação do PIM/UNIP e portfólio pessoal.  
+Não é permitida a cópia, redistribuição, modificação ou uso comercial sem autorização expressa dos autores.
 
 A licença oficial e definitiva poderá ser definida futuramente conforme a continuidade do projeto.
 
-Para detalhes completos, consulte o arquivo [LICENSE](LICENSE).
+---
+
+### 🇺🇸 English (EN)
+
+This project is licensed under a **Temporary Proprietary License (All Rights Reserved — Academic Use Only)**.
+
+The source code is provided only for academic purposes, UNIP evaluation, and personal portfolio use.  
+Copying, redistributing, modifying, or commercial use is not permitted without the express authorization of the authors.
+
+The final and official license may be defined in the future depending on the continuation of the project.
+
+---
+
+🔗 **Para detalhes completos, consulte o arquivo [LICENSE](LICENSE).**  
+🔗 **For complete details, see the [LICENSE](LICENSE) file.**
 
