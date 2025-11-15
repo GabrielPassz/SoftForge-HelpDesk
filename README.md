@@ -69,7 +69,7 @@ Este projeto foi desenvolvido por um grupo de estudantes do curso de Análise e 
 - **Gabriel Passos**
 
 - **Andrey Vanolli**
-- 
+  
 ## 📄 Licença
 
 Este projeto está licenciado sob uma **Licença Proprietária Temporária (All Rights Reserved — Academic Use Only)**.
