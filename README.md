@@ -76,7 +76,7 @@ Este projeto foi desenvolvido por um grupo de estudantes do curso de Análise e 
 
 Este projeto está licenciado sob uma **Licença Proprietária Temporária (All Rights Reserved — Academic Use Only)**.
 
-O código-fonte é disponibilizado apenas para fins acadêmicos, avaliação do PIM/UNIP e portfólio pessoal.**Não é permitida a cópia, redistribuição, modificação ou uso comercial** sem autorização expressa dos autores.
+O código-fonte é disponibilizado apenas para fins acadêmicos, avaliação do PIM/UNIP e portfólio pessoal. **Não é permitida a cópia, redistribuição, modificação ou uso comercial** sem autorização expressa dos autores.
 
 A licença oficial e definitiva poderá ser definida futuramente conforme a continuidade do projeto.
 
