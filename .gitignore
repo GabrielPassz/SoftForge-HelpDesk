@@ -1,0 +1,78 @@
+# .gitignore para projeto .NET 8 (Razor Pages) — evita commits de artefatos e segredos
+
+# Build outputs
+bin/
+obj/
+publish/
+
+# Visual Studio / IDEs
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet / pacotes
+*.nupkg
+packages/
+.nuget/
+.nuget/packages/
+
+# Logs, testes e coverage
+*.log
+logs/
+TestResults/
+coverage/
+coverage*.xml
+coverage*.json
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Appsettings: ignorar arquivos reais, permitir apenas arquivos .example
+**/appsettings*.json
+!**/appsettings*.json.example
+
+# Arquivos de segredos e variáveis locais
+secrets.json
+*.usersecrets
+.env
+.env.*
+
+# Certificados e chaves
+*.pfx
+*.key
+*.pem
+*.cer
+*.crt
+id_rsa
+id_rsa.pub
+
+# Arquivos temporários e caches
+*.tmp
+*.temp
+*.bak
+*.swp
+*.cache
+
+# Ferramentas/IDE caches
+_ReSharper*/
+*.DotSettings.user
+
+# Arquivos sensíveis comuns (padrões amplos — revisão recomendada)
+*credentials*
+*secret*
+*apikey*
+*api_key*
+*password*
+*token*
+
+# Node / front-end (se houver)
+node_modules/
+
+# GitHub Actions / CI caches
+.github/workflows/node_modules/
