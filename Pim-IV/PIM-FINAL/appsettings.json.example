@@ -1,0 +1,17 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "SUPABASE_DB_CONNECTION": "Host=<HOST>;Port=5432;Database=<DB>;Username=<USER>;Password=<PASSWORD>;Ssl Mode=Require;",
+  "SUPABASE_URL": "https://<your-supabase>.supabase.co",
+  "SUPABASE_KEY": "<YOUR_SUPABASE_KEY>",
+  "RapidAI": {
+    "ApiKey": "<YOUR_RAPIDAPI_KEY>",
+    "Host": "open-ai21.p.rapidapi.com",
+    "BaseUrl": "https://open-ai21.p.rapidapi.com/conversationllama"
+  }
+}

@@ -1,9 +1,0 @@
-﻿namespace PIM_FINAL.Models
-{
- public class StatusChamado
- {
- public int StatusId { get; set; }
- public string? NomeStatus { get; set; }
- public string? Descricao { get; set; }
- }
-}

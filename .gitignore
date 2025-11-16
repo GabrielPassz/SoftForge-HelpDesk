@@ -36,8 +36,7 @@ Desktop.ini
 # Appsettings: ignorar arquivos reais, permitir apenas arquivos .example
 **/appsettings*.json
 !**/appsettings*.json.example
-**/appsettings.Development.json
-!**/appsettings.Development.json.example
+
 
 
 # Arquivos de segredos e variáveis locais

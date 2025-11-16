@@ -1,0 +1,9 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft.AspNetCore": "Information"
+    }
+  },
+  "SUPABASE_DB_CONNECTION": "Host=<DEV_HOST>;Database=<DEV_DB>;Username=<DEV_USER>;Password=<DEV_PASS>;"
+}
