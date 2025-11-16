@@ -1,0 +1,511 @@
+-- =================================================================================
+-- PROJETO: SoftForge HelpDesk - SCRIPT COMPLETO & COMENTADO
+-- SGBD: PostgreSQL / Supabase
+-- AUTOR: Gabriel Passos (adaptado / finalizado)
+-- VERSÃO: 3.0
+-- DESCRIÇÃO: Script completo incluindo tabelas, views e índices,
+-- INSTRUÇÕES: Execute no SQL Editor do Supabase
+
+-- =================================================================================
+-- 1) CRIAÇÃO DE TABELAS (ESTRUTURA COMPLETA DO BANCO)
+-- =================================================================================
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: departamento
+-- DESCRIÇÃO: Armazena os departamentos/setores da empresa
+-- USO: Organização hierárquica e classificação de usuários por área
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.departamento (
+  departamento_id SERIAL PRIMARY KEY,         -- Identificador único (auto incremento)
+  nome_departamento VARCHAR(100) NOT NULL,    -- Nome do departamento (ex: "TI", "RH", "Financeiro")
+  descricao VARCHAR(255)                      -- Descrição opcional das atribuições do departamento
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: perfil_usuario
+-- DESCRIÇÃO: Define os perfis/níveis de acesso no sistema
+-- USO: Controle de permissões (Administrador, Técnico, Solicitante, Gestor)
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.perfil_usuario (
+  perfil_id SERIAL PRIMARY KEY,               -- Identificador único do perfil
+  nome_perfil VARCHAR(50) NOT NULL UNIQUE,    -- Nome do perfil (deve ser único)
+  descricao VARCHAR(255)                      -- Descrição das permissões e responsabilidades
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: usuario
+-- DESCRIÇÃO: Registro local de usuários do sistema, vinculado ao Supabase Auth
+-- USO: Armazena dados complementares dos usuários autenticados
+-- IMPORTANTE: A coluna auth_id faz referência ao UUID do auth.users.id (Supabase)
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.usuario (
+  usuario_id SERIAL PRIMARY KEY,              -- ID único do usuário no sistema local
+  nome_completo VARCHAR(100) NOT NULL,        -- Nome completo do usuário
+  email VARCHAR(100) NOT NULL UNIQUE,         -- Email único (usado para login)
+  data_cadastro TIMESTAMP DEFAULT now(),      -- Data e hora de criação do registro
+  ultimo_login TIMESTAMP,                     -- Registro do último acesso ao sistema
+  departamento_id INTEGER REFERENCES public.departamento(departamento_id) ON DELETE SET NULL, -- Departamento do usuário
+  perfil_id INTEGER REFERENCES public.perfil_usuario(perfil_id) ON DELETE SET NULL,           -- Perfil de acesso
+   senha VARCHAR(255) NOT NULL,
+ -- auth_id UUID UNIQUE                         -- UUID do Supabase Auth (referência ao auth.users.id) (não utilizado)
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: funcionario
+-- DESCRIÇÃO: Base de funcionários autorizados a usar o sistema (lista "HR")
+-- USO: Controle de acesso - apenas emails desta tabela podem se cadastrar
+-- LÓGICA: Funciona como "whitelist" de emails corporativos autorizados
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.funcionario (
+  funcionario_id SERIAL PRIMARY KEY,          -- ID único do funcionário
+  usuario_id INTEGER UNIQUE REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Vínculo com usuário (opcional)
+  nome VARCHAR(100),                          -- Nome do funcionário (usado para validação)
+  email VARCHAR(100) UNIQUE,                  -- Email corporativo autorizado
+  data_contratacao DATE,                      -- Data de admissão na empresa
+  cargo VARCHAR(50),                          -- Cargo/função do funcionário
+  matricula VARCHAR(20) UNIQUE,               -- Número de matrícula único
+  data_demissao DATE                          -- Data de desligamento (NULL se ativo)
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: categoria
+-- DESCRIÇÃO: Categorias para classificação de chamados
+-- USO: Organização e triagem de tickets (Hardware, Software, Rede, etc.)
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.categoria (
+  categoria_id SERIAL PRIMARY KEY,            -- ID único da categoria
+  nome_categoria VARCHAR(100) NOT NULL,       -- Nome da categoria
+  descricao VARCHAR(255)                      -- Descrição do escopo da categoria
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: prioridade
+-- DESCRIÇÃO: Níveis de prioridade para chamados
+-- USO: Define urgência e ordem de atendimento dos tickets
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.prioridade (
+  prioridade_id SERIAL PRIMARY KEY,           -- ID único da prioridade
+  nome_prioridade VARCHAR(50) NOT NULL,       -- Nome (Crítica, Alta, Média, Baixa)
+  descricao VARCHAR(255)                      -- Critérios para classificação
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: sla
+-- DESCRIÇÃO: Acordos de Nível de Serviço (Service Level Agreement)
+-- USO: Define tempos esperados de resposta e resolução por prioridade
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.sla (
+  sla_id SERIAL PRIMARY KEY,                  -- ID único do SLA
+  nome_sla VARCHAR(100) NOT NULL,             -- Nome descritivo do acordo
+  prioridade_id INTEGER REFERENCES public.prioridade(prioridade_id) ON DELETE CASCADE, -- Prioridade associada
+  tempo_primeira_resposta INTEGER NOT NULL,   -- Tempo máximo para primeira resposta (em minutos)
+  tempo_maximo_resolucao INTEGER NOT NULL,    -- Tempo máximo para resolução completa (em minutos)
+  descricao VARCHAR(255)                      -- Detalhes adicionais do acordo
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: status_chamado
+-- DESCRIÇÃO: Estados possíveis de um chamado no fluxo de atendimento
+-- USO: Controle do ciclo de vida dos tickets
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.status_chamado (
+  status_id SERIAL PRIMARY KEY,               -- ID único do status
+  nome_status VARCHAR(50) NOT NULL UNIQUE,    -- Nome do status (deve ser único)
+  descricao VARCHAR(255)                      -- Descrição do que representa o status
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: base_conhecimento
+-- DESCRIÇÃO: Repositório de artigos, tutoriais e soluções documentadas
+-- USO: Base de conhecimento para consulta e resolução de problemas comuns
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.base_conhecimento (
+  base_id SERIAL PRIMARY KEY,                 -- ID único do artigo
+  titulo VARCHAR(200) NOT NULL,               -- Título do artigo
+  descricao VARCHAR(500),                     -- Resumo ou descrição breve
+  solucao TEXT,                               -- Conteúdo completo da solução (passo a passo)
+  categoria_id INTEGER REFERENCES public.categoria(categoria_id) ON DELETE SET NULL, -- Categoria relacionada
+  usuario_criador_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Autor do artigo
+  data_criacao TIMESTAMP DEFAULT now(),       -- Data de criação
+  aprovado BOOLEAN DEFAULT FALSE              -- Indica se foi revisado e aprovado para publicação
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: chamado
+-- DESCRIÇÃO: Tabela principal - registra todos os tickets/solicitações
+-- USO: Centraliza informações de cada chamado aberto no sistema
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.chamado (
+  chamado_id SERIAL PRIMARY KEY,              -- ID único do chamado
+  protocolo VARCHAR(50) NOT NULL,             -- Número de protocolo para referência externa
+  titulo VARCHAR(200) NOT NULL,               -- Título/resumo do problema
+  descricao TEXT NOT NULL,                    -- Descrição detalhada do problema ou solicitação
+  data_abertura TIMESTAMP DEFAULT now(),      -- Data e hora de abertura
+  data_fechamento TIMESTAMP,                  -- Data e hora de fechamento (NULL se aberto)
+  usuario_solicitante_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Quem abriu o chamado
+  tecnico_responsavel_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Técnico designado
+  categoria_id INTEGER REFERENCES public.categoria(categoria_id) ON DELETE SET NULL,       -- Tipo do problema
+  prioridade_id INTEGER REFERENCES public.prioridade(prioridade_id) ON DELETE SET NULL,    -- Nível de urgência
+  status_id INTEGER REFERENCES public.status_chamado(status_id) ON DELETE SET NULL,        -- Estado atual
+  sla_id INTEGER REFERENCES public.sla(sla_id) ON DELETE SET NULL,                         -- SLA aplicado
+  sla_atingido BOOLEAN DEFAULT FALSE          -- Indica se o SLA foi cumprido
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: atendimento
+-- DESCRIÇÃO: Registra ações e intervenções realizadas por técnicos
+-- USO: Histórico de trabalho executado em cada chamado
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.atendimento (
+  atendimento_id SERIAL PRIMARY KEY,          -- ID único do atendimento
+  chamado_id INTEGER REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado relacionado
+  usuario_tecnico_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Técnico que atendeu
+  data_atendimento TIMESTAMP DEFAULT now(),   -- Data e hora da ação
+  acao_realizada VARCHAR(500) NOT NULL,       -- Descrição do que foi feito
+  tempo_gasto INTEGER NOT NULL,               -- Tempo gasto no atendimento (em minutos)
+  solucao_ia BOOLEAN DEFAULT FALSE,           -- Indica se foi usada solução sugerida por IA
+  solucao_base_conhecimento_id INTEGER REFERENCES public.base_conhecimento(base_id) ON DELETE SET NULL -- Artigo usado
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: anexo
+-- DESCRIÇÃO: Armazena referências a arquivos anexados aos chamados
+-- USO: Gestão de evidências (prints, logs, documentos)
+-- IMPORTANTE: Armazena apenas metadados, arquivos ficam no Storage do Supabase
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.anexo (
+  anexo_id SERIAL PRIMARY KEY,                -- ID único do anexo
+  chamado_id INTEGER REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado relacionado
+  nome_arquivo VARCHAR(255) NOT NULL,         -- Nome original do arquivo
+  tipo_arquivo VARCHAR(100),                  -- Tipo/extensão (pdf, jpg, txt, etc.)
+  caminho_arquivo VARCHAR(500),               -- URL ou caminho no Storage
+  data_upload TIMESTAMP DEFAULT now(),        -- Data e hora do upload
+  usuario_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL -- Quem fez o upload
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: avaliacao
+-- DESCRIÇÃO: Feedback dos solicitantes sobre o atendimento recebido
+-- USO: Métrica de satisfação e qualidade do serviço
+-- CONSTRAINT: Permite apenas uma avaliação por chamado
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.avaliacao (
+  avaliacao_id SERIAL PRIMARY KEY,            -- ID único da avaliação
+  chamado_id INTEGER REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado avaliado
+  usuario_solicitante_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Quem avaliou
+  nota INTEGER CHECK (nota BETWEEN 1 AND 5),  -- Nota de 1 a 5 estrelas
+  comentario VARCHAR(500),                    -- Comentário opcional
+  data_avaliacao TIMESTAMP DEFAULT now(),     -- Data da avaliação
+  CONSTRAINT uq_avaliacao_chamado UNIQUE (chamado_id)  -- Garante unicidade (1 avaliação por chamado)
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: historico_chamado
+-- DESCRIÇÃO: Rastreamento completo de todas as mudanças em um chamado
+-- USO: Auditoria e histórico de ações (mudanças de status, comunicações, etc.)
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.historico_chamado (
+  historico_id SERIAL PRIMARY KEY,            -- ID único do registro histórico
+  chamado_id INTEGER REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado relacionado
+  usuario_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Quem realizou a ação
+  acao VARCHAR(150) NOT NULL,                 -- Tipo de ação realizada
+  descricao VARCHAR(1000),                    -- Detalhes da ação
+  data_acao TIMESTAMP DEFAULT now(),          -- Data e hora da ação
+  status_anterior_id INTEGER REFERENCES public.status_chamado(status_id) ON DELETE SET NULL, -- Status antes
+  status_novo_id INTEGER REFERENCES public.status_chamado(status_id) ON DELETE SET NULL,     -- Status depois
+  CONSTRAINT ck_status_diferente CHECK (      -- Garante que só registra mudanças reais
+    status_anterior_id IS NULL OR status_novo_id IS NULL OR status_anterior_id <> status_novo_id
+  )
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: log_acesso
+-- DESCRIÇÃO: Registra todas as ações dos usuários no sistema
+-- USO: Auditoria de segurança e rastreamento de atividades
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.log_acesso (
+  log_id SERIAL PRIMARY KEY,                  -- ID único do log
+  usuario_id INTEGER REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Usuário que realizou a ação
+  acao VARCHAR(150),                          -- Tipo de ação (login, logout, cadastro, etc.)
+  descricao VARCHAR(500),                     -- Detalhes da ação
+  data_hora TIMESTAMP DEFAULT now(),          -- Data e hora da ação
+  ip_address VARCHAR(100),                    -- Endereço IP de origem
+  dispositivo VARCHAR(200)                    -- Informações do dispositivo (browser, OS)
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: ia_analise
+-- DESCRIÇÃO: Armazena resultados de análises automáticas por IA
+-- USO: Machine Learning - previsões de categoria, sugestões automáticas
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.ia_analise (
+  ia_id SERIAL PRIMARY KEY,                   -- ID único da análise
+  chamado_id INTEGER REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado analisado
+  categoria_prevista VARCHAR(200),            -- Categoria sugerida pela IA
+  confianca NUMERIC(5,2),                     -- Nível de confiança da previsão (0-100%)
+  resultado_validado BOOLEAN,                 -- Se a previsão foi confirmada como correta
+  comentario VARCHAR(255),                    -- Observações sobre a análise
+  data_analise TIMESTAMP DEFAULT now()        -- Data e hora da análise
+);
+
+-- ---------------------------------------------------------------------------------
+-- TABELA: comunicacao
+-- DESCRIÇÃO: Mensagens trocadas no contexto de um chamado
+-- USO: Sistema de chat/comunicação entre solicitante e técnico
+-- ---------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.comunicacao (
+  comunicacao_id SERIAL PRIMARY KEY,          -- ID único da mensagem
+  chamado_id INTEGER NOT NULL REFERENCES public.chamado(chamado_id) ON DELETE CASCADE, -- Chamado relacionado
+  usuario_id INTEGER NOT NULL REFERENCES public.usuario(usuario_id) ON DELETE SET NULL, -- Quem enviou
+  mensagem TEXT NOT NULL,                     -- Conteúdo da mensagem
+  data_envio TIMESTAMP DEFAULT now()          -- Data e hora do envio
+);
+
+-- =================================================================================
+-- 2) ÍNDICES (OTIMIZAÇÃO DE PERFORMANCE)
+-- =================================================================================
+-- Índices aceleram consultas em colunas frequentemente usadas em WHERE, JOIN e ORDER BY
+
+-- Índice para acelerar busca de comunicações por chamado (usado em chats)
+CREATE INDEX IF NOT EXISTS idx_comunicacao_chamado ON public.comunicacao(chamado_id);
+COMMENT ON INDEX public.idx_comunicacao_chamado IS 'Acelera consultas de mensagens por chamado';
+
+-- Índice para acelerar consultas por status do chamado (filtros comuns em dashboards)
+CREATE INDEX IF NOT EXISTS idx_chamado_status ON public.chamado(status_id);
+COMMENT ON INDEX public.idx_chamado_status IS 'Otimiza filtros por status nos relatórios';
+
+-- Índice para histórico por chamado (auditoria e timeline)
+CREATE INDEX IF NOT EXISTS idx_historico_chamado_chamado ON public.historico_chamado(chamado_id);
+COMMENT ON INDEX public.idx_historico_chamado_chamado IS 'Melhora performance de consultas ao histórico';
+
+-- =================================================================================
+-- 3) VIEWS (CONSULTAS PRÉ-DEFINIDAS PARA RELATÓRIOS E INTERFACE)
+-- =================================================================================
+
+-- ---------------------------------------------------------------------------------
+-- VIEW: vw_chamados_detalhados
+-- DESCRIÇÃO: Visão consolidada de chamados com todas as informações relacionadas
+-- USO: Interface principal de listagem de tickets, facilita consultas complexas
+-- ---------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW public.vw_chamados_detalhados AS
+SELECT
+  c.chamado_id,                               -- ID do chamado
+  c.protocolo,                                -- Número de protocolo
+  c.titulo,                                   -- Título do problema
+  us.nome_completo AS solicitante,            -- Nome do solicitante
+  tec.nome_completo AS tecnico,               -- Nome do técnico responsável
+  cat.nome_categoria AS categoria,            -- Categoria do problema
+  pr.nome_prioridade AS prioridade,           -- Nível de prioridade
+  st.nome_status AS status,                   -- Status atual
+  sl.nome_sla AS sla,                         -- SLA aplicado
+  c.data_abertura,                            -- Quando foi aberto
+  c.data_fechamento,                          -- Quando foi fechado (NULL se aberto)
+  c.sla_atingido                              -- Se cumpriu o SLA
+FROM public.chamado c
+LEFT JOIN public.usuario us ON c.usuario_solicitante_id = us.usuario_id
+LEFT JOIN public.usuario tec ON c.tecnico_responsavel_id = tec.usuario_id
+LEFT JOIN public.categoria cat ON c.categoria_id = cat.categoria_id
+LEFT JOIN public.prioridade pr ON c.prioridade_id = pr.prioridade_id
+LEFT JOIN public.status_chamado st ON c.status_id = st.status_id
+LEFT JOIN public.sla sl ON c.sla_id = sl.sla_id;
+
+COMMENT ON VIEW public.vw_chamados_detalhados IS 
+'View consolidada de chamados com informações de solicitante, técnico, categoria, prioridade e SLA';
+
+-- ---------------------------------------------------------------------------------
+-- VIEW: vw_desempenho_tecnico
+-- DESCRIÇÃO: Métricas de performance dos técnicos
+-- USO: Relatórios gerenciais, avaliação de equipe, KPIs
+-- ---------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW public.vw_desempenho_tecnico AS
+SELECT
+  t.usuario_id AS tecnico_id,                 -- ID do técnico
+  t.nome_completo AS tecnico,                 -- Nome do técnico
+  COUNT(c.chamado_id) AS total_chamados,      -- Total de chamados atendidos
+  SUM(CASE WHEN c.sla_atingido THEN 1 ELSE 0 END) AS chamados_dentro_sla, -- Resolvidos no prazo
+  SUM(CASE WHEN NOT c.sla_atingido THEN 1 ELSE 0 END) AS chamados_fora_sla -- Resolvidos fora do prazo
+FROM public.chamado c
+JOIN public.usuario t ON c.tecnico_responsavel_id = t.usuario_id
+GROUP BY t.usuario_id, t.nome_completo;
+
+COMMENT ON VIEW public.vw_desempenho_tecnico IS 
+'Indicadores de desempenho dos técnicos: total de chamados e cumprimento de SLA';
+
+-- ---------------------------------------------------------------------------------
+-- VIEW: vw_satisfacao_usuarios
+-- DESCRIÇÃO: Índice de satisfação dos usuários
+-- USO: Métricas de qualidade do atendimento
+-- ---------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW public.vw_satisfacao_usuarios AS
+SELECT
+  u.nome_completo AS usuario,                 -- Nome do usuário
+  AVG(a.nota) AS media_nota,                  -- Média das notas dadas
+  COUNT(a.avaliacao_id) AS total_avaliacoes   -- Quantidade de avaliações
+FROM public.avaliacao a
+JOIN public.usuario u ON a.usuario_solicitante_id = u.usuario_id
+GROUP BY u.nome_completo;
+
+COMMENT ON VIEW public.vw_satisfacao_usuarios IS 
+'Média de satisfação e total de avaliações por usuário';
+
+-- ---------------------------------------------------------------------------------
+-- VIEW: vw_comunicacoes_por_chamado
+-- DESCRIÇÃO: Histórico de mensagens de cada chamado
+-- USO: Interface de chat, timeline de comunicação
+-- ---------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW public.vw_comunicacoes_por_chamado AS
+SELECT
+  c.comunicacao_id,                           -- ID da mensagem
+  c.chamado_id,                               -- ID do chamado
+  c.usuario_id,                               -- ID do usuário que enviou
+  u.nome_completo AS autor,                   -- Nome do autor
+  c.mensagem,                                 -- Conteúdo da mensagem
+  c.data_envio                                -- Data e hora do envio
+FROM public.comunicacao c
+LEFT JOIN public.usuario u ON c.usuario_id = u.usuario_id;
+
+COMMENT ON VIEW public.vw_comunicacoes_por_chamado IS 
+'Lista todas as mensagens de comunicação com informações do autor';
+
+
+
+-- =================================================================================
+-- 6) DADOS INICIAIS (SEEDS) - REGISTROS ESSENCIAIS
+-- =================================================================================
+-- DESCRIÇÃO: Insere dados básicos necessários para o funcionamento do sistema
+-- NOTA: Usa ON CONFLICT para evitar duplicação em re-execuções do script
+-- ---------------------------------------------------------------------------------
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: status_chamado
+-- Inserção dos status básicos do fluxo de atendimento
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.status_chamado (nome_status, descricao) VALUES
+('Aberto', 'Chamado recém-criado, aguardando atribuição de técnico'),
+('Em Atendimento', 'Chamado em processo de resolução por técnico'),
+('Pendente', 'Aguardando informações ou ação do solicitante'),
+('Fechado', 'Chamado finalizado e resolvido com sucesso')
+ON CONFLICT (nome_status) DO NOTHING;         -- Ignora se já existe
+
+COMMENT ON TABLE public.status_chamado IS 
+'Estados possíveis de um chamado no ciclo de vida do ticket';
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: prioridade
+-- Inserção dos níveis de prioridade disponíveis
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.prioridade (nome_prioridade, descricao) VALUES
+('Crítica', 'Problema grave que impede operação completa - requer atenção imediata'),
+('Alta', 'Impacto relevante que afeta múltiplos usuários ou processos críticos'),
+('Média', 'Impacto moderado em usuários ou processos - resolução em prazo normal'),
+('Baixa', 'Solicitação simples, dúvida ou problema com baixo impacto operacional')
+ON CONFLICT (nome_prioridade) DO NOTHING;     -- Ignora se já existe
+
+COMMENT ON TABLE public.prioridade IS 
+'Níveis de urgência para classificação e priorização de chamados';
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: sla
+-- Inserção de SLAs padrão associados a cada prioridade
+-- Tempos em minutos: primeira resposta e resolução total
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.sla (nome_sla, prioridade_id, tempo_primeira_resposta, tempo_maximo_resolucao, descricao)
+SELECT 
+  'SLA Crítica',                              -- Nome do SLA
+  p.prioridade_id,                            -- ID da prioridade Crítica
+  60,                                         -- 1 hora para primeira resposta
+  240,                                        -- 4 horas para resolução completa
+  'Resposta em 1 hora, resolução em 4 horas - prioridade máxima'
+FROM public.prioridade p 
+WHERE p.nome_prioridade = 'Crítica'
+ON CONFLICT DO NOTHING;
+
+INSERT INTO public.sla (nome_sla, prioridade_id, tempo_primeira_resposta, tempo_maximo_resolucao, descricao)
+SELECT 
+  'SLA Alta',                                 -- Nome do SLA
+  p.prioridade_id,                            -- ID da prioridade Alta
+  120,                                        -- 2 horas para primeira resposta
+  480,                                        -- 8 horas para resolução completa
+  'Resposta em 2 horas, resolução em 8 horas - alta prioridade'
+FROM public.prioridade p 
+WHERE p.nome_prioridade = 'Alta'
+ON CONFLICT DO NOTHING;
+
+INSERT INTO public.sla (nome_sla, prioridade_id, tempo_primeira_resposta, tempo_maximo_resolucao, descricao)
+SELECT 
+  'SLA Média',                                -- Nome do SLA
+  p.prioridade_id,                            -- ID da prioridade Média
+  240,                                        -- 4 horas para primeira resposta
+  1440,                                       -- 24 horas (1 dia) para resolução
+  'Resposta em 4 horas, resolução em 24 horas - prioridade normal'
+FROM public.prioridade p 
+WHERE p.nome_prioridade = 'Média'
+ON CONFLICT DO NOTHING;
+
+INSERT INTO public.sla (nome_sla, prioridade_id, tempo_primeira_resposta, tempo_maximo_resolucao, descricao)
+SELECT 
+  'SLA Baixa',                                -- Nome do SLA
+  p.prioridade_id,                            -- ID da prioridade Baixa
+  480,                                        -- 8 horas para primeira resposta
+  4320,                                       -- 72 horas (3 dias) para resolução
+  'Resposta em 8 horas, resolução em 72 horas - baixa urgência'
+FROM public.prioridade p 
+WHERE p.nome_prioridade = 'Baixa'
+ON CONFLICT DO NOTHING;
+
+COMMENT ON TABLE public.sla IS 
+'Acordos de Nível de Serviço com tempos de resposta e resolução por prioridade';
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: departamento
+-- Inserção de departamentos básicos da organização
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.departamento (nome_departamento, descricao) VALUES
+('Tecnologia da Informação', 'Infraestrutura, suporte técnico, desenvolvimento e segurança'),
+('Recursos Humanos', 'Gestão de pessoas, benefícios, recrutamento e treinamento'),
+('Financeiro', 'Contas a pagar/receber, faturamento, orçamento e controladoria'),
+('Atendimento', 'Suporte ao cliente, relacionamento e satisfação')
+ON CONFLICT (nome_departamento) DO NOTHING;   -- Evita erro se executar novamente
+
+COMMENT ON TABLE public.departamento IS 
+'Setores e departamentos da organização para classificação de usuários';
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: perfil_usuario
+-- Inserção dos perfis de acesso ao sistema
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.perfil_usuario (nome_perfil, descricao) VALUES
+('Administrador', 'Acesso total ao sistema - gerencia usuários, configurações e relatórios'),
+('Gestor', 'Acesso a relatórios gerenciais, dashboards e acompanhamento de equipe'),
+('Técnico', 'Atende e resolve chamados, acessa base de conhecimento'),
+('Solicitante', 'Abre chamados, acompanha status e avalia atendimentos')
+ON CONFLICT (nome_perfil) DO NOTHING;         -- Ignora se já existe
+
+COMMENT ON TABLE public.perfil_usuario IS 
+'Perfis de acesso que definem permissões e responsabilidades no sistema';
+
+-- ---------------------------------------------------------------------------------
+-- SEEDS: categoria
+-- Inserção das categorias padrão para classificação de chamados
+-- Uso: Organizar e filtrar tickets por tipo de problema
+-- ---------------------------------------------------------------------------------
+INSERT INTO public.categoria (nome_categoria, descricao) VALUES
+('Software', 'Problemas relacionados a programas, sistemas, aplicativos e atualizações'),
+('Hardware', 'Falhas físicas em computadores, peças, periféricos e componentes'),
+('Rede', 'Erros de conexão, internet, Wi-Fi, cabos e servidores de rede'),
+('Acesso ao Sistema', 'Problemas de login, senha, autenticação e permissões'),
+('Impressoras', 'Falhas de impressão, conexão, tinta, papel e drivers'),
+('Email Corporativo', 'Falhas no e-mail institucional, envio, recebimento e anexos'),
+('Segurança da Informação', 'Antivírus, bloqueios, firewall e acessos não autorizados'),
+('Instalação de Programas', 'Solicitação de instalação, atualização ou remoção de software'),
+('Manutenção Preventiva', 'Limpeza, organização, otimização e inspeções de máquinas'),
+('Servidor', 'Falhas em servidores físicos ou virtuais, serviços offline, travamentos, sobrecarga e quedas gerais')
+ON CONFLICT (nome_categoria) DO UPDATE SET
+    descricao = EXCLUDED.descricao;         -- Atualiza descrição se categoria já existir
+
+COMMENT ON TABLE public.categoria IS 
+'Tipos de problemas para classificação de chamados (Software, Hardware, Rede, etc.)';
+
+-- =================================================================================
+-- FIM DO SCRIPT - SoftForge HelpDesk Database v3.0
+-- =================================================================================
