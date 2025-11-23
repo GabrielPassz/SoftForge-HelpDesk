@@ -25,19 +25,41 @@
  </section>
 
  <section class="db-section"> @* Filtros *@
- <h3>Filtros e Pesquisa</h3>
+ <h3>Pesquisa</h3>
  <form method="get" asp-action="Escalonamento" asp-controller="Site">
- <label for="filtro_urgencia">Urgência:</label>
- <select id="filtro_urgencia" name="urgencia">
- <option value="">Todas</option>
- <option value="critico">Críticos sem resposta</option>
- <option value="sla_75">SLA >75%</option>
- <option value="sla_50">SLA50-75%</option>
- </select>
  <label for="busca_protocolo">Buscar por protocolo:</label>
- <input type="text" id="busca_protocolo" name="protocolo" placeholder="Ex: CHAM-2025-001" />
+ <input type="text" id="busca_protocolo" name="protocolo" value="@Context.Request.Query["protocolo"]" placeholder="Ex: CHAM-2025-001" />
  <button type="submit" class="btn btn-primary">Filtrar</button>
  </form>
+ 
+ @* Resumo dos resultados da busca *@
+ @{
+ var termo = Context.Request.Query["protocolo"].ToString();
+ var temBusca = !string.IsNullOrWhiteSpace(termo);
+ }
+ <div class="db-section">
+ <h4>Resultados</h4>
+ @if (Model != null && Model.Any())
+ {
+ <ul class="list-group">
+ @foreach (var c in Model)
+ {
+ <li class="list-group-item">
+ <strong>[@c.Protocolo]</strong> @c.Titulo<br />
+ <small>Prioridade: @c.Prioridade | Técnico: @c.Tecnico | SLA: @c.SlaConsumedPercent% | Restante: @(c.TimeRemaining.HasValue ? (c.TimeRemaining.Value.TotalHours >=1 ? $"{(int)c.TimeRemaining.Value.TotalHours}h{c.TimeRemaining.Value.Minutes}m" : $"{c.TimeRemaining.Value.Minutes}m") : "-")</small>
+ <div style="margin-top:6px">
+ <a class="btn btn-sm btn-secondary" asp-controller="Site" asp-action="DetalhesEscalonamento" asp-route-id="@c.ChamadoId">Detalhes</a>
+ <a class="btn btn-sm btn-outline-primary" asp-controller="Site" asp-action="DetalhesChamado" asp-route-id="@c.ChamadoId">Abrir</a>
+ </div>
+ </li>
+ }
+ </ul>
+ }
+ else
+ {
+ <p>@(temBusca ? "Nenhum chamado encontrado para o protocolo informado." : "Informe um protocolo e clique em Filtrar.")</p>
+ }
+ </div>
  </section>
 
  <section class="db-section"> @* Escalonamento manual *@

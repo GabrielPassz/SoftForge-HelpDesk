@@ -1,33 +1,48 @@
-@model IEnumerable<PIM_FINAL.Models.PerfilUsuario>
-
+﻿@model IEnumerable<PIM_FINAL.Models.PerfilUsuario>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
- ViewData["Title"] = "Perfis de Usu�rio";
+ ViewData["Title"] = "Perfis de Usuário";
 }
-
-<h1>Perfis de Usu�rio</h1>
-<p>
- <a asp-action="Create">Novo Perfil</a>
-</p>
-<table class="table">
- <thead>
- <tr>
- <th>Nome</th>
- <th>Descri��o</th>
- <th></th>
- </tr>
- </thead>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Perfis - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+ <main class="db-content">
+ @if (TempData["SuccessMessage"] != null) { <div class="alert alert-success">@TempData["SuccessMessage"]</div> }
+ @if (TempData["ErrorMessage"] != null) { <div class="alert alert-danger">@TempData["ErrorMessage"]</div> }
+ <section class="db-section db-overview">
+ <h2>Perfis de Usuário</h2>
+ <p><a asp-action="Create" class="btn btn-sm btn-primary">Novo Perfil</a></p>
+ </section>
+ <section class="db-section">
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="15">
+ <thead><tr><th>Nome</th><th>Descrição</th><th>Ações</th></tr></thead>
  <tbody>
-@foreach(var item in Model)
-{
+ @foreach (var p in Model)
+ {
  <tr>
- <td>@item.NomePerfil</td>
- <td>@item.Descricao</td>
- <td>
- <a asp-action="Details" asp-route-id="@item.PerfilId">Details</a> |
- <a asp-action="Edit" asp-route-id="@item.PerfilId">Edit</a> |
- <a asp-action="Delete" asp-route-id="@item.PerfilId">Delete</a>
- </td>
+ <td data-label="Nome"><span class="cell-val">@p.NomePerfil</span></td>
+ <td data-label="Descrição"><span class="cell-val">@p.Descricao</span></td>
+ <td data-label="Ações"><span class="cell-val">
+ <a asp-action="Details" asp-route-id="@p.PerfilId">Detalhes</a> |
+ <a asp-action="Edit" asp-route-id="@p.PerfilId">Editar</a> |
+ <a asp-action="Delete" asp-route-id="@p.PerfilId">Excluir</a>
+ </span></td>
  </tr>
-}
+ }
+ @if(!Model.Any()) { <tr><td colspan="3" class="text-center"><em>Nenhum perfil cadastrado.</em></td></tr> }
  </tbody>
-</table>
+ </table>
+ </section>
+ </main>
+ <div class="db-footer"><footer><p>&copy;2025 SoftForge - Todos os direitos reservados</p></footer></div>
+</div>
+</body>
+</html>

@@ -98,9 +98,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Rota padrão: Site/Page com viewName=Login
+// Rota padrão ajustada: permite id opcional e remove parâmetro viewName que quebrava outras controllers
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Site}/{action=Page}/{viewName=Login}/{id?}");
+    pattern: "{controller=Site}/{action=Page}/{id?}");
 
 app.Run();

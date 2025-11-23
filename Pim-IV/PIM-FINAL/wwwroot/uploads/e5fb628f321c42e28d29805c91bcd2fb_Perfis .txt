@@ -1,0 +1,123 @@
+Fluxograma do Processo de Acesso ao Sistema por Perfil
+
+Início / Login
+
+• Verificar Credenciais
+
+• Falha: Acesso Negado / Fim
+
+• Sucesso: Determinar Perfil do Usuário
+
+Determinar Perfil do Usuário:
+
+Perfil: Solicitante
+
+• Ações Permitidas (com checkmark):
+
+• Login / Logout
+
+• Abrir Chamado
+
+• Visualizar Chamados Próprios
+
+• Enviar Mensagens e Anexos
+
+• Consultar Base de Conhecimento
+
+Ações Negadas (com 'X'):
+
+• Assumir Chamado
+
+• Atualizar Chamado
+
+• Encerrar Chamado
+
+• Gestão de Usuários
+
+• Gestão de Categorias / Prioridades / SLA
+
+• Relatórios e Indicadores
+
+Perfil: Técnico
+
+• Ações Permitidas (com checkmark):
+
+• Login / Logout
+
+• Abrir Chamado
+
+• Visualizar Chamados (Atribuídos ou Todos da Fila)
+
+• Assumir Chamado
+
+• Atualizar Chamado
+
+• Encerrar Chamado
+
+• Enviar Mensagens e Anexos
+
+• Consultar e Criar Base de Conhecimento
+
+• Relatórios e Indicadores (Somente Próprio)
+
+• Ações Negadas (com 'X'):
+
+• Gestão de Usuários
+
+• Gestão de Categorias / Prioridades / SLA
+
+Perfil: Gestor
+
+• Ações Permitidas (com checkmark):
+
+• Login / Logout
+
+• Abrir Chamado
+
+• Visualizar Chamados Próprios
+
+• Enviar Mensagens e Anexos
+
+• Consultar Base de Conhecimento
+
+• Relatórios e Indicadores (Completo)
+
+Ações Negadas (com 'X'):
+
+• Assumir Chamado
+
+• Atualizar Chamado
+
+• Encerrar Chamado
+
+• Gestão de Usuários
+
+• Gestão de Categorias / Prioridades / SLA
+
+Perfil: Admin
+
+• Ações Permitidas (com checkmark para tudo):
+
+• Login / Logout
+
+• Abrir Chamado
+
+• Visualizar Chamados Próprios
+
+• Assumir Chamado
+
+• Atualizar Chamado
+
+• Encerrar Chamado
+
+• Enviar Mensagens e Anexos
+
+• Gestão de Usuários
+
+• Gestão de Categorias / Prioridades / SLA
+
+• Relatórios e Indicadores (Completo)
+
+• Gerenciar Base de Conhecimento (Pode consultar e criar)
+
+Fim: Uso do Sistema / Fim

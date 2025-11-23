@@ -1,18 +1,43 @@
-@model PIM_FINAL.Models.PerfilUsuario
-
+﻿@model PIM_FINAL.Models.PerfilUsuario
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
  ViewData["Title"] = "Editar Perfil";
 }
-<h1>Editar</h1>
-<form asp-action="Edit" method="post">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Editar Perfil - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+ <main class="db-content">
+ <section class="db-section db-form">
+ <h2>Editar Perfil</h2>
+ <form asp-action="Edit" method="post">
+ @Html.AntiForgeryToken()
  <input type="hidden" asp-for="PerfilId" />
- <div class="form-group">
- <label asp-for="NomePerfil"></label>
+ <div class="mb-3">
+ <label asp-for="NomePerfil" class="form-label"></label>
  <input asp-for="NomePerfil" class="form-control" />
+ <span asp-validation-for="NomePerfil" class="text-danger"></span>
  </div>
- <div class="form-group">
- <label asp-for="Descricao"></label>
+ <div class="mb-3">
+ <label asp-for="Descricao" class="form-label"></label>
  <input asp-for="Descricao" class="form-control" />
+ <span asp-validation-for="Descricao" class="text-danger"></span>
  </div>
+ <div class="db-actions">
  <button type="submit" class="btn btn-primary">Salvar</button>
-</form>
+ <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+ </div>
+ </form>
+ </section>
+ </main>
+ <div class="db-footer"><footer><p>&copy;2025 SoftForge - Todos os direitos reservados</p></footer></div>
+</div>
+</body>
+</html>

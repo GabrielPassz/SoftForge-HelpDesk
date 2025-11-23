@@ -38,7 +38,9 @@
 
  <section class="db-section db-status"> @* Indicadores de risco *@
  <h3>Status de Risco</h3>
- <table class="table table-bordered w-100 stack-mobile"><thead><tr><th>Campo</th><th>Valor</th></tr></thead><tbody>
+                    <table class="table table-bordered w-100 db-summary-table limit-rows" data-limit="3">
+                        <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
+                        <tbody>
  <tr><td><strong>Nível de Risco</strong></td><td><span class="cell-val">@if (slaConsumed.HasValue){var nivel = slaConsumed.Value >=75 ? "ALTO" : (slaConsumed.Value >=50 ? "MÉDIO" : "BAIXO");<text><strong style="color:@(slaConsumed.Value>=75?"red":(slaConsumed.Value>=50?"orange":"green"))">@nivel - SLA @slaConsumed% Consumido</strong></text>} else {<text><strong>Indisponível</strong></text>}</span></td></tr>
  <tr><td><strong>Tempo Restante SLA</strong></td><td><span class="cell-val">@slaRemaining</span></td></tr>
  </tbody></table>
@@ -46,7 +48,9 @@
 
  <section class="db-section db-infos"> @* Resumo chamado *@
  <h3>Informações do Chamado</h3>
- <table class="table table-bordered w-100 stack-mobile"><thead><tr><th>Campo</th><th>Valor</th></tr></thead><tbody>
+ <table class="table table-bordered w-100 db-summary-table limit-rows" data-limit="3">
+ <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
+ <tbody>
  <tr><td><strong>Protocolo</strong></td><td><span class="cell-val">@protocolo</span></td></tr>
  <tr><td><strong>Status</strong></td><td><span class="cell-val">@(Model?.StatusChamado?.NomeStatus ?? "-")</span></td></tr>
  <tr><td><strong>Título</strong></td><td><span class="cell-val">@(Model?.Titulo ?? "-")</span></td></tr>
@@ -62,37 +66,37 @@
 
  <section class="db-section db-ia"> @* Placeholder IA *@
  <h3>Análise da IA</h3>
- <table class="table table-bordered w-100 stack-mobile"><thead><tr><th>Campo</th><th>Valor</th></tr></thead><tbody>
+ <table class="table table-bordered w-100 db-summary-table limit-rows" data-limit="3"><thead><tr><th>Campo</th><th>Valor</th></tr></thead><tbody>
  <tr><td><strong>Recomendação</strong></td><td><span class="cell-val"><strong style="color:red">ESCALAR (se necessário)</strong></span></td></tr>
  <tr><td><strong>Justificativa</strong></td><td><span class="cell-val">-</span></td></tr>
  <tr><td><strong>Técnico Sugerido</strong></td><td><span class="cell-val">-</span></td></tr>
  </tbody></table>
  </section>
 
- <section class="db-section db-historico"> @* Histórico mínimo *@
- <h3>Histórico Resumido</h3>
- <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3"><thead><tr><th>Data/Hora</th><th>Usuário</th><th>Ação</th></tr></thead><tbody>
- <tr><td><span class="cell-val">@(Model?.DataAbertura?.ToLocalTime().ToString("dd/MM/yyyy HH:mm") ?? "-")</span></td><td><span class="cell-val">@(Model?.UsuarioSolicitante?.NomeCompleto ?? "-")</span></td><td><span class="cell-val"><strong>Chamado Aberto</strong></span></td></tr>
+ <section class="db-section db-historico"> @* Histórico *@
+ <h3>Histórico</h3>
+ @{
+ var historico = Model?.Comunicacoes?.OrderByDescending(x => x.DataEnvio).ToList() ?? new List<PIM_FINAL.Models.Comunicacao>();
+ }
+ @if (historico.Any())
+ {
+ <table class="table table-bordered w-100 stack-mobile"><thead><tr><th>Data/Hora</th><th>Usuário</th><th>Mensagem</th></tr></thead><tbody>
+ @foreach (var h in historico)
+ {
+ var ts = (h.DataEnvio ?? DateTime.UtcNow).ToLocalTime().ToString("dd/MM/yyyy HH:mm");
+ var usr = h.Usuario?.NomeCompleto ?? (h.UsuarioId.ToString() ?? "-");
+ <tr class="@(h.Mensagem != null && (h.Mensagem.Contains("Escalonado", StringComparison.OrdinalIgnoreCase) || h.Mensagem.Contains("Escalonamento manual", StringComparison.OrdinalIgnoreCase)) ? "table-warning" : null)">
+ <td data-label="Data:"><span class="cell-val">@ts</span></td>
+ <td data-label="Técnico:"><span class="cell-val">@usr</span></td>
+ <td data-label="Mensagem:"><span class="cell-val">@h.Mensagem</span></td>
+ </tr>
+ }
  </tbody></table>
- </section>
-
- <section id="form_escalonar" class="db-section db-escalonar"> @* Formulário para escalonamento *@
- <h3>Realizar Escalonamento</h3>
- <form method="post" asp-controller="Site" asp-action="EscalonarChamado">
- <input type="hidden" name="chamado_id" value="@chamadoId" />
- <label for="novo_tecnico">Escalonar para:</label>
- <select id="novo_tecnico" name="novo_tecnico" class="form-select" required>
- <option value="">Selecione...</option>
- <option value="paula">Paula Martins (N3)</option>
- <option value="joao">João Ferreira (N2)</option>
- </select>
- <label for="motivo_escalonamento">Motivo/Justificativa:</label>
- <textarea id="motivo_escalonamento" name="motivo" rows="4" class="form-control">Chamado requer conhecimento avançado...</textarea>
- <label for="nova_prioridade">Reclassificar Prioridade:</label>
- <select id="nova_prioridade" name="nova_prioridade" class="form-select"><option value="">Manter</option><option value="critica">Crítica</option><option value="alta">Alta</option><option value="media">Média</option><option value="baixa">Baixa</option></select>
- <div class="mt-2"><input type="checkbox" id="notificar_solicitante" name="notificar_solicitante" checked /> <label for="notificar_solicitante">Notificar Solicitante</label></div>
- <button type="submit" class="btn btn-primary btn-sm">Confirmar Escalonamento</button>
- </form>
+ }
+ else
+ {
+ <p>Nenhum histórico disponível.</p>
+ }
  </section>
 
  </main>

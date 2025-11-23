@@ -1,16 +1,36 @@
-@model PIM_FINAL.Models.PerfilUsuario
-
+ï»¿@model PIM_FINAL.Models.PerfilUsuario
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
  ViewData["Title"] = "Detalhes do Perfil";
 }
-<h1>Detalhes</h1>
-<dl class="row">
- <dt class="col-sm-2">Nome</dt>
- <dd class="col-sm-10">@Model.NomePerfil</dd>
- <dt class="col-sm-2">Descrição</dt>
- <dd class="col-sm-10">@Model.Descricao</dd>
-</dl>
-<p>
- <a asp-action="Edit" asp-route-id="@Model.PerfilId">Edit</a> |
- <a asp-action="Index">Back to List</a>
-</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Detalhes Perfil - SoftForge HelpDesk</title>
+ <link rel="stylesheet" href="/css/dbtestes.css" />
+</head>
+<body>
+<div class="db-page container-fluid">
+ @await Html.PartialAsync("_HeaderNav")
+ <main class="db-content">
+ <section class="db-section">
+ <h2>Detalhes do Perfil</h2>
+ <table class="table table-bordered w-100 db-summary-table">
+ <tbody>
+ <tr><td><strong>ID</strong></td><td>@Model.PerfilId</td></tr>
+ <tr><td><strong>Nome</strong></td><td>@Model.NomePerfil</td></tr>
+ <tr><td><strong>DescriÃ§Ã£o</strong></td><td>@Model.Descricao</td></tr>
+ </tbody>
+ </table>
+ <div class="db-actions">
+ <a asp-action="Edit" asp-route-id="@Model.PerfilId" class="btn btn-primary btn-sm">Editar</a>
+ <a asp-action="Index" class="btn btn-secondary btn-sm">Voltar</a>
+ </div>
+ </section>
+ </main>
+ <div class="db-footer"><footer><p>&copy;2025 SoftForge - Todos os direitos reservados</p></footer></div>
+</div>
+</body>
+</html>

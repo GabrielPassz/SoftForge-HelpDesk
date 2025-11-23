@@ -66,21 +66,19 @@
 </section>
 
 <section> @* Histórico *@
-<h3>Histórico de Atendimentos</h3>
-<table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
-<thead><tr><th>Data/Hora</th><th>Técnico</th><th>Ação</th></tr></thead>
-<tbody>
-@foreach(var a in Model.Atendimentos)
-{ 
- <tr>
-    <td><span class="cell-val">@(a.DataAtendimento?.ToLocalTime().ToString("g") ?? "-")</span></td>
-    <td><span class="cell-val">@(a.UsuarioTecnico?.NomeCompleto ?? "-")</span></td>
-    <td><span class="cell-val">@a.AcaoRealizada</span></td>
- </tr> 
-}
-</tbody>
-</table>
-</section>
+<h3>🕓 Histórico de Ações</h3>
+ @* Ordena descendentemente por DataAtendimento e aplica `limit-rows` para ver mais/menos *@
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <thead><tr><th>Data/Hora</th><th>Usuário</th><th>Ação</th></tr></thead>
+ <tbody>
+ @{ var atendimentosOrdenados = (Model?.Atendimentos ?? new List<PIM_FINAL.Models.Atendimento>()).OrderByDescending(x=>x.DataAtendimento).ToList(); }
+ @foreach (var a in atendimentosOrdenados)
+ { <tr><td data-label="Data/Hora"><span class="cell-val">@(a.DataAtendimento.HasValue ? a.DataAtendimento.Value.ToLocalTime().ToString("g") : "-")</span></td>
+     <td data-label="Usuário"><span class="cell-val">@a.UsuarioTecnico?.NomeCompleto</span></td>
+     <td data-label="Ação"><span class="cell-val wrap">@a.AcaoRealizada</span></td></tr> }
+ </tbody>
+ </table>
+ </section>
 
 <section> @* Comunicações *@
 <h3>Comunicações</h3>

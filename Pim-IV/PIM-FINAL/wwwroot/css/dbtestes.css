@@ -37,16 +37,13 @@ html, body{
 }
 
 /* Header */
-.db-header, .db-top, .db-header-wrapper{
+.db-header, .db-top, .db-header-wrapper, .db-header header{
  background:var(--panel-2);
  padding:1rem;
  border-radius:var(--radius);
- margin-bottom:.75rem;
 }
-.db-header header{ /* inner header block when used */
- background:var(--panel-2);
- padding:1rem;
- border-radius:var(--radius);
+.db-header, .db-top, .db-header-wrapper{
+ margin-bottom:.75rem;
 }
 .db-header h1, .db-header p{ color:var(--text); margin:0 }
 
@@ -74,8 +71,7 @@ html, body{
 .db-section h2, .db-section h3, .db-section h4{ margin-top:0; color:#fff }
 
 /* Footer */
-.db-footer, .db-footer-wrapper{ text-align:center; color:var(--muted); padding:1rem }
-.db-footer footer{ text-align:center; padding:1rem; color:var(--muted) }
+.db-footer, .db-footer-wrapper, .db-footer footer{ text-align:center; color:var(--muted); padding:1rem }
 
 /* Buttons */
 .btn-primary{ background-color:var(--primary); border-color:#1861ac; color:#fff }
@@ -92,7 +88,6 @@ button, input[type="button"], input[type="submit"], .btn{
  transition:background .15s, box-shadow .15s;
 }
 /* Exceções mantêm seu estilo (já definidos acima) */
-.btn-secondary{ background:#2b2b2b; border-color:#3a3a3a; }
 button:hover:not(.btn-secondary),
 .btn:hover:not(.btn-secondary),
 input[type="submit"]:hover, input[type="button"]:hover{
@@ -192,14 +187,12 @@ label{ display:block; margin-bottom:.35rem; color:var(--muted) }
 
 /* Mobile header/menu centering */
 @media (max-width:600px){
- .menu-details{ width:100% }
- .menu-summary{ width:100%; display:flex; justify-content:center; align-items:center; text-align:center }
+ .menu-details{ width:100%; position:static; display:flex; flex-direction:column; align-items:center }
+ .menu-summary{ width:100%; display:flex; justify-content:center; align-items:center; text-align:center; margin-top:8px; padding:4px10px; font-size:.95rem }
  .site-header{ flex-direction:column; align-items:center; text-align:center }
  .site-brand img{ width:200px; height:200px; margin:0 auto }
  .site-title{ display:flex; flex-direction:column; align-items:center }
  .site-menu{ margin-left:0; width:100%; display:flex; flex-direction:column; align-items:center }
- .menu-details{ position:static; display:flex; flex-direction:column; align-items:center }
- .menu-summary{ margin-top:8px; padding:4px10px; font-size:.95rem }
  .menu-list{ position:static; right:auto; left:auto; box-shadow:none; width:100%; max-width:280px; margin-top:10px }
  .menu-list a{ justify-content:center }
 }
@@ -218,7 +211,7 @@ label{ display:block; margin-bottom:.35rem; color:var(--muted) }
  content:attr(data-label); font-weight:600; color:var(--muted); flex:00110px; white-space:nowrap;
  }
  table.stack-mobile:not(.no-stack) tbody tr td .cell-val{
- flex:11 auto; margin-left:auto; text-align:right; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; word-break:break-word; overflow-wrap:anywhere; hyphens:auto;
+ flex:11 auto; margin-left:auto; text-align:right;
  }
  /* Allow specific fields to wrap */
  table.stack-mobile:not(.no-stack) tbody tr td[data-label="Título"] .cell-val,
@@ -234,11 +227,11 @@ label{ display:block; margin-bottom:.35rem; color:var(--muted) }
  .db-summary-table tbody tr{
  display:flex; justify-content:space-between; align-items:center; background:var(--panel-2); border:1px solid #2b2b2b; border-radius:6px; margin-bottom:12px;
  }
- .db-summary-table tbody tr td{ display:block; border:none; padding:8px 12px }
+ .db-summary-table tbody tr td{ display:block; border:none; padding:8px12px }
  .db-summary-table tbody tr td::before{ content:none !important }
  .db-summary-table tbody tr td:first-child{ font-weight:600; color:var(--text) }
  db-summary-table tbody tr td:last-child{ text-align:right }
- .db-summary-table tbody tr td .cell-val{ margin-left:0; text-align:right; white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
+ .db-summary-table tbody tr td .cell-val{ margin-left:0; text-align:right }
 }
 
 /* KPI pair table:2 col desktop, label left value right */
@@ -255,12 +248,12 @@ label{ display:block; margin-bottom:.35rem; color:var(--muted) }
 
 /* Only on mobile: hide KPI label column for Dashboard Gestor KPI table */
 @media (max-width:900px){
-    table.kv-table.stack-mobile tbody tr td[data-label="KPI"] {
-        display: none !important;
-    }
-    table.kv-table.stack-mobile tbody tr td[data-label="Campo"] {
-        display: none !important;
-    }
+ table.kv-table.stack-mobile tbody tr td[data-label="KPI"] {
+ display: none !important;
+ }
+ table.kv-table.stack-mobile tbody tr td[data-label="Campo"] {
+ display: none !important;
+ }
 }
 
 /* Accessibility: focus styles */
@@ -278,3 +271,10 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus{
  overflow-wrap:anywhere;
  hyphens:auto;
 }
+
+.table-warning, .table-warning>td, .table-warning>th{
+ background:var(--panel) !important;
+ color:var(--text) !important;
+}
+/* Optional subtle left accent: uncomment if desired */
+/* .table-warning{ border-left:3px solid var(--accent); } */

@@ -13,7 +13,7 @@
  <link rel="stylesheet" href="~/PIM.styles.css" asp-append-version="true" /> @* Estilos gerados (Razor) *@
  <link rel="stylesheet" href="~/css/dbtestes.css" asp-append-version="true" /> @* Estilos customizados do dashboard *@
 </head>
-<body>
+<body data-auth="@User?.Identity?.IsAuthenticated">
  @* O cabeçalho real (_HeaderNav) é incluído diretamente nas views *@
  <div class="container"> @* Container principal para conteúdo *@
  <main role="main" class="pb-3"> @* Área do corpo renderizada pelas views *@

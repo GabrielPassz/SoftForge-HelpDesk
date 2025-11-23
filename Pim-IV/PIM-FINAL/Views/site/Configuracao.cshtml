@@ -22,26 +22,58 @@
  <section class="db-section db-overview">
  <h2>⚙️ Configuração do Sistema</h2>
  <p><strong>Administrador:</strong> @User?.Identity?.Name</p>
+ <div class="mb-2">
+ <a asp-controller="Departamento" asp-action="Create" class="btn btn-sm btn-primary">Novo Departamento</a>
+ <a asp-controller="PerfilUsuario" asp-action="Create" class="btn btn-sm btn-primary">Novo Perfil</a>
+ </div>
  </section>
 
- <section class="db-section"> @* Lista de departamentos com link de edição *@
+ <section class="db-section"> @* Lista de departamentos com links completos *@
  <h3>Departamentos</h3>
- <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="10">
  <thead><tr><th>ID</th><th>Departamento</th><th>Descrição</th><th>Ações</th></tr></thead>
  <tbody>
  @foreach(var d in deps)
- { <tr><td data-label="ID"><span class="cell-val">@d.DepartamentoId</span></td><td data-label="Departamento"><span class="cell-val">@d.NomeDepartamento</span></td><td data-label="Descrição"><span class="cell-val">@d.Descricao</span></td><td data-label="Ações"><span class="cell-val"><a asp-controller="Departamento" asp-action="Edit" asp-route-id="@d.DepartamentoId">Editar</a></span></td></tr> }
+ {
+ <tr>
+ <td data-label="ID"><span class="cell-val">@d.DepartamentoId</span></td>
+ <td data-label="Departamento"><span class="cell-val">@d.NomeDepartamento</span></td>
+ <td data-label="Descrição"><span class="cell-val">@d.Descricao</span></td>
+ <td data-label="Ações">
+ <span class="cell-val">
+ <a asp-controller="Departamento" asp-action="Details" asp-route-id="@d.DepartamentoId">Detalhes</a> |
+ <a asp-controller="Departamento" asp-action="Edit" asp-route-id="@d.DepartamentoId">Editar</a> |
+ <a asp-controller="Departamento" asp-action="Delete" asp-route-id="@d.DepartamentoId">Excluir</a>
+ </span>
+ </td>
+ </tr>
+ }
+ @if(!deps.Any()) { <tr><td colspan="4" class="text-center">Nenhum departamento cadastrado.</td></tr> }
  </tbody>
  </table>
  </section>
 
- <section class="db-section"> @* Lista de perfis com link de edição *@
+ <section class="db-section"> @* Lista de perfis com links completos *@
  <h3>Perfis de Usuário</h3>
- <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="3">
+ <table class="table table-bordered w-100 stack-mobile limit-rows" data-limit="10">
  <thead><tr><th>ID</th><th>Perfil</th><th>Descrição</th><th>Ações</th></tr></thead>
  <tbody>
  @foreach(var p in perfis)
- { <tr><td data-label="ID"><span class="cell-val">@p.PerfilId</span></td><td data-label="Perfil"><span class="cell-val">@p.NomePerfil</span></td><td data-label="Descrição"><span class="cell-val">@p.Descricao</span></td><td data-label="Ações"><span class="cell-val"><a asp-controller="PerfilUsuario" asp-action="Edit" asp-route-id="@p.PerfilId">Editar</a></span></td></tr> }
+ {
+ <tr>
+ <td data-label="ID"><span class="cell-val">@p.PerfilId</span></td>
+ <td data-label="Perfil"><span class="cell-val">@p.NomePerfil</span></td>
+ <td data-label="Descrição"><span class="cell-val">@p.Descricao</span></td>
+ <td data-label="Ações">
+ <span class="cell-val">
+ <a asp-controller="PerfilUsuario" asp-action="Details" asp-route-id="@p.PerfilId">Detalhes</a> |
+ <a asp-controller="PerfilUsuario" asp-action="Edit" asp-route-id="@p.PerfilId">Editar</a> |
+ <a asp-controller="PerfilUsuario" asp-action="Delete" asp-route-id="@p.PerfilId">Excluir</a>
+ </span>
+ </td>
+ </tr>
+ }
+ @if(!perfis.Any()) { <tr><td colspan="4" class="text-center">Nenhum perfil cadastrado.</td></tr> }
  </tbody>
  </table>
  </section>
@@ -55,4 +87,4 @@
  </div>
  </div>
  </body>
-</html></html>
+</html>

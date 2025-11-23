@@ -36,25 +36,23 @@
 
  <section class="db-section db-filtros"> @* Formulário de filtros *@
  <h3>Filtros</h3>
- <form method="get" asp-controller="Site" asp-action="MeusChamados">
+ <form method="get" asp-controller="Site" asp-action="MeusChamados" data-current-status="@ViewBag.StatusFilter" data-current-prioridade="@ViewBag.PrioridadeFilter">
  <label for="filtro_status">Status:</label>
- <select id="filtro_status" name="status">
+ <select id="filtro_status" name="status" data-current="@ViewBag.StatusFilter">
  <option value="">Todos</option>
  <option value="aberto">Aberto</option>
  <option value="em_atendimento">Em Atendimento</option>
  <option value="aguardando_validacao">Aguardando Validação</option>
  <option value="fechado">Fechado</option>
  </select>
- <script>(function(){/* restaura seleção status */var v='@ViewBag.StatusFilter';if(v){var sel=document.getElementById('filtro_status');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
  <label for="filtro_prioridade">Prioridade:</label>
- <select id="filtro_prioridade" name="prioridade">
+ <select id="filtro_prioridade" name="prioridade" data-current="@ViewBag.PrioridadeFilter">
  <option value="">Todas</option>
  <option value="critica">Crítica</option>
  <option value="alta">Alta</option>
  <option value="media">Média</option>
  <option value="baixa">Baixa</option>
  </select>
- <script>(function(){/* restaura seleção prioridade */var v='@ViewBag.PrioridadeFilter';if(v){var sel=document.getElementById('filtro_prioridade');if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===v){sel.selectedIndex=i;break;}}}}})();</script>
  <label for="busca">Buscar:</label>
  <input type="text" id="busca" name="busca" placeholder="Protocolo ou palavra-chave" value="@ViewBag.BuscaFilter" />
  <button type="submit" class="btn btn-primary">Filtrar</button>

@@ -3,23 +3,26 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using PIM_FINAL.Models;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace PIM_FINAL.Controllers
 {
  public class BaseConhecimentoController : Controller
  {
  private readonly string _connectionString;
-
+ private static readonly Regex SafeText = new Regex(@"^[\p{L}0-9 _\-\.]{0,150}$", RegexOptions.Compiled);
  public BaseConhecimentoController(IConfiguration config)
  {
  _connectionString = config["SUPABASE_DB_CONNECTION"] ?? System.Environment.GetEnvironmentVariable("SUPABASE_DB_CONNECTION") ?? string.Empty;
  }
+ private bool IsUnsafe(string? v) => !string.IsNullOrWhiteSpace(v) && !SafeText.IsMatch(v);
 
  public IActionResult Index()
  {
+ try
+ {
  var list = new List<BaseConhecimento>();
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand("SELECT base_id, titulo, descricao, solucao, categoria_id, usuario_criador_id, data_criacao, aprovado FROM public.base_conhecimento ORDER BY base_id", conn);
  using var reader = cmd.ExecuteReader();
  while (reader.Read())
@@ -38,11 +41,14 @@ namespace PIM_FINAL.Controllers
  }
  return View(list);
  }
+ catch { TempData["ErrorMessage"] = "Falha ao carregar base de conhecimento."; return View(new List<BaseConhecimento>()); }
+ }
 
  public IActionResult Details(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand("SELECT base_id, titulo, descricao, solucao, categoria_id, usuario_criador_id, data_criacao, aprovado FROM public.base_conhecimento WHERE base_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -60,18 +66,19 @@ namespace PIM_FINAL.Controllers
  };
  return View(model);
  }
-
- public IActionResult Create()
- {
- return View(new BaseConhecimento());
+ catch { TempData["ErrorMessage"] = "Erro ao carregar artigo."; return RedirectToAction(nameof(Index)); }
  }
+
+ public IActionResult Create() => View(new BaseConhecimento());
 
  [HttpPost]
  public IActionResult Create(BaseConhecimento model)
  {
+ if (IsUnsafe(model.Titulo) || IsUnsafe(model.Descricao) || IsUnsafe(model.Solucao)) ModelState.AddModelError(string.Empty, "Texto inválido.");
  if (!ModelState.IsValid) return View(model);
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand(@"INSERT INTO public.base_conhecimento (titulo, descricao, solucao, categoria_id, usuario_criador_id, data_criacao, aprovado) VALUES (@titulo, @descricao, @solucao, @categoria_id, @usuario_criador_id, @data_criacao, @aprovado)", conn);
  cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? System.DBNull.Value);
  cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? System.DBNull.Value);
@@ -81,13 +88,17 @@ namespace PIM_FINAL.Controllers
  cmd.Parameters.AddWithValue("@data_criacao", (object?)model.DataCriacao ?? System.DBNull.Value);
  cmd.Parameters.AddWithValue("@aprovado", model.Aprovado);
  cmd.ExecuteNonQuery();
+ TempData["SuccessMessage"] = "Artigo criado.";
  return RedirectToAction(nameof(Index));
+ }
+ catch { TempData["ErrorMessage"] = "Erro ao criar artigo."; return View(model); }
  }
 
  public IActionResult Edit(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand("SELECT base_id, titulo, descricao, solucao, categoria_id, usuario_criador_id, data_criacao, aprovado FROM public.base_conhecimento WHERE base_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -105,13 +116,17 @@ namespace PIM_FINAL.Controllers
  };
  return View(model);
  }
+ catch { TempData["ErrorMessage"] = "Erro ao carregar artigo para edição."; return RedirectToAction(nameof(Index)); }
+ }
 
  [HttpPost]
  public IActionResult Edit(BaseConhecimento model)
  {
+ if (IsUnsafe(model.Titulo) || IsUnsafe(model.Descricao) || IsUnsafe(model.Solucao)) ModelState.AddModelError(string.Empty, "Texto inválido.");
  if (!ModelState.IsValid) return View(model);
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand(@"UPDATE public.base_conhecimento SET titulo = @titulo, descricao = @descricao, solucao = @solucao, categoria_id = @categoria_id, usuario_criador_id = @usuario_criador_id, data_criacao = @data_criacao, aprovado = @aprovado WHERE base_id = @id", conn);
  cmd.Parameters.AddWithValue("@titulo", (object?)model.Titulo ?? System.DBNull.Value);
  cmd.Parameters.AddWithValue("@descricao", (object?)model.Descricao ?? System.DBNull.Value);
@@ -122,13 +137,17 @@ namespace PIM_FINAL.Controllers
  cmd.Parameters.AddWithValue("@aprovado", model.Aprovado);
  cmd.Parameters.AddWithValue("@id", model.BaseId);
  cmd.ExecuteNonQuery();
+ TempData["SuccessMessage"] = "Artigo atualizado.";
  return RedirectToAction(nameof(Index));
+ }
+ catch { TempData["ErrorMessage"] = "Erro ao atualizar artigo."; return View(model); }
  }
 
  public IActionResult Delete(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand("SELECT base_id, titulo, descricao FROM public.base_conhecimento WHERE base_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  using var reader = cmd.ExecuteReader();
@@ -141,15 +160,21 @@ namespace PIM_FINAL.Controllers
  };
  return View(model);
  }
+ catch { TempData["ErrorMessage"] = "Erro ao carregar artigo para exclusão."; return RedirectToAction(nameof(Index)); }
+ }
 
  [HttpPost, ActionName("Delete")]
  public IActionResult DeleteConfirmed(int id)
  {
- using var conn = new NpgsqlConnection(_connectionString);
- conn.Open();
+ try
+ {
+ using var conn = new NpgsqlConnection(_connectionString); conn.Open();
  using var cmd = new NpgsqlCommand("DELETE FROM public.base_conhecimento WHERE base_id = @id", conn);
  cmd.Parameters.AddWithValue("@id", id);
  cmd.ExecuteNonQuery();
+ TempData["SuccessMessage"] = "Artigo removido.";
+ }
+ catch { TempData["ErrorMessage"] = "Erro ao remover artigo."; }
  return RedirectToAction(nameof(Index));
  }
  }

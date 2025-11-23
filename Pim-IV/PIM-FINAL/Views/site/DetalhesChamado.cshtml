@@ -1,6 +1,15 @@
 ﻿@model PIM_FINAL.Models.Chamado
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@{
+ // Resolve permissões básicas a partir de claims
+ var roleClaim = User?.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
+ int.TryParse(roleClaim, out var perfilId); //1=Admin,2=Gestor,3=Técnico,4=Solicitante
+ var uidClaim = User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+ int.TryParse(uidClaim, out var currentUserId);
+ bool canRegistrarAcao = (Model?.TecnicoResponsavelId == currentUserId) || perfilId ==1 || perfilId ==2; // técnico responsável ou gestor/admin
+}
+
 @* Página DetalhesChamado: exibe metadados do chamado, anexos, histórico de ações, comunicações, registro de ações técnicas, resolução e escalonamento. *@
 @* Notas:
  - As tabelas usam classes `stack-mobile` e atributos `data-label` para layout responsivo em dispositivos móveis.
@@ -19,6 +28,9 @@
  @await Html.PartialAsync("_HeaderNav")
 
  <main class="db-content">
+ @if (TempData["SuccessMessage"] != null) { <div class="alert alert-success">@TempData["SuccessMessage"]</div> }
+ @if (TempData["ErrorMessage"] != null) { <div class="alert alert-danger">@TempData["ErrorMessage"]</div> }
+
  <section class="db-section db-overview"> @* Cabeçalho *@
  <h2>Detalhes do Chamado @Model?.Protocolo</h2>
  <p><a asp-controller="Site" asp-action="Atendimento">⬅ Voltar para lista de chamados</a></p>
@@ -30,25 +42,37 @@
 <table class="table table-bordered w-100 db-summary-table limit-rows" data-limit="3">
  <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
  <tbody>
- <tr><td data-label="Campo"><strong>Protocolo</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Protocolo</strong></td>
  <td data-label="Protocolo"><span class="cell-val">@Model?.Protocolo</span></td></tr>
- <tr><td data-label="Campo"><strong>Status</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Status</strong></td>
  <td data-label="Status"><span class="cell-val">@Model?.StatusChamado?.NomeStatus</span></td></tr>
- <tr><td data-label="Campo"><strong>Título</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Título</strong></td>
  <td data-label="Título"><span class="cell-val wrap">@Model?.Titulo</span></td></tr>
- <tr><td data-label="Campo"><strong>Descrição</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Descrição</strong></td>
  <td data-label="Descrição"><span class="cell-val wrap">@Model?.Descricao</span></td></tr>
- <tr><td data-label="Campo"><strong>Categoria</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Categoria</strong></td>
  <td data-label="Categoria"><span class="cell-val">@Model?.Categoria?.NomeCategoria</span></td></tr>
- <tr><td data-label="Campo"><strong>Prioridade</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Prioridade</strong></td>
  <td data-label="Prioridade"><span class="cell-val"><strong>@Model?.Prioridade?.NomePrioridade</strong></span></td></tr>
- <tr><td data-label="Campo"><strong>Solicitante</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Solicitante</strong></td>
  <td data-label="Solicitante"><span class="cell-val wrap">@Model?.UsuarioSolicitante?.NomeCompleto (@Model?.UsuarioSolicitante?.Email)</span></td></tr>
- <tr><td data-label="Campo"><strong>Data/Hora Abertura</strong>
- </td><td data-label="Data/Hora Abertura"><span class="cell-val">@Model?.DataAbertura?.ToLocalTime().ToString("g")</span></td></tr>
- <tr><td data-label="Campo"><strong>Técnico Responsável</strong>
- </td><td data-label="Técnico Responsável"><span class="cell-val">@(Model?.TecnicoResponsavel?.NomeCompleto ?? "Não Atribuído")</span></td></tr>
- <tr><td data-label="Campo"><strong>SLA - Resolução</strong></td>
+ <tr>
+ <td data-label="Campo"><strong>Data/Hora Abertura</strong>
+ </td>
+ <td data-label="Data/Hora Abertura"><span class="cell-val">@Model?.DataAbertura?.ToLocalTime().ToString("g")</span></td></tr>
+ <tr>
+ <td data-label="Campo"><strong>Técnico Responsável</strong>
+ </td>
+ <td data-label="Técnico Responsável"><span class="cell-val">@(Model?.TecnicoResponsavel?.NomeCompleto ?? "Não Atribuído")</span></td></tr>
+ <tr>
+ <td data-label="Campo"><strong>SLA - Resolução</strong></td>
  <td data-label="SLA - Resolução"><span class="cell-val">@(Model?.Sla?.TempoMaximoResolucao != null ? (Model.Sla.TempoMaximoResolucao + " horas") : "-")</span></td></tr>
  </tbody>
  </table>
@@ -100,8 +124,14 @@
 
  <section> @* Registro de ação técnica *@
  <h3>🛠 Registrar Ação de Atendimento</h3>
+ @if (!canRegistrarAcao)
+ {
+ <div class="alert alert-info">Você não tem permissão para registrar ações neste chamado.</div>
+ }
+ else
+ {
  @* Form POST cria registro de atendimento e pode anexar um arquivo de evidência *@
- <form method="post" asp-controller="Site" asp-action="RegistrarAcao">
+ <form method="post" asp-controller="Site" asp-action="RegistrarAcao" enctype="multipart/form-data">
  <input type="hidden" name="chamado_id" value="@Model?.ChamadoId" />
  <label for="acao_realizada">Ação Realizada:</label><br />
  <textarea id="acao_realizada" name="acao_realizada" rows="6" cols="80" placeholder="Descreva detalhadamente as ações que você realizou..." required></textarea><br /><br />
@@ -111,6 +141,7 @@
  <input type="file" id="anexo_evidencia" name="anexo_evidencia" /><br /><br />
  <button type="submit">Registrar Ação</button>
  </form>
+ }
  </section>
 
  <section> @* Resolver ou Escalonar *@
